@@ -108,7 +108,7 @@ You can replace the text within the `.navbar-brand` with an `<img>`.
 <nav class="navbar navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
     </a>
   </div>
 </nav>
@@ -122,7 +122,7 @@ You can also make use of some additional utilities to add an image and text at t
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
       Bootstrap
     </a>
   </div>
