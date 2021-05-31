@@ -1,0 +1,17 @@
+{{- $n := .Get "name" -}}
+{{- $f := .Get "file" -}}
+{{- $strip := .Get "strip-default" | default "true" -}}
+{{- $start := printf "// scss-docs-start %s\n" $n -}}
+{{- $end := printf "// scss-docs-end %s" $n -}}
+{{- $re := printf "%s(.|\n)*%s" $start $end -}}
+{{- $css := readFile (printf "bootstrap/%s" $f) -}}
+{{- $match := findRE $re $css 1 -}}
+{{- if (eq (len $match) 0) -}}
+  {{- errorf "Got no matches for %q in %q! (called in %q)" $n $f $.Page.Path -}}
+{{- end -}}
+{{- $x := replace (index $match 0) $start "" -}}
+{{- $y := replace $x $end "" -}}
+{{- if (ne $strip "false") -}}
+  {{- $y = replace $y " !default" "" -}}
+{{- end -}}
+{{- highlight $y "scss" "" -}}

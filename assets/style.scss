@@ -1,0 +1,35 @@
+// - Bootstrap's **docs variables** are prefixed with `$bd-`.
+//   These custom colors avoid collision with the components Bootstrap provides.
+// - Classes are prefixed with `.bd-`.
+//   These classes indicate custom-built or modified components for the design
+//   and layout of the Bootstrap docs. They are not included in our builds.
+@import "../bootstrap/scss/functions";
+//$body-bg: #eee2dc !default;
+//$headings-color: #7c334f !default;
+//$gray-100: #fff6e9 !default;
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+@import "../bootstrap/scss/root";
+@import "../bootstrap/scss/reboot";
+@import "../bootstrap/scss/type";
+@import "scss/variables";
+@import "scss/navbar";
+@import "scss/subnav";
+@import "scss/masthead";
+@import "scss/ads";
+@import "scss/content";
+@import "scss/skippy";
+@import "scss/sidebar";
+@import "scss/layout";
+@import "scss/toc";
+@import "scss/footer";
+@import "scss/component-examples";
+@import "scss/buttons";
+@import "scss/callouts";
+@import "scss/brand";
+@import "scss/colors";
+@import "scss/clipboard-js";
+@import "scss/placeholder-img";
+@import "scss/syntax";
+@import "scss/anchor";
+@import "scss/algolia";

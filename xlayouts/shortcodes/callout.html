@@ -1,0 +1,4 @@
+{{- $c := .Get 0 | default "info" -}}
+<div class="bd-callout bd-callout-{{ $c }}">
+  {{ .Inner | markdownify }}
+</div>

@@ -1,0 +1,11 @@
+- group: qaltum
+  baseurl: "https://qaltum.net/docs"
+  description: "Qaltum"
+  versions:
+    - v: "1.0"
+
+- group: femfas
+  baseurl: "https://femfas.net/docs"
+  description: "Femfas"
+  versions:
+    - v: "1.0"

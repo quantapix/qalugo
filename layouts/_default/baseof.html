@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  {{ block "body_override" . }}<body>{{ end }}
+    {{ partial "skippy" . }}
+    {{ partial "navbar" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer" . }}
+    {{ partial "scripts" . }}
+    {{ block "more" . }}
+      {{ range .Page.Params.extra_js -}}
+        <script{{ with .async }} async{{ end }} src="{{ .src }}"></script>
+      {{- end -}}
+    {{ end }}
+  </body>
+</html>
