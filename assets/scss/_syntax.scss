@@ -1,4 +1,5 @@
 // stylelint-disable comment-empty-line-before, declaration-block-single-line-max-declarations, selector-class-pattern
+
 /* Background .chroma { background-color: #f0f0f0; } */
 /* Other .chroma .x { } */
 /* Error .chroma .err { } */
@@ -7,6 +8,7 @@
 /* LineHighlight .chroma .hl { display: block; width: 100%; background-color: #ffffcc; } */
 /* LineNumbersTable .chroma .lnt { margin-right: .4em; padding: 0 .4em; } */
 /* LineNumbers .chroma .ln { margin-right: .4em; padding: 0 .4em; } */
+
 /* Comment */ .chroma .c { color: #727272; }
 /* CommentHashbang */ .chroma .ch { font-style: italic; color: #60a0b0; }
 /* CommentMultiline */ .chroma .cm { color: #727272; }
@@ -81,6 +83,7 @@
 /* OperatorWord */ .chroma .ow { color: #000; }
 /* Punctuation .chroma .p { } */
 /* TextWhitespace */ .chroma .w { color: #bbb; }
+
 .chroma {
   .language-bash,
   .language-sh {
@@ -90,6 +93,7 @@
       user-select: none;
     }
   }
+
   .language-powershell::before {
     color: #009;
     content: "PM> ";

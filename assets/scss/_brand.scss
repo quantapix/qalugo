@@ -1,14 +1,23 @@
+//
+// Brand guidelines
+//
+
+// Logo series wrapper
 .bd-brand-logos {
   color: $bd-purple-bright;
+
   .inverse {
     color: $white;
     background-color: $bd-purple-bright;
   }
 }
+
+// Individual items
 .bd-brand-item {
   + .bd-brand-item {
     border-top: 1px solid $white;
   }
+
   @include media-breakpoint-up(md) {
     + .bd-brand-item {
       border-top: 0;
@@ -16,8 +25,16 @@
     }
   }
 }
+
+
+//
+// Color swatches
+//
+
 .color-swatches {
   margin: 0 -5px;
+
+  // Docs colors
   .bd-purple {
     background-color: $bd-purple;
   }
@@ -31,9 +48,11 @@
     background-color: #f9f9f9;
   }
 }
+
 .color-swatch {
   width: 4rem;
   height: 4rem;
+
   @include media-breakpoint-up(md) {
     width: 6rem;
     height: 6rem;

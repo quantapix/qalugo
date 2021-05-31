@@ -6,13 +6,16 @@
   "author": "qaltum <qaltum.net@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "server": "hugo server --config xconfig.yml --minify"
+  },
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.13",
-    "postcss-cli": "^8.3.1",
-    "prettier": "^2.2.1",
-    "prettier-plugin-go-template": "^0.0.10",
-    "stylelint": "^13.13.1",
-    "stylelint-config-twbs-bootstrap": "^2.2.0"
+    "autoprefixer": "",
+    "postcss-cli": "",
+    "postcss": "",
+    "prettier-plugin-go-template": "",
+    "prettier": "",
+    "stylelint-config-twbs-bootstrap": "",
+    "stylelint": ""
   }
 }

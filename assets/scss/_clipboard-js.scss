@@ -1,14 +1,21 @@
+// clipboard.js
+//
+// JS-based `Copy` buttons for code snippets.
+
 .bd-clipboard {
   position: relative;
   display: none;
   float: right;
+
   + .highlight {
     margin-top: 0;
   }
+
   @include media-breakpoint-up(md) {
     display: block;
   }
 }
+
 .btn-clipboard {
   position: absolute;
   top: .65rem;
@@ -21,6 +28,7 @@
   background-color: $white;
   border: 1px solid;
   @include border-radius();
+
   &:hover,
   &:focus {
     color: $white;
