@@ -12,5 +12,5 @@
     {{- $d = merge $d (dict "outputStyle" "compressed") -}}
   {{- end -}}
   {{- $s := resources.Get "style.scss" | toCSS $d | postCSS $d2 }}
-  <link href="{{ $s.Permalink }}" rel="stylesheet">
+  <link href="{{ $s.Permalink | relURL }}" rel="stylesheet">
 {{- end }}
