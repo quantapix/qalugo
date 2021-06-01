@@ -1,7 +1,7 @@
 {{ if eq hugo.Environment "production" -}}
-  <script src="/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
 {{ else -}}
-  <script src="/js/bootstrap.bundle.js"></script>
+  <script src="./js/bootstrap.bundle.js"></script>
 {{- end }}
 {{ if eq .Page.Layout "docs" -}}
   <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>

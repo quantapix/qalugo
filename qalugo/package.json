@@ -6,7 +6,8 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "server": "hugo server --config xconfig.yml --minify"
+    "build": "rm -rf public; HUGO_ENV=\"production\" hugo --config xconfig.yml --minify --gc",
+    "serve": "hugo server --config xconfig.yml --minify"
   },
   "devDependencies": {
     "autoprefixer": "",

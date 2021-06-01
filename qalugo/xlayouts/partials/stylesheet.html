@@ -1,6 +1,6 @@
 {{- "<!-- Bootstrap core CSS -->" | safeHTML }}
 {{ if eq hugo.Environment "production" -}}
-  <link href="/css/bootstrap.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_hash | safeHTMLAttr }} crossorigin="anonymous">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
 {{- else -}}
   <link href="/css/bootstrap.css" rel="stylesheet">
 {{- end }}
