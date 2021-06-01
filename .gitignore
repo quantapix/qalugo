@@ -1,5 +1,7 @@
-node_modules
-yarn.lock
-public
 _gen
+.cache
+.env
+node_modules
+public
+yarn.lock
 

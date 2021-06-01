@@ -1,11 +1,10 @@
 {
   "name": "qalugo",
-  "version": "0.1.0",
-  "main": "index.js",
-  "repository": "https://github.com/quantapix/qalugo.git",
   "author": "qaltum <qaltum.net@gmail.com>",
   "license": "MIT",
+  "main": "index.js",
   "private": true,
+  "version": "0.1.0",
   "scripts": {
     "server": "hugo server --config xconfig.yml --minify"
   },
