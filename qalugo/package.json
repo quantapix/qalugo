@@ -1,0 +1,20 @@
+{
+  "name": "qalugo",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "https://github.com/quantapix/qalugo.git",
+  "author": "qaltum <qaltum.net@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "server": "hugo server --config xconfig.yml --minify"
+  },
+  "devDependencies": {
+    "autoprefixer": "",
+    "postcss-cli": "",
+    "postcss": "",
+    "prettier-plugin-go-template": "",
+    "stylelint-config-twbs-bootstrap": "",
+    "stylelint": ""
+  }
+}
