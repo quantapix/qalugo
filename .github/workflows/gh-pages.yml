@@ -26,7 +26,7 @@ jobs:
           extended: true
 
       - name: Build
-        run: cd qalugo; HUGO_ENV="production" hugo --config xconfig.yml --minify --gc
+        run: cd qalugo; HUGO_ENV="production" hugo --config config.yml --minify --gc
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
