@@ -6,8 +6,10 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "build": "rm -rf public; HUGO_ENV=\"production\" hugo --config xconfig.yml --minify --gc",
-    "serve": "hugo server --config xconfig.yml --minify"
+    "preprep": "git submodule update --init --recursive",
+    "prep": "(cd bootstrap; yarn; yarn dist); rm -rf dist; mv bootstrap/dist .; (cd bootstrap; git clean -xfd; git reset --hard)",
+    "build": "rm -rf public; HUGO_ENV=\"production\" hugo --config config.yml --minify --gc",
+    "serve": "hugo server --config config.yml --minify"
   },
   "devDependencies": {
     "autoprefixer": "",
