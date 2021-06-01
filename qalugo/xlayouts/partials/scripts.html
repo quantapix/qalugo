@@ -13,4 +13,4 @@
 {{- if eq hugo.Environment "production" -}}
   {{- $s = $s | resources.Minify -}}
 {{- end }}
-<script src="{{ $s.Permalink | relURL }}"></script>
+<script src="{{ $s.Permalink }}"></script>

@@ -1,6 +1,7 @@
 languageCode: "en"
 title: "Bootstrap"
 baseURL: "https://quantapix.github.io/qalugo/"
+relativeURLs: true
 enableInlineShortcodes: true
 
 markup:
