@@ -1,4 +1,0 @@
-{{- $c := .Get 0 | default "table" -}}
-{{- $t := .Inner | markdownify -}}
-{{- $t = replace $t "<table>" (printf `<table class="%s">` $c) -}}
-{{- $t | safeHTML -}}
