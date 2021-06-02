@@ -23,12 +23,20 @@ disableKinds: ["404", "taxonomy", "term", "RSS"]
 
 module:
   mounts:
+    - source: content
+      target: content
     - source: xcontent
       target: content
+    - source: data
+      target: data
     - source: xdata
       target: data
+    - source: layouts
+      target: layouts
     - source: xlayouts
       target: layouts
+    - source: static
+      target: static
     - source: xstatic
       target: static
 
