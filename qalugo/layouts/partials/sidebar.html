@@ -16,7 +16,7 @@
               {{- range $p := $g.pages -}}
                 {{- $pu := $p.url -}}
                 {{- $on2 := and $on (eq $u $pu) -}}
-                {{- $r := printf "/%s/%s/" $s $pu }}
+                {{- $r := printf "/%s/%s" $s $pu }}
                 <li><a href="{{ $r }}" class="d-inline-flex align-items-center rounded{{ if $on2 }} active{{ end }}"{{ if $on2 }} aria-current="page"{{ end }}>{{ $p.title }}</a></li>
               {{- end }}
             </ul>
