@@ -7,10 +7,10 @@
   "version": "0.1.0",
   "scripts": {
     "preprep": "git submodule update --init --recursive",
-    "preserve": "(cd ..; yarn)",
+    "predev": "(cd ..; yarn)",
     "prep": "(cd bootstrap; yarn; yarn dist); rm -rf dist; mv bootstrap/dist .; (cd bootstrap; git clean -xfd; git reset --hard)",
     "build": "rm -rf public; HUGO_ENV=\"production\" hugo --config qalugo.yml --minify --gc",
-    "serve": "hugo server --config qalugo.yml --minify"
+    "dev": "hugo server --config qalugo.yml --minify"
   },
   "devDependencies": {
     "autoprefixer": "",
