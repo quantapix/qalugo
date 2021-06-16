@@ -8,7 +8,7 @@
   "scripts": {
     "preprep": "git submodule update --init --recursive",
     "predev": "(cd ..; yarn)",
-    "prep": "(cd bootstrap; yarn; yarn dist); rm -rf dist; mv bootstrap/dist .; (cd bootstrap; git clean -xfd; git reset --hard)",
+    "prep": "(cd bootstrap; rm package-lock.json; yarn; yarn dist); rm -rf dist; mv bootstrap/dist .; (cd bootstrap; git clean -xfd; git reset --hard)",
     "build": "rm -rf public; HUGO_ENV=\"production\" hugo --config qalugo.yml --minify --gc",
     "dev": "hugo server --config qalugo.yml --minify"
   },
