@@ -1,0 +1,14 @@
+{
+  "name": "qalugo",
+  "author": "qaltum <qaltum.net@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "private": true,
+  "version": "0.1.0",
+  "devDependencies": {
+    "prettier": ""
+  },
+  "workspaces": [
+    "qalugo"
+  ]
+}
