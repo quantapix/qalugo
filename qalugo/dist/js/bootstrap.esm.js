@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v5.0.1 (https://getbootstrap.com/)
+  * Bootstrap v5.0.2 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
@@ -7,7 +7,7 @@ import * as Popper from '@popperjs/core';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): dom/selector-engine.js
+ * Bootstrap (v5.0.2): dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -78,7 +78,7 @@ const SelectorEngine = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): util/index.js
+ * Bootstrap (v5.0.2): util/index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -275,9 +275,18 @@ const getjQuery = () => {
   return null;
 };
 
+const DOMContentLoadedCallbacks = [];
+
 const onDOMContentLoaded = callback => {
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', callback);
+    // add listener on the first call when the document is in loading state
+    if (!DOMContentLoadedCallbacks.length) {
+      document.addEventListener('DOMContentLoaded', () => {
+        DOMContentLoadedCallbacks.forEach(callback => callback());
+      });
+    }
+
+    DOMContentLoadedCallbacks.push(callback);
   } else {
     callback();
   }
@@ -369,7 +378,7 @@ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): dom/event-handler.js
+ * Bootstrap (v5.0.2): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -658,7 +667,7 @@ const EventHandler = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): dom/data.js
+ * Bootstrap (v5.0.2): dom/data.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -712,7 +721,7 @@ var Data = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): base-component.js
+ * Bootstrap (v5.0.2): base-component.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -722,7 +731,7 @@ var Data = {
  * ------------------------------------------------------------------------
  */
 
-const VERSION = '5.0.1';
+const VERSION = '5.0.2';
 
 class BaseComponent {
   constructor(element) {
@@ -778,7 +787,7 @@ class BaseComponent {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): alert.js
+ * Bootstrap (v5.0.2): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -886,7 +895,7 @@ defineJQueryPlugin(Alert);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): button.js
+ * Bootstrap (v5.0.2): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -957,7 +966,7 @@ defineJQueryPlugin(Button);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): dom/manipulator.js
+ * Bootstrap (v5.0.2): dom/manipulator.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1031,7 +1040,7 @@ const Manipulator = {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): carousel.js
+ * Bootstrap (v5.0.2): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1070,6 +1079,10 @@ const ORDER_NEXT = 'next';
 const ORDER_PREV = 'prev';
 const DIRECTION_LEFT = 'left';
 const DIRECTION_RIGHT = 'right';
+const KEY_TO_DIRECTION = {
+  [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
+  [ARROW_RIGHT_KEY]: DIRECTION_LEFT
+};
 const EVENT_SLIDE = `slide${EVENT_KEY$9}`;
 const EVENT_SLID = `slid${EVENT_KEY$9}`;
 const EVENT_KEYDOWN = `keydown${EVENT_KEY$9}`;
@@ -1138,9 +1151,7 @@ class Carousel extends BaseComponent {
 
 
   next() {
-    if (!this._isSliding) {
-      this._slide(ORDER_NEXT);
-    }
+    this._slide(ORDER_NEXT);
   }
 
   nextWhenVisible() {
@@ -1152,9 +1163,7 @@ class Carousel extends BaseComponent {
   }
 
   prev() {
-    if (!this._isSliding) {
-      this._slide(ORDER_PREV);
-    }
+    this._slide(ORDER_PREV);
   }
 
   pause(event) {
@@ -1315,14 +1324,12 @@ class Carousel extends BaseComponent {
       return;
     }
 
-    if (event.key === ARROW_LEFT_KEY) {
+    const direction = KEY_TO_DIRECTION[event.key];
+
+    if (direction) {
       event.preventDefault();
 
-      this._slide(DIRECTION_RIGHT);
-    } else if (event.key === ARROW_RIGHT_KEY) {
-      event.preventDefault();
-
-      this._slide(DIRECTION_LEFT);
+      this._slide(direction);
     }
   }
 
@@ -1403,6 +1410,10 @@ class Carousel extends BaseComponent {
 
     if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE$2)) {
       this._isSliding = false;
+      return;
+    }
+
+    if (this._isSliding) {
       return;
     }
 
@@ -1574,7 +1585,7 @@ defineJQueryPlugin(Carousel);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): collapse.js
+ * Bootstrap (v5.0.2): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1929,7 +1940,7 @@ defineJQueryPlugin(Collapse);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): dropdown.js
+ * Bootstrap (v5.0.2): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2406,7 +2417,7 @@ defineJQueryPlugin(Dropdown);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): util/scrollBar.js
+ * Bootstrap (v5.0.2): util/scrollBar.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2510,11 +2521,12 @@ class ScrollBarHelper {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): util/backdrop.js
+ * Bootstrap (v5.0.2): util/backdrop.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 const Default$6 = {
+  className: 'modal-backdrop',
   isVisible: true,
   // if false, we use the backdrop helper without adding any element to the dom
   isAnimated: false,
@@ -2523,13 +2535,13 @@ const Default$6 = {
   clickCallback: null
 };
 const DefaultType$6 = {
+  className: 'string',
   isVisible: 'boolean',
   isAnimated: 'boolean',
   rootElement: '(element|string)',
   clickCallback: '(function|null)'
 };
 const NAME$7 = 'backdrop';
-const CLASS_NAME_BACKDROP = 'modal-backdrop';
 const CLASS_NAME_FADE$5 = 'fade';
 const CLASS_NAME_SHOW$6 = 'show';
 const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$7}`;
@@ -2578,7 +2590,7 @@ class Backdrop {
   _getElement() {
     if (!this._element) {
       const backdrop = document.createElement('div');
-      backdrop.className = CLASS_NAME_BACKDROP;
+      backdrop.className = this._config.className;
 
       if (this._config.isAnimated) {
         backdrop.classList.add(CLASS_NAME_FADE$5);
@@ -2633,7 +2645,7 @@ class Backdrop {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): modal.js
+ * Bootstrap (v5.0.2): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3072,7 +3084,7 @@ defineJQueryPlugin(Modal);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): offcanvas.js
+ * Bootstrap (v5.0.2): offcanvas.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3099,6 +3111,7 @@ const DefaultType$4 = {
   scroll: 'boolean'
 };
 const CLASS_NAME_SHOW$4 = 'show';
+const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
 const OPEN_SELECTOR = '.offcanvas.show';
 const EVENT_SHOW$2 = `show${EVENT_KEY$5}`;
 const EVENT_SHOWN$2 = `shown${EVENT_KEY$5}`;
@@ -3240,6 +3253,7 @@ class Offcanvas extends BaseComponent {
 
   _initializeBackDrop() {
     return new Backdrop({
+      className: CLASS_NAME_BACKDROP,
       isVisible: this._config.backdrop,
       isAnimated: true,
       rootElement: this._element.parentNode,
@@ -3330,7 +3344,7 @@ defineJQueryPlugin(Offcanvas);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): util/sanitizer.js
+ * Bootstrap (v5.0.2): util/sanitizer.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3443,7 +3457,7 @@ function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): tooltip.js
+ * Bootstrap (v5.0.2): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4131,7 +4145,7 @@ defineJQueryPlugin(Tooltip);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): popover.js
+ * Bootstrap (v5.0.2): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4280,7 +4294,7 @@ defineJQueryPlugin(Popover);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): scrollspy.js
+ * Bootstrap (v5.0.2): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4314,6 +4328,7 @@ const SELECTOR_NAV_LIST_GROUP$1 = '.nav, .list-group';
 const SELECTOR_NAV_LINKS = '.nav-link';
 const SELECTOR_NAV_ITEMS = '.nav-item';
 const SELECTOR_LIST_ITEMS = '.list-group-item';
+const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`;
 const SELECTOR_DROPDOWN$1 = '.dropdown';
 const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
 const METHOD_OFFSET = 'offset';
@@ -4329,7 +4344,6 @@ class ScrollSpy extends BaseComponent {
     super(element);
     this._scrollElement = this._element.tagName === 'BODY' ? window : this._element;
     this._config = this._getConfig(config);
-    this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`;
     this._offsets = [];
     this._targets = [];
     this._activeTarget = null;
@@ -4357,7 +4371,7 @@ class ScrollSpy extends BaseComponent {
     this._offsets = [];
     this._targets = [];
     this._scrollHeight = this._getScrollHeight();
-    const targets = SelectorEngine.find(this._selector);
+    const targets = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target);
     targets.map(element => {
       const targetSelector = getSelectorFromElement(element);
       const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null;
@@ -4389,20 +4403,7 @@ class ScrollSpy extends BaseComponent {
       ...Manipulator.getDataAttributes(this._element),
       ...(typeof config === 'object' && config ? config : {})
     };
-
-    if (typeof config.target !== 'string' && isElement(config.target)) {
-      let {
-        id
-      } = config.target;
-
-      if (!id) {
-        id = getUID(NAME$2);
-        config.target.id = id;
-      }
-
-      config.target = `#${id}`;
-    }
-
+    config.target = getElement(config.target) || document.documentElement;
     typeCheckConfig(NAME$2, config, DefaultType$1);
     return config;
   }
@@ -4462,16 +4463,13 @@ class ScrollSpy extends BaseComponent {
 
     this._clear();
 
-    const queries = this._selector.split(',').map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`);
-
-    const link = SelectorEngine.findOne(queries.join(','));
+    const queries = SELECTOR_LINK_ITEMS.split(',').map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`);
+    const link = SelectorEngine.findOne(queries.join(','), this._config.target);
+    link.classList.add(CLASS_NAME_ACTIVE$1);
 
     if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
       SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE$1, link.closest(SELECTOR_DROPDOWN$1)).classList.add(CLASS_NAME_ACTIVE$1);
-      link.classList.add(CLASS_NAME_ACTIVE$1);
     } else {
-      // Set triggered link as active
-      link.classList.add(CLASS_NAME_ACTIVE$1);
       SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP$1).forEach(listGroup => {
         // Set triggered links parents as active
         // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
@@ -4489,7 +4487,7 @@ class ScrollSpy extends BaseComponent {
   }
 
   _clear() {
-    SelectorEngine.find(this._selector).filter(node => node.classList.contains(CLASS_NAME_ACTIVE$1)).forEach(node => node.classList.remove(CLASS_NAME_ACTIVE$1));
+    SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target).filter(node => node.classList.contains(CLASS_NAME_ACTIVE$1)).forEach(node => node.classList.remove(CLASS_NAME_ACTIVE$1));
   } // Static
 
 
@@ -4531,7 +4529,7 @@ defineJQueryPlugin(ScrollSpy);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): tab.js
+ * Bootstrap (v5.0.2): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4729,7 +4727,7 @@ defineJQueryPlugin(Tab);
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.1): toast.js
+ * Bootstrap (v5.0.2): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
