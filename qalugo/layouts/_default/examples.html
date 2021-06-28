@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="{{ .Site.Params.authors }}">
     {{ hugo.Generator }}
-    <title>{{ .Page.Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}</title>
+    <title>{{ .Page.Title | markdownify }} · {{ .Site.Title | markdownify }}</title>
     <link rel="canonical" href="{{ .Permalink }}">
     {{ with .Params.robots -}}
       <meta name="robots" content="{{ . }}">
