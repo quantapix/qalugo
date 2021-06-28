@@ -1,18 +1,13 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    {{ partial "header" . }}
-  </head>
-  {{ block "body_override" . }}<body>{{ end }}
+{{ block "html" . }}<html lang="en">{{ end }}
+  {{ block "head" . }}<head>{{ partial "header" . }}</head>{{ end }}
+  {{ block "body" . }}<body>{{ end }}
     {{ partial "skippy" . }}
-    {{ partial "navbar" . }}
-    {{ block "main" . }}{{ end }}
-    {{ partial "footer" . }}
-    {{ partial "scripts" . }}
-    {{ block "more" . }}
-      {{ range .Page.Params.extra_js -}}
-        <script{{ with .async }} async{{ end }} src="{{ .src }}"></script>
-      {{- end -}}
-    {{ end }}
+    {{ block "nav" . }}{{ partial "navbar" . }}{{ end }}
+    {{ block "main" . }}{{ .Content }}{{ end }}
+    {{ block "foot" . }}<footer class="bd-footer py-5 mt-5 bg-light">{{ partial "footer" . }}</footer>{{ end }}
+    {{ if ne .Page.Params.include_js false -}}
+      {{ partial "scripts" . }}
+    {{- end }}
   </body>
 </html>
