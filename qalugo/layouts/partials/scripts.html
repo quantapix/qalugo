@@ -16,4 +16,4 @@
 <script src="{{ $s.Permalink | relURL }}"></script>
 {{ range .Page.Params.extra_js -}}
   <script{{ with .async }} async{{ end }} src="{{ .src }}"></script>
-{{- end -}}
+{{- end }}
