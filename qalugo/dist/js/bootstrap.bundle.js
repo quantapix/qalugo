@@ -11,82 +11,10 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.2): dom/selector-engine.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
-  const NODE_TEXT = 3;
-  const SelectorEngine = {
-    find(selector, element = document.documentElement) {
-      return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
-    },
-
-    findOne(selector, element = document.documentElement) {
-      return Element.prototype.querySelector.call(element, selector);
-    },
-
-    children(element, selector) {
-      return [].concat(...element.children).filter(child => child.matches(selector));
-    },
-
-    parents(element, selector) {
-      const parents = [];
-      let ancestor = element.parentNode;
-
-      while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
-        if (ancestor.matches(selector)) {
-          parents.push(ancestor);
-        }
-
-        ancestor = ancestor.parentNode;
-      }
-
-      return parents;
-    },
-
-    prev(element, selector) {
-      let previous = element.previousElementSibling;
-
-      while (previous) {
-        if (previous.matches(selector)) {
-          return [previous];
-        }
-
-        previous = previous.previousElementSibling;
-      }
-
-      return [];
-    },
-
-    next(element, selector) {
-      let next = element.nextElementSibling;
-
-      while (next) {
-        if (next.matches(selector)) {
-          return [next];
-        }
-
-        next = next.nextElementSibling;
-      }
-
-      return [];
-    }
-
-  };
-
-  /**
-   * --------------------------------------------------------------------------
    * Bootstrap (v5.0.2): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
   const MAX_UID = 1000000;
   const MILLISECONDS_MULTIPLIER = 1000;
   const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
@@ -198,7 +126,7 @@
     }
 
     if (typeof obj === 'string' && obj.length > 0) {
-      return SelectorEngine.findOne(obj);
+      return document.querySelector(obj);
     }
 
     return null;
@@ -764,7 +692,7 @@
 
 
     static getInstance(element) {
-      return Data.get(element, this.DATA_KEY);
+      return Data.get(getElement(element), this.DATA_KEY);
     }
 
     static getOrCreateInstance(element, config = {}) {
@@ -825,37 +753,26 @@
     } // Public
 
 
-    close(element) {
-      const rootElement = element ? this._getRootElement(element) : this._element;
+    close() {
+      const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
 
-      const customEvent = this._triggerCloseEvent(rootElement);
-
-      if (customEvent === null || customEvent.defaultPrevented) {
+      if (closeEvent.defaultPrevented) {
         return;
       }
 
-      this._removeElement(rootElement);
+      this._element.classList.remove(CLASS_NAME_SHOW$9);
+
+      const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$6);
+
+      this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
     } // Private
 
 
-    _getRootElement(element) {
-      return getElementFromSelector(element) || element.closest(`.${CLASS_NAME_ALERT}`);
-    }
+    _destroyElement() {
+      this._element.remove();
 
-    _triggerCloseEvent(element) {
-      return EventHandler.trigger(element, EVENT_CLOSE);
-    }
-
-    _removeElement(element) {
-      element.classList.remove(CLASS_NAME_SHOW$9);
-      const isAnimated = element.classList.contains(CLASS_NAME_FADE$6);
-
-      this._queueCallback(() => this._destroyElement(element), element, isAnimated);
-    }
-
-    _destroyElement(element) {
-      element.remove();
-      EventHandler.trigger(element, EVENT_CLOSED);
+      EventHandler.trigger(this._element, EVENT_CLOSED);
+      this.dispose();
     } // Static
 
 
@@ -863,20 +780,16 @@
       return this.each(function () {
         const data = Alert.getOrCreateInstance(this);
 
-        if (config === 'close') {
-          data[config](this);
+        if (typeof config !== 'string') {
+          return;
         }
+
+        if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+          throw new TypeError(`No method named "${config}"`);
+        }
+
+        data[config](this);
       });
-    }
-
-    static handleDismiss(alertInstance) {
-      return function (event) {
-        if (event) {
-          event.preventDefault();
-        }
-
-        alertInstance.close(this);
-      };
     }
 
   }
@@ -887,7 +800,19 @@
    */
 
 
-  EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()));
+  EventHandler.on(document, EVENT_CLICK_DATA_API$7, SELECTOR_DISMISS, function (event) {
+    if (['A', 'AREA'].includes(this.tagName)) {
+      event.preventDefault();
+    }
+
+    if (isDisabled(this)) {
+      return;
+    }
+
+    const target = getElementFromSelector(this) || this.closest(`.${CLASS_NAME_ALERT}`);
+    const alert = Alert.getOrCreateInstance(target);
+    alert.close();
+  });
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -1038,6 +963,77 @@
         top: element.offsetTop,
         left: element.offsetLeft
       };
+    }
+
+  };
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v5.0.2): dom/selector-engine.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */
+
+  /**
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
+   */
+  const NODE_TEXT = 3;
+  const SelectorEngine = {
+    find(selector, element = document.documentElement) {
+      return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
+    },
+
+    findOne(selector, element = document.documentElement) {
+      return Element.prototype.querySelector.call(element, selector);
+    },
+
+    children(element, selector) {
+      return [].concat(...element.children).filter(child => child.matches(selector));
+    },
+
+    parents(element, selector) {
+      const parents = [];
+      let ancestor = element.parentNode;
+
+      while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
+        if (ancestor.matches(selector)) {
+          parents.push(ancestor);
+        }
+
+        ancestor = ancestor.parentNode;
+      }
+
+      return parents;
+    },
+
+    prev(element, selector) {
+      let previous = element.previousElementSibling;
+
+      while (previous) {
+        if (previous.matches(selector)) {
+          return [previous];
+        }
+
+        previous = previous.previousElementSibling;
+      }
+
+      return [];
+    },
+
+    next(element, selector) {
+      let next = element.nextElementSibling;
+
+      while (next) {
+        if (next.matches(selector)) {
+          return [next];
+        }
+
+        next = next.nextElementSibling;
+      }
+
+      return [];
     }
 
   };
@@ -1620,6 +1616,7 @@
   const CLASS_NAME_COLLAPSE = 'collapse';
   const CLASS_NAME_COLLAPSING = 'collapsing';
   const CLASS_NAME_COLLAPSED = 'collapsed';
+  const CLASS_NAME_HORIZONTAL = 'collapse-horizontal';
   const WIDTH = 'width';
   const HEIGHT = 'height';
   const SELECTOR_ACTIVES = '.show, .collapsing';
@@ -1832,7 +1829,7 @@
     }
 
     _getDimension() {
-      return this._element.classList.contains(WIDTH) ? WIDTH : HEIGHT;
+      return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT;
     }
 
     _getParent() {
