@@ -1,0 +1,31 @@
+{{ define "html" }}
+  <html lang="en"{{ with .Page.Params.html_class }} class="{{ . }}"{{ end }}>
+{{ end }}
+{{ define "head" }}
+  <head>
+    {{ partial "header" . }}    
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    {{ range .Page.Params.extra_css }}
+      <link href="{{ . }}" rel="stylesheet">
+    {{- end }}
+  </head>
+{{ end }}
+{{ define "nav" }}
+  {{ partial "navcol" . }}
+{{ end }}
+{{ define "body" }}
+  <body {{ with .Page.Params.body_class }} class="{{ . }}"{{ end }}>
+{{ end }}
