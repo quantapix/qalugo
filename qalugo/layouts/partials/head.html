@@ -10,7 +10,7 @@
 {{ with .Params.robots -}}
   <meta name="robots" content="{{ . }}">
 {{- end }}
-{{ partial "stylesheet" . }}
-{{ partial "favicons" . }}
+{{ partial "styles" . }}
+{{ partial "favs" . }}
 {{ partial "social" . }}
 {{ partial "analytics" . }}

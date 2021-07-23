@@ -3,7 +3,7 @@
 {{ end }}
 {{ define "head" }}
   <head>
-    {{ partial "header" . }}    
+    {{ partial "head" . }}    
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -23,8 +23,7 @@
     {{- end }}
   </head>
 {{ end }}
-{{ define "nav" }}
-{{ end }}
+{{ define "nav" }}{{ end }}
 {{ define "body" }}
   <body {{ with .Page.Params.body_class }} class="{{ . }}"{{ end }}>
 {{ end }}

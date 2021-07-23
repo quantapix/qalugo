@@ -1,11 +1,13 @@
 <!doctype html>
 {{ block "html" . }}<html lang="en">{{ end }}
-  {{ block "head" . }}<head>{{ partial "header" . }}</head>{{ end }}
+  {{ block "head" . }}<head>{{ partial "head" . }}</head>{{ end }}
   {{ block "body" . }}<body>{{ end }}
     {{ partial "skippy" . }}
-    {{ block "nav" . }}{{ partial "navbar" . }}{{ end }}
+    {{ block "nav" . }}{{ end }}
     {{ block "main" . }}{{ .Content }}{{ end }}
-    {{ block "foot" . }}<footer class="bd-footer py-5 mt-5 bg-light">{{ partial "footer" . }}</footer>{{ end }}
+    {{ block "footer" . }}<footer class="bd-footer py-5 mt-5 bg-light">{{ end }}
+      {{ partial "foot" . }}
+    </footer>
     {{ if ne .Page.Params.include_js false -}}
       {{ partial "scripts" . }}
     {{- end }}
