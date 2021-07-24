@@ -318,7 +318,7 @@ Loop that generates the modifier classes with the `list-group-item-variant()` mi
 
 Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our list group to create tabbable panes of local content.
 
-<div class="bd-example" role="tabpanel">
+<div class="qal-example" role="tabpanel">
   <div class="row">
     <div class="col-4">
       <div class="list-group" id="list-tab" role="tablist">

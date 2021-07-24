@@ -18,7 +18,7 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
 
 Use contextual classes to color tables, table rows or individual cells.
 
-<div class="bd-example">
+<div class="qal-example">
   <table class="table">
     <thead>
       <tr>
@@ -102,7 +102,7 @@ These hoverable rows can also be combined with the striped variant:
 
 Highlight a table row or cell by adding a `.table-active` class.
 
-<div class="bd-example">
+<div class="qal-example">
   <table class="table">
     <thead>
       <tr>
@@ -155,7 +155,7 @@ Highlight a table row or cell by adding a `.table-active` class.
 </table>
 ```
 
-<div class="bd-example">
+<div class="qal-example">
   <table class="table table-dark">
     <thead>
       <tr>
@@ -254,7 +254,7 @@ Add `.table-sm` to make any `.table` more compact by cutting all cell `padding` 
 
 Table cells of `<thead>` are always vertical aligned to the bottom. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the the top by default. Use the [vertical align]({{< docsref "/utilities/vertical-align" >}}) classes to re-align where needed.
 
-<div class="bd-example">
+<div class="qal-example">
   <div class="table-responsive">
     <table class="table align-middle">
       <thead>
@@ -319,7 +319,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
 
 Border styles, active styles, and table variants are not inherited by nested tables.
 
-<div class="bd-example">
+<div class="qal-example">
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
@@ -407,7 +407,7 @@ Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be
 
 Similar to tables and dark tables, use the modifier classes `.table-light` or `.table-dark` to make `<thead>`s appear light or dark gray.
 
-<div class="bd-example">
+<div class="qal-example">
 <table class="table">
   <thead class="table-light">
     <tr>
@@ -451,7 +451,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 </table>
 ```
 
-<div class="bd-example">
+<div class="qal-example">
 <table class="table">
   <thead class="table-dark">
     <tr>
@@ -497,7 +497,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 
 ### Table foot
 
-<div class="bd-example">
+<div class="qal-example">
 <table class="table">
   <thead class="table-light">
     <tr>
@@ -556,7 +556,7 @@ Similar to tables and dark tables, use the modifier classes `.table-light` or `.
 
 A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it's about and decide if they want to read it.
 
-<div class="bd-example">
+<div class="qal-example">
   <table class="table">
     <caption>List of users</caption>
     {{< partial "table-content.html" >}}
@@ -625,7 +625,7 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
 
 Across every breakpoint, use `.table-responsive` for horizontally scrolling tables.
 
-<div class="bd-example">
+<div class="qal-example">
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -701,7 +701,7 @@ Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tab
 {{< tables.inline >}}
 {{ range $.Site.Data.breakpoints }}
 {{ if not (eq . "xs") }}
-<div class="bd-example">
+<div class="qal-example">
   <div class="table-responsive{{ .abbr }}">
     <table class="table">
       <thead>

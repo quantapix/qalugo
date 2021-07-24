@@ -3,11 +3,11 @@
     <div class="container pt-md-1 pb-md-4">
       <div class="row">
         <div class="col-xl-8">
-          <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
-          <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+          <h1 class="qal-title mt-0">{{ .Title | markdownify }}</h1>
+          <p class="qal-lead">{{ .Page.Params.Description | markdownify }}</p>
           {{ if eq .Title "Examples" }}
             <div class="d-flex flex-column flex-sm-row">
-              <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-bd-primary">Download examples</a>
+              <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-qal-primary">Download examples</a>
               <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ms-sm-3">Download source code</a>
             </div>
           {{ end }}
@@ -15,7 +15,7 @@
       </div>
     </div>
   </header>
-  <main class="bd-content order-1 py-5" id="content">
+  <main class="qal-content order-1 py-5" id="content">
     <div class="container">
       {{ .Content }}
       {{ if eq .Title "Examples" }}

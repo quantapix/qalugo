@@ -377,7 +377,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 {{< example >}}
 <div class="card bg-dark text-white">
-  {{< placeholder width="100%" height="270" class="bd-placeholder-img-lg card-img" text="Card image" >}}
+  {{< placeholder width="100%" height="270" class="qal-placeholder-img-lg card-img" text="Card image" >}}
   <div class="card-img-overlay">
     <h5 class="card-title">Card title</h5>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

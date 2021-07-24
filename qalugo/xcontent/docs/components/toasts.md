@@ -59,7 +59,7 @@ Click the button below to show a toast (positioned with our utilities in the low
   </div>
 </div>
 
-<div class="bd-example">
+<div class="qal-example">
   <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 </div>
 
@@ -211,7 +211,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
     </select>
   </div>
 </form>
-<div aria-live="polite" aria-atomic="true" class="bg-dark position-relative bd-example-toasts">
+<div aria-live="polite" aria-atomic="true" class="bg-dark position-relative qal-example-toasts">
   <div class="toast-container position-absolute p-3" id="toastPlacement">
     <div class="toast">
       <div class="toast-header">
@@ -229,7 +229,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
 
 For systems that generate more notifications, consider using a wrapping element so they can easily stack.
 
-{{< example class="bg-dark bd-example-toasts p-0" >}}
+{{< example class="bg-dark qal-example-toasts p-0" >}}
 <div aria-live="polite" aria-atomic="true" class="position-relative">
   <!-- Position it: -->
   <!-- - `.toast-container` for spacing between toasts -->
@@ -267,7 +267,7 @@ For systems that generate more notifications, consider using a wrapping element 
 
 You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.
 
-{{< example class="bg-dark bd-example-toasts d-flex" >}}
+{{< example class="bg-dark qal-example-toasts d-flex" >}}
 <!-- Flexbox container for aligning the toasts -->
 <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
 

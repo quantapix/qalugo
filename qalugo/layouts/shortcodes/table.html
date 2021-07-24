@@ -8,7 +8,7 @@
   {{- $c = partialCached "table-content" . -}}
 {{- end -}}
 {{- $y := printf "<table%s>\n%s</table>" $a $c -}}
-<div class="bd-example">
+<div class="qal-example">
   <table{{ with .Get "class" }} class="{{ . }}"{{ end }}>
     {{ partialCached "table-content" . }}
   </table>

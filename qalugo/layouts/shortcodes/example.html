@@ -3,7 +3,7 @@
 {{- $m := .Get "show_markup" | default true -}}
 {{- $i := .Inner -}}
 {{- if eq $p true -}}
-  <div{{ with .Get "id" }} id="{{ . }}"{{ end }} class="bd-example{{ with .Get "class" }} {{ . }}{{ end }}">
+  <div{{ with .Get "id" }} id="{{ . }}"{{ end }} class="qal-example{{ with .Get "class" }} {{ . }}{{ end }}">
     {{- $i -}}
   </div>
 {{- end -}}

@@ -143,7 +143,7 @@ Feel free to mix input groups with button groups in your toolbars. Similar to th
 
 Instead of applying button sizing classes to every button in a group, just add `.btn-group-*` to each `.btn-group`, including each one when nesting multiple groups.
 
-<div class="bd-example">
+<div class="qal-example">
   <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
     <button type="button" class="btn btn-outline-dark">Left</button>
     <button type="button" class="btn btn-outline-dark">Middle</button>
@@ -194,7 +194,7 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
 
 Make a set of buttons appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
 
-<div class="bd-example">
+<div class="qal-example">
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <button type="button" class="btn btn-dark">Button</button>
     <button type="button" class="btn btn-dark">Button</button>
@@ -205,7 +205,7 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
   </div>
 </div>
 
-<div class="bd-example">
+<div class="qal-example">
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <button type="button" class="btn btn-primary">Button</button>
     <button type="button" class="btn btn-primary">Button</button>
@@ -250,7 +250,7 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
   </div>
 </div>
 
-<div class="bd-example">
+<div class="qal-example">
   <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
     <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked>
     <label class="btn btn-outline-danger" for="vbtn-radio1">Radio 1</label>
