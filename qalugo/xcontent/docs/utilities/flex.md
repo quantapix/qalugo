@@ -80,7 +80,7 @@ Responsive variations also exist for `flex-direction`.
 
 Use `justify-content` utilities on flexbox containers to change the alignment of flex items on the main axis (the x-axis to start, y-axis if `flex-direction: column`). Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `evenly`.
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex justify-content-start qal-highlight mb-3">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -141,7 +141,7 @@ Responsive variations also exist for `justify-content`.
 
 Use `align-items` utilities on flexbox containers to change the alignment of flex items on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex align-items-start qal-highlight mb-3" style="height: 100px">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -195,7 +195,7 @@ Responsive variations also exist for `align-items`.
 
 Use `align-self` utilities on flexbox items to individually change their alignment on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from the same options as `align-items`: `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex qal-highlight mb-3" style="height: 100px">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="align-self-start p-2 qal-highlight">Aligned flex item</div>
@@ -345,7 +345,7 @@ Vertically move one flex item to the top or bottom of a container by mixing `ali
 
 Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, wrapping with `.flex-wrap`, or reverse wrapping with `.flex-wrap-reverse`.
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex flex-nowrap qal-highlight" style="width: 8rem;">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -361,7 +361,7 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
 </div>
 ```
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex flex-wrap qal-highlight">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -387,7 +387,7 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
 </div>
 ```
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex flex-wrap-reverse qal-highlight">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -468,7 +468,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 
 **Heads up!** This property has no effect on single rows of flex items.
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex align-content-start flex-wrap qal-highlight mb-3" style="height: 200px">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -494,7 +494,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 </div>
 ```
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex align-content-end flex-wrap qal-highlight mb-3" style="height: 200px">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -518,7 +518,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 <div class="d-flex align-content-end flex-wrap">...</div>
 ```
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex align-content-center flex-wrap qal-highlight mb-3" style="height: 200px">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -542,7 +542,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 <div class="d-flex align-content-center flex-wrap">...</div>
 ```
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex align-content-between flex-wrap qal-highlight mb-3" style="height: 200px">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -566,7 +566,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 <div class="d-flex align-content-between flex-wrap">...</div>
 ```
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex align-content-around flex-wrap qal-highlight mb-3" style="height: 200px">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>
@@ -590,7 +590,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 <div class="d-flex align-content-around flex-wrap">...</div>
 ```
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="d-flex align-content-stretch flex-wrap qal-highlight mb-3" style="height: 200px">
     <div class="p-2 qal-highlight">Flex item</div>
     <div class="p-2 qal-highlight">Flex item</div>

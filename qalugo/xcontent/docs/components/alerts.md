@@ -29,7 +29,7 @@ Click the button below to show an alert (hidden with inline styles to start), th
 
 <div id="liveAlertPlaceholder"></div>
 
-<div class="qal-example">
+<div class="qal-app">
   <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
 </div>
 

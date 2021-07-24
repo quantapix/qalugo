@@ -23,14 +23,12 @@
           toastPlacement.dataset.originalClass + " " + this.value
       })
   }
-  document
-    .querySelectorAll(".qal-example .toast")
-    .forEach(function (toastNode) {
-      var toast = new bootstrap.Toast(toastNode, {
-        autohide: false,
-      })
-      toast.show()
+  document.querySelectorAll(".qal-app .toast").forEach(function (toastNode) {
+    var toast = new bootstrap.Toast(toastNode, {
+      autohide: false,
     })
+    toast.show()
+  })
   var toastTrigger = document.getElementById("liveToastBtn")
   var toastLiveExample = document.getElementById("liveToast")
   if (toastTrigger) {

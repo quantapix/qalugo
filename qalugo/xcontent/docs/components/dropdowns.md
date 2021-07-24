@@ -59,7 +59,7 @@ And with `<a>` elements:
 
 The best part is you can do this with any button variant, too:
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="btn-group">
     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Primary</button>
     <ul class="dropdown-menu">
@@ -144,7 +144,7 @@ Similarly, create split button dropdowns with virtually the same markup as singl
 
 We use this extra class to reduce the horizontal `padding` on either side of the caret by 25% and remove the `margin-left` that's added for regular button dropdowns. Those extra changes keep the caret centered in the split button and provide a more appropriately sized hit area next to the main button.
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="btn-group">
     <button type="button" class="btn btn-primary">Primary</button>
     <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -246,7 +246,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 
 Button dropdowns work with buttons of all sizes, including default and split dropdown buttons.
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="btn-group">
     <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Large button
@@ -297,7 +297,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 </div>
 ```
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="btn-group">
     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Small button
@@ -404,7 +404,7 @@ Directions are mirrored when using Bootstrap in RTL, meaning `.dropstart` will a
 
 Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="btn-group dropup">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       Dropup
@@ -463,7 +463,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 
 Trigger dropdown menus at the right of the elements by adding `.dropend` to the parent element.
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="btn-group dropend">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       Dropright
@@ -522,7 +522,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
 
 Trigger dropdown menus at the left of the elements by adding `.dropstart` to the parent element.
 
-<div class="qal-example">
+<div class="qal-app">
   <div class="btn-group dropstart">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       Dropleft

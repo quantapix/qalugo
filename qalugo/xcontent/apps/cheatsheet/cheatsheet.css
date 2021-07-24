@@ -83,15 +83,15 @@ body {
   overflow: auto;
 }
 
-[id="modal"] .qal-example .btn,
-[id="buttons"] .qal-example .btn,
-[id="tooltips"] .qal-example .btn,
-[id="popovers"] .qal-example .btn,
-[id="dropdowns"] .qal-example .btn-group,
-[id="dropdowns"] .qal-example .dropdown,
-[id="dropdowns"] .qal-example .dropup,
-[id="dropdowns"] .qal-example .dropend,
-[id="dropdowns"] .qal-example .dropstart {
+[id="modal"] .qal-app .btn,
+[id="buttons"] .qal-app .btn,
+[id="tooltips"] .qal-app .btn,
+[id="popovers"] .qal-app .btn,
+[id="dropdowns"] .qal-app .btn-group,
+[id="dropdowns"] .qal-app .dropdown,
+[id="dropdowns"] .qal-app .dropup,
+[id="dropdowns"] .qal-app .dropend,
+[id="dropdowns"] .qal-app .dropstart {
   margin: 0 1rem 1rem 0;
 }
 
