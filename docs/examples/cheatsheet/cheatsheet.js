@@ -1,34 +1,34 @@
 /* global bootstrap: false */
 
-(function () {
-  'use strict'
+;(function () {
+  "use strict"
 
   // Tooltip and popover demos
-  document.querySelectorAll('.tooltip-demo')
-    .forEach(function (tooltip) {
-      new bootstrap.Tooltip(tooltip, {
-        selector: '[data-bs-toggle="tooltip"]'
-      })
+  document.querySelectorAll(".tooltip-demo").forEach(function (tooltip) {
+    new bootstrap.Tooltip(tooltip, {
+      selector: '[data-bs-toggle="tooltip"]',
     })
+  })
 
-  document.querySelectorAll('[data-bs-toggle="popover"]')
+  document
+    .querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
     })
 
-  document.querySelectorAll('.toast')
-    .forEach(function (toastNode) {
-      var toast = new bootstrap.Toast(toastNode, {
-        autohide: false
-      })
-
-      toast.show()
+  document.querySelectorAll(".toast").forEach(function (toastNode) {
+    var toast = new bootstrap.Toast(toastNode, {
+      autohide: false,
     })
 
+    toast.show()
+  })
+
   // Disable empty links and submit buttons
-  document.querySelectorAll('[href="#"], [type="submit"]')
+  document
+    .querySelectorAll('[href="#"], [type="submit"]')
     .forEach(function (link) {
-      link.addEventListener('click', function (event) {
+      link.addEventListener("click", function (event) {
         event.preventDefault()
       })
     })
@@ -36,22 +36,22 @@
   function setActiveItem() {
     var hash = window.location.hash
 
-    if (hash === '') {
+    if (hash === "") {
       return
     }
 
-    var link = document.querySelector('.bd-aside a[href="' + hash + '"]')
+    var link = document.querySelector('.qal-aside a[href="' + hash + '"]')
 
     if (!link) {
       return
     }
 
-    var active = document.querySelector('.bd-aside .active')
+    var active = document.querySelector(".qal-aside .active")
     var parent = link.parentNode.parentNode.previousElementSibling
 
-    link.classList.add('active')
+    link.classList.add("active")
 
-    if (parent.classList.contains('collapsed')) {
+    if (parent.classList.contains("collapsed")) {
       parent.click()
     }
 
@@ -61,7 +61,7 @@
 
     var expanded = active.parentNode.parentNode.previousElementSibling
 
-    active.classList.remove('active')
+    active.classList.remove("active")
 
     if (expanded && parent !== expanded) {
       expanded.click()
@@ -69,5 +69,5 @@
   }
 
   setActiveItem()
-  window.addEventListener('hashchange', setActiveItem)
+  window.addEventListener("hashchange", setActiveItem)
 })()
