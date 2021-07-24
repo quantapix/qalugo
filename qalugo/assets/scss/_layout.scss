@@ -1,4 +1,4 @@
-.bd-layout {
+.qal-layout {
   @include media-breakpoint-up(md) {
     display: grid;
     gap: $grid-gutter-width;
@@ -11,11 +11,11 @@
   }
 }
 
-.bd-sidebar {
+.qal-sidebar {
   grid-area: sidebar;
 }
 
-.bd-main {
+.qal-main {
   grid-area: main;
 
   @include media-breakpoint-up(md) {
@@ -37,15 +37,15 @@
   }
 }
 
-.bd-intro {
+.qal-intro {
   grid-area: intro;
 }
 
-.bd-toc {
+.qal-toc {
   grid-area: toc;
 }
 
-.bd-content {
+.qal-content {
   grid-area: content;
-  min-width: 1px; // Fix width when bd-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
+  min-width: 1px; // Fix width when qal-content contains a `<pre>` https://github.com/twbs/bootstrap/issues/25410
 }

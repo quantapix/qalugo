@@ -1,10 +1,10 @@
-.bd-sidebar {
+.qal-sidebar {
   @include media-breakpoint-down(md) {
     margin: 0 -.75rem 1rem;
   }
 }
 
-.bd-links {
+.qal-links {
   overflow: auto;
   font-weight: 600;
 
@@ -40,7 +40,7 @@
     &:focus {
       color: rgba($black, .85);
       text-decoration: if($link-hover-decoration == underline, none, null);
-      background-color: rgba($bd-purple-bright, .1);
+      background-color: rgba($qal-purple-bright, .1);
     }
   }
 
@@ -55,11 +55,11 @@
     &:hover,
     &:focus {
       color: rgba($black, .85);
-      background-color: rgba($bd-purple-bright, .1);
+      background-color: rgba($qal-purple-bright, .1);
     }
 
     &:focus {
-      box-shadow: 0 0 0 1px rgba($bd-purple-bright, .7);
+      box-shadow: 0 0 0 1px rgba($qal-purple-bright, .7);
     }
 
     // Add chevron if there's a submenu

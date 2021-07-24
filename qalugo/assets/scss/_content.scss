@@ -9,7 +9,7 @@
   }
 }
 
-.bd-content {
+.qal-content {
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
@@ -63,19 +63,19 @@
   }
 }
 
-.bd-title {
+.qal-title {
   @include font-size(3rem);
 }
 
-.bd-lead {
+.qal-lead {
   @include font-size(1.5rem);
   font-weight: 300;
 }
 
-.bd-text-purple-bright {
-  color: $bd-purple-bright;
+.qal-text-purple-bright {
+  color: $qal-purple-bright;
 }
 
-.bd-bg-purple-bright {
-  background-color: $bd-purple-bright;
+.qal-bg-purple-bright {
+  background-color: $qal-purple-bright;
 }

@@ -23,12 +23,14 @@
           toastPlacement.dataset.originalClass + " " + this.value
       })
   }
-  document.querySelectorAll(".bd-example .toast").forEach(function (toastNode) {
-    var toast = new bootstrap.Toast(toastNode, {
-      autohide: false,
+  document
+    .querySelectorAll(".qal-example .toast")
+    .forEach(function (toastNode) {
+      var toast = new bootstrap.Toast(toastNode, {
+        autohide: false,
+      })
+      toast.show()
     })
-    toast.show()
-  })
   var toastTrigger = document.getElementById("liveToastBtn")
   var toastLiveExample = document.getElementById("liveToast")
   if (toastTrigger) {
@@ -63,12 +65,12 @@
   })
   // Indeterminate checkbox example
   document
-    .querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
+    .querySelectorAll('.qal-example-indeterminate [type="checkbox"]')
     .forEach(function (checkbox) {
       checkbox.indeterminate = true
     })
   // Disable empty links in docs examples
-  document.querySelectorAll('.bd-content [href="#"]').forEach(function (link) {
+  document.querySelectorAll('.qal-content [href="#"]').forEach(function (link) {
     link.addEventListener("click", function (e) {
       e.preventDefault()
     })
@@ -101,7 +103,7 @@
   }
   // Insert copy to clipboard button before .highlight
   var btnHtml =
-    '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
+    '<div class="qal-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
   document.querySelectorAll("div.highlight").forEach(function (element) {
     element.insertAdjacentHTML("beforebegin", btnHtml)
   })
@@ -138,6 +140,6 @@
     icon: "#",
   }
   anchors.add(
-    ".bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5"
+    ".qal-content > h2, .qal-content > h3, .qal-content > h4, .qal-content > h5"
   )
 })()

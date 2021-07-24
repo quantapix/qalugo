@@ -4,7 +4,7 @@
   if (!window.docsearch || !inputElement) {
     return
   }
-  var siteDocsVersion = inputElement.getAttribute("data-bd-docs-version")
+  var siteDocsVersion = inputElement.getAttribute("data-qal-docs-version")
   document.addEventListener("keydown", function (event) {
     if (event.ctrlKey && event.key === "/") {
       event.preventDefault()

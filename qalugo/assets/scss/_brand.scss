@@ -3,23 +3,23 @@
 //
 
 // Logo series wrapper
-.bd-brand-logos {
-  color: $bd-purple-bright;
+.qal-brand-logos {
+  color: $qal-purple-bright;
 
   .inverse {
     color: $white;
-    background-color: $bd-purple-bright;
+    background-color: $qal-purple-bright;
   }
 }
 
 // Individual items
-.bd-brand-item {
-  + .bd-brand-item {
+.qal-brand-item {
+  + .qal-brand-item {
     border-top: 1px solid $white;
   }
 
   @include media-breakpoint-up(md) {
-    + .bd-brand-item {
+    + .qal-brand-item {
       border-top: 0;
       border-left: 1px solid $white;
     }
@@ -35,16 +35,16 @@
   margin: 0 -5px;
 
   // Docs colors
-  .bd-purple {
-    background-color: $bd-purple;
+  .qal-purple {
+    background-color: $qal-purple;
   }
-  .bd-purple-light {
-    background-color: $bd-purple-light;
+  .qal-purple-light {
+    background-color: $qal-purple-light;
   }
-  .bd-purple-lighter {
+  .qal-purple-lighter {
     background-color: #e5e1ea;
   }
-  .bd-gray {
+  .qal-gray {
     background-color: #f9f9f9;
   }
 }
