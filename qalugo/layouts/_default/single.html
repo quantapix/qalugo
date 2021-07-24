@@ -5,7 +5,7 @@
         <div class="col-xl-8">
           <h1 class="qal-title mt-0">{{ .Title | markdownify }}</h1>
           <p class="qal-lead">{{ .Page.Params.Description | markdownify }}</p>
-          {{ if eq .Title "Examples" }}
+          {{ if eq .Title "Apps" }}
             <div class="d-flex flex-column flex-sm-row">
               <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-qal-primary">Download examples</a>
               <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ms-sm-3">Download source code</a>
@@ -18,7 +18,7 @@
   <main class="qal-content order-1 py-5" id="content">
     <div class="container">
       {{ .Content }}
-      {{ if eq .Title "Examples" }}
+      {{ if eq .Title "Apps" }}
         <hr class="my-5">
         <div class="container">
           <div class="text-center">

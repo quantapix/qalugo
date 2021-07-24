@@ -36,7 +36,7 @@ Have a look at our table documentation for some [insight into how we're using CS
 
 We're also using CSS variables across our grids—primarily for gutters—with more component usage coming in the future.
 
-## Examples
+## Apps
 
 CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we're resetting our page's font and link styles with CSS variables.
 

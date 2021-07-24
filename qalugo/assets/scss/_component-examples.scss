@@ -2,7 +2,7 @@
 // Grid examples
 //
 
-.qal-example-row {
+.qal-app-row {
   .row {
     > .col,
     > [class^="col-"] {
@@ -18,12 +18,12 @@
   }
 }
 
-.qal-example-row-flex-cols .row {
+.qal-app-row-flex-cols .row {
   min-height: 10rem;
   background-color: rgba(255, 0, 0, .1);
 }
 
-.qal-example-cssgrid {
+.qal-app-cssgrid {
   text-align: center;
 
   .grid + .grid {
@@ -44,16 +44,16 @@
 }
 
 // Grid mixins
-.example-container {
+.app-container {
   width: 800px;
   @include make-container();
 }
 
-.example-row {
+.app-row {
   @include make-row();
 }
 
-.example-content-main {
+.app-content-main {
   @include make-col-ready();
 
   @include media-breakpoint-up(sm) {
@@ -65,7 +65,7 @@
   }
 }
 
-.example-content-secondary {
+.app-content-secondary {
   @include make-col-ready();
 
   @include media-breakpoint-up(sm) {
@@ -182,7 +182,7 @@
 }
 
 // Ratio helpers
-.qal-example-ratios {
+.qal-app-ratios {
   .ratio {
     display: inline-block;
     width: 10rem;
@@ -197,7 +197,7 @@
     }
   }
 }
-.qal-example-ratios-breakpoint {
+.qal-app-ratios-breakpoint {
   .ratio-4x3 {
     width: 16rem;
 
@@ -207,7 +207,7 @@
   }
 }
 
-.qal-example-modal {
+.qal-app-modal {
   background-color: #fafafa;
 
   .modal {
@@ -216,7 +216,7 @@
   }
 }
 
-.qal-example-offcanvas {
+.qal-app-offcanvas {
   @include border-start-radius(0);
 
   .offcanvas {
@@ -241,13 +241,13 @@
   overflow: auto;
 }
 
-.scrollspy-example-2 {
+.scrollspy-app-2 {
   position: relative;
   height: 350px;
   overflow: auto;
 }
 
-.qal-example-border-utils {
+.qal-app-border-utils {
   [class^="border"] {
     display: inline-block;
     width: 5rem;
@@ -257,19 +257,19 @@
   }
 }
 
-.qal-example-border-utils-0 {
+.qal-app-border-utils-0 {
   [class^="border"] {
     border: 1px solid $border-color;
   }
 }
 
-.qal-example-rounded-utils {
+.qal-app-rounded-utils {
   [class*="rounded"] {
     margin: .25rem;
   }
 }
 
-.qal-example-position-utils {
+.qal-app-position-utils {
   position: relative;
   padding: 3em;
 
@@ -286,14 +286,14 @@
   }
 }
 
-.qal-example-position-examples {
+.qal-app-position-examples {
   &::after {
     content: none;
   }
 }
 
 // Toasts
-.qal-example-toasts {
+.qal-app-toasts {
   min-height: 240px;
 }
 

@@ -65,7 +65,7 @@
   })
   // Indeterminate checkbox example
   document
-    .querySelectorAll('.qal-example-indeterminate [type="checkbox"]')
+    .querySelectorAll('.qal-app-indeterminate [type="checkbox"]')
     .forEach(function (checkbox) {
       checkbox.indeterminate = true
     })

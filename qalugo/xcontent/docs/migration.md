@@ -255,7 +255,7 @@ toc: true
 
 ### Jumbotron
 
-- <span class="badge bg-danger">Breaking</span> Dropped the jumbotron component as it can be replicated with utilities. [See our new Jumbotron example for a demo.](https://getbootstrap.com/docs/examples/jumbotron/)
+- <span class="badge bg-danger">Breaking</span> Dropped the jumbotron component as it can be replicated with utilities. [See our new Jumbotron example for a demo.](https://getbootstrap.com/apps/jumbotron/)
 
 ### List group
 

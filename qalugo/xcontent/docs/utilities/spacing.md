@@ -45,7 +45,7 @@ Where *size* is one of:
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
-### Examples
+### Apps
 
 Here are some representative examples of these classes:
 

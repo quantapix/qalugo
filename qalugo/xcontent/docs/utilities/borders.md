@@ -12,7 +12,7 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 
 ### Additive
 
-{{< example class="qal-example-border-utils" >}}
+{{< example class="qal-app-border-utils" >}}
 <span class="border"></span>
 <span class="border-top"></span>
 <span class="border-end"></span>
@@ -22,7 +22,7 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 
 ### Subtractive
 
-{{< example class="qal-example-border-utils qal-example-border-utils-0" >}}
+{{< example class="qal-app-border-utils qal-app-border-utils-0" >}}
 <span class="border-0"></span>
 <span class="border-top-0"></span>
 <span class="border-end-0"></span>
@@ -34,7 +34,7 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 
 Change the border color using utilities built on our theme colors.
 
-{{< example class="qal-example-border-utils" >}}
+{{< example class="qal-app-border-utils" >}}
 {{< border.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <span class="border border-{{ .name }}"></span>
@@ -45,7 +45,7 @@ Change the border color using utilities built on our theme colors.
 
 ## Border-width
 
-{{< example class="qal-example-border-utils" >}}
+{{< example class="qal-app-border-utils" >}}
 <span class="border border-1"></span>
 <span class="border border-2"></span>
 <span class="border border-3"></span>
@@ -57,7 +57,7 @@ Change the border color using utilities built on our theme colors.
 
 Add classes to an element to easily round its corners.
 
-{{< example class="qal-example-rounded-utils" >}}
+{{< example class="qal-app-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded" title="Example rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-top" title="Example top rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-end" title="Example right rounded image" >}}
@@ -71,7 +71,7 @@ Add classes to an element to easily round its corners.
 
 Use the scaling classes for larger or smaller rounded corners. Sizes range from `0` to `3`, and can be configured by modifying the utilities API.
 
-{{< example class="qal-example-rounded-utils" >}}
+{{< example class="qal-app-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded-0" title="Example non-rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-1" title="Example small rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-2" title="Example default rounded image" >}}

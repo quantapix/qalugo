@@ -47,7 +47,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead.
 
 ```js
-var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+var popover = new bootstrap.Popover(document.querySelector('.app-popover'), {
   container: 'body'
 })
 ```

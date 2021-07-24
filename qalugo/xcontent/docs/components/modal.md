@@ -32,13 +32,13 @@ myModal.addEventListener('shown.bs.modal', function () {
 
 Keep reading for demos and usage guidelines.
 
-## Examples
+## Apps
 
 ### Modal components
 
 Below is a _static_ modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
-<div class="qal-example qal-example-modal">
+<div class="qal-example qal-app-modal">
   <div class="modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -366,7 +366,7 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="container-fluid qal-example-row">
+        <div class="container-fluid qal-app-row">
           <div class="row">
             <div class="col-md-4">.col-md-4</div>
             <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>

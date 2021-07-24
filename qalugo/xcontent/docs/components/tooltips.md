@@ -41,7 +41,7 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 })
 ```
 
-## Examples
+## Apps
 
 Hover over the links below to see tooltips:
 
@@ -53,7 +53,7 @@ Hover over the links below to see tooltips:
 Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using Bootstrap in RTL.
 
 <div class="qal-example tooltip-demo">
-  <div class="qal-example-tooltips">
+  <div class="qal-app-tooltips">
     <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Tooltip on top</button>
     <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">Tooltip on right</button>
     <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
