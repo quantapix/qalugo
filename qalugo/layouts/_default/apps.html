@@ -26,6 +26,19 @@
 {{ define "body" }}
   <body {{ with .Page.Params.body_class }} class="{{ . }}"{{ end }}>
 {{ end }}
+{{ define "nav" . }}
+  <header class="navbar navbar-expand-md navbar-dark qal-navbar">
+    <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand p-0 me-2" href="/" aria-label="Bootstrap">
+        {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#qalNavbar" aria-controls="qalNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        {{ partial "icons/hamburger.svg" (dict "class" "bi" "width" "32" "height" "32") }}
+      </button>
+      {{ partial "navcol" . }}
+    </nav>
+  </header>
+{{ end }}
 {{ block "main" . }}
   {{ partial "apps" . }}
 {{ end }}

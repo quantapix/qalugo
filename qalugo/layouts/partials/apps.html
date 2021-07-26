@@ -1,65 +1,37 @@
-<header class="navbar navbar-expand-md navbar-dark qal-navbar">
-  <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigation">
-    <a class="navbar-brand p-0 me-2" href="/" aria-label="Bootstrap">
-      {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
-      {{ partial "icons/hamburger.svg" (dict "class" "bi" "width" "32" "height" "32") }}
-    </button>
-    <div class="collapse navbar-collapse" id="bdNavbar">
-      <ul class="navbar-nav flex-row flex-wrap qal-navbar-nav pt-2 py-md-0">
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2{{ if .IsHome }} active" aria-current="page{{ end }}" href="/">Home</a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2{{ if eq .Page.Layout "docs" }} active" aria-current="true{{ end }}" href="/docs/getting-started/introduction/">Docs</a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2{{ if eq .Page.Title "Apps" }} active" aria-current="true{{ end }}" href="/apps/">Apps</a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.icons }}" target="_blank" rel="noopener">Icons</a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.themes }}" target="_blank" rel="noopener">Themes</a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.blog }}" target="_blank" rel="noopener">Blog</a>
-        </li>
-      </ul>
-      <hr class="d-md-none text-white-50">
-      <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener">
-            {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
-            <small class="d-md-none ms-2">GitHub</small>
-          </a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener">
-            {{ partial "icons/twitter.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
-            <small class="d-md-none ms-2">Twitter</small>
-          </a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.slack }}" target="_blank" rel="noopener">
-            {{ partial "icons/slack.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
-            <small class="d-md-none ms-2">Slack</small>
-          </a>
-        </li>
-        <li class="nav-item col-6 col-md-auto">
-          <a class="nav-link p-2" href="{{ .Site.Params.opencollective }}" target="_blank" rel="noopener">
-            {{ partial "icons/opencollective.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
-            <small class="d-md-none ms-2">Open Collective</small>
-          </a>
-        </li>
-      </ul>
-      <a class="btn btn-qal-download d-lg-inline-block my-2 my-md-0 ms-md-3" href="/docs/getting-started/download/">Download</a>
-    </div>
+
+<nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <nav class="nav nav-pills flex-column">
+    <a class="nav-link" href="#item-1">Item 1</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ms-3 my-1" href="#item-1-1">Item 1-1</a>
+      <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>
+    </nav>
+    <a class="nav-link" href="#item-2">Item 2</a>
+    <a class="nav-link" href="#item-3">Item 3</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>
+      <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>
+    </nav>
   </nav>
-</header>
+</nav>
 
-
+<div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+  <h4 id="item-1">Item 1</h4>
+  <p>...</p>
+  <h5 id="item-1-1">Item 1-1</h5>
+  <p>...</p>
+  <h5 id="item-1-2">Item 1-2</h5>
+  <p>...</p>
+  <h4 id="item-2">Item 2</h4>
+  <p>...</p>
+  <h4 id="item-3">Item 3</h4>
+  <p>...</p>
+  <h5 id="item-3-1">Item 3-1</h5>
+  <p>...</p>
+  <h5 id="item-3-2">Item 3-2</h5>
+  <p>...</p>
+</div>
 
 
 <main>
@@ -384,6 +356,9 @@
 
   <div class="qal-app-divider"></div>
 </main>
+
+
+
 
 
 

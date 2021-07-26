@@ -8,7 +8,7 @@
   </div>
 {{- end -}}
 {{- if eq $m true -}}
-  {{- $x := replaceRE `<svg class="bd\-placeholder\-img(?:\-lg)?(?: *?bd\-placeholder\-img\-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $i -}}
+  {{- $x := replaceRE `<svg class="qal\-placeholder\-img(?:\-lg)?(?: *?qal\-placeholder\-img\-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $i -}}
   {{- $x = replaceRE ` (class=" *?")` "" $x -}}
   {{- highlight (trim $x "\n") $l "" -}}
 {{- end -}}
