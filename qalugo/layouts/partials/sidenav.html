@@ -1,5 +1,79 @@
-<aside class="qal-sidenav">
-  <nav class="collapse qal-links" id="qal-docs-nav" aria-label="Docs navigation">
+<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+  <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+    <span class="fs-5 fw-semibold">Collapsible</span>
+  </a>
+  <ul class="list-unstyled ps-0">
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+        Home
+      </button>
+      <div class="collapse show" id="home-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" class="link-dark rounded">Overview</a></li>
+          <li><a href="#" class="link-dark rounded">Updates</a></li>
+          <li><a href="#" class="link-dark rounded">Reports</a></li>
+        </ul>
+      </div>
+    </li>
+
+
+<aside class="qal-sidenav flex-column align-items-stretch p-3" aria-label="Apps nav"">
+  <a class="navbar-brand p-0 me-2" href="/" aria-label="Bootstrap">
+    {{ partial "icons/bootstrap-white-fill" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
+  </a>
+  <hr>
+  <nav class="nav nav-pills flex-column">
+    <a class="nav-link" href="#item-1">Item 1</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ms-3 my-1" href="#item-1-1">Item 1-1</a>
+      <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>
+    </nav>
+    <a class="nav-link" href="#item-2">Item 2</a>
+    <a class="nav-link" href="#item-3">Item 3</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>
+      <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>
+    </nav>
+  </nav>
+  
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-4">Sidebar</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+          Dashboard
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <nav class="collapse qal-links" id="qal-docs-nav" aria-label="Apps nav">
     {{- $url := split .Permalink "/" -}}
     {{- $u := index $url (sub (len $url) 2) -}}
     <ul class="list-unstyled mb-0 py-3 pt-md-1">
@@ -32,27 +106,6 @@
   </nav>
 </aside>
 
-<nav id="navcol" class="navbar navbar-dark flex-column align-items-stretch p-3 qal-navbar" aria-label="Main navigation">
-  <a class="navbar-brand p-0 me-2" href="/" aria-label="Bootstrap">
-    {{ partial "icons/bootstrap-white-fill" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
-  </a>
-  <hr>
-  {{ partial "navcol" . }}
-</nav>
-
-<nav class="nav nav-pills flex-column">
-  <a class="nav-link" href="#item-1">Item 1</a>
-  <nav class="nav nav-pills flex-column">
-    <a class="nav-link ms-3 my-1" href="#item-1-1">Item 1-1</a>
-    <a class="nav-link ms-3 my-1" href="#item-1-2">Item 1-2</a>
-  </nav>
-  <a class="nav-link" href="#item-2">Item 2</a>
-  <a class="nav-link" href="#item-3">Item 3</a>
-  <nav class="nav nav-pills flex-column">
-    <a class="nav-link ms-3 my-1" href="#item-3-1">Item 3-1</a>
-    <a class="nav-link ms-3 my-1" href="#item-3-2">Item 3-2</a>
-  </nav>
-</nav>
 
 
 <main>
