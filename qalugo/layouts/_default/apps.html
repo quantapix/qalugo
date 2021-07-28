@@ -26,15 +26,9 @@
 {{ define "body" }}
   <body {{ with .Page.Params.body_class }} class="{{ . }}"{{ end }}>
 {{ end }}
-{{ block "main" . }}
+{{ define "main" . }}
   <div class="container-xxl my-md-4 qal-layout">
-    <nav id="navcol" class="navbar navbar-dark flex-column align-items-stretch p-3 qal-navbar" aria-label="Main navigation">
-      <a class="navbar-brand p-0 me-2" href="/" aria-label="Bootstrap">
-        {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
-      </a>
-      <hr>
-      {{ partial "navcol" . }}
-    </nav>
+    {{ partial "sidenav" . }}
     {{ .Content }}
   </div>
 {{ end }}
