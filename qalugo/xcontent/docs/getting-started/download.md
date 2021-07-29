@@ -30,7 +30,7 @@ Should you require our full set of [build tools]({{< docsref "/getting-started/b
 
 ## Apps
 
-If you want to download and examine our [examples]({{< docsref "/examples" >}}), you can grab the already built examples:
+If you want to download and examine our [examples]({{< appsref "/" >}}), you can grab the already built examples:
 
 <a href="{{< param "download.dist_examples" >}}" class="btn btn-qal-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Apps');">Download Apps</a>
 
