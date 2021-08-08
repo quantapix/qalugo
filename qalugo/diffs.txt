@@ -1,0 +1,295 @@
+site/.eslintrc.json                                            |   14 +-
+ site/assets/scss/_component-examples.scss                      |   11 +
+ site/content/docs/5.0/_index.html                              |    5 -
+ site/content/docs/5.1/_index.html                              |    5 +
+ site/content/docs/{5.0 => 5.1}/about/brand.md                  |    0
+ site/content/docs/{5.0 => 5.1}/about/license.md                |    0
+ site/content/docs/{5.0 => 5.1}/about/overview.md               |    2 +-
+ site/content/docs/{5.0 => 5.1}/about/team.md                   |    0
+ site/content/docs/{5.0 => 5.1}/about/translations.md           |    0
+ site/content/docs/{5.0 => 5.1}/components/accordion.md         |    2 +-
+ site/content/docs/{5.0 => 5.1}/components/alerts.md            |   13 +-
+ site/content/docs/{5.0 => 5.1}/components/badge.md             |    0
+ site/content/docs/{5.0 => 5.1}/components/breadcrumb.md        |    0
+ site/content/docs/{5.0 => 5.1}/components/button-group.md      |    0
+ site/content/docs/{5.0 => 5.1}/components/buttons.md           |    0
+ site/content/docs/{5.0 => 5.1}/components/card.md              |    0
+ site/content/docs/{5.0 => 5.1}/components/carousel.md          |    0
+ site/content/docs/{5.0 => 5.1}/components/close-button.md      |    0
+ site/content/docs/{5.0 => 5.1}/components/collapse.md          |    2 +-
+ site/content/docs/{5.0 => 5.1}/components/dropdowns.md         |    0
+ site/content/docs/{5.0 => 5.1}/components/list-group.md        |    0
+ site/content/docs/{5.0 => 5.1}/components/modal.md             |   10 +
+ site/content/docs/{5.0 => 5.1}/components/navbar.md            |   64 ++
+ site/content/docs/{5.0 => 5.1}/components/navs-tabs.md         |   10 +-
+ site/content/docs/{5.0 => 5.1}/components/offcanvas.md         |   10 +
+ site/content/docs/{5.0 => 5.1}/components/pagination.md        |    0
+ site/content/docs/5.1/components/placeholders.md               |  144 ++++
+ site/content/docs/{5.0 => 5.1}/components/popovers.md          |    0
+ site/content/docs/{5.0 => 5.1}/components/progress.md          |    0
+ site/content/docs/{5.0 => 5.1}/components/scrollspy.md         |    0
+ site/content/docs/{5.0 => 5.1}/components/spinners.md          |    0
+ site/content/docs/{5.0 => 5.1}/components/toasts.md            |   18 +-
+ site/content/docs/{5.0 => 5.1}/components/tooltips.md          |    0
+ site/content/docs/{5.0 => 5.1}/content/figures.md              |    0
+ site/content/docs/{5.0 => 5.1}/content/images.md               |    0
+ site/content/docs/{5.0 => 5.1}/content/reboot.md               |   22 +-
+ site/content/docs/{5.0 => 5.1}/content/tables.md               |    0
+ site/content/docs/{5.0 => 5.1}/content/typography.md           |    0
+ site/content/docs/{5.0 => 5.1}/customize/color.md              |    0
+ site/content/docs/{5.0 => 5.1}/customize/components.md         |    0
+ site/content/docs/{5.0 => 5.1}/customize/css-variables.md      |    6 +-
+ site/content/docs/{5.0 => 5.1}/customize/optimize.md           |    0
+ site/content/docs/{5.0 => 5.1}/customize/options.md            |    0
+ site/content/docs/{5.0 => 5.1}/customize/overview.md           |    2 +-
+ site/content/docs/{5.0 => 5.1}/customize/sass.md               |   15 +-
+ site/content/docs/{5.0 => 5.1}/examples/.stylelintrc           |    0
+ site/content/docs/{5.0 => 5.1}/examples/_index.md              |    0
+ site/content/docs/{5.0 => 5.1}/examples/album-rtl/index.html   |    0
+ site/content/docs/{5.0 => 5.1}/examples/album/index.html       |    0
+ site/content/docs/{5.0 => 5.1}/examples/blog-rtl/index.html    |    0
+ site/content/docs/{5.0 => 5.1}/examples/blog/blog.css          |    0
+ site/content/docs/{5.0 => 5.1}/examples/blog/blog.rtl.css      |    0
+ site/content/docs/{5.0 => 5.1}/examples/blog/index.html        |    0
+ .../content/docs/{5.0 => 5.1}/examples/carousel-rtl/index.html |    0
+ site/content/docs/{5.0 => 5.1}/examples/carousel/carousel.css  |    0
+ .../docs/{5.0 => 5.1}/examples/carousel/carousel.rtl.css       |    0
+ site/content/docs/{5.0 => 5.1}/examples/carousel/index.html    |    0
+ .../docs/{5.0 => 5.1}/examples/cheatsheet-rtl/index.html       |    2 +-
+ .../docs/{5.0 => 5.1}/examples/cheatsheet/cheatsheet.css       |    0
+ .../docs/{5.0 => 5.1}/examples/cheatsheet/cheatsheet.js        |    0
+ .../docs/{5.0 => 5.1}/examples/cheatsheet/cheatsheet.rtl.css   |    0
+ site/content/docs/{5.0 => 5.1}/examples/cheatsheet/index.html  |    2 +-
+ .../content/docs/{5.0 => 5.1}/examples/checkout-rtl/index.html |    0
+ .../docs/{5.0 => 5.1}/examples/checkout/form-validation.css    |    0
+ .../docs/{5.0 => 5.1}/examples/checkout/form-validation.js     |    0
+ site/content/docs/{5.0 => 5.1}/examples/checkout/index.html    |    0
+ site/content/docs/{5.0 => 5.1}/examples/cover/cover.css        |    0
+ site/content/docs/{5.0 => 5.1}/examples/cover/index.html       |    0
+ .../docs/{5.0 => 5.1}/examples/dashboard-rtl/dashboard.js      |    0
+ .../docs/{5.0 => 5.1}/examples/dashboard-rtl/index.html        |    0
+ .../content/docs/{5.0 => 5.1}/examples/dashboard/dashboard.css |    0
+ site/content/docs/{5.0 => 5.1}/examples/dashboard/dashboard.js |    0
+ .../docs/{5.0 => 5.1}/examples/dashboard/dashboard.rtl.css     |    0
+ site/content/docs/{5.0 => 5.1}/examples/dashboard/index.html   |    0
+ .../content/docs/{5.0 => 5.1}/examples/dropdowns/dropdowns.css |    0
+ site/content/docs/{5.0 => 5.1}/examples/dropdowns/index.html   |    0
+ site/content/docs/{5.0 => 5.1}/examples/features/features.css  |    0
+ site/content/docs/{5.0 => 5.1}/examples/features/index.html    |    0
+ .../docs/{5.0 => 5.1}/examples/features/unsplash-photo-1.jpg   |  Bin
+ .../docs/{5.0 => 5.1}/examples/features/unsplash-photo-2.jpg   |  Bin
+ .../docs/{5.0 => 5.1}/examples/features/unsplash-photo-3.jpg   |  Bin
+ site/content/docs/{5.0 => 5.1}/examples/footers/footers.css    |    0
+ site/content/docs/{5.0 => 5.1}/examples/footers/index.html     |    0
+ site/content/docs/{5.0 => 5.1}/examples/grid/grid.css          |    0
+ site/content/docs/{5.0 => 5.1}/examples/grid/index.html        |    0
+ site/content/docs/{5.0 => 5.1}/examples/headers/headers.css    |    0
+ site/content/docs/{5.0 => 5.1}/examples/headers/index.html     |    0
+ .../docs/{5.0 => 5.1}/examples/heroes/bootstrap-docs.png       |  Bin
+ .../docs/{5.0 => 5.1}/examples/heroes/bootstrap-themes.png     |  Bin
+ site/content/docs/{5.0 => 5.1}/examples/heroes/heroes.css      |    0
+ site/content/docs/{5.0 => 5.1}/examples/heroes/index.html      |    0
+ site/content/docs/{5.0 => 5.1}/examples/jumbotron/index.html   |    0
+ site/content/docs/{5.0 => 5.1}/examples/list-groups/index.html |    0
+ .../docs/{5.0 => 5.1}/examples/list-groups/list-groups.css     |    0
+ site/content/docs/{5.0 => 5.1}/examples/masonry/index.html     |    0
+ site/content/docs/{5.0 => 5.1}/examples/modals/index.html      |    0
+ site/content/docs/{5.0 => 5.1}/examples/modals/modals.css      |    0
+ .../docs/{5.0 => 5.1}/examples/navbar-bottom/index.html        |    0
+ .../content/docs/{5.0 => 5.1}/examples/navbar-fixed/index.html |    0
+ .../{5.0 => 5.1}/examples/navbar-fixed/navbar-top-fixed.css    |    0
+ .../docs/{5.0 => 5.1}/examples/navbar-static/index.html        |    0
+ .../docs/{5.0 => 5.1}/examples/navbar-static/navbar-top.css    |    0
+ site/content/docs/{5.0 => 5.1}/examples/navbars/index.html     |    0
+ site/content/docs/{5.0 => 5.1}/examples/navbars/navbar.css     |    0
+ .../docs/{5.0 => 5.1}/examples/offcanvas-navbar/index.html     |    2 +-
+ .../docs/{5.0 => 5.1}/examples/offcanvas-navbar/offcanvas.css  |    0
+ .../docs/{5.0 => 5.1}/examples/offcanvas-navbar/offcanvas.js   |    0
+ site/content/docs/{5.0 => 5.1}/examples/pricing/index.html     |    0
+ site/content/docs/{5.0 => 5.1}/examples/pricing/pricing.css    |    0
+ site/content/docs/{5.0 => 5.1}/examples/product/index.html     |    0
+ site/content/docs/{5.0 => 5.1}/examples/product/product.css    |    0
+ site/content/docs/{5.0 => 5.1}/examples/sidebars/index.html    |    0
+ site/content/docs/{5.0 => 5.1}/examples/sidebars/sidebars.css  |    0
+ site/content/docs/{5.0 => 5.1}/examples/sidebars/sidebars.js   |    0
+ site/content/docs/{5.0 => 5.1}/examples/sign-in/index.html     |    0
+ site/content/docs/{5.0 => 5.1}/examples/sign-in/signin.css     |    0
+ .../docs/{5.0 => 5.1}/examples/starter-template/index.html     |    2 +-
+ .../examples/starter-template/starter-template.css             |    0
+ .../docs/{5.0 => 5.1}/examples/sticky-footer-navbar/index.html |    0
+ .../examples/sticky-footer-navbar/sticky-footer-navbar.css     |    0
+ .../docs/{5.0 => 5.1}/examples/sticky-footer/index.html        |    0
+ .../docs/{5.0 => 5.1}/examples/sticky-footer/sticky-footer.css |    0
+ site/content/docs/{5.0 => 5.1}/extend/approach.md              |    2 +-
+ site/content/docs/{5.0 => 5.1}/extend/icons.md                 |    0
+ site/content/docs/{5.0 => 5.1}/forms/checks-radios.md          |    2 +-
+ site/content/docs/{5.0 => 5.1}/forms/floating-labels.md        |    0
+ site/content/docs/{5.0 => 5.1}/forms/form-control.md           |    0
+ site/content/docs/{5.0 => 5.1}/forms/input-group.md            |    0
+ site/content/docs/{5.0 => 5.1}/forms/layout.md                 |    0
+ site/content/docs/{5.0 => 5.1}/forms/overview.md               |    2 +-
+ site/content/docs/{5.0 => 5.1}/forms/range.md                  |    0
+ site/content/docs/{5.0 => 5.1}/forms/select.md                 |    0
+ site/content/docs/{5.0 => 5.1}/forms/validation.md             |    2 +-
+ .../content/docs/{5.0 => 5.1}/getting-started/accessibility.md |    0
+ .../docs/{5.0 => 5.1}/getting-started/best-practices.md        |    0
+ .../docs/{5.0 => 5.1}/getting-started/browsers-devices.md      |    0
+ site/content/docs/{5.0 => 5.1}/getting-started/contents.md     |    2 +-
+ .../build-tools.md => 5.1/getting-started/contribute.md}       |    7 +-
+ site/content/docs/{5.0 => 5.1}/getting-started/download.md     |    6 +-
+ site/content/docs/{5.0 => 5.1}/getting-started/introduction.md |    2 +-
+ site/content/docs/{5.0 => 5.1}/getting-started/javascript.md   |    0
+ site/content/docs/{5.0 => 5.1}/getting-started/parcel.md       |    0
+ site/content/docs/{5.0 => 5.1}/getting-started/rfs.md          |    0
+ site/content/docs/{5.0 => 5.1}/getting-started/rtl.md          |    0
+ site/content/docs/{5.0 => 5.1}/getting-started/webpack.md      |    0
+ site/content/docs/{5.0 => 5.1}/helpers/clearfix.md             |    2 +-
+ site/content/docs/{5.0 => 5.1}/helpers/colored-links.md        |    0
+ site/content/docs/{5.0 => 5.1}/helpers/position.md             |    0
+ site/content/docs/{5.0 => 5.1}/helpers/ratio.md                |    0
+ site/content/docs/5.1/helpers/stacks.md                        |   80 ++
+ site/content/docs/{5.0 => 5.1}/helpers/stretched-link.md       |    0
+ site/content/docs/{5.0 => 5.1}/helpers/text-truncation.md      |    0
+ site/content/docs/5.1/helpers/vertical-rule.md                 |   44 +
+ site/content/docs/{5.0 => 5.1}/helpers/visually-hidden.md      |    2 +-
+ site/content/docs/{5.0 => 5.1}/layout/breakpoints.md           |   18 +-
+ site/content/docs/{5.0 => 5.1}/layout/columns.md               |    0
+ site/content/docs/{5.0 => 5.1}/layout/containers.md            |    0
+ site/content/docs/{5.0 => 5.1}/layout/css-grid.md              |    2 +-
+ site/content/docs/{5.0 => 5.1}/layout/grid.md                  |   23 +-
+ site/content/docs/{5.0 => 5.1}/layout/gutters.md               |    0
+ site/content/docs/{5.0 => 5.1}/layout/utilities.md             |    0
+ site/content/docs/{5.0 => 5.1}/layout/z-index.md               |    0
+ site/content/docs/{5.0 => 5.1}/migration.md                    |   18 +-
+ site/content/docs/{5.0 => 5.1}/utilities/api.md                |  186 +++-
+ site/content/docs/{5.0 => 5.1}/utilities/background.md         |   46 +
+ site/content/docs/{5.0 => 5.1}/utilities/borders.md            |    0
+ site/content/docs/{5.0 => 5.1}/utilities/colors.md             |   49 ++
+ site/content/docs/{5.0 => 5.1}/utilities/display.md            |    0
+ site/content/docs/{5.0 => 5.1}/utilities/flex.md               |    0
+ site/content/docs/{5.0 => 5.1}/utilities/float.md              |    0
+ site/content/docs/{5.0 => 5.1}/utilities/interactions.md       |    0
+ site/content/docs/{5.0 => 5.1}/utilities/opacity.md            |    0
+ site/content/docs/{5.0 => 5.1}/utilities/overflow.md           |    0
+ site/content/docs/{5.0 => 5.1}/utilities/position.md           |    0
+ site/content/docs/{5.0 => 5.1}/utilities/shadows.md            |    0
+ site/content/docs/{5.0 => 5.1}/utilities/sizing.md             |    0
+ site/content/docs/{5.0 => 5.1}/utilities/spacing.md            |    0
+ site/content/docs/{5.0 => 5.1}/utilities/text.md               |    0
+ site/content/docs/{5.0 => 5.1}/utilities/vertical-align.md     |    0
+ site/content/docs/{5.0 => 5.1}/utilities/visibility.md         |    0
+ site/content/docs/_index.html                                  |    2 +-
+ site/data/docs-versions.yml                                    |    3 +-
+ site/data/icons.yml                                            |    6 +-
+ site/data/sidebar.yml                                          |    5 +-
+ site/layouts/shortcodes/js-dismiss.html                        |   15 +
+ site/static/docs/5.0/assets/img/examples/cover@2x.png          |  Bin 17953 -> 0 bytes
+ site/static/docs/5.0/assets/img/examples/dropdowns.png         |  Bin 6151 -> 0 bytes
+ site/static/docs/5.0/assets/img/examples/footers.png           |  Bin 4361 -> 0 bytes
+ site/static/docs/5.0/assets/img/examples/footers@2x.png        |  Bin 10259 -> 0 bytes
+ site/static/docs/5.0/assets/img/examples/list-groups.png       |  Bin 7143 -> 0 bytes
+ site/static/docs/5.0/assets/img/examples/list-groups@2x.png    |  Bin 17810 -> 0 bytes
+ site/static/docs/5.0/assets/img/examples/modals.png            |  Bin 4821 -> 0 bytes
+ site/static/docs/5.0/assets/img/examples/modals@2x.png         |  Bin 11706 -> 0 bytes
+ site/static/docs/5.0/assets/img/examples/pricing@2x.png        |  Bin 29128 -> 0 bytes
+ .../docs/{5.0 => 5.1}/assets/brand/bootstrap-logo-black.svg    |    0
+ .../docs/{5.0 => 5.1}/assets/brand/bootstrap-logo-shadow.png   |  Bin
+ .../docs/{5.0 => 5.1}/assets/brand/bootstrap-logo-white.svg    |    0
+ site/static/docs/{5.0 => 5.1}/assets/brand/bootstrap-logo.svg  |    0
+ .../docs/{5.0 => 5.1}/assets/brand/bootstrap-social-logo.png   |  Bin
+ .../static/docs/{5.0 => 5.1}/assets/brand/bootstrap-social.png |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/bootstrap-icons.png   |  Bin
+ .../static/docs/{5.0 => 5.1}/assets/img/bootstrap-icons@2x.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/bootstrap-themes-collage.png  |  Bin
+ .../{5.0 => 5.1}/assets/img/bootstrap-themes-collage@2x.png    |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/bootstrap-themes.png  |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/bootstrap-themes@2x.png       |  Bin
+ .../static/docs/{5.0 => 5.1}/assets/img/examples/album-rtl.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/album-rtl@2x.png     |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/album.png    |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/album@2x.png |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/blog-rtl.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/blog-rtl@2x.png      |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/blog.png     |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/blog@2x.png  |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/carousel-rtl.png     |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/carousel-rtl@2x.png  |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/carousel.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/carousel@2x.png      |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/cheatsheet-rtl.png   |  Bin
+ .../{5.0 => 5.1}/assets/img/examples/cheatsheet-rtl@2x.png     |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/cheatsheet.png       |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/cheatsheet@2x.png    |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/checkout-rtl.png     |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/checkout-rtl@2x.png  |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/checkout.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/checkout@2x.png      |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/cover.png    |  Bin
+ site/static/docs/5.1/assets/img/examples/cover@2x.png          |  Bin 0 -> 17927 bytes
+ .../docs/{5.0 => 5.1}/assets/img/examples/dashboard-rtl.png    |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/dashboard-rtl@2x.png |  Bin
+ .../static/docs/{5.0 => 5.1}/assets/img/examples/dashboard.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/dashboard@2x.png     |  Bin
+ site/static/docs/5.1/assets/img/examples/dropdowns.png         |  Bin 0 -> 6146 bytes
+ .../docs/{5.0 => 5.1}/assets/img/examples/dropdowns@2x.png     |  Bin 15217 -> 15203 bytes
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/features.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/features@2x.png      |  Bin
+ site/static/docs/5.1/assets/img/examples/footers.png           |  Bin 0 -> 4324 bytes
+ site/static/docs/5.1/assets/img/examples/footers@2x.png        |  Bin 0 -> 10238 bytes
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/grid.png     |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/grid@2x.png  |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/headers.png  |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/headers@2x.png       |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/heroes.png   |  Bin
+ .../static/docs/{5.0 => 5.1}/assets/img/examples/heroes@2x.png |  Bin
+ .../static/docs/{5.0 => 5.1}/assets/img/examples/jumbotron.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/jumbotron@2x.png     |  Bin
+ site/static/docs/5.1/assets/img/examples/list-groups.png       |  Bin 0 -> 7134 bytes
+ site/static/docs/5.1/assets/img/examples/list-groups@2x.png    |  Bin 0 -> 17804 bytes
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/masonry.png  |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/masonry@2x.png       |  Bin
+ site/static/docs/5.1/assets/img/examples/modals.png            |  Bin 0 -> 4814 bytes
+ site/static/docs/5.1/assets/img/examples/modals@2x.png         |  Bin 0 -> 11689 bytes
+ .../docs/{5.0 => 5.1}/assets/img/examples/navbar-bottom.png    |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/navbar-bottom@2x.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/navbar-fixed.png     |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/navbar-fixed@2x.png  |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/navbar-static.png    |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/navbar-static@2x.png |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/navbars.png  |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/navbars@2x.png       |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/offcanvas-navbar.png |  Bin
+ .../{5.0 => 5.1}/assets/img/examples/offcanvas-navbar@2x.png   |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/pricing.png  |  Bin
+ site/static/docs/5.1/assets/img/examples/pricing@2x.png        |  Bin 0 -> 29088 bytes
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/product.png  |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/product@2x.png       |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/sidebars.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/sidebars@2x.png      |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/examples/sign-in.png  |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/sign-in@2x.png       |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/starter-template.png |  Bin
+ .../{5.0 => 5.1}/assets/img/examples/starter-template@2x.png   |  Bin
+ .../{5.0 => 5.1}/assets/img/examples/sticky-footer-navbar.png  |  Bin
+ .../assets/img/examples/sticky-footer-navbar@2x.png            |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/sticky-footer.png    |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/examples/sticky-footer@2x.png |  Bin
+ .../assets/img/favicons/android-chrome-192x192.png             |  Bin
+ .../assets/img/favicons/android-chrome-512x512.png             |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/favicons/apple-touch-icon.png |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/favicons/favicon-16x16.png    |  Bin
+ .../docs/{5.0 => 5.1}/assets/img/favicons/favicon-32x32.png    |  Bin
+ site/static/docs/{5.0 => 5.1}/assets/img/favicons/favicon.ico  |  Bin
+ .../static/docs/{5.0 => 5.1}/assets/img/favicons/manifest.json |    0
+ .../{5.0 => 5.1}/assets/img/favicons/safari-pinned-tab.svg     |    0
+ site/static/docs/{5.0 => 5.1}/assets/js/validate-forms.js      |    0
+ 437 files changed, 7136 insertions(+), 4269 deletions(-)
+ create mode 100644 js/src/util/component-functions.js
+ create mode 100644 js/src/util/focustrap.js
+ create mode 100644 js/tests/unit/util/component-functions.spec.js
+ create mode 100644 js/tests/unit/util/focustrap.spec.js
+ create mode 100644 scss/_placeholders.scss
+ create mode 100644 scss/helpers/_stacks.scss
+ create mode 100644 scss/helpers/_vr.scss
+ delete mode 100644 site/content/docs/5.0/_index.html
+ create mode 100644 site/content/docs/5.1/_index.html
