@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Documentation and examples for Bootstrap&rsquo;s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
 <title>Navbar · Bootstrap</title>
@@ -1340,6 +1340,36 @@ Link
 
         <span class=nc>.navbar-toggler</span> <span class=p>{</span>
           <span class=na>display</span><span class=o>:</span> <span class=ni>none</span><span class=p>;</span>
+        <span class=p>}</span>
+
+        <span class=nc>.offcanvas-header</span> <span class=p>{</span>
+          <span class=na>display</span><span class=o>:</span> <span class=ni>none</span><span class=p>;</span>
+        <span class=p>}</span>
+
+        <span class=nc>.offcanvas</span> <span class=p>{</span>
+          <span class=na>position</span><span class=o>:</span> <span class=ni>inherit</span><span class=p>;</span>
+          <span class=na>bottom</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+          <span class=na>z-index</span><span class=o>:</span> <span class=mi>1000</span><span class=p>;</span>
+          <span class=na>flex-grow</span><span class=o>:</span> <span class=mi>1</span><span class=p>;</span>
+          <span class=na>visibility</span><span class=o>:</span> <span class=ni>visible</span> <span class=k>!important</span><span class=p>;</span> <span class=c1>// stylelint-disable-line declaration-no-important
+</span><span class=c1></span>          <span class=na>background-color</span><span class=o>:</span> <span class=ni>transparent</span><span class=p>;</span>
+          <span class=na>border-right</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+          <span class=na>border-left</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+          <span class=k>@include</span><span class=nd> transition</span><span class=p>(</span><span class=ni>none</span><span class=p>);</span>
+          <span class=na>transform</span><span class=o>:</span> <span class=ni>none</span><span class=p>;</span>
+        <span class=p>}</span>
+        <span class=nc>.offcanvas-top</span><span class=o>,</span>
+        <span class=nc>.offcanvas-bottom</span> <span class=p>{</span>
+          <span class=na>height</span><span class=o>:</span> <span class=ni>auto</span><span class=p>;</span>
+          <span class=na>border-top</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+          <span class=na>border-bottom</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+        <span class=p>}</span>
+
+        <span class=nc>.offcanvas-body</span> <span class=p>{</span>
+          <span class=na>display</span><span class=o>:</span> <span class=ni>flex</span><span class=p>;</span>
+          <span class=na>flex-grow</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+          <span class=na>padding</span><span class=o>:</span> <span class=mi>0</span><span class=p>;</span>
+          <span class=na>overflow-y</span><span class=o>:</span> <span class=ni>visible</span><span class=p>;</span>
         <span class=p>}</span>
       <span class=p>}</span>
     <span class=p>}</span>

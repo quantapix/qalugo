@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Convey meaning through color with a handful of color utility classes. Includes support for styling links with hover states, too.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
 <title>Colors · Bootstrap</title>
@@ -439,16 +439,27 @@ About
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-scss data-lang=scss>    <span class=s2>&#34;color&#34;</span><span class=nd>:</span> <span class=o>(</span>
       <span class=nt>property</span><span class=nd>:</span> <span class=nt>color</span><span class=o>,</span>
       <span class=nt>class</span><span class=nd>:</span> <span class=nt>text</span><span class=o>,</span>
+      <span class=nt>local-vars</span><span class=nd>:</span> <span class=o>(</span>
+        <span class=s2>&#34;text-opacity&#34;</span><span class=nd>:</span> <span class=nt>1</span>
+      <span class=o>),</span>
       <span class=nt>values</span><span class=nd>:</span> <span class=nt>map-merge</span><span class=o>(</span>
-        <span class=err>$</span><span class=nt>theme-colors</span><span class=o>,</span>
+        <span class=err>$</span><span class=nt>utilities-text-colors</span><span class=o>,</span>
         <span class=o>(</span>
-          <span class=s2>&#34;white&#34;</span><span class=nd>:</span> <span class=err>$</span><span class=nt>white</span><span class=o>,</span>
-          <span class=s2>&#34;body&#34;</span><span class=nd>:</span> <span class=err>$</span><span class=nt>body-color</span><span class=o>,</span>
           <span class=s2>&#34;muted&#34;</span><span class=nd>:</span> <span class=err>$</span><span class=nt>text-muted</span><span class=o>,</span>
-          <span class=s2>&#34;black-50&#34;</span><span class=nd>:</span> <span class=nt>rgba</span><span class=o>(</span><span class=err>$</span><span class=nt>black</span><span class=o>,</span> <span class=nc>.5</span><span class=o>),</span>
-          <span class=s2>&#34;white-50&#34;</span><span class=nd>:</span> <span class=nt>rgba</span><span class=o>(</span><span class=err>$</span><span class=nt>white</span><span class=o>,</span> <span class=nc>.5</span><span class=o>),</span>
+          <span class=s2>&#34;black-50&#34;</span><span class=nd>:</span> <span class=nt>rgba</span><span class=o>(</span><span class=err>$</span><span class=nt>black</span><span class=o>,</span> <span class=nc>.5</span><span class=o>),</span> <span class=o>//</span> <span class=nt>deprecated</span>
+          <span class=s2>&#34;white-50&#34;</span><span class=nd>:</span> <span class=nt>rgba</span><span class=o>(</span><span class=err>$</span><span class=nt>white</span><span class=o>,</span> <span class=nc>.5</span><span class=o>),</span> <span class=o>//</span> <span class=nt>deprecated</span>
           <span class=s2>&#34;reset&#34;</span><span class=nd>:</span> <span class=nt>inherit</span><span class=o>,</span>
         <span class=o>)</span>
+      <span class=o>)</span>
+    <span class=o>),</span>
+    <span class=s2>&#34;text-opacity&#34;</span><span class=nd>:</span> <span class=o>(</span>
+      <span class=nt>css-var</span><span class=nd>:</span> <span class=nt>true</span><span class=o>,</span>
+      <span class=nt>class</span><span class=nd>:</span> <span class=nt>text-opacity</span><span class=o>,</span>
+      <span class=nt>values</span><span class=nd>:</span> <span class=o>(</span>
+        <span class=nt>25</span><span class=nd>:</span> <span class=nc>.25</span><span class=o>,</span>
+        <span class=nt>50</span><span class=nd>:</span> <span class=nc>.5</span><span class=o>,</span>
+        <span class=nt>75</span><span class=nd>:</span> <span class=nc>.75</span><span class=o>,</span>
+        <span class=nt>100</span><span class=nd>:</span> <span class=nt>1</span>
       <span class=o>)</span>
     <span class=o>),</span>
     </code></pre></div>
