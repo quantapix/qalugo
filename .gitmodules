@@ -2,3 +2,10 @@
 	path = lib/bootstrap
 	url = https://github.com/twbs/bootstrap.git
 	branch = main
+[submodule "lib/react"]
+	path = lib/react
+	url = https://github.com/facebook/react.git
+	branch = main
+[submodule "lib/react-bootstrap"]
+	path = lib/react-bootstrap
+	url = https://github.com/react-bootstrap/react-bootstrap.git
