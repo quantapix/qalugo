@@ -293,3 +293,23 @@ site/.eslintrc.json                                            |   14 +-
  create mode 100644 scss/helpers/_vr.scss
  delete mode 100644 site/content/docs/5.0/_index.html
  create mode 100644 site/content/docs/5.1/_index.html
+
+
+
+
+ js/src/alert.js                                         |   1 +
+ js/src/carousel.js                                      |   9 +-
+ js/src/modal.js                                         |   7 +
+ js/tests/unit/modal.spec.js                             |  23 +++
+ package-lock.json                                       | 314 +++++++++++++++++++----------------
+ package.json                                            |  14 +-
+ scss/_functions.scss                                    |  10 +-
+ scss/_root.scss                                         |   3 +-
+ scss/_variables.scss                                    |  28 +++-
+ site/assets/js/application.js                           |  11 --
+ site/content/docs/5.1/components/modal.md               |   2 +-
+ site/content/docs/5.1/components/placeholders.md        |   4 +-
+ site/content/docs/5.1/components/progress.md            |  13 +-
+ site/content/docs/5.1/examples/dashboard-rtl/index.html |   8 +-
+ site/content/docs/5.1/extend/approach.md                |   2 +-
+ 15 files changed, 259 insertions(+), 190 deletions(-)
