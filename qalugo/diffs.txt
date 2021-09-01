@@ -313,3 +313,38 @@ site/.eslintrc.json                                            |   14 +-
  site/content/docs/5.1/examples/dashboard-rtl/index.html |   8 +-
  site/content/docs/5.1/extend/approach.md                |   2 +-
  15 files changed, 259 insertions(+), 190 deletions(-)
+
+
+
+  .eslintrc.json                                   |   2 -
+ .github/workflows/browserstack.yml               |   1 +
+ js/src/collapse.js                               |   2 +-
+ js/src/dom/event-handler.js                      |   1 -
+ js/src/tooltip.js                                |  25 ++--
+ js/tests/karma.conf.js                           |   2 +-
+ js/tests/unit/.eslintrc.json                     |   5 +
+ js/tests/unit/collapse.spec.js                   |  50 +++++++
+ js/tests/unit/jquery.spec.js                     |   2 +
+ js/tests/visual/carousel.html                    |   2 +-
+ js/tests/visual/modal.html                       |   2 +-
+ js/tests/visual/tab.html                         |   2 -
+ js/tests/visual/tooltip.html                     |   6 +-
+ package-lock.json                                | 243 +++++++++++++++++----------------
+ package.json                                     |  10 +-
+ site/content/docs/5.1/components/alerts.md       |  14 +-
+ site/content/docs/5.1/content/tables.md          |   2 +-
+ site/content/docs/5.1/forms/validation.md        |   2 +-
+ site/content/docs/5.1/getting-started/webpack.md |  10 +-
+ site/layouts/partials/home/masthead.html         |   2 +-
+ site/layouts/partials/scripts.html               |   2 +-
+ site/layouts/partials/stylesheet.html            |   2 +-
+ site/layouts/shortcodes/bs-table.html            |   3 +-
+ site/layouts/shortcodes/callout.html             |   3 +-
+ site/layouts/shortcodes/docsref.html             |   2 +-
+ site/layouts/shortcodes/example.html             |  18 +--
+ site/layouts/shortcodes/param.html               |   4 +-
+ site/layouts/shortcodes/placeholder.html         |  27 ++--
+ site/layouts/shortcodes/scss-docs.html           |  46 ++++---
+ site/layouts/shortcodes/table.html               |  13 +-
+ site/layouts/shortcodes/year.html                |   4 +-
+ 31 files changed, 297 insertions(+), 212 deletions(-)
