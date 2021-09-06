@@ -359,3 +359,11 @@ site/.eslintrc.json                                            |   14 +-
  site/content/docs/5.1/content/reboot.md    |   6 +
  site/content/docs/5.1/customize/options.md |   1 +
  8 files changed, 250 insertions(+), 243 deletions(-)
+
+
+ Fast-forward
+ package-lock.json                                | 56 ++++++++++++++++++++++++++++----------------------------
+ package.json                                     |  4 ++--
+ site/content/docs/5.1/components/placeholders.md |  2 +-
+ site/content/docs/5.1/helpers/stacks.md          |  2 +-
+ 4 files changed, 32 insertions(+), 32 deletions(-)
