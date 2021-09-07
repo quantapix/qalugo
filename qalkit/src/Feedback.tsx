@@ -11,7 +11,7 @@ export interface FeedbackProps
   tooltip?: boolean
 }
 const propTypes = {
-  type: PropTypes.string,
+  type?: string,
 
   tooltip: PropTypes.bool,
   as: PropTypes.elementType,

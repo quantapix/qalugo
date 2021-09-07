@@ -11,8 +11,8 @@ export interface BreadcrumbProps
   listProps?: React.OlHTMLAttributes<HTMLOListElement>
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  label: PropTypes.string,
+  bsPrefix?: string,
+  label?: string,
   listProps: PropTypes.object,
   as: PropTypes.elementType,
 }
@@ -75,12 +75,12 @@ export interface BreadcrumbItemProps
   linkProps?: Record<string, any>
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   active: PropTypes.bool,
-  href: PropTypes.string,
+  href?: string,
   linkAs: PropTypes.elementType,
   title: PropTypes.node,
-  target: PropTypes.string,
+  target?: string,
   linkProps: PropTypes.object,
   as: PropTypes.elementType,
 }

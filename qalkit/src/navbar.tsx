@@ -30,10 +30,10 @@ export interface NavbarProps
 }
 const propTypes = {
 
-  bsPrefix: PropTypes.string,
-  variant: PropTypes.string,
+  bsPrefix?: string,
+  variant?: string,
   expand: PropTypes.oneOf([true, "sm", "md", "lg", "xl", "xxl"]).isRequired,
-  bg: PropTypes.string,
+  bg?: string,
   fixed: PropTypes.oneOf(["top", "bottom"]),
   sticky: PropTypes.oneOf(["top"]),
   as: PropTypes.elementType,
@@ -41,7 +41,7 @@ const propTypes = {
   onSelect: PropTypes.func,
   collapseOnSelect: PropTypes.bool,
   expanded: PropTypes.bool,
-  role: PropTypes.string,
+  role?: string,
 }
 const defaultProps = {
   expand: true,
@@ -131,8 +131,8 @@ export interface NavbarBrandProps
 }
 const propTypes = {
 
-  bsPrefix: PropTypes.string,
-  href: PropTypes.string,
+  bsPrefix?: string,
+  href?: string,
   as: PropTypes.elementType,
 }
 const NavbarBrand: BsPrefixRefForwardingComponent<"a", NavbarBrandProps> =
@@ -165,7 +165,7 @@ export interface NavbarCollapseProps
     BsPrefixProps {}
 const propTypes = {
 
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 }
 const NavbarCollapse = React.forwardRef<HTMLDivElement, NavbarCollapseProps>(
   ({ children, bsPrefix, ...props }, ref) => {
@@ -207,9 +207,9 @@ export interface NavbarToggleProps
 }
 const propTypes = {
 
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 
-  label: PropTypes.string,
+  label?: string,
 
   onClick: PropTypes.func,
   children: PropTypes.node,

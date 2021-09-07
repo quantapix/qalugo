@@ -11,7 +11,7 @@ export interface PaginationProps
   size?: "sm" | "lg"
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   size: PropTypes.oneOf<PaginationSize>(["sm", "lg"]),
 }
 const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(

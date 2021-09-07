@@ -70,7 +70,7 @@ const propTypes = {
     PropTypes.func,
   ]),
   getDimensionValue: PropTypes.func,
-  role: PropTypes.string,
+  role?: string,
   children: PropTypes.element.isRequired,
 }
 const defaultProps = {

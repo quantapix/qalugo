@@ -17,12 +17,12 @@ export interface ButtonProps
 }
 export type CommonButtonProps = "href" | "size" | "variant" | "disabled"
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  variant: PropTypes.string,
-  size: PropTypes.string,
+  bsPrefix?: string,
+  variant?: string,
+  size?: string,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  href: PropTypes.string,
+  href?: string,
   type: PropTypes.oneOf(["button", "reset", "submit", null]),
   as: PropTypes.elementType,
 }
@@ -73,10 +73,10 @@ export interface ButtonGroupProps
   vertical?: boolean
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  size: PropTypes.string,
+  bsPrefix?: string,
+  size?: string,
   vertical: PropTypes.bool,
-  role: PropTypes.string,
+  role?: string,
   as: PropTypes.elementType,
 }
 const defaultProps = {
@@ -125,8 +125,8 @@ export interface ButtonToolbarProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  role: PropTypes.string,
+  bsPrefix?: string,
+  role?: string,
 }
 const defaultProps = {
   role: "toolbar",

@@ -23,19 +23,19 @@ export interface NavProps extends BsPrefixProps, BaseNavProps {
   navbarScroll?: boolean
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 
-  navbarBsPrefix: PropTypes.string,
+  navbarBsPrefix?: string,
 
-  cardHeaderBsPrefix: PropTypes.string,
-  variant: PropTypes.string,
+  cardHeaderBsPrefix?: string,
+  variant?: string,
   activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   fill: PropTypes.bool,
   justify: all(PropTypes.bool, ({ justify, navbar }) =>
     justify && navbar ? Error("justify navbar `Nav`s are not supported") : null
   ),
   onSelect: PropTypes.func,
-  role: PropTypes.string,
+  role?: string,
   navbar: PropTypes.bool,
   navbarScroll: PropTypes.bool,
   as: PropTypes.elementType,
@@ -129,7 +129,7 @@ export interface NavDropdownProps
   menuVariant?: DropdownMenuVariant
 }
 const propTypes = {
-  id: PropTypes.string,
+  id?: string,
 
   onClick: PropTypes.func,
 
@@ -139,13 +139,13 @@ const propTypes = {
 
   active: PropTypes.bool,
 
-  menuRole: PropTypes.string,
+  menuRole?: string,
 
   renderMenuOnMount: PropTypes.bool,
-  rootCloseEvent: PropTypes.string,
+  rootCloseEvent?: string,
   menuVariant: PropTypes.oneOf<DropdownMenuVariant>(["dark"]),
 
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 }
 const NavDropdown: BsPrefixRefForwardingComponent<"div", NavDropdownProps> =
   React.forwardRef(
@@ -221,12 +221,12 @@ export interface NavLinkProps
   extends BsPrefixProps,
     Omit<BaseNavItemProps, "as"> {}
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  role: PropTypes.string,
+  role?: string,
 
-  href: PropTypes.string,
+  href?: string,
   eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 
   as: PropTypes.elementType,

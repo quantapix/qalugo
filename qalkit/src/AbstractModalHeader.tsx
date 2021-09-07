@@ -12,7 +12,7 @@ export interface AbstractModalHeaderProps
   onHide?: () => void
 }
 const propTypes = {
-  closeLabel: PropTypes.string,
+  closeLabel?: string,
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
   closeButton: PropTypes.bool,
   onHide: PropTypes.func,

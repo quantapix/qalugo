@@ -28,8 +28,8 @@ export interface InputGroupProps
 }
 const propTypes = {
 
-  bsPrefix: PropTypes.string,
-  size: PropTypes.string,
+  bsPrefix?: string,
+  size?: string,
   hasValidation: PropTypes.bool,
   as: PropTypes.elementType,
 }

@@ -23,8 +23,8 @@ export interface AccordionProps
 const propTypes = {
   as: PropTypes.elementType,
   bsPrefix: string,
-  activeKey: PropTypes.string,
-  defaultActiveKey: PropTypes.string,
+  activeKey?: string,
+  defaultActiveKey?: string,
   flush: PropTypes.bool,
 }
 const Accordion: BsPrefixRefForwardingComponent<"div", AccordionProps> =
@@ -80,7 +80,7 @@ export interface AccordionBodyProps
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
   as: PropTypes.elementType,
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 }
 const AccordionBody: BsPrefixRefForwardingComponent<"div", AccordionBodyProps> =
   React.forwardRef<HTMLElement, AccordionBodyProps>(
@@ -123,7 +123,7 @@ export interface AccordionButtonProps
     BsPrefixProps {}
 const propTypes = {
   as: PropTypes.elementType,
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   onClick: PropTypes.func,
 }
 export function useAccordionButton(
@@ -194,7 +194,7 @@ export interface AccordionCollapseProps extends BsPrefixProps, CollapseProps {
 }
 const propTypes = {
   as: PropTypes.elementType,
-  eventKey: PropTypes.string.isRequired,
+  eventKey?: string
   children: PropTypes.element.isRequired,
 }
 const AccordionCollapse: BsPrefixRefForwardingComponent<
@@ -249,7 +249,7 @@ export interface AccordionHeaderProps
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
   as: PropTypes.elementType,
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   onClick: PropTypes.func,
 }
 const AccordionHeader: BsPrefixRefForwardingComponent<
@@ -298,8 +298,8 @@ export interface AccordionItemProps
 }
 const propTypes = {
   as: PropTypes.elementType,
-  bsPrefix: PropTypes.string,
-  eventKey: PropTypes.string.isRequired,
+  bsPrefix?: string,
+  eventKey?: string
 }
 const AccordionItem: BsPrefixRefForwardingComponent<"div", AccordionItemProps> =
   React.forwardRef<HTMLElement, AccordionItemProps>(

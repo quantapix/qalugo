@@ -23,7 +23,7 @@ export interface ToastProps
   bg?: Variant
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   animation: PropTypes.bool,
   autohide: PropTypes.bool,
   delay: PropTypes.number,
@@ -33,7 +33,7 @@ const propTypes = {
   /**
    * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'dark'|'light')}
    */
-  bg: PropTypes.string,
+  bg?: string,
 }
 const Toast: BsPrefixRefForwardingComponent<"div", ToastProps> =
   React.forwardRef<HTMLDivElement, ToastProps>(
@@ -133,7 +133,7 @@ export interface ToastContainerProps
   position?: ToastPosition
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   position: PropTypes.oneOf<ToastPosition>([
     "top-start",
     "top-center",
@@ -229,8 +229,8 @@ export interface ToastHeaderProps
   closeButton?: boolean
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  closeLabel: PropTypes.string,
+  bsPrefix?: string,
+  closeLabel?: string,
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
   closeButton: PropTypes.bool,
 }

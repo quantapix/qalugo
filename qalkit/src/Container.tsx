@@ -13,7 +13,7 @@ const containerSizes = PropTypes.oneOfType([
   PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
 ])
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   fluid: containerSizes,
   as: PropTypes.elementType,
 }

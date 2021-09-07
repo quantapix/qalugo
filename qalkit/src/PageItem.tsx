@@ -19,7 +19,7 @@ const propTypes = {
 
   active: PropTypes.bool,
 
-  activeLabel: PropTypes.string,
+  activeLabel?: string,
 
   onClick: PropTypes.func,
 }

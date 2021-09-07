@@ -12,7 +12,7 @@ export interface ImageProps
   thumbnail?: boolean
 }
 export const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   fluid: PropTypes.bool,
   rounded: PropTypes.bool,
   roundedCircle: PropTypes.bool,

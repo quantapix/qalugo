@@ -31,12 +31,12 @@ const AlertLink = createWithBsPrefix("alert-link", {
   Component: Anchor,
 })
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  variant: PropTypes.string,
+  bsPrefix?: string,
+  variant?: string,
   dismissible: PropTypes.bool,
   show: PropTypes.bool,
   onClose: PropTypes.func,
-  closeLabel: PropTypes.string,
+  closeLabel?: string,
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
   transition: PropTypes.oneOfType([PropTypes.bool, elementType]),
 }

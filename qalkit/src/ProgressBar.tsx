@@ -51,8 +51,8 @@ const propTypes = {
   visuallyHidden: PropTypes.bool,
   striped: PropTypes.bool,
   animated: PropTypes.bool,
-  bsPrefix: PropTypes.string,
-  variant: PropTypes.string,
+  bsPrefix?: string,
+  variant?: string,
   children: onlyProgressBar,
   isChild: PropTypes.bool,
 }

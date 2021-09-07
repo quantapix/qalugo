@@ -11,7 +11,7 @@ export interface RatioProps
   aspectRatio?: AspectRatio | number
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   children: PropTypes.element.isRequired,
   aspectRatio: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }

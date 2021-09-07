@@ -12,12 +12,12 @@ export interface SpinnerProps
   variant?: Variant
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  variant: PropTypes.string,
+  bsPrefix?: string,
+  variant?: string,
   animation: PropTypes.oneOf(["border", "grow"]).isRequired,
-  size: PropTypes.string,
+  size?: string,
   children: PropTypes.element,
-  role: PropTypes.string,
+  role?: string,
   as: PropTypes.elementType,
 }
 const Spinner: BsPrefixRefForwardingComponent<"div", SpinnerProps> =

@@ -22,7 +22,7 @@ function ThemeProvider({ prefixes = {}, dir, children }: ThemeProviderProps) {
 }
 ThemeProvider.propTypes = {
   prefixes: PropTypes.object,
-  dir: PropTypes.string,
+  dir?: string,
 } as any
 export function useBootstrapPrefix(
   prefix: string | undefined,

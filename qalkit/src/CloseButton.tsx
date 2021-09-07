@@ -7,7 +7,7 @@ export interface CloseButtonProps
   variant?: CloseButtonVariant
 }
 const propTypes = {
-  "aria-label": PropTypes.string,
+  "aria-label"?: string,
   onClick: PropTypes.func,
   variant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
 }

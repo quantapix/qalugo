@@ -35,9 +35,9 @@ export interface OffcanvasProps
   placement?: OffcanvasPlacement
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   backdrop: PropTypes.bool,
-  backdropClassName: PropTypes.string,
+  backdropClassName?: string,
   keyboard: PropTypes.bool,
   scroll: PropTypes.bool,
   placement: PropTypes.oneOf<OffcanvasPlacement>([
@@ -63,7 +63,7 @@ const propTypes = {
   onExiting: PropTypes.func,
   onExited: PropTypes.func,
   container: PropTypes.any,
-  "aria-labelledby": PropTypes.string,
+  "aria-labelledby"?: string,
 }
 const defaultProps: Partial<OffcanvasProps> = {
   show: false,
@@ -221,8 +221,8 @@ export interface OffcanvasHeaderProps
   extends AbstractModalHeaderProps,
     BsPrefixOnlyProps {}
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  closeLabel: PropTypes.string,
+  bsPrefix?: string,
+  closeLabel?: string,
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
   closeButton: PropTypes.bool,
   onHide: PropTypes.func,

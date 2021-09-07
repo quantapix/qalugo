@@ -10,7 +10,7 @@ export interface FloatingLabelProps extends FormGroupProps, BsPrefixProps {
 }
 const propTypes = {
   as: PropTypes.elementType,
-  controlId: PropTypes.string,
+  controlId?: string,
   label: PropTypes.node.isRequired,
 }
 const FloatingLabel: BsPrefixRefForwardingComponent<"div", FloatingLabelProps> =

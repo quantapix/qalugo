@@ -30,10 +30,10 @@ export interface CardProps
   body?: boolean
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  bg: PropTypes.string,
-  text: PropTypes.string,
-  border: PropTypes.string,
+  bsPrefix?: string,
+  bg?: string,
+  text?: string,
+  border?: string,
   body: PropTypes.bool,
   as: PropTypes.elementType,
 }
@@ -105,7 +105,7 @@ export interface CardHeaderProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   as: PropTypes.elementType,
 }
 const CardHeader: BsPrefixRefForwardingComponent<"div", CardHeaderProps> =
@@ -158,7 +158,7 @@ export interface CardImgProps
   variant?: "top" | "bottom"
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   variant: PropTypes.oneOf(["top", "bottom"]),
   as: PropTypes.elementType,
 }

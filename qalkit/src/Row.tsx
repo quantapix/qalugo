@@ -38,7 +38,7 @@ const rowColumns = PropTypes.oneOfType([
   }),
 ])
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   as: PropTypes.elementType,
   xs: rowColumns,
   sm: rowColumns,

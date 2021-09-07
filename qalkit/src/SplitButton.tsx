@@ -20,18 +20,18 @@ export interface SplitButtonProps
   type?: ButtonType
 }
 const propTypes = {
-  id: PropTypes.string,
-  toggleLabel: PropTypes.string,
+  id?: string,
+  toggleLabel?: string,
 
-  href: PropTypes.string,
+  href?: string,
 
-  target: PropTypes.string,
+  target?: string,
 
   onClick: PropTypes.func,
 
   title: PropTypes.node.isRequired,
 
-  type: PropTypes.string,
+  type?: string,
 
   disabled: PropTypes.bool,
   /**
@@ -39,16 +39,16 @@ const propTypes = {
    */
   align: alignPropType,
 
-  menuRole: PropTypes.string,
+  menuRole?: string,
 
   renderMenuOnMount: PropTypes.bool,
-  rootCloseEvent: PropTypes.string,
+  rootCloseEvent?: string,
 
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 
-  variant: PropTypes.string,
+  variant?: string,
 
-  size: PropTypes.string,
+  size?: string,
 }
 const defaultProps: Partial<SplitButtonProps> = {
   toggleLabel: "Toggle dropdown",

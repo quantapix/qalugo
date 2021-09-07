@@ -39,7 +39,7 @@ export interface DropdownProps
   autoClose?: boolean | "outside" | "inside"
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   drop: PropTypes.oneOf(["up", "start", "end", "down"]),
   as: PropTypes.elementType,
   align: alignPropType,
@@ -161,24 +161,24 @@ export interface DropdownButtonProps
   menuVariant?: DropdownMenuVariant
 }
 const propTypes = {
-  id: PropTypes.string,
-  href: PropTypes.string,
+  id?: string,
+  href?: string,
   onClick: PropTypes.func,
   title: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   align: alignPropType,
 
-  menuRole: PropTypes.string,
+  menuRole?: string,
 
   renderMenuOnMount: PropTypes.bool,
-  rootCloseEvent: PropTypes.string,
+  rootCloseEvent?: string,
   menuVariant: PropTypes.oneOf<DropdownMenuVariant>(["dark"]),
 
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 
-  variant: PropTypes.string,
+  variant?: string,
 
-  size: PropTypes.string,
+  size?: string,
 }
 const DropdownButton: BsPrefixRefForwardingComponent<
   "div",
@@ -253,11 +253,11 @@ export interface DropdownItemProps
     BsPrefixProps {}
 const propTypes = {
 
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  href: PropTypes.string,
+  href?: string,
   onClick: PropTypes.func,
   as: PropTypes.elementType,
 }
@@ -337,7 +337,7 @@ export interface DropdownMenuProps
   variant?: DropdownMenuVariant
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 
   show: PropTypes.bool,
 
@@ -349,7 +349,7 @@ const propTypes = {
   rootCloseEvent: PropTypes.oneOf(["click", "mousedown"]),
   as: PropTypes.elementType,
   popperConfig: PropTypes.object,
-  variant: PropTypes.string,
+  variant?: string,
 }
 const defaultProps: Partial<DropdownMenuProps> = {
   flip: true,
@@ -492,11 +492,11 @@ export type PropsFromToggle = Partial<
   Pick<React.ComponentPropsWithRef<DropdownToggleComponent>, CommonButtonProps>
 >
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  id: PropTypes.string,
+  bsPrefix?: string,
+  id?: string,
   split: PropTypes.bool,
   as: PropTypes.elementType,
-  childBsPrefix: PropTypes.string,
+  childBsPrefix?: string,
 }
 const DropdownToggle: DropdownToggleComponent = React.forwardRef(
   (

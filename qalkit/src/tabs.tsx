@@ -23,7 +23,7 @@ const propTypes = {
   /**
    * @type {('tabs'| 'pills')}
    */
-  variant: PropTypes.string,
+  variant?: string,
   /**
    * @type {Transition | false}
    * @default {Fade}
@@ -32,7 +32,7 @@ const propTypes = {
     PropTypes.oneOf([false]),
     PropTypes.elementType,
   ]),
-  id: PropTypes.string,
+  id?: string,
   onSelect: PropTypes.func,
   mountOnEnter: PropTypes.bool,
   unmountOnExit: PropTypes.bool,

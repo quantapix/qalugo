@@ -13,10 +13,10 @@ export interface BadgeProps
 }
 const propTypes = {
 
-  bsPrefix: PropTypes.string,
-  bg: PropTypes.string,
+  bsPrefix?: string,
+  bg?: string,
   pill: PropTypes.bool,
-  text: PropTypes.string,
+  text?: string,
 
   as: PropTypes.elementType,
 }

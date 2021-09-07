@@ -16,16 +16,16 @@ export interface ToggleButtonProps
 }
 const noop = () => undefined
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   type: PropTypes.oneOf<ToggleButtonType>(["checkbox", "radio"]),
-  name: PropTypes.string,
+  name?: string,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
-  id: PropTypes.string.isRequired,
+  id: string,
   onChange: PropTypes.func,
   value: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string.isRequired),
+    PropTypes.arrayOf(string),
     PropTypes.number,
   ]).isRequired,
   inputRef: PropTypes.oneOfType([PropTypes.func, PropTypes.any]),
@@ -108,11 +108,11 @@ export type ToggleButtonGroupProps<T> =
   | ToggleButtonRadioProps<T>
   | ToggleButtonCheckboxProps<T>
 const propTypes = {
-  name: PropTypes.string,
+  name?: string,
   value: PropTypes.any,
   onChange: PropTypes.func,
   type: PropTypes.oneOf(["checkbox", "radio"]).isRequired,
-  size: PropTypes.string,
+  size?: string,
 
   vertical: PropTypes.bool,
 }

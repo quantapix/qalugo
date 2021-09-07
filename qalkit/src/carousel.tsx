@@ -57,7 +57,7 @@ export interface CarouselProps
 }
 const SWIPE_THRESHOLD = 40
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   as: PropTypes.elementType,
   slide: PropTypes.bool,
   fade: PropTypes.bool,
@@ -74,9 +74,9 @@ const propTypes = {
   wrap: PropTypes.bool,
   touch: PropTypes.bool,
   prevIcon: PropTypes.node,
-  prevLabel: PropTypes.string,
+  prevLabel?: string,
   nextIcon: PropTypes.node,
-  nextLabel: PropTypes.string,
+  nextLabel?: string,
   variant: PropTypes.oneOf<CarouselVariant>(["dark"]),
 }
 const defaultProps = {
@@ -494,7 +494,7 @@ const propTypes = {
 
   as: PropTypes.elementType,
 
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
 
   interval: PropTypes.number,
 }

@@ -14,7 +14,7 @@ export interface ListGroupProps extends BsPrefixProps, BaseNavProps {
   defaultActiveKey?: EventKey
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   variant: PropTypes.oneOf(["flush"]),
   horizontal: PropTypes.oneOf([true, "sm", "md", "lg", "xl", "xxl"]),
   as: PropTypes.elementType,
@@ -78,14 +78,14 @@ export interface ListGroupItemProps
   variant?: Variant
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  variant: PropTypes.string,
+  bsPrefix?: string,
+  variant?: string,
   action: PropTypes.bool,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onClick: PropTypes.func,
-  href: PropTypes.string,
+  href?: string,
   as: PropTypes.elementType,
 }
 const defaultProps = {

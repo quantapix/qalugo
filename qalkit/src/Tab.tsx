@@ -13,7 +13,7 @@ const propTypes = {
   eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   title: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
-  tabClassName: PropTypes.string,
+  tabClassName?: string,
 }
 const Tab: React.FC<TabProps> = () => {
   throw new Error(
@@ -38,7 +38,7 @@ export interface TabContainerProps extends Omit<TabsProps, "transition"> {
   transition?: TransitionType
 }
 const propTypes = {
-  id: PropTypes.string,
+  id?: string,
   /**
    * @type {{Transition | false}}
    * @default {Fade}
@@ -87,7 +87,7 @@ export interface TabPaneProps
   unmountOnExit?: boolean
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   as: PropTypes.elementType,
   eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   active: PropTypes.bool,
@@ -101,9 +101,9 @@ const propTypes = {
   mountOnEnter: PropTypes.bool,
   unmountOnExit: PropTypes.bool,
 
-  id: PropTypes.string,
+  id?: string,
 
-  "aria-labelledby": PropTypes.string,
+  "aria-labelledby"?: string,
 }
 const TabPane: BsPrefixRefForwardingComponent<"div", TabPaneProps> =
   React.forwardRef<HTMLElement, TabPaneProps>(

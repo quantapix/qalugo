@@ -5,10 +5,10 @@ import usePlaceholder, { UsePlaceholderProps } from "./usePlaceholder"
 import PlaceholderButton from "./PlaceholderButton"
 export interface PlaceholderProps extends UsePlaceholderProps, BsPrefixProps {}
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  animation: PropTypes.string,
-  bg: PropTypes.string,
-  size: PropTypes.string,
+  bsPrefix?: string,
+  animation?: string,
+  bg?: string,
+  size?: string,
 }
 const Placeholder: BsPrefixRefForwardingComponent<"span", PlaceholderProps> =
   React.forwardRef<HTMLElement, PlaceholderProps>(
@@ -32,10 +32,10 @@ export interface PlaceholderButtonProps extends UsePlaceholderProps {
   variant?: ButtonVariant
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
+  bsPrefix?: string,
   animation: PropTypes.oneOf(["glow", "wave"]),
   size: PropTypes.oneOf(["xs", "sm", "lg"]),
-  variant: PropTypes.string,
+  variant?: string,
 }
 const PlaceholderButton: BsPrefixRefForwardingComponent<
   "button",

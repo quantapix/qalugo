@@ -18,8 +18,8 @@ export interface PopoverProps
   show?: boolean
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  id: PropTypes.string,
+  bsPrefix?: string,
+  id?: string,
   placement: PropTypes.oneOf<Placement>([
     "auto-start",
     "auto",

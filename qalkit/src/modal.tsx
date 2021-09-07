@@ -47,17 +47,17 @@ export interface ModalProps
   [other: string]: any
 }
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  size: PropTypes.string,
+  bsPrefix?: string,
+  size?: string,
   fullscreen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   centered: PropTypes.bool,
   backdrop: PropTypes.oneOf(["static", true, false]),
-  backdropClassName: PropTypes.string,
+  backdropClassName?: string,
   keyboard: PropTypes.bool,
   scrollable: PropTypes.bool,
   animation: PropTypes.bool,
-  dialogClassName: PropTypes.string,
-  contentClassName: PropTypes.string,
+  dialogClassName?: string,
+  contentClassName?: string,
   dialogAs: PropTypes.elementType,
   autoFocus: PropTypes.bool,
   enforceFocus: PropTypes.bool,
@@ -359,9 +359,9 @@ export interface ModalDialogProps
 }
 const propTypes = {
 
-  bsPrefix: PropTypes.string,
-  contentClassName: PropTypes.string,
-  size: PropTypes.string,
+  bsPrefix?: string,
+  contentClassName?: string,
+  size?: string,
   fullscreen: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   centered: PropTypes.bool,
   scrollable: PropTypes.bool,
@@ -425,8 +425,8 @@ export interface ModalHeaderProps
   extends AbstractModalHeaderProps,
     BsPrefixOnlyProps {}
 const propTypes = {
-  bsPrefix: PropTypes.string,
-  closeLabel: PropTypes.string,
+  bsPrefix?: string,
+  closeLabel?: string,
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
   closeButton: PropTypes.bool,
   onHide: PropTypes.func,
