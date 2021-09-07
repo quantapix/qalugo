@@ -2,6 +2,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import simulant from 'simulant';
+import sinon from 'sinon';
 import Dropdown from '../src/Dropdown';
 import InputGroup from '../src/InputGroup';
 
@@ -61,8 +62,6 @@ describe('<Dropdown>', () => {
       .getDOMNode();
 
     buttonNode.textContent.should.match(/Child Title/);
-
-    buttonNode.getAttribute('aria-haspopup').should.equal('true');
     buttonNode.getAttribute('aria-expanded').should.equal('false');
     buttonNode.getAttribute('id').should.be.ok;
   });
@@ -195,10 +194,9 @@ describe('<Dropdown>', () => {
       wrapper.find('button').simulate('click');
 
       expect(spy).to.have.been.calledOnce;
-      expect(spy.getCall(0).args.length).to.equal(3);
+      expect(spy.getCall(0).args.length).to.equal(2);
       expect(spy.getCall(0).args[0]).to.equal(true);
-      expect(spy.getCall(0).args[1]).to.be.an('object');
-      assert.deepEqual(spy.getCall(0).args[2], { source: 'click' });
+      expect(spy.getCall(0).args[1].source).to.equal('click');
     });
 
     it('passes open, event, and source correctly when closed with click', () => {
@@ -214,10 +212,9 @@ describe('<Dropdown>', () => {
 
       wrapper.find('button').simulate('click');
       expect(spy).to.have.been.calledTwice;
-      expect(spy.getCall(1).args.length).to.equal(3);
+      expect(spy.getCall(1).args.length).to.equal(2);
       expect(spy.getCall(1).args[0]).to.equal(false);
-      expect(spy.getCall(1).args[1]).to.be.an('object');
-      assert.deepEqual(spy.getCall(1).args[2], { source: 'click' });
+      expect(spy.getCall(1).args[1].source).to.equal('click');
     });
 
     it('passes open, event, and source correctly when child selected', () => {
@@ -239,10 +236,9 @@ describe('<Dropdown>', () => {
       wrapper.find('a').first().simulate('click');
 
       expect(spy).to.have.been.calledTwice;
-      expect(spy.getCall(1).args.length).to.equal(3);
+      expect(spy.getCall(1).args.length).to.equal(2);
       expect(spy.getCall(1).args[0]).to.equal(false);
-      expect(spy.getCall(1).args[1]).to.be.an('object');
-      assert.deepEqual(spy.getCall(1).args[2], { source: 'select' });
+      expect(spy.getCall(1).args[1].source).to.equal('select');
     });
 
     it('passes open, event, and source correctly when opened with keydown', () => {
@@ -257,10 +253,9 @@ describe('<Dropdown>', () => {
       });
 
       expect(spy).to.have.been.calledOnce;
-      expect(spy.getCall(0).args.length).to.equal(3);
+      expect(spy.getCall(0).args.length).to.equal(2);
       expect(spy.getCall(0).args[0]).to.equal(true);
-      expect(spy.getCall(0).args[1]).to.be.an('event');
-      assert.deepEqual(spy.getCall(0).args[2], { source: 'keydown' });
+      expect(spy.getCall(0).args[1].source).to.equal('keydown');
     });
   });
 
@@ -331,6 +326,114 @@ describe('<Dropdown>', () => {
           <Dropdown renderOnMount={false}>{dropdownChildren}</Dropdown>
         </InputGroup>,
       ).assertSingle('div.dropdown-menu');
+    });
+  });
+
+  describe('autoClose behaviour', () => {
+    describe('autoClose="true"', () => {
+      it('should close on outer click', () => {
+        const onToggle = sinon.spy();
+
+        mount(simpleDropdown).setProps({
+          show: true,
+          autoClose: true,
+          onToggle,
+        });
+
+        simulant.fire(document.body, 'click');
+
+        onToggle.should.have.been.calledWith(false);
+      });
+    });
+
+    describe('autoClose="inside"', () => {
+      it('should close on child selection', () => {
+        const onToggle = sinon.spy();
+
+        const wrapper = mount(simpleDropdown).setProps({
+          show: true,
+          autoClose: 'inside',
+          onToggle,
+        });
+
+        wrapper.find('.dropdown-menu a').first().simulate('click');
+
+        onToggle.should.have.been.calledWith(false);
+      });
+
+      it('should not close on outer click', () => {
+        const onToggle = sinon.spy();
+
+        mount(simpleDropdown).setProps({
+          show: true,
+          autoClose: 'inside',
+          onToggle,
+        });
+
+        simulant.fire(document.body, 'click');
+
+        onToggle.should.not.be.called;
+      });
+    });
+
+    describe('autoClose="outside"', () => {
+      it('should not close on child selection', () => {
+        const onToggle = sinon.spy();
+
+        const wrapper = mount(simpleDropdown).setProps({
+          show: true,
+          autoClose: 'outside',
+          onToggle,
+        });
+
+        wrapper.find('.dropdown-menu a').first().simulate('click');
+
+        sinon.assert.notCalled(onToggle);
+      });
+
+      it('should close on outer click', () => {
+        const onToggle = sinon.spy();
+
+        mount(simpleDropdown).setProps({
+          show: true,
+          autoClose: 'outside',
+          onToggle,
+        });
+
+        simulant.fire(document.body, 'click');
+
+        onToggle.should.be.calledWith(false);
+      });
+    });
+
+    describe('autoClose="false"', () => {
+      it('should not close on child selection', () => {
+        const onToggle = sinon.spy();
+
+        const wrapper = mount(simpleDropdown).setProps({
+          show: true,
+          autoClose: false,
+          onToggle,
+        });
+
+        wrapper.find('.dropdown-menu a').first().simulate('click');
+
+        sinon.assert.notCalled(onToggle);
+      });
+
+      it('should not close on outer click', () => {
+        const onToggle = sinon.spy();
+
+        mount(simpleDropdown).setProps({
+          show: true,
+          autoClose: false,
+          onToggle,
+        });
+
+        simulant.fire(document.body, 'click');
+
+        sinon.assert.notCalled(onToggle);
+      });
     });
   });
 });

@@ -1,78 +1,50 @@
-import classNames from 'classnames';
-import * as React from 'react';
-
-import isRequiredForA11y from 'prop-types-extra/lib/isRequiredForA11y';
-import { useBootstrapPrefix } from './utils';
-import { ArrowProps, Placement } from './types';
-import { BsPrefixProps } from './helpers';
-
+import classNames from "classnames"
+import * as React from "react"
+import PropTypes from "prop-types"
+import { OverlayArrowProps } from "@restart/ui/Overlay"
+import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
+import { Placement } from "./types"
+import { BsPrefixProps, getOverlayDirection } from "./helpers"
 export interface TooltipProps
   extends React.HTMLAttributes<HTMLDivElement>,
     BsPrefixProps {
-  id: string;
-  placement?: Placement;
-  arrowProps?: ArrowProps;
-  show?: boolean;
-  popper?: any;
+  placement?: Placement
+  arrowProps?: Partial<OverlayArrowProps>
+  show?: boolean
+  popper?: any
 }
-
 const propTypes = {
-  /**
-   * @default 'tooltip'
-   */
-  bsPrefix: string,
-
-  /**
-   * An html id attribute, necessary for accessibility
-   * @type {string|number}
-   * @required
-   */
-  id: isRequiredForA11y(
-    PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  ),
-
-  
-  placement: oneOf([
-    'auto-start',
-    'auto',
-    'auto-end',
-    'top-start',
-    'top',
-    'top-end',
-    'right-start',
-    'right',
-    'right-end',
-    'bottom-end',
-    'bottom',
-    'bottom-start',
-    'left-end',
-    'left',
-    'left-start',
+  bsPrefix: PropTypes.string,
+  id: PropTypes.string,
+  placement: PropTypes.oneOf([
+    "auto-start",
+    "auto",
+    "auto-end",
+    "top-start",
+    "top",
+    "top-end",
+    "right-start",
+    "right",
+    "right-end",
+    "bottom-end",
+    "bottom",
+    "bottom-start",
+    "left-end",
+    "left",
+    "left-start",
   ]),
-
-  /**
-   * An Overlay injected set of props for positioning the tooltip arrow.
-   *
-   * > This is generally provided by the `Overlay` component positioning the tooltip
-   *
-   * @type {{ ref: ReactRef, style: Object }}
-   */
-  arrowProps: shape({
-    ref: any,
-    style: object,
+  arrowProps: PropTypes.shape({
+    ref: PropTypes.any,
+    style: PropTypes.object,
   }),
 
-  /** @private */
-  popper: object,
+  popper: PropTypes.object,
 
-  /** @private */
-  show: any,
-};
-
+  show: PropTypes.any,
+}
 const defaultProps = {
-  placement: 'right',
-};
-
+  placement: "right",
+}
 const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
   (
     {
@@ -86,18 +58,12 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       show: _2,
       ...props
     }: TooltipProps,
-    ref,
+    ref
   ) => {
-    bsPrefix = useBootstrapPrefix(bsPrefix, 'tooltip');
-
-    const [primaryPlacement] = placement?.split('-') || [];
-    let bsDirection = primaryPlacement;
-    if (primaryPlacement === 'left') {
-      bsDirection = 'start';
-    } else if (primaryPlacement === 'right') {
-      bsDirection = 'end';
-    }
-
+    bsPrefix = useBootstrapPrefix(bsPrefix, "tooltip")
+    const isRTL = useIsRTL()
+    const [primaryPlacement] = placement?.split("-") || []
+    const bsDirection = getOverlayDirection(primaryPlacement, isRTL)
     return (
       <div
         ref={ref}
@@ -110,12 +76,10 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
         <div className="tooltip-arrow" {...arrowProps} />
         <div className={`${bsPrefix}-inner`}>{children}</div>
       </div>
-    );
-  },
-);
-
-Tooltip.propTypes = propTypes as any;
-Tooltip.defaultProps = defaultProps as any;
-Tooltip.displayName = 'Tooltip';
-
-export Tooltip;
+    )
+  }
+)
+Tooltip.propTypes = propTypes as any
+Tooltip.defaultProps = defaultProps as any
+Tooltip.displayName = "Tooltip"
+export default Tooltip

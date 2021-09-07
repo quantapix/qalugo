@@ -1,5 +1,6 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
+import ModalManager from '@restart/ui/ModalManager';
 import Modal from '../src/Modal';
 
 describe('<Modal>', () => {
@@ -276,6 +277,28 @@ describe('<Modal>', () => {
     );
   });
 
+  it('should call `transitionend` before `exited`', (done) => {
+    const increment = sinon.spy();
+    let modal;
+
+    const instance = mount(
+      <Modal
+        show
+        style={{ transition: 'opacity 1s linear' }}
+        onExited={() => {
+          expect(increment.callCount).to.equal(1);
+          modal.removeEventListener('transitionend', increment);
+          done();
+        }}
+      >
+        <strong>Message</strong>
+      </Modal>,
+    );
+    modal = instance.find('.modal').getDOMNode();
+    modal.addEventListener('transitionend', increment);
+    instance.setProps({ show: false });
+  });
+
   describe('cleanup', () => {
     let offSpy;
 
@@ -384,5 +407,24 @@ describe('<Modal>', () => {
     document.dispatchEvent(event);
 
     expect(onEscapeKeyDownSpy).to.not.have.been.called;
+  });
+
+  it('Should use custom props manager if specified', (done) => {
+    const noOp = () => {};
+
+    class MyModalManager extends ModalManager {
+      add() {
+        done();
+      }
+    }
+
+    const managerRef = React.createRef();
+    managerRef.current = new MyModalManager();
+
+    mount(
+      <Modal show onHide={noOp} manager={managerRef.current}>
+        <strong>Message</strong>
+      </Modal>,
+    );
   });
 });

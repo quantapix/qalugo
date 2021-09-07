@@ -1,139 +1,99 @@
-import * as React from 'react';
-import { useRef } from 'react';
-import classNames from 'classnames';
-
+import * as React from "react"
+import { useRef } from "react"
+import classNames from "classnames"
+import PropTypes from "prop-types"
 import BaseOverlay, {
   OverlayProps as BaseOverlayProps,
-} from 'react-overlays/Overlay';
-import safeFindDOMNode from 'react-overlays/safeFindDOMNode';
-import { componentOrElement, elementType } from 'prop-types-extra';
-import useMergedRefs from '@restart/hooks/useMergedRefs';
-import useOverlayOffset from './useOverlayOffset';
-import Fade from './utils';
-import { TransitionType } from './helpers';
-import { ArrowProps, Placement, RootCloseEvent } from './types';
-
+  OverlayArrowProps,
+} from "@restart/ui/Overlay"
+import { componentOrElement, elementType } from "prop-types-extra"
+import useMergedRefs from "@restart/hooks/useMergedRefs"
+import useOverlayOffset from "./use"
+import Fade from "./Fade"
+import { TransitionType } from "./helpers"
+import { Placement, RootCloseEvent } from "./types"
+import safeFindDOMNode from "./safeFindDOMNode"
 export interface OverlayInjectedProps {
-  ref: React.RefCallback<HTMLElement>;
-  style: React.CSSProperties;
-  'aria-labelledby'?: string;
-
-  arrowProps: ArrowProps;
-
-  show: boolean;
-  placement: Placement;
+  ref: React.RefCallback<HTMLElement>
+  style: React.CSSProperties
+  "aria-labelledby"?: string
+  arrowProps: Partial<OverlayArrowProps>
+  show: boolean
+  placement: Placement | undefined
   popper: {
-    state: any;
-    outOfBoundaries: boolean;
-    placement: Placement;
-    scheduleUpdate: () => void;
-  };
-  [prop: string]: any;
+    state: any
+    outOfBoundaries: boolean
+    placement: Placement | undefined
+    scheduleUpdate?: () => void
+  }
+  [prop: string]: any
 }
-
 export type OverlayChildren =
   | React.ReactElement<OverlayInjectedProps>
-  | ((injected: OverlayInjectedProps) => React.ReactNode);
-
+  | ((injected: OverlayInjectedProps) => React.ReactNode)
 export interface OverlayProps
-  extends Omit<BaseOverlayProps, 'children' | 'transition' | 'rootCloseEvent'> {
-  children: OverlayChildren;
-  transition?: TransitionType;
-  placement?: Placement;
-  rootCloseEvent?: RootCloseEvent;
+  extends Omit<BaseOverlayProps, "children" | "transition" | "rootCloseEvent"> {
+  children: OverlayChildren
+  transition?: TransitionType
+  placement?: Placement
+  rootCloseEvent?: RootCloseEvent
 }
-
 const propTypes = {
-  
-  container: oneOfType([componentOrElement, PropTypes.func]),
-
-  
-  target: oneOfType([componentOrElement, PropTypes.func]),
-
-  
-  show: bool,
-
-  
-  popperConfig: object,
-
-  
-  rootClose: bool,
-
-  
-  rootCloseEvent: oneOf<RootCloseEvent>(['click', 'mousedown']),
-
-  
-  onHide: func,
-
-  
-  transition: oneOfType([PropTypes.bool, elementType]),
-
-  
-  onEnter: func,
-
-  
-  onEntering: func,
-
-  
-  onEntered: func,
-
-  
-  onExit: func,
-
-  
-  onExiting: func,
-
-  
-  onExited: func,
-
-  
-  placement: oneOf<Placement>([
-    'auto-start',
-    'auto',
-    'auto-end',
-    'top-start',
-    'top',
-    'top-end',
-    'right-start',
-    'right',
-    'right-end',
-    'bottom-end',
-    'bottom',
-    'bottom-start',
-    'left-end',
-    'left',
-    'left-start',
+  container: PropTypes.oneOfType([componentOrElement, PropTypes.func]),
+  target: PropTypes.oneOfType([componentOrElement, PropTypes.func]),
+  show: PropTypes.bool,
+  popperConfig: PropTypes.object,
+  rootClose: PropTypes.bool,
+  rootCloseEvent: PropTypes.oneOf<RootCloseEvent>(["click", "mousedown"]),
+  onHide: PropTypes.func,
+  transition: PropTypes.oneOfType([PropTypes.bool, elementType]),
+  onEnter: PropTypes.func,
+  onEntering: PropTypes.func,
+  onEntered: PropTypes.func,
+  onExit: PropTypes.func,
+  onExiting: PropTypes.func,
+  onExited: PropTypes.func,
+  placement: PropTypes.oneOf<Placement>([
+    "auto-start",
+    "auto",
+    "auto-end",
+    "top-start",
+    "top",
+    "top-end",
+    "right-start",
+    "right",
+    "right-end",
+    "bottom-end",
+    "bottom",
+    "bottom-start",
+    "left-end",
+    "left",
+    "left-start",
   ]),
-};
-
+}
 const defaultProps: Partial<OverlayProps> = {
   transition: Fade,
   rootClose: false,
   show: false,
-  placement: 'top',
-};
-
-function wrapRefs(props, arrowProps) {
-  const { ref } = props;
-  const { ref: aRef } = arrowProps;
-
-  props.ref = ref.__wrapped || (ref.__wrapped = (r) => ref(safeFindDOMNode(r)));
-  arrowProps.ref =
-    aRef.__wrapped || (aRef.__wrapped = (r) => aRef(safeFindDOMNode(r)));
+  placement: "top",
 }
-
+function wrapRefs(props, arrowProps) {
+  const { ref } = props
+  const { ref: aRef } = arrowProps
+  props.ref = ref.__wrapped || (ref.__wrapped = r => ref(safeFindDOMNode(r)))
+  arrowProps.ref =
+    aRef.__wrapped || (aRef.__wrapped = r => aRef(safeFindDOMNode(r)))
+}
 const Overlay = React.forwardRef<HTMLElement, OverlayProps>(
   (
     { children: overlay, transition, popperConfig = {}, ...outerProps },
-    outerRef,
+    outerRef
   ) => {
-    const popperRef = useRef({});
-    const [ref, modifiers] = useOverlayOffset();
-    const mergedRef = useMergedRefs(outerRef, ref);
-
+    const popperRef = useRef({})
+    const [ref, modifiers] = useOverlayOffset()
+    const mergedRef = useMergedRefs(outerRef, ref)
     const actualTransition =
-      transition === true ? Fade : transition || undefined;
-
+      transition === true ? Fade : transition || undefined
     return (
       <BaseOverlay
         {...outerProps}
@@ -144,347 +104,248 @@ const Overlay = React.forwardRef<HTMLElement, OverlayProps>(
         }}
         transition={actualTransition}
       >
-        {({
-          props: overlayProps,
-          arrowProps,
-          show,
-          update,
-          forceUpdate: _,
-          placement,
-          state,
-          ...props
-        }) => {
-          wrapRefs(overlayProps, arrowProps);
+        {(overlayProps, { arrowProps, placement, popper: popperObj, show }) => {
+          wrapRefs(overlayProps, arrowProps)
           const popper = Object.assign(popperRef.current, {
-            state,
-            scheduleUpdate: update,
+            state: popperObj?.state,
+            scheduleUpdate: popperObj?.update,
             placement,
             outOfBoundaries:
-              state?.modifiersData.hide?.isReferenceHidden || false,
-          });
-
-          if (typeof overlay === 'function')
+              popperObj?.state?.modifiersData.hide?.isReferenceHidden || false,
+          })
+          if (typeof overlay === "function")
             return overlay({
-              ...props,
               ...overlayProps,
               placement,
               show,
-              ...(!transition && show && { className: 'show' }),
+              ...(!transition && show && { className: "show" }),
               popper,
               arrowProps,
-            });
-
+            })
           return React.cloneElement(overlay as React.ReactElement, {
-            ...props,
             ...overlayProps,
             placement,
             arrowProps,
             popper,
             className: classNames(
               (overlay as React.ReactElement).props.className,
-              !transition && show && 'show',
+              !transition && show && "show"
             ),
             style: {
               ...(overlay as React.ReactElement).props.style,
               ...overlayProps.style,
             },
-          });
+          })
         }}
       </BaseOverlay>
-    );
-  },
-);
-
-Overlay.displayName = 'Overlay';
-Overlay.propTypes = propTypes;
-Overlay.defaultProps = defaultProps;
-
-export Overlay;
-import contains from 'dom-helpers/contains';
-
-import * as React from 'react';
-import { cloneElement, useCallback, useRef } from 'react';
-import useTimeout from '@restart/hooks/useTimeout';
-import safeFindDOMNode from 'react-overlays/safeFindDOMNode';
-import warning from 'warning';
-import { useUncontrolledProp } from 'uncontrollable';
-import useMergedRefs from '@restart/hooks/useMergedRefs';
-import Overlay, { OverlayChildren, OverlayProps } from './overlay';
-
-export type OverlayTriggerType = 'hover' | 'click' | 'focus';
-
-export type OverlayDelay = number | { show: number; hide: number };
-
+    )
+  }
+)
+Overlay.displayName = "Overlay"
+Overlay.propTypes = propTypes
+Overlay.defaultProps = defaultProps
+export default Overlay
+import contains from "dom-helpers/contains"
+import PropTypes from "prop-types"
+import * as React from "react"
+import { cloneElement, useCallback, useRef } from "react"
+import useTimeout from "@restart/hooks/useTimeout"
+import warning from "warning"
+import { useUncontrolledProp } from "uncontrollable"
+import useMergedRefs from "@restart/hooks/useMergedRefs"
+import Overlay, { OverlayChildren, OverlayProps } from "./Overlay"
+import safeFindDOMNode from "./safeFindDOMNode"
+export type OverlayTriggerType = "hover" | "click" | "focus"
+export type OverlayDelay = number | { show: number; hide: number }
 export type OverlayInjectedProps = {
-  onFocus?: (...args: any[]) => any;
-};
-
+  onFocus?: (...args: any[]) => any
+}
 export type OverlayTriggerRenderProps = OverlayInjectedProps & {
-  ref: React.Ref<any>;
-};
-
+  ref: React.Ref<any>
+}
 export interface OverlayTriggerProps
-  extends Omit<OverlayProps, 'children' | 'target'> {
+  extends Omit<OverlayProps, "children" | "target"> {
   children:
     | React.ReactElement
-    | ((props: OverlayTriggerRenderProps) => React.ReactNode);
-  trigger?: OverlayTriggerType | OverlayTriggerType[];
-  delay?: OverlayDelay;
-  show?: boolean;
-  defaultShow?: boolean;
-  onToggle?: (nextShow: boolean) => void;
-  flip?: boolean;
-  overlay: OverlayChildren;
-
-  target?: never;
-  onHide?: never;
+    | ((props: OverlayTriggerRenderProps) => React.ReactNode)
+  trigger?: OverlayTriggerType | OverlayTriggerType[]
+  delay?: OverlayDelay
+  show?: boolean
+  defaultShow?: boolean
+  onToggle?: (nextShow: boolean) => void
+  flip?: boolean
+  overlay: OverlayChildren
+  target?: never
+  onHide?: never
 }
-
 function normalizeDelay(delay?: OverlayDelay) {
-  return delay && typeof delay === 'object'
+  return delay && typeof delay === "object"
     ? delay
     : {
         show: delay,
         hide: delay,
-      };
+      }
 }
-
-// Simple implementation of mouseEnter and mouseLeave.
-// React's built version is broken: https://github.com/facebook/react/issues/4251
-// for cases when the trigger is disabled and mouseOut/Over can cause flicker
-// moving from one child element to another.
 function handleMouseOverOut(
   // eslint-disable-next-line @typescript-eslint/no-shadow
   handler: (...args: [React.MouseEvent, ...any[]]) => any,
   args: [React.MouseEvent, ...any[]],
-  relatedNative: 'fromElement' | 'toElement',
+  relatedNative: "fromElement" | "toElement"
 ) {
-  const [e] = args;
-  const target = e.currentTarget;
-  const related = e.relatedTarget || e.nativeEvent[relatedNative];
-
+  const [e] = args
+  const target = e.currentTarget
+  const related = e.relatedTarget || e.nativeEvent[relatedNative]
   if ((!related || related !== target) && !contains(target, related)) {
-    handler(...args);
+    handler(...args)
   }
 }
-
-const triggerType = PropTypes.oneOf(['click', 'hover', 'focus']);
-
+const triggerType = PropTypes.oneOf(["click", "hover", "focus"])
 const propTypes = {
-  children: oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-
-  /**
-   * Specify which action or actions trigger Overlay visibility
-   *
-   * @type {'hover' | 'click' |'focus' | Array<'hover' | 'click' |'focus'>}
-   */
-  trigger: oneOfType([triggerType, PropTypes.arrayOf(triggerType)]),
-
-  
-  delay: oneOfType([
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+  trigger: PropTypes.oneOfType([triggerType, PropTypes.arrayOf(triggerType)]),
+  delay: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.shape({
-      show: number,
-      hide: number,
+      show: PropTypes.number,
+      hide: PropTypes.number,
     }),
   ]),
-
-  /**
-   * The visibility of the Overlay. `show` is a _controlled_ prop so should be paired
-   * with `onToggle` to avoid breaking user interactions.
-   *
-   * Manually toggling `show` does **not** wait for `delay` to change the visibility.
-   *
-   * @controllable onToggle
-   */
-  show: bool,
-
-  
-  defaultShow: bool,
-
-  /**
-   * A callback that fires when the user triggers a change in tooltip visibility.
-   *
-   * `onToggle` is called with the desired next `show`, and generally should be passed
-   * back to the `show` prop. `onToggle` fires _after_ the configured `delay`
-   *
-   * @controllable `show`
-   */
-  onToggle: func,
-
-  
-  flip: bool,
-
-  
-  overlay: oneOfType([PropTypes.func, PropTypes.element.isRequired]),
-
-  
-  popperConfig: object,
-
-  // Overridden props from `<Overlay>`.
-  /**
-   * @private
-   */
-  target: oneOf([null]),
-
-  /**
-   * @private
-   */
-  onHide: oneOf([null]),
-
-  
-  placement: oneOf([
-    'auto-start',
-    'auto',
-    'auto-end',
-    'top-start',
-    'top',
-    'top-end',
-    'right-start',
-    'right',
-    'right-end',
-    'bottom-end',
-    'bottom',
-    'bottom-start',
-    'left-end',
-    'left',
-    'left-start',
+  show: PropTypes.bool,
+  defaultShow: PropTypes.bool,
+  onToggle: PropTypes.func,
+  flip: PropTypes.bool,
+  overlay: PropTypes.oneOfType([PropTypes.func, PropTypes.element.isRequired]),
+  popperConfig: PropTypes.object,
+  target: PropTypes.oneOf([null]),
+  onHide: PropTypes.oneOf([null]),
+  placement: PropTypes.oneOf([
+    "auto-start",
+    "auto",
+    "auto-end",
+    "top-start",
+    "top",
+    "top-end",
+    "right-start",
+    "right",
+    "right-end",
+    "bottom-end",
+    "bottom",
+    "bottom-start",
+    "left-end",
+    "left",
+    "left-start",
   ]),
-};
-
+}
 const defaultProps = {
   defaultShow: false,
-  trigger: ['hover', 'focus'],
-};
-
+  trigger: ["hover", "focus"],
+}
 function OverlayTrigger({
   trigger,
   overlay,
   children,
   popperConfig = {},
-
   show: propsShow,
   defaultShow = false,
   onToggle,
-
   delay: propsDelay,
   placement,
-  flip = placement && placement.indexOf('auto') !== -1,
+  flip = placement && placement.indexOf("auto") !== -1,
   ...props
 }: OverlayTriggerProps) {
-  const triggerNodeRef = useRef(null);
+  const triggerNodeRef = useRef(null)
   const mergedRef = useMergedRefs<unknown>(
     triggerNodeRef,
-    (children as any).ref,
-  );
-  const timeout = useTimeout();
-  const hoverStateRef = useRef<string>('');
-
-  const [show, setShow] = useUncontrolledProp(propsShow, defaultShow, onToggle);
-
-  const delay = normalizeDelay(propsDelay);
-
+    (children as any).ref
+  )
+  const timeout = useTimeout()
+  const hoverStateRef = useRef<string>("")
+  const [show, setShow] = useUncontrolledProp(propsShow, defaultShow, onToggle)
+  const delay = normalizeDelay(propsDelay)
   const { onFocus, onBlur, onClick } =
-    typeof children !== 'function'
+    typeof children !== "function"
       ? React.Children.only(children).props
-      : ({} as any);
-
+      : ({} as any)
   const attachRef = (r: React.ComponentClass | Element | null | undefined) => {
-    mergedRef(safeFindDOMNode(r));
-  };
-
+    mergedRef(safeFindDOMNode(r))
+  }
   const handleShow = useCallback(() => {
-    timeout.clear();
-    hoverStateRef.current = 'show';
-
+    timeout.clear()
+    hoverStateRef.current = "show"
     if (!delay.show) {
-      setShow(true);
-      return;
+      setShow(true)
+      return
     }
-
     timeout.set(() => {
-      if (hoverStateRef.current === 'show') setShow(true);
-    }, delay.show);
-  }, [delay.show, setShow, timeout]);
-
+      if (hoverStateRef.current === "show") setShow(true)
+    }, delay.show)
+  }, [delay.show, setShow, timeout])
   const handleHide = useCallback(() => {
-    timeout.clear();
-    hoverStateRef.current = 'hide';
-
+    timeout.clear()
+    hoverStateRef.current = "hide"
     if (!delay.hide) {
-      setShow(false);
-      return;
+      setShow(false)
+      return
     }
-
     timeout.set(() => {
-      if (hoverStateRef.current === 'hide') setShow(false);
-    }, delay.hide);
-  }, [delay.hide, setShow, timeout]);
-
+      if (hoverStateRef.current === "hide") setShow(false)
+    }, delay.hide)
+  }, [delay.hide, setShow, timeout])
   const handleFocus = useCallback(
     (...args: any[]) => {
-      handleShow();
-      onFocus?.(...args);
+      handleShow()
+      onFocus?.(...args)
     },
-    [handleShow, onFocus],
-  );
-
+    [handleShow, onFocus]
+  )
   const handleBlur = useCallback(
     (...args: any[]) => {
-      handleHide();
-      onBlur?.(...args);
+      handleHide()
+      onBlur?.(...args)
     },
-    [handleHide, onBlur],
-  );
-
+    [handleHide, onBlur]
+  )
   const handleClick = useCallback(
     (...args: any[]) => {
-      setShow(!show);
-      onClick?.(...args);
+      setShow(!show)
+      onClick?.(...args)
     },
-    [onClick, setShow, show],
-  );
-
+    [onClick, setShow, show]
+  )
   const handleMouseOver = useCallback(
     (...args: [React.MouseEvent, ...any[]]) => {
-      handleMouseOverOut(handleShow, args, 'fromElement');
+      handleMouseOverOut(handleShow, args, "fromElement")
     },
-    [handleShow],
-  );
-
+    [handleShow]
+  )
   const handleMouseOut = useCallback(
     (...args: [React.MouseEvent, ...any[]]) => {
-      handleMouseOverOut(handleHide, args, 'toElement');
+      handleMouseOverOut(handleHide, args, "toElement")
     },
-    [handleHide],
-  );
-
-  const triggers: string[] = trigger == null ? [] : [].concat(trigger as any);
+    [handleHide]
+  )
+  const triggers: string[] = trigger == null ? [] : [].concat(trigger as any)
   const triggerProps: any = {
     ref: attachRef,
-  };
-
-  if (triggers.indexOf('click') !== -1) {
-    triggerProps.onClick = handleClick;
   }
-
-  if (triggers.indexOf('focus') !== -1) {
-    triggerProps.onFocus = handleFocus;
-    triggerProps.onBlur = handleBlur;
+  if (triggers.indexOf("click") !== -1) {
+    triggerProps.onClick = handleClick
   }
-
-  if (triggers.indexOf('hover') !== -1) {
+  if (triggers.indexOf("focus") !== -1) {
+    triggerProps.onFocus = handleFocus
+    triggerProps.onBlur = handleBlur
+  }
+  if (triggers.indexOf("hover") !== -1) {
     warning(
       triggers.length > 1,
-      '[react-bootstrap] Specifying only the `"hover"` trigger limits the visibility of the overlay to just mouse users. Consider also including the `"focus"` trigger so that touch and keyboard only users can see the overlay as well.',
-    );
-    triggerProps.onMouseOver = handleMouseOver;
-    triggerProps.onMouseOut = handleMouseOut;
+      '[react-bootstrap] Specifying only the `"hover"` trigger limits the visibility of the overlay to just mouse users. Consider also including the `"focus"` trigger so that touch and keyboard only users can see the overlay as well.'
+    )
+    triggerProps.onMouseOver = handleMouseOver
+    triggerProps.onMouseOut = handleMouseOut
   }
-
   return (
     <>
-      {typeof children === 'function'
+      {typeof children === "function"
         ? children(triggerProps)
         : cloneElement(children, triggerProps)}
       <Overlay
@@ -499,46 +360,8 @@ function OverlayTrigger({
         {overlay}
       </Overlay>
     </>
-  );
+  )
 }
-
-OverlayTrigger.propTypes = propTypes;
-OverlayTrigger.defaultProps = defaultProps;
-
-export OverlayTrigger;
-
-import { useMemo, useRef } from 'react';
-import hasClass from 'dom-helpers/hasClass';
-import { Options } from 'react-overlays/usePopper';
-import { useBootstrapPrefix } from './utils';
-import Popover from './popover';
-
-// This is meant for internal use.
-// This applies a custom offset to the overlay if it's a popover.
-export function useOverlayOffset(): [
-  React.RefObject<HTMLElement>,
-  Options['modifiers'],
-] {
-  const overlayRef = useRef<HTMLDivElement | null>(null);
-  const popoverClass = useBootstrapPrefix(undefined, 'popover');
-
-  const offset = useMemo(
-    () => ({
-      name: 'offset',
-      options: {
-        offset: () => {
-          if (
-            overlayRef.current &&
-            hasClass(overlayRef.current, popoverClass)
-          ) {
-            return Popover.POPPER_OFFSET;
-          }
-          return [0, 0];
-        },
-      },
-    }),
-    [popoverClass],
-  );
-
-  return [overlayRef, [offset]];
-}
+OverlayTrigger.propTypes = propTypes
+OverlayTrigger.defaultProps = defaultProps
+export default OverlayTrigger
