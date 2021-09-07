@@ -1,160 +1,107 @@
-import * as React from "react"
 import { TransitionComponent } from "@restart/ui/types"
+import { useBootstrapPrefix } from "./ThemeProvider"
+import * as React from "react"
+import camelize from "dom-helpers/camelize"
+import classNames from "classnames"
+import css from "dom-helpers/css"
+import Fade from "./Fade"
+import ReactDOM from "react-dom"
+import transitionEnd from "dom-helpers/transitionEnd"
 export type Omit<T, U> = Pick<T, Exclude<keyof T, keyof U>>
-export type ReplaceProps<Inner extends React.ElementType, P> = Omit<
-  React.ComponentPropsWithRef<Inner>,
-  P
-> &
-  P
+export type ReplaceProps<T extends React.ElementType, U> = Omit<React.ComponentPropsWithRef<T>, U> &
+  U
 export interface BsPrefixOnlyProps {
   bsPrefix?: string
 }
-export interface AsProp<As extends React.ElementType = React.ElementType> {
-  as?: As
+export interface AsProp<T extends React.ElementType = React.ElementType> {
+  as?: T
 }
-export interface BsPrefixProps<As extends React.ElementType = React.ElementType>
+export interface BsPrefixProps<T extends React.ElementType = React.ElementType>
   extends BsPrefixOnlyProps,
-    AsProp<As> {}
-export interface BsPrefixRefForwardingComponent<
-  TInitial extends React.ElementType,
-  P = unknown
-> {
-  <As extends React.ElementType = TInitial>(
-    props: React.PropsWithChildren<ReplaceProps<As, BsPrefixProps<As> & P>>,
+    AsProp<T> {}
+export interface BsPrefixRefForwardingComponent<T0 extends React.ElementType, U = unknown> {
+  <T extends React.ElementType = T0>(
+    props: React.PropsWithChildren<ReplaceProps<T, BsPrefixProps<T> & U>>,
     context?: any
   ): React.ReactElement | null
   propTypes?: any
   contextTypes?: any
-  defaultProps?: Partial<P>
+  defaultProps?: Partial<U>
   displayName?: string
 }
-export class BsPrefixComponent<
-  As extends React.ElementType,
-  P = unknown
-> extends React.Component<ReplaceProps<As, BsPrefixProps<As> & P>> {}
-export type BsPrefixComponentClass<
-  As extends React.ElementType,
-  P = unknown
-> = React.ComponentClass<ReplaceProps<As, BsPrefixProps<As> & P>>
+export class BsPrefixComponent<T extends React.ElementType, U = unknown> extends React.Component<
+  ReplaceProps<T, BsPrefixProps<T> & U>
+> {}
+export type BsPrefixComponentClass<T extends React.ElementType, U = unknown> = React.ComponentClass<
+  ReplaceProps<T, BsPrefixProps<T> & U>
+>
 export type TransitionType = boolean | TransitionComponent
 export function getOverlayDirection(placement: string, isRTL?: boolean) {
-  let bsDirection = placement
-  if (placement === "left") {
-    bsDirection = isRTL ? "end" : "start"
-  } else if (placement === "right") {
-    bsDirection = isRTL ? "start" : "end"
-  }
-  return bsDirection
+  let d = placement
+  if (placement === "left") d = isRTL ? "end" : "start"
+  else if (placement === "right") d = isRTL ? "start" : "end"
+  return d
 }
-import ReactDOM from "react-dom"
-export default function safeFindDOMNode(
-  componentOrElement: React.ComponentClass | Element | null | undefined
-) {
-  if (componentOrElement && "setState" in componentOrElement) {
-    return ReactDOM.findDOMNode(componentOrElement)
-  }
-  return (componentOrElement ?? null) as Element | Text | null
+export function safeFindDOMNode(x: React.ComponentClass | Element | null | undefined) {
+  if (x && "setState" in x) return ReactDOM.findDOMNode(x)
+  return (x ?? null) as Element | Text | null
 }
-function createChainedFunction(...funcs) {
-  return funcs
-    .filter(f => f != null)
-    .reduce((acc, f) => {
-      if (typeof f !== "function") {
-        throw new Error(
-          "Invalid Argument Type, must only provide functions, undefined, or null."
-        )
+export function createChainedFunction(...xs) {
+  return xs
+    .filter(x => x != null)
+    .reduce((y, x) => {
+      if (typeof x !== "function") {
+        throw new Error("Invalid Argument Type, must only provide functions, undefined, or null.")
       }
-      if (acc === null) return f
+      if (y === null) return x
       return function chainedFunction(...args) {
         // @ts-ignore
-        acc.apply(this, args)
+        y.apply(this, args)
         // @ts-ignore
-        f.apply(this, args)
+        x.apply(this, args)
       }
     }, null)
 }
-export default createChainedFunction
-import classNames from "classnames"
-import camelize from "dom-helpers/camelize"
-import * as React from "react"
-import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixRefForwardingComponent } from "./helpers"
-const pascalCase = str => str[0].toUpperCase() + camelize(str).slice(1)
-interface BsPrefixOptions<As extends React.ElementType = "div"> {
+const pascalCase = (x: string) => x[0].toUpperCase() + camelize(x).slice(1)
+interface BsPrefixOptions<T extends React.ElementType = "div"> {
   displayName?: string
-  Component?: As
-  defaultProps?: Partial<React.ComponentProps<As>>
+  Component?: T
+  defaultProps?: Partial<React.ComponentProps<T>>
 }
-export default function createWithBsPrefix<
-  As extends React.ElementType = "div"
->(
+export function createWithBsPrefix<T extends React.ElementType = "div">(
   prefix: string,
-  {
-    displayName = pascalCase(prefix),
-    Component,
-    defaultProps,
-  }: BsPrefixOptions<As> = {}
-): BsPrefixRefForwardingComponent<As> {
-  const BsComponent = React.forwardRef(
-    (
-      { className, bsPrefix, as: Tag = Component || "div", ...props }: any,
-      ref
-    ) => {
+  { displayName = pascalCase(prefix), Component, defaultProps }: BsPrefixOptions<T> = {}
+): BsPrefixRefForwardingComponent<T> {
+  const y = React.forwardRef(
+    ({ className, bsPrefix, as: Tag = Component || "div", ...props }: any, ref) => {
       const resolvedPrefix = useBootstrapPrefix(bsPrefix, prefix)
-      return (
-        <Tag
-          ref={ref}
-          className={classNames(className, resolvedPrefix)}
-          {...props}
-        />
-      )
+      return <Tag ref={ref} className={classNames(className, resolvedPrefix)} {...props} />
     }
   )
-  BsComponent.defaultProps = defaultProps as any
-  BsComponent.displayName = displayName
-  return BsComponent as any
+  y.defaultProps = defaultProps as any
+  y.displayName = displayName
+  return y as any
 }
-import * as React from "react"
-import classNames from "classnames"
 export default (className: string) =>
   React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>((p, ref) => (
-    <div
-      {...p}
-      ref={ref}
-      className={classNames((p as any).className, className)}
-    />
+    <div {...p} ref={ref} className={classNames((p as any).className, className)} />
   ))
-import { TransitionComponent } from "@restart/ui/types"
-import Fade from "./Fade"
-import { TransitionType } from "./helpers"
-export default function getTabTransitionComponent(
-  transition?: TransitionType
-): TransitionComponent | undefined {
-  if (typeof transition === "boolean") {
-    return transition ? Fade : undefined
-  }
-  return transition
+export function getTabTransitionComponent(x?: TransitionType): TransitionComponent | undefined {
+  if (typeof x === "boolean") return x ? Fade : undefined
+  return x
 }
-import css from "dom-helpers/css"
-import transitionEnd from "dom-helpers/transitionEnd"
-function parseDuration(
-  node: HTMLElement,
-  property: "transitionDuration" | "transitionDelay"
-) {
+function parseDuration(node: HTMLElement, property: "transitionDuration" | "transitionDelay") {
   const str = css(node, property) || ""
   const mult = str.indexOf("ms") === -1 ? 1000 : 1
   return parseFloat(str) * mult
 }
-export default function transitionEndListener(
-  element: HTMLElement,
-  handler: (e: TransitionEvent) => void
-) {
-  const duration = parseDuration(element, "transitionDuration")
-  const delay = parseDuration(element, "transitionDelay")
+export function transitionEndListener(x: HTMLElement, handler: (e: TransitionEvent) => void) {
+  const duration = parseDuration(x, "transitionDuration")
+  const delay = parseDuration(x, "transitionDelay")
   const remove = transitionEnd(
-    element,
+    x,
     e => {
-      if (e.target === element) {
+      if (e.target === x) {
         remove()
         handler(e)
       }
@@ -162,7 +109,7 @@ export default function transitionEndListener(
     duration + delay
   )
 }
-export default function triggerBrowserReflow(node: HTMLElement): void {
+export function triggerBrowserReflow(x: HTMLElement): void {
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  node.offsetHeight
+  x.offsetHeight
 }

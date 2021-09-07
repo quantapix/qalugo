@@ -1,28 +1,34 @@
-import classNames from "classnames"
+import { BsPrefixOnlyProps } from "./helpers"
+import { BsPrefixProps } from "./utils"
+import { BsPrefixRefForwardingComponent } from "./utils"
+import { CloseButtonVariant } from "./CloseButton"
+import { getSharedManager } from "./BootstrapModalManager"
+import { ModalInstance } from "@restart/ui/ModalManager"
+import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
+import { useCallback, useMemo, useRef, useState } from "react"
+import * as React from "react"
+import AbstractModalHeader, {
+  AbstractModalHeaderProps,
+} from "./AbstractModalHeader"
 import addEventListener from "dom-helpers/addEventListener"
+import BaseModal, { ModalProps as BaseModalProps } from "@restart/ui/Modal"
 import canUseDOM from "dom-helpers/canUseDOM"
+import classNames from "classnames"
+import createWithBsPrefix from "./createWithBsPrefix"
+import divWithClassName from "./divWithClassName"
+import Fade from "./Fade"
+import getScrollbarSize from "dom-helpers/scrollbarSize"
 import ownerDocument from "dom-helpers/ownerDocument"
 import removeEventListener from "dom-helpers/removeEventListener"
-import getScrollbarSize from "dom-helpers/scrollbarSize"
+import transitionEnd from "dom-helpers/transitionEnd"
 import useCallbackRef from "@restart/hooks/useCallbackRef"
 import useEventCallback from "@restart/hooks/useEventCallback"
 import useMergedRefs from "@restart/hooks/useMergedRefs"
 import useWillUnmount from "@restart/hooks/useWillUnmount"
-import transitionEnd from "dom-helpers/transitionEnd"
-import * as React from "react"
-import { useCallback, useMemo, useRef, useState } from "react"
-import BaseModal, { ModalProps as BaseModalProps } from "@restart/ui/Modal"
-import { ModalInstance } from "@restart/ui/ModalManager"
-import { getSharedManager } from "./BootstrapModalManager"
-import Fade from "./Fade"
-import ModalBody from "./ModalBody"
-import ModalContext from "./ModalContext"
-import ModalDialog from "./ModalDialog"
-import ModalFooter from "./ModalFooter"
-import ModalHeader from "./ModalHeader"
-import ModalTitle from "./ModalTitle"
-import { BsPrefixRefForwardingComponent } from "./helpers"
-import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
+
+export default createWithBsPrefix("modal-body")
+export default createWithBsPrefix("modal-footer")
+
 export interface ModalProps
   extends Omit<
     BaseModalProps,
@@ -43,20 +49,11 @@ export interface ModalProps
   contentClassName?: string
   dialogAs?: React.ElementType
   scrollable?: boolean
-  [other: string]: any
+  [k: string]: any
 }
 const propTypes = {
-  bsPrefix?: string,
-  size?: string,
-  fullscreen?: boolean | string,
-  centered?: boolean,
   backdrop?: "static" | true | false,
-  backdropClassName?: string,
   keyboard?: boolean,
-  scrollable?: boolean,
-  animation?: boolean,
-  dialogClassName?: string,
-  contentClassName?: string,
   dialogAs?: React.elementType,
   autoFocus?: boolean,
   enforceFocus?: boolean,
@@ -331,21 +328,13 @@ export default Object.assign(Modal, {
   TRANSITION_DURATION: 300,
   BACKDROP_TRANSITION_DURATION: 150,
 })
-import createWithBsPrefix from "./createWithBsPrefix"
-export default createWithBsPrefix("modal-body")
-import * as React from "react"
 interface ModalContextType {
   onHide: () => void
 }
-const ModalContext = React.createContext<ModalContextType>({
+export const ModalContext = React.createContext<ModalContextType>({
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onHide() {},
 })
-export default ModalContext
-import classNames from "classnames"
-import * as React from "react"
-import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps } from "./helpers"
 export interface ModalDialogProps
   extends React.HTMLAttributes<HTMLDivElement>,
     BsPrefixProps {
@@ -355,16 +344,7 @@ export interface ModalDialogProps
   scrollable?: boolean
   contentClassName?: string
 }
-const propTypes = {
-
-  bsPrefix?: string,
-  contentClassName?: string,
-  size?: string,
-  fullscreen?: boolean | string,
-  centered?: boolean,
-  scrollable?: boolean,
-}
-const ModalDialog = React.forwardRef<HTMLDivElement, ModalDialogProps>(
+export const ModalDialog = React.forwardRef<HTMLDivElement, ModalDialogProps>(
   (
     {
       bsPrefix,
@@ -406,18 +386,6 @@ const ModalDialog = React.forwardRef<HTMLDivElement, ModalDialogProps>(
   }
 )
 ModalDialog.displayName = "ModalDialog"
-ModalDialog.propTypes = propTypes as any
-export default ModalDialog
-import createWithBsPrefix from "./createWithBsPrefix"
-export default createWithBsPrefix("modal-footer")
-import classNames from "classnames"
-import * as React from "react"
-import { useBootstrapPrefix } from "./ThemeProvider"
-import { CloseButtonVariant } from "./CloseButton"
-import AbstractModalHeader, {
-  AbstractModalHeaderProps,
-} from "./AbstractModalHeader"
-import { BsPrefixOnlyProps } from "./helpers"
 export interface ModalHeaderProps
   extends AbstractModalHeaderProps,
     BsPrefixOnlyProps {}
@@ -448,7 +416,5 @@ ModalHeader.displayName = "ModalHeader"
 ModalHeader.propTypes = propTypes
 ModalHeader.defaultProps = defaultProps
 export default ModalHeader
-import createWithBsPrefix from "./createWithBsPrefix"
-import divWithClassName from "./divWithClassName"
 const DivStyledAsH4 = divWithClassName("h4")
 export default createWithBsPrefix("modal-title", { Component: DivStyledAsH4 })

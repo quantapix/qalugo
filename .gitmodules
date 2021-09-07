@@ -9,3 +9,13 @@
 [submodule "lib/react-bootstrap"]
 	path = lib/react-bootstrap
 	url = https://github.com/react-bootstrap/react-bootstrap.git
+[submodule "lib/ui"]
+	path = lib/ui
+	url = https://github.com/react-restart/ui.git
+	branch = main
+[submodule "lib/hooks"]
+	path = lib/hooks
+	url = https://github.com/react-restart/hooks.git
+[submodule "lib/context"]
+	path = lib/context
+	url = https://github.com/react-restart/context.git

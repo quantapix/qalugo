@@ -2,7 +2,7 @@ import * as React from "react"
 import { useContext } from "react"
 import useEventCallback from "@restart/hooks/useEventCallback"
 import CloseButton, { CloseButtonVariant } from "./CloseButton"
-import ModalContext from "./ModalContext"
+import { ModalContext } from "./Modal"
 export interface AbstractModalHeaderProps
   extends React.HTMLAttributes<HTMLDivElement> {
   closeLabel?: string
@@ -10,17 +10,11 @@ export interface AbstractModalHeaderProps
   closeButton?: boolean
   onHide?: () => void
 }
-const propTypes = {
-  closeLabel?: string,
-  closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
-  closeButton?: boolean,
-  onHide?: () => void,
-}
 const defaultProps = {
   closeLabel: "Close",
   closeButton: false,
 }
-const AbstractModalHeader = React.forwardRef<
+export const AbstractModalHeader = React.forwardRef<
   HTMLDivElement,
   AbstractModalHeaderProps
 >(
@@ -47,6 +41,4 @@ const AbstractModalHeader = React.forwardRef<
     )
   }
 )
-AbstractModalHeader.propTypes = propTypes
 AbstractModalHeader.defaultProps = defaultProps
-export default AbstractModalHeader
