@@ -1,33 +1,27 @@
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import * as React from 'react';
-
-import { useBootstrapPrefix } from './ThemeProvider';
-import PageItem, { Ellipsis, First, Last, Next, Prev } from './PageItem';
-import { BsPrefixProps } from './helpers';
-
-type PaginationSize = 'sm' | 'lg';
-
+import classNames from "classnames"
+import PropTypes from "prop-types"
+import * as React from "react"
+import { useBootstrapPrefix } from "./ThemeProvider"
+import PageItem, { Ellipsis, First, Last, Next, Prev } from "./PageItem"
+import { BsPrefixProps } from "./helpers"
+type PaginationSize = "sm" | "lg"
 export interface PaginationProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLUListElement> {
-  size?: 'sm' | 'lg';
+  size?: "sm" | "lg"
 }
-
 const propTypes = {
   /**
    * @default 'pagination'
    * */
   bsPrefix: PropTypes.string,
-
   /**
    * Set's the size of all PageItems.
    *
    * @type {('sm'|'lg')}
    */
-  size: PropTypes.oneOf<PaginationSize>(['sm', 'lg']),
-};
-
+  size: PropTypes.oneOf<PaginationSize>(["sm", "lg"]),
+}
 /**
  * @property {PageItem} Item
  * @property {PageItem} First
@@ -38,7 +32,7 @@ const propTypes = {
  */
 const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
   ({ bsPrefix, className, size, ...props }, ref) => {
-    const decoratedBsPrefix = useBootstrapPrefix(bsPrefix, 'pagination');
+    const decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "pagination")
     return (
       <ul
         ref={ref}
@@ -46,16 +40,14 @@ const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
         className={classNames(
           className,
           decoratedBsPrefix,
-          size && `${decoratedBsPrefix}-${size}`,
+          size && `${decoratedBsPrefix}-${size}`
         )}
       />
-    );
-  },
-);
-
-Pagination.propTypes = propTypes;
-Pagination.displayName = 'Pagination';
-
+    )
+  }
+)
+Pagination.propTypes = propTypes
+Pagination.displayName = "Pagination"
 export default Object.assign(Pagination, {
   First,
   Prev,
@@ -63,4 +55,4 @@ export default Object.assign(Pagination, {
   Item: PageItem,
   Next,
   Last,
-});
+})

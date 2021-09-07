@@ -1,5 +1,4 @@
-import * as React from 'react';
-
+import * as React from "react"
 /**
  * Iterates through children that are typically specified as `props.children`,
  * but only maps over children that are "valid elements".
@@ -10,15 +9,13 @@ import * as React from 'react';
  */
 function map<P = any>(
   children,
-  func: (el: React.ReactElement<P>, index: number) => any,
+  func: (el: React.ReactElement<P>, index: number) => any
 ) {
-  let index = 0;
-
-  return React.Children.map(children, (child) =>
-    React.isValidElement<P>(child) ? func(child, index++) : child,
-  );
+  let index = 0
+  return React.Children.map(children, child =>
+    React.isValidElement<P>(child) ? func(child, index++) : child
+  )
 }
-
 /**
  * Iterates through children that are "valid elements".
  *
@@ -27,12 +24,11 @@ function map<P = any>(
  */
 function forEach<P = any>(
   children,
-  func: (el: React.ReactElement<P>, index: number) => void,
+  func: (el: React.ReactElement<P>, index: number) => void
 ) {
-  let index = 0;
-  React.Children.forEach(children, (child) => {
-    if (React.isValidElement<P>(child)) func(child, index++);
-  });
+  let index = 0
+  React.Children.forEach(children, child => {
+    if (React.isValidElement<P>(child)) func(child, index++)
+  })
 }
-
-export { map, forEach };
+export { map, forEach }

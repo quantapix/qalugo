@@ -1,64 +1,52 @@
-import PropTypes from 'prop-types';
-import * as React from 'react';
-import { useContext, useMemo } from 'react';
-
+import PropTypes from "prop-types"
+import * as React from "react"
+import { useContext, useMemo } from "react"
 export interface ThemeContextValue {
-  prefixes: Record<string, string>;
-  dir?: string;
+  prefixes: Record<string, string>
+  dir?: string
 }
-
 export interface ThemeProviderProps extends Partial<ThemeContextValue> {
-  children: React.ElementType;
+  children: React.ElementType
 }
-
-const ThemeContext = React.createContext<ThemeContextValue>({ prefixes: {} });
-const { Consumer, Provider } = ThemeContext;
-
+const ThemeContext = React.createContext<ThemeContextValue>({ prefixes: {} })
+const { Consumer, Provider } = ThemeContext
 function ThemeProvider({ prefixes = {}, dir, children }: ThemeProviderProps) {
   const contextValue = useMemo(
     () => ({
       prefixes: { ...prefixes },
       dir,
     }),
-    [prefixes, dir],
-  );
-
-  return <Provider value={contextValue}>{children}</Provider>;
+    [prefixes, dir]
+  )
+  return <Provider value={contextValue}>{children}</Provider>
 }
-
 ThemeProvider.propTypes = {
   prefixes: PropTypes.object,
   dir: PropTypes.string,
-} as any;
-
+} as any
 export function useBootstrapPrefix(
   prefix: string | undefined,
-  defaultPrefix: string,
+  defaultPrefix: string
 ): string {
-  const { prefixes } = useContext(ThemeContext);
-  return prefix || prefixes[defaultPrefix] || defaultPrefix;
+  const { prefixes } = useContext(ThemeContext)
+  return prefix || prefixes[defaultPrefix] || defaultPrefix
 }
-
 export function useIsRTL() {
-  const { dir } = useContext(ThemeContext);
-  return dir === 'rtl';
+  const { dir } = useContext(ThemeContext)
+  return dir === "rtl"
 }
-
 function createBootstrapComponent(Component, opts) {
-  if (typeof opts === 'string') opts = { prefix: opts };
-  const isClassy = Component.prototype && Component.prototype.isReactComponent;
+  if (typeof opts === "string") opts = { prefix: opts }
+  const isClassy = Component.prototype && Component.prototype.isReactComponent
   // If it's a functional component make sure we don't break it with a ref
-  const { prefix, forwardRefAs = isClassy ? 'ref' : 'innerRef' } = opts;
-
+  const { prefix, forwardRefAs = isClassy ? "ref" : "innerRef" } = opts
   const Wrapped = React.forwardRef(({ ...props }, ref) => {
-    props[forwardRefAs] = ref;
-    const bsPrefix = useBootstrapPrefix((props as any).bsPrefix, prefix);
-    return <Component {...props} bsPrefix={bsPrefix} />;
-  });
-
-  Wrapped.displayName = `Bootstrap(${Component.displayName || Component.name})`;
-  return Wrapped;
+    props[forwardRefAs] = ref
+    const bsPrefix = useBootstrapPrefix((props as any).bsPrefix, prefix)
+    return <Component {...props} bsPrefix={bsPrefix} />
+  })
+  Wrapped.displayName = `Bootstrap(${Component.displayName || Component.name})`
+  return Wrapped
 }
-
-export { createBootstrapComponent, Consumer as ThemeConsumer };
-export default ThemeProvider;
+export { createBootstrapComponent, Consumer as ThemeConsumer }
+export default ThemeProvider

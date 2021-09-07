@@ -1,26 +1,24 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { ButtonType } from '@restart/ui/Button';
-import Button from './Button';
-import ButtonGroup from './ButtonGroup';
-import Dropdown, { DropdownProps } from './Dropdown';
-import { PropsFromToggle } from './DropdownToggle';
-import { BsPrefixProps } from './helpers';
-import { alignPropType } from './types';
-
+import * as React from "react"
+import PropTypes from "prop-types"
+import { ButtonType } from "@restart/ui/Button"
+import Button from "./Button"
+import ButtonGroup from "./ButtonGroup"
+import Dropdown, { DropdownProps } from "./Dropdown"
+import { PropsFromToggle } from "./DropdownToggle"
+import { BsPrefixProps } from "./helpers"
+import { alignPropType } from "./types"
 export interface SplitButtonProps
-  extends Omit<DropdownProps, 'title'>,
+  extends Omit<DropdownProps, "title">,
     PropsFromToggle,
     BsPrefixProps {
-  menuRole?: string;
-  renderMenuOnMount?: boolean;
-  rootCloseEvent?: 'click' | 'mousedown';
-  target?: string;
-  title: React.ReactNode;
-  toggleLabel?: string;
-  type?: ButtonType;
+  menuRole?: string
+  renderMenuOnMount?: boolean
+  rootCloseEvent?: "click" | "mousedown"
+  target?: string
+  title: React.ReactNode
+  toggleLabel?: string
+  type?: ButtonType
 }
-
 const propTypes = {
   /**
    * An html id attribute for the Toggle button, necessary for assistive technologies, such as screen readers.
@@ -28,30 +26,22 @@ const propTypes = {
    * @required
    */
   id: PropTypes.string,
-
   /**
    * Accessible label for the toggle; the value of `title` if not specified.
    */
   toggleLabel: PropTypes.string,
-
   /** An `href` passed to the non-toggle Button */
   href: PropTypes.string,
-
   /** An anchor `target` passed to the non-toggle Button */
   target: PropTypes.string,
-
   /** An `onClick` handler passed to the non-toggle Button */
   onClick: PropTypes.func,
-
   /** The content of the non-toggle Button.  */
   title: PropTypes.node.isRequired,
-
   /** A `type` passed to the non-toggle Button */
   type: PropTypes.string,
-
   /** Disables both Buttons  */
   disabled: PropTypes.bool,
-
   /**
    * Aligns the dropdown menu.
    *
@@ -60,33 +50,27 @@ const propTypes = {
    * @type {"start"|"end"|{ sm: "start"|"end" }|{ md: "start"|"end" }|{ lg: "start"|"end" }|{ xl: "start"|"end"}|{ xxl: "start"|"end"} }
    */
   align: alignPropType,
-
   /** An ARIA accessible role applied to the Menu component. When set to 'menu', The dropdown */
   menuRole: PropTypes.string,
-
   /** Whether to render the dropdown menu in the DOM before the first time it is shown */
   renderMenuOnMount: PropTypes.bool,
-
   /**
    *  Which event when fired outside the component will cause it to be closed.
    *
    * _see [DropdownMenu](#dropdown-menu-props) for more details_
    */
   rootCloseEvent: PropTypes.string,
-
   /** @ignore */
   bsPrefix: PropTypes.string,
   /** @ignore */
   variant: PropTypes.string,
   /** @ignore */
   size: PropTypes.string,
-};
-
+}
 const defaultProps: Partial<SplitButtonProps> = {
-  toggleLabel: 'Toggle dropdown',
-  type: 'button',
-};
-
+  toggleLabel: "Toggle dropdown",
+  type: "button",
+}
 /**
  * A convenience component for simple or general use split button dropdowns. Renders a
  * `ButtonGroup` containing a `Button` and a `Button` toggle for the `Dropdown`. All `children`
@@ -116,7 +100,7 @@ const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
       rootCloseEvent,
       ...props
     },
-    ref,
+    ref
   ) => (
     <Dropdown ref={ref} {...props} as={ButtonGroup}>
       <Button
@@ -141,7 +125,6 @@ const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
       >
         <span className="visually-hidden">{toggleLabel}</span>
       </Dropdown.Toggle>
-
       <Dropdown.Menu
         role={menuRole}
         renderOnMount={renderMenuOnMount}
@@ -150,11 +133,9 @@ const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
         {children}
       </Dropdown.Menu>
     </Dropdown>
-  ),
-);
-
-SplitButton.propTypes = propTypes as any;
-SplitButton.defaultProps = defaultProps;
-SplitButton.displayName = 'SplitButton';
-
-export default SplitButton;
+  )
+)
+SplitButton.propTypes = propTypes as any
+SplitButton.defaultProps = defaultProps
+SplitButton.displayName = "SplitButton"
+export default SplitButton

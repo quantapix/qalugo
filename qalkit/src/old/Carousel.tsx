@@ -1,12 +1,12 @@
-import useEventCallback from '@restart/hooks/useEventCallback';
-import useUpdateEffect from '@restart/hooks/useUpdateEffect';
-import useCommittedRef from '@restart/hooks/useCommittedRef';
-import useTimeout from '@restart/hooks/useTimeout';
-import Anchor from '@restart/ui/Anchor';
-import classNames from 'classnames';
-import { TransitionStatus } from 'react-transition-group/Transition';
-import PropTypes from 'prop-types';
-import * as React from 'react';
+import useEventCallback from "@restart/hooks/useEventCallback"
+import useUpdateEffect from "@restart/hooks/useUpdateEffect"
+import useCommittedRef from "@restart/hooks/useCommittedRef"
+import useTimeout from "@restart/hooks/useTimeout"
+import Anchor from "@restart/ui/Anchor"
+import classNames from "classnames"
+import { TransitionStatus } from "react-transition-group/Transition"
+import PropTypes from "prop-types"
+import * as React from "react"
 import {
   useCallback,
   useEffect,
@@ -14,90 +14,78 @@ import {
   useMemo,
   useRef,
   useState,
-} from 'react';
-import { useUncontrolled } from 'uncontrollable';
-import CarouselCaption from './CarouselCaption';
-import CarouselItem from './CarouselItem';
-import { map, forEach } from './ElementChildren';
-import { useBootstrapPrefix, useIsRTL } from './ThemeProvider';
-import transitionEndListener from './transitionEndListener';
-import triggerBrowserReflow from './triggerBrowserReflow';
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from './helpers';
-import TransitionWrapper from './TransitionWrapper';
-
-export type CarouselVariant = 'dark';
-
+} from "react"
+import { useUncontrolled } from "uncontrollable"
+import CarouselCaption from "./CarouselCaption"
+import CarouselItem from "./CarouselItem"
+import { map, forEach } from "./ElementChildren"
+import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
+import transitionEndListener from "./transitionEndListener"
+import triggerBrowserReflow from "./triggerBrowserReflow"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import TransitionWrapper from "./TransitionWrapper"
+export type CarouselVariant = "dark"
 export interface CarouselRef {
-  element?: HTMLElement;
-  prev: (e?: React.SyntheticEvent) => void;
-  next: (e?: React.SyntheticEvent) => void;
+  element?: HTMLElement
+  prev: (e?: React.SyntheticEvent) => void
+  next: (e?: React.SyntheticEvent) => void
 }
-
 export interface CarouselProps
   extends BsPrefixProps,
-    Omit<React.HTMLAttributes<HTMLElement>, 'onSelect'> {
-  slide?: boolean;
-  fade?: boolean;
-  controls?: boolean;
-  indicators?: boolean;
-  indicatorLabels?: string[];
-  activeIndex?: number;
-  onSelect?: (eventKey: number, event: Record<string, unknown> | null) => void;
-  defaultActiveIndex?: number;
-  onSlide?: (eventKey: number, direction: 'start' | 'end') => void;
-  onSlid?: (eventKey: number, direction: 'start' | 'end') => void;
-  interval?: number | null;
-  keyboard?: boolean;
-  pause?: 'hover' | false;
-  wrap?: boolean;
-  touch?: boolean;
-  prevIcon?: React.ReactNode;
-  prevLabel?: React.ReactNode;
-  nextIcon?: React.ReactNode;
-  nextLabel?: React.ReactNode;
-  ref?: React.Ref<CarouselRef>;
-  variant?: CarouselVariant;
+    Omit<React.HTMLAttributes<HTMLElement>, "onSelect"> {
+  slide?: boolean
+  fade?: boolean
+  controls?: boolean
+  indicators?: boolean
+  indicatorLabels?: string[]
+  activeIndex?: number
+  onSelect?: (eventKey: number, event: Record<string, unknown> | null) => void
+  defaultActiveIndex?: number
+  onSlide?: (eventKey: number, direction: "start" | "end") => void
+  onSlid?: (eventKey: number, direction: "start" | "end") => void
+  interval?: number | null
+  keyboard?: boolean
+  pause?: "hover" | false
+  wrap?: boolean
+  touch?: boolean
+  prevIcon?: React.ReactNode
+  prevLabel?: React.ReactNode
+  nextIcon?: React.ReactNode
+  nextLabel?: React.ReactNode
+  ref?: React.Ref<CarouselRef>
+  variant?: CarouselVariant
 }
-
-const SWIPE_THRESHOLD = 40;
-
+const SWIPE_THRESHOLD = 40
 const propTypes = {
   /**
    * @default 'carousel'
    */
   bsPrefix: PropTypes.string,
   as: PropTypes.elementType,
-
   /**
    * Enables animation on the Carousel as it transitions between slides.
    */
   slide: PropTypes.bool,
-
   /** Animates slides with a crossfade animation instead of the default slide animation */
   fade: PropTypes.bool,
-
   /**
    * Show the Carousel previous and next arrows for changing the current slide
    */
   controls: PropTypes.bool,
-
   /**
    * Show a set of slide position indicators
    */
   indicators: PropTypes.bool,
-
   /**
    * An array of labels for the indicators. Defaults to "Slide #" if not provided.
    */
   indicatorLabels: PropTypes.array,
-
   /**
    * Controls the current visible slide
    *
    * @controllable onSelect
    */
   activeIndex: PropTypes.number,
-
   /**
    * Callback fired when the active item changes.
    *
@@ -108,7 +96,6 @@ const propTypes = {
    * @controllable activeIndex
    */
   onSelect: PropTypes.func,
-
   /**
    * Callback fired when a slide transition starts.
    *
@@ -116,7 +103,6 @@ const propTypes = {
    * (eventKey: number, direction: 'left' | 'right') => void
    */
   onSlide: PropTypes.func,
-
   /**
    * Callback fired when a slide transition ends.
    *
@@ -124,57 +110,46 @@ const propTypes = {
    * (eventKey: number, direction: 'left' | 'right') => void
    */
   onSlid: PropTypes.func,
-
   /**
    * The amount of time to delay between automatically cycling an item. If `null`, carousel will not automatically cycle.
    */
   interval: PropTypes.number,
-
   /** Whether the carousel should react to keyboard events. */
   keyboard: PropTypes.bool,
-
   /**
    * If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won't pause it.
    *
    * On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. Note that this is in addition to the above mouse behavior.
    */
-  pause: PropTypes.oneOf(['hover', false]),
-
+  pause: PropTypes.oneOf(["hover", false]),
   /** Whether the carousel should cycle continuously or have hard stops. */
   wrap: PropTypes.bool,
-
   /**
    * Whether the carousel should support left/right swipe interactions on touchscreen devices.
    */
   touch: PropTypes.bool,
-
   /** Override the default button icon for the "previous" control */
   prevIcon: PropTypes.node,
-
   /**
    * Label shown to screen readers only, can be used to show the previous element
    * in the carousel.
    * Set to null to deactivate.
    */
   prevLabel: PropTypes.string,
-
   /** Override the default button icon for the "next" control */
   nextIcon: PropTypes.node,
-
   /**
    * Label shown to screen readers only, can be used to show the next element
    * in the carousel.
    * Set to null to deactivate.
    */
   nextLabel: PropTypes.string,
-
   /**
    * Color variant that controls the colors of the controls, indicators
    * and captions.
    */
-  variant: PropTypes.oneOf<CarouselVariant>(['dark']),
-};
-
+  variant: PropTypes.oneOf<CarouselVariant>(["dark"]),
+}
 const defaultProps = {
   slide: true,
   fade: false,
@@ -184,17 +159,14 @@ const defaultProps = {
   defaultActiveIndex: 0,
   interval: 5000,
   keyboard: true,
-  pause: 'hover' as CarouselProps['pause'],
+  pause: "hover" as CarouselProps["pause"],
   wrap: true,
   touch: true,
-
   prevIcon: <span aria-hidden="true" className="carousel-control-prev-icon" />,
-  prevLabel: 'Previous',
-
+  prevLabel: "Previous",
   nextIcon: <span aria-hidden="true" className="carousel-control-next-icon" />,
-  nextLabel: 'Next',
-};
-
+  nextLabel: "Next",
+}
 function isVisible(element) {
   if (
     !element ||
@@ -202,23 +174,20 @@ function isVisible(element) {
     !element.parentNode ||
     !element.parentNode.style
   ) {
-    return false;
+    return false
   }
-
-  const elementStyle = getComputedStyle(element);
-
+  const elementStyle = getComputedStyle(element)
   return (
-    elementStyle.display !== 'none' &&
-    elementStyle.visibility !== 'hidden' &&
-    getComputedStyle(element.parentNode).display !== 'none'
-  );
+    elementStyle.display !== "none" &&
+    elementStyle.visibility !== "hidden" &&
+    getComputedStyle(element.parentNode).display !== "none"
+  )
 }
-
-const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
+const Carousel: BsPrefixRefForwardingComponent<"div", CarouselProps> =
   React.forwardRef<CarouselRef, CarouselProps>((uncontrolledProps, ref) => {
     const {
       // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
-      as: Component = 'div',
+      as: Component = "div",
       bsPrefix,
       slide,
       fade,
@@ -249,272 +218,220 @@ const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
       children,
       ...props
     } = useUncontrolled(uncontrolledProps, {
-      activeIndex: 'onSelect',
-    });
-
-    const prefix = useBootstrapPrefix(bsPrefix, 'carousel');
-    const isRTL = useIsRTL();
-
-    const nextDirectionRef = useRef<string | null>(null);
-    const [direction, setDirection] = useState('next');
-    const [paused, setPaused] = useState(false);
-    const [isSliding, setIsSliding] = useState(false);
+      activeIndex: "onSelect",
+    })
+    const prefix = useBootstrapPrefix(bsPrefix, "carousel")
+    const isRTL = useIsRTL()
+    const nextDirectionRef = useRef<string | null>(null)
+    const [direction, setDirection] = useState("next")
+    const [paused, setPaused] = useState(false)
+    const [isSliding, setIsSliding] = useState(false)
     const [renderedActiveIndex, setRenderedActiveIndex] = useState<number>(
-      activeIndex || 0,
-    );
-
+      activeIndex || 0
+    )
     if (!isSliding && activeIndex !== renderedActiveIndex) {
       if (nextDirectionRef.current) {
-        setDirection(nextDirectionRef.current);
+        setDirection(nextDirectionRef.current)
       } else {
-        setDirection(
-          (activeIndex || 0) > renderedActiveIndex ? 'next' : 'prev',
-        );
+        setDirection((activeIndex || 0) > renderedActiveIndex ? "next" : "prev")
       }
-
       if (slide) {
-        setIsSliding(true);
+        setIsSliding(true)
       }
-
-      setRenderedActiveIndex(activeIndex || 0);
+      setRenderedActiveIndex(activeIndex || 0)
     }
-
     useEffect(() => {
       if (nextDirectionRef.current) {
-        nextDirectionRef.current = null;
+        nextDirectionRef.current = null
       }
-    });
-
-    let numChildren = 0;
-    let activeChildInterval: number | undefined;
-
+    })
+    let numChildren = 0
+    let activeChildInterval: number | undefined
     // Iterate to grab all of the children's interval values
     // (and count them, too)
     forEach(children, (child, index) => {
-      ++numChildren;
+      ++numChildren
       if (index === activeIndex) {
-        activeChildInterval = child.props.interval as number | undefined;
+        activeChildInterval = child.props.interval as number | undefined
       }
-    });
-
-    const activeChildIntervalRef = useCommittedRef(activeChildInterval);
-
+    })
+    const activeChildIntervalRef = useCommittedRef(activeChildInterval)
     const prev = useCallback(
       (event?) => {
         if (isSliding) {
-          return;
+          return
         }
-
-        let nextActiveIndex = renderedActiveIndex - 1;
+        let nextActiveIndex = renderedActiveIndex - 1
         if (nextActiveIndex < 0) {
           if (!wrap) {
-            return;
+            return
           }
-
-          nextActiveIndex = numChildren - 1;
+          nextActiveIndex = numChildren - 1
         }
-
-        nextDirectionRef.current = 'prev';
-        onSelect?.(nextActiveIndex, event);
+        nextDirectionRef.current = "prev"
+        onSelect?.(nextActiveIndex, event)
       },
-      [isSliding, renderedActiveIndex, onSelect, wrap, numChildren],
-    );
-
+      [isSliding, renderedActiveIndex, onSelect, wrap, numChildren]
+    )
     // This is used in the setInterval, so it should not invalidate.
     const next = useEventCallback((event?) => {
       if (isSliding) {
-        return;
+        return
       }
-
-      let nextActiveIndex = renderedActiveIndex + 1;
+      let nextActiveIndex = renderedActiveIndex + 1
       if (nextActiveIndex >= numChildren) {
         if (!wrap) {
-          return;
+          return
         }
-
-        nextActiveIndex = 0;
+        nextActiveIndex = 0
       }
-
-      nextDirectionRef.current = 'next';
-
-      onSelect?.(nextActiveIndex, event);
-    });
-
-    const elementRef = useRef<HTMLElement>();
-
+      nextDirectionRef.current = "next"
+      onSelect?.(nextActiveIndex, event)
+    })
+    const elementRef = useRef<HTMLElement>()
     useImperativeHandle(ref, () => ({
       element: elementRef.current,
       prev,
       next,
-    }));
-
+    }))
     // This is used in the setInterval, so it should not invalidate.
     const nextWhenVisible = useEventCallback(() => {
       if (!document.hidden && isVisible(elementRef.current)) {
         if (isRTL) {
-          prev();
+          prev()
         } else {
-          next();
+          next()
         }
       }
-    });
-
-    const slideDirection = direction === 'next' ? 'start' : 'end';
-
+    })
+    const slideDirection = direction === "next" ? "start" : "end"
     useUpdateEffect(() => {
       if (slide) {
         // These callbacks will be handled by the <Transition> callbacks.
-        return;
+        return
       }
-
-      onSlide?.(renderedActiveIndex, slideDirection);
-      onSlid?.(renderedActiveIndex, slideDirection);
-    }, [renderedActiveIndex]);
-
-    const orderClassName = `${prefix}-item-${direction}`;
-    const directionalClassName = `${prefix}-item-${slideDirection}`;
-
+      onSlide?.(renderedActiveIndex, slideDirection)
+      onSlid?.(renderedActiveIndex, slideDirection)
+    }, [renderedActiveIndex])
+    const orderClassName = `${prefix}-item-${direction}`
+    const directionalClassName = `${prefix}-item-${slideDirection}`
     const handleEnter = useCallback(
-      (node) => {
-        triggerBrowserReflow(node);
-
-        onSlide?.(renderedActiveIndex, slideDirection);
+      node => {
+        triggerBrowserReflow(node)
+        onSlide?.(renderedActiveIndex, slideDirection)
       },
-      [onSlide, renderedActiveIndex, slideDirection],
-    );
-
+      [onSlide, renderedActiveIndex, slideDirection]
+    )
     const handleEntered = useCallback(() => {
-      setIsSliding(false);
-
-      onSlid?.(renderedActiveIndex, slideDirection);
-    }, [onSlid, renderedActiveIndex, slideDirection]);
-
+      setIsSliding(false)
+      onSlid?.(renderedActiveIndex, slideDirection)
+    }, [onSlid, renderedActiveIndex, slideDirection])
     const handleKeyDown = useCallback(
-      (event) => {
+      event => {
         if (keyboard && !/input|textarea/i.test(event.target.tagName)) {
           switch (event.key) {
-            case 'ArrowLeft':
-              event.preventDefault();
+            case "ArrowLeft":
+              event.preventDefault()
               if (isRTL) {
-                next(event);
+                next(event)
               } else {
-                prev(event);
+                prev(event)
               }
-              return;
-            case 'ArrowRight':
-              event.preventDefault();
+              return
+            case "ArrowRight":
+              event.preventDefault()
               if (isRTL) {
-                prev(event);
+                prev(event)
               } else {
-                next(event);
+                next(event)
               }
-              return;
+              return
             default:
           }
         }
-
-        onKeyDown?.(event);
+        onKeyDown?.(event)
       },
-      [keyboard, onKeyDown, prev, next, isRTL],
-    );
-
+      [keyboard, onKeyDown, prev, next, isRTL]
+    )
     const handleMouseOver = useCallback(
-      (event) => {
-        if (pause === 'hover') {
-          setPaused(true);
+      event => {
+        if (pause === "hover") {
+          setPaused(true)
         }
-
-        onMouseOver?.(event);
+        onMouseOver?.(event)
       },
-      [pause, onMouseOver],
-    );
-
+      [pause, onMouseOver]
+    )
     const handleMouseOut = useCallback(
-      (event) => {
-        setPaused(false);
-
-        onMouseOut?.(event);
+      event => {
+        setPaused(false)
+        onMouseOut?.(event)
       },
-      [onMouseOut],
-    );
-
-    const touchStartXRef = useRef(0);
-    const touchDeltaXRef = useRef(0);
-    const touchUnpauseTimeout = useTimeout();
-
+      [onMouseOut]
+    )
+    const touchStartXRef = useRef(0)
+    const touchDeltaXRef = useRef(0)
+    const touchUnpauseTimeout = useTimeout()
     const handleTouchStart = useCallback(
-      (event) => {
-        touchStartXRef.current = event.touches[0].clientX;
-        touchDeltaXRef.current = 0;
-
-        if (pause === 'hover') {
-          setPaused(true);
+      event => {
+        touchStartXRef.current = event.touches[0].clientX
+        touchDeltaXRef.current = 0
+        if (pause === "hover") {
+          setPaused(true)
         }
-
-        onTouchStart?.(event);
+        onTouchStart?.(event)
       },
-      [pause, onTouchStart],
-    );
-
+      [pause, onTouchStart]
+    )
     const handleTouchMove = useCallback(
-      (event) => {
+      event => {
         if (event.touches && event.touches.length > 1) {
-          touchDeltaXRef.current = 0;
+          touchDeltaXRef.current = 0
         } else {
           touchDeltaXRef.current =
-            event.touches[0].clientX - touchStartXRef.current;
+            event.touches[0].clientX - touchStartXRef.current
         }
-
-        onTouchMove?.(event);
+        onTouchMove?.(event)
       },
-      [onTouchMove],
-    );
-
+      [onTouchMove]
+    )
     const handleTouchEnd = useCallback(
-      (event) => {
+      event => {
         if (touch) {
-          const touchDeltaX = touchDeltaXRef.current;
-
+          const touchDeltaX = touchDeltaXRef.current
           if (Math.abs(touchDeltaX) > SWIPE_THRESHOLD) {
             if (touchDeltaX > 0) {
-              prev(event);
+              prev(event)
             } else {
-              next(event);
+              next(event)
             }
           }
         }
-
-        if (pause === 'hover') {
+        if (pause === "hover") {
           touchUnpauseTimeout.set(() => {
-            setPaused(false);
-          }, interval || undefined);
+            setPaused(false)
+          }, interval || undefined)
         }
-
-        onTouchEnd?.(event);
+        onTouchEnd?.(event)
       },
-      [touch, pause, prev, next, touchUnpauseTimeout, interval, onTouchEnd],
-    );
-
-    const shouldPlay = interval != null && !paused && !isSliding;
-
-    const intervalHandleRef = useRef<number | null>();
-
+      [touch, pause, prev, next, touchUnpauseTimeout, interval, onTouchEnd]
+    )
+    const shouldPlay = interval != null && !paused && !isSliding
+    const intervalHandleRef = useRef<number | null>()
     useEffect(() => {
       if (!shouldPlay) {
-        return undefined;
+        return undefined
       }
-
-      const nextFunc = isRTL ? prev : next;
+      const nextFunc = isRTL ? prev : next
       intervalHandleRef.current = window.setInterval(
         document.visibilityState ? nextWhenVisible : nextFunc,
-        activeChildIntervalRef.current ?? interval ?? undefined,
-      );
-
+        activeChildIntervalRef.current ?? interval ?? undefined
+      )
       return () => {
         if (intervalHandleRef.current !== null) {
-          clearInterval(intervalHandleRef.current);
+          clearInterval(intervalHandleRef.current)
         }
-      };
+      }
     }, [
       shouldPlay,
       prev,
@@ -523,17 +440,15 @@ const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
       interval,
       nextWhenVisible,
       isRTL,
-    ]);
-
+    ])
     const indicatorOnClicks = useMemo(
       () =>
         indicators &&
-        Array.from({ length: numChildren }, (_, index) => (event) => {
-          onSelect?.(index, event);
+        Array.from({ length: numChildren }, (_, index) => event => {
+          onSelect?.(index, event)
         }),
-      [indicators, numChildren, onSelect],
-    );
-
+      [indicators, numChildren, onSelect]
+    )
     return (
       <Component
         ref={elementRef}
@@ -547,9 +462,9 @@ const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
         className={classNames(
           className,
           prefix,
-          slide && 'slide',
+          slide && "slide",
           fade && `${prefix}-fade`,
-          variant && `${prefix}-${variant}`,
+          variant && `${prefix}-${variant}`
         )}
       >
         {indicators && (
@@ -564,7 +479,7 @@ const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
                     ? indicatorLabels[index]
                     : `Slide ${index + 1}`
                 }
-                className={index === renderedActiveIndex ? 'active' : undefined}
+                className={index === renderedActiveIndex ? "active" : undefined}
                 onClick={
                   indicatorOnClicks ? indicatorOnClicks[index] : undefined
                 }
@@ -573,11 +488,9 @@ const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
             ))}
           </div>
         )}
-
         <div className={`${prefix}-inner`}>
           {map(children, (child, index) => {
-            const isActive = index === renderedActiveIndex;
-
+            const isActive = index === renderedActiveIndex
             return slide ? (
               <TransitionWrapper
                 in={isActive}
@@ -587,17 +500,17 @@ const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
               >
                 {(
                   status: TransitionStatus,
-                  innerProps: Record<string, unknown>,
+                  innerProps: Record<string, unknown>
                 ) =>
                   React.cloneElement(child, {
                     ...innerProps,
                     className: classNames(
                       child.props.className,
-                      isActive && status !== 'entered' && orderClassName,
-                      (status === 'entered' || status === 'exiting') &&
-                        'active',
-                      (status === 'entering' || status === 'exiting') &&
-                        directionalClassName,
+                      isActive && status !== "entered" && orderClassName,
+                      (status === "entered" || status === "exiting") &&
+                        "active",
+                      (status === "entering" || status === "exiting") &&
+                        directionalClassName
                     ),
                   })
                 }
@@ -606,13 +519,12 @@ const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
               React.cloneElement(child, {
                 className: classNames(
                   child.props.className,
-                  isActive && 'active',
+                  isActive && "active"
                 ),
               })
-            );
+            )
           })}
         </div>
-
         {controls && (
           <>
             {(wrap || activeIndex !== 0) && (
@@ -634,14 +546,54 @@ const Carousel: BsPrefixRefForwardingComponent<'div', CarouselProps> =
           </>
         )}
       </Component>
-    );
-  });
-
-Carousel.displayName = 'Carousel';
-Carousel.propTypes = propTypes;
-Carousel.defaultProps = defaultProps;
-
+    )
+  })
+Carousel.displayName = "Carousel"
+Carousel.propTypes = propTypes
+Carousel.defaultProps = defaultProps
 export default Object.assign(Carousel, {
   Caption: CarouselCaption,
   Item: CarouselItem,
-});
+})
+import createWithBsPrefix from "./createWithBsPrefix"
+export default createWithBsPrefix("carousel-caption")
+import classNames from "classnames"
+import * as React from "react"
+import PropTypes from "prop-types"
+import { useBootstrapPrefix } from "./ThemeProvider"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+export interface CarouselItemProps
+  extends BsPrefixProps,
+    React.HTMLAttributes<HTMLElement> {
+  interval?: number
+}
+const propTypes = {
+  /** Set a custom element for this component */
+  as: PropTypes.elementType,
+  /** @default 'carousel-item' */
+  bsPrefix: PropTypes.string,
+  /** The amount of time to delay between automatically cycling this specific item. Will default to the Carousel's `interval` prop value if none is specified. */
+  interval: PropTypes.number,
+}
+const CarouselItem: BsPrefixRefForwardingComponent<"div", CarouselItemProps> =
+  React.forwardRef<HTMLElement, CarouselItemProps>(
+    (
+      {
+        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+        as: Component = "div",
+        bsPrefix,
+        className,
+        ...props
+      },
+      ref
+    ) => {
+      const finalClassName = classNames(
+        className,
+        useBootstrapPrefix(bsPrefix, "carousel-item")
+      )
+      return <Component ref={ref} {...props} className={finalClassName} />
+    }
+  )
+CarouselItem.displayName = "CarouselItem"
+CarouselItem.propTypes = propTypes
+export default CarouselItem
