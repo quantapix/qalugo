@@ -25,7 +25,7 @@ const propTypes = {
   bsPrefix: string,
   activeKey?: string,
   defaultActiveKey?: string,
-  flush: PropTypes.bool,
+  flush?: boolean,
 }
 const Accordion: BsPrefixRefForwardingComponent<"div", AccordionProps> =
   React.forwardRef<HTMLElement, AccordionProps>((props, ref) => {
@@ -124,7 +124,7 @@ export interface AccordionButtonProps
 const propTypes = {
   as: PropTypes.elementType,
   bsPrefix?: string,
-  onClick: PropTypes.func,
+  onClick?: () => void,
 }
 export function useAccordionButton(
   eventKey: string,
@@ -250,7 +250,7 @@ export interface AccordionHeaderProps
 const propTypes = {
   as: PropTypes.elementType,
   bsPrefix?: string,
-  onClick: PropTypes.func,
+  onClick?: () => void,
 }
 const AccordionHeader: BsPrefixRefForwardingComponent<
   "h2",

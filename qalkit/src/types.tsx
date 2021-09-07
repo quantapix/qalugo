@@ -41,12 +41,11 @@ export type ResponsiveAlignProp =
   | { xxl: AlignDirection }
 export type AlignType = AlignDirection | ResponsiveAlignProp
 const alignDirection = PropTypes.oneOf<AlignDirection>(["start", "end"])
-export const alignPropType = PropTypes.oneOfType([
-  alignDirection,
-  PropTypes.shape({ sm: alignDirection }),
-  PropTypes.shape({ md: alignDirection }),
-  PropTypes.shape({ lg: alignDirection }),
-  PropTypes.shape({ xl: alignDirection }),
+export const alignPropType = 
+  alignDirection |
+  PropTypes.shape({ sm: alignDirection }) |
+  PropTypes.shape({ md: alignDirection }) |
+  PropTypes.shape({ lg: alignDirection }) |
+  PropTypes.shape({ xl: alignDirection }) |
   PropTypes.shape({ xxl: alignDirection }),
-])
 export type RootCloseEvent = "click" | "mousedown"

@@ -19,7 +19,7 @@ export interface FormProps
 }
 const propTypes = {
   _ref: PropTypes.any,
-  validated: PropTypes.bool,
+  validated?: boolean,
   as: PropTypes.elementType,
 }
 const Form: BsPrefixRefForwardingComponent<"form", FormProps> =
@@ -85,20 +85,20 @@ const propTypes = {
   _ref: PropTypes.any,
   as: PropTypes.elementType,
   id?: string,
-  children: PropTypes.node,
-  inline: PropTypes.bool,
-  disabled: PropTypes.bool,
+  children?: React.ReactNode,
+  inline?: boolean,
+  disabled?: boolean,
   title?: string,
-  label: PropTypes.node,
-  type: PropTypes.oneOf(["radio", "checkbox", "switch"]),
+  label?: React.ReactNode,
+  type?: "radio" | "checkbox" | "switch",
 
-  isValid: PropTypes.bool,
+  isValid?: boolean,
 
-  isInvalid: PropTypes.bool,
+  isInvalid?: boolean,
 
-  feedbackTooltip: PropTypes.bool,
+  feedbackTooltip?: boolean,
 
-  feedback: PropTypes.node,
+  feedback?: React.ReactNode,
 }
 const FormCheck: BsPrefixRefForwardingComponent<"input", FormCheckProps> =
   React.forwardRef<HTMLInputElement, FormCheckProps>(
@@ -202,11 +202,11 @@ const propTypes = {
 
   id?: string,
 
-  type: PropTypes.oneOf(["radio", "checkbox"]).isRequired,
+  type: "radio" | "checkbox",
 
-  isValid: PropTypes.bool,
+  isValid?: boolean,
 
-  isInvalid: PropTypes.bool,
+  isInvalid?: boolean,
 }
 const FormCheckInput: BsPrefixRefForwardingComponent<
   "input",
@@ -312,26 +312,24 @@ const propTypes = {
   bsPrefix?: string,
   _ref: PropTypes.any,
   size?: string,
-  htmlSize: PropTypes.number,
+  htmlSize?: number,
   as: PropTypes.elementType,
-  plaintext: PropTypes.bool,
+  plaintext?: boolean,
 
-  readOnly: PropTypes.bool,
+  readOnly?: boolean,
 
-  disabled: PropTypes.bool,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.number,
-  ]),
-
-  onChange: PropTypes.func,
+  disabled?: boolean,
+  value?:
+    string |
+    string[] |
+    number,
+  onChange?: () => void,
   type?: string,
   id?: string,
 
-  isValid: PropTypes.bool,
+  isValid?: boolean,
 
-  isInvalid: PropTypes.bool,
+  isInvalid?: boolean,
 }
 const FormControl: BsPrefixRefForwardingComponent<"input", FormControlProps> =
   React.forwardRef<FormControlElement, FormControlProps>(
@@ -452,9 +450,9 @@ export type FormLabelProps = FormLabelWithColProps | FormLabelOwnProps
 const propTypes = {
   bsPrefix?: string,
   htmlFor?: string,
-  column: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["sm", "lg"])]),
-  _ref: PropTypes.any,
-  visuallyHidden: PropTypes.bool,
+  column?: boolean | "sm" | "lg",
+  _ref?: any,
+  visuallyHidden?: boolean,
 
   as: PropTypes.elementType,
 }
@@ -525,14 +523,12 @@ export interface FormRangeProps
 const propTypes = {
   bsPrefix?: string,
 
-  disabled: PropTypes.bool,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(string),
-    PropTypes.number,
-  ]),
-
-  onChange: PropTypes.func,
+  disabled?: boolean,
+  value?:
+    string |
+    string[] |
+    number,
+  onChange?: () => void,
   id?: string,
 }
 const FormRange = React.forwardRef<HTMLInputElement, FormRangeProps>(
@@ -571,20 +567,18 @@ export interface FormSelectProps
 const propTypes = {
   bsPrefix?: string,
   size?: string,
-  htmlSize: PropTypes.number,
+  htmlSize?: number,
 
-  disabled: PropTypes.bool,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.number,
-  ]),
+  disabled?: boolean,
+  value?:
+    string |
+    string[] |
+    number,
+  onChange?: () => void,
 
-  onChange: PropTypes.func,
+  isValid?: boolean,
 
-  isValid: PropTypes.bool,
-
-  isInvalid: PropTypes.bool,
+  isInvalid?: boolean,
 }
 const FormSelect: BsPrefixRefForwardingComponent<"select", FormSelectProps> =
   React.forwardRef<HTMLSelectElement, FormSelectProps>(
@@ -637,7 +631,7 @@ const propTypes = {
 
   bsPrefix?: string,
   _ref: PropTypes.any,
-  muted: PropTypes.bool,
+  muted?: boolean,
   as: PropTypes.elementType,
 }
 const FormText: BsPrefixRefForwardingComponent<"small", FormTextProps> =

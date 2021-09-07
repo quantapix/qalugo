@@ -32,15 +32,15 @@ const propTypes = {
 
   bsPrefix?: string,
   variant?: string,
-  expand: PropTypes.oneOf([true, "sm", "md", "lg", "xl", "xxl"]).isRequired,
+  expand: true | "sm" | "md" | "lg" | "xl" | "xxl",
   bg?: string,
-  fixed: PropTypes.oneOf(["top", "bottom"]),
-  sticky: PropTypes.oneOf(["top"]),
+  fixed?: "top" | "bottom",
+  sticky?: "top",
   as: PropTypes.elementType,
-  onToggle: PropTypes.func,
-  onSelect: PropTypes.func,
-  collapseOnSelect: PropTypes.bool,
-  expanded: PropTypes.bool,
+  onToggle?: () => void,
+  onSelect?: () => void,
+  collapseOnSelect?: boolean,
+  expanded?: boolean,
   role?: string,
 }
 const defaultProps = {
@@ -211,8 +211,8 @@ const propTypes = {
 
   label?: string,
 
-  onClick: PropTypes.func,
-  children: PropTypes.node,
+  onClick?: () => void,
+  children?: React.ReactNode,
   as: PropTypes.elementType,
 }
 const defaultProps = {

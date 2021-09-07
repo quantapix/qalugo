@@ -44,17 +44,17 @@ function onlyProgressBar(props, propName, componentName): Error | null {
   return error
 }
 const propTypes = {
-  min: PropTypes.number,
-  now: PropTypes.number,
-  max: PropTypes.number,
-  label: PropTypes.node,
-  visuallyHidden: PropTypes.bool,
-  striped: PropTypes.bool,
-  animated: PropTypes.bool,
+  min?: number,
+  now?: number,
+  max?: number,
+  label?: React.ReactNode,
+  visuallyHidden?: boolean,
+  striped?: boolean,
+  animated?: boolean,
   bsPrefix?: string,
   variant?: string,
   children: onlyProgressBar,
-  isChild: PropTypes.bool,
+  isChild?: boolean,
 }
 const defaultProps = {
   min: 0,

@@ -27,13 +27,13 @@ const propTypes = {
 
   target?: string,
 
-  onClick: PropTypes.func,
+  onClick?: () => void,
 
-  title: PropTypes.node.isRequired,
+  title: React.ReactNode,
 
   type?: string,
 
-  disabled: PropTypes.bool,
+  disabled?: boolean,
   /**
    * @type {"start"|"end"|{ sm: "start"|"end" }|{ md: "start"|"end" }|{ lg: "start"|"end" }|{ xl: "start"|"end"}|{ xxl: "start"|"end"} }
    */
@@ -41,7 +41,7 @@ const propTypes = {
 
   menuRole?: string,
 
-  renderMenuOnMount: PropTypes.bool,
+  renderMenuOnMount?: boolean,
   rootCloseEvent?: string,
 
   bsPrefix?: string,

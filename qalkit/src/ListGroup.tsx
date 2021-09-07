@@ -15,8 +15,8 @@ export interface ListGroupProps extends BsPrefixProps, BaseNavProps {
 }
 const propTypes = {
   bsPrefix?: string,
-  variant: PropTypes.oneOf(["flush"]),
-  horizontal: PropTypes.oneOf([true, "sm", "md", "lg", "xl", "xxl"]),
+  variant?: "flush",
+  horizontal?: true | "sm" | "md" | "lg" | "xl" | "xxl",
   as: PropTypes.elementType,
 }
 const ListGroup: BsPrefixRefForwardingComponent<"div", ListGroupProps> =
@@ -80,11 +80,11 @@ export interface ListGroupItemProps
 const propTypes = {
   bsPrefix?: string,
   variant?: string,
-  action: PropTypes.bool,
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
-  eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onClick: PropTypes.func,
+  action?: boolean,
+  active?: boolean,
+  disabled?: boolean,
+  eventKey?: string | number,
+  onClick?: () => void,
   href?: string,
   as: PropTypes.elementType,
 }

@@ -15,13 +15,13 @@ export interface PageItemProps
 }
 const propTypes = {
 
-  disabled: PropTypes.bool,
+  disabled?: boolean,
 
-  active: PropTypes.bool,
+  active?: boolean,
 
   activeLabel?: string,
 
-  onClick: PropTypes.func,
+  onClick?: () => void,
 }
 const defaultProps = {
   active: false,

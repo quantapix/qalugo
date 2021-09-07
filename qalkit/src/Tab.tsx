@@ -10,9 +10,9 @@ export interface TabProps extends Omit<TabPaneProps, "title"> {
 }
 /* eslint-disable react/no-unused-prop-types */
 const propTypes = {
-  eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  title: PropTypes.node.isRequired,
-  disabled: PropTypes.bool,
+  eventKey?: string | number,
+  title: React.ReactNode,
+  disabled?: boolean,
   tabClassName?: string,
 }
 const Tab: React.FC<TabProps> = () => {
@@ -43,15 +43,12 @@ const propTypes = {
    * @type {{Transition | false}}
    * @default {Fade}
    */
-  transition: PropTypes.oneOfType([
-    PropTypes.oneOf([false]),
-    PropTypes.elementType,
-  ]),
-  mountOnEnter: PropTypes.bool,
-  unmountOnExit: PropTypes.bool,
-  generateChildId: PropTypes.func,
-  onSelect: PropTypes.func,
-  activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  transition?: false | PropTypes.elementType,
+  mountOnEnter?: boolean,
+  unmountOnExit?: boolean,
+  generateChildId?: () => void,
+  onSelect?: () => void,
+  activeKey?: string | number,
 }
 const TabContainer = ({ transition, ...props }: TabContainerProps) => (
   <Tabs {...props} transition={getTabTransitionComponent(transition)} />
@@ -89,17 +86,17 @@ export interface TabPaneProps
 const propTypes = {
   bsPrefix?: string,
   as: PropTypes.elementType,
-  eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  active: PropTypes.bool,
-  transition: PropTypes.oneOfType([PropTypes.bool, PropTypes.elementType]),
-  onEnter: PropTypes.func,
-  onEntering: PropTypes.func,
-  onEntered: PropTypes.func,
-  onExit: PropTypes.func,
-  onExiting: PropTypes.func,
-  onExited: PropTypes.func,
-  mountOnEnter: PropTypes.bool,
-  unmountOnExit: PropTypes.bool,
+  eventKey?: string | number,
+  active?: boolean,
+  transition?: boolean | PropTypes.elementType,
+  onEnter?: () => void,
+  onEntering?: () => void,
+  onEntered?: () => void,
+  onExit?: () => void,
+  onExiting?: () => void,
+  onExited?: () => void,
+  mountOnEnter?: boolean,
+  unmountOnExit?: boolean,
 
   id?: string,
 

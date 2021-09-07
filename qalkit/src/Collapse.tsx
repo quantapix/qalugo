@@ -54,22 +54,21 @@ const collapseStyles = {
   [ENTERED]: "collapse show",
 }
 const propTypes = {
-  in: PropTypes.bool,
-  mountOnEnter: PropTypes.bool,
-  unmountOnExit: PropTypes.bool,
-  appear: PropTypes.bool,
-  timeout: PropTypes.number,
-  onEnter: PropTypes.func,
-  onEntering: PropTypes.func,
-  onEntered: PropTypes.func,
-  onExit: PropTypes.func,
-  onExiting: PropTypes.func,
-  onExited: PropTypes.func,
-  dimension: PropTypes.oneOfType([
-    PropTypes.oneOf(["height", "width"]),
+  in?: boolean,
+  mountOnEnter?: boolean,
+  unmountOnExit?: boolean,
+  appear?: boolean,
+  timeout?: number,
+  onEnter?: () => void,
+  onEntering?: () => void,
+  onEntered?: () => void,
+  onExit?: () => void,
+  onExiting?: () => void,
+  onExited?: () => void,
+  dimension?: "height" | "width" |
     PropTypes.func,
-  ]),
-  getDimensionValue: PropTypes.func,
+  
+  getDimensionValue?: () => void,
   role?: string,
   children: PropTypes.element.isRequired,
 }

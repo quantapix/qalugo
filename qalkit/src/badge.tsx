@@ -15,7 +15,7 @@ const propTypes = {
 
   bsPrefix?: string,
   bg?: string,
-  pill: PropTypes.bool,
+  pill?: boolean,
   text?: string,
 
   as: PropTypes.elementType,

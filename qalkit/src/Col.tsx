@@ -34,21 +34,20 @@ export interface ColProps
   xxl?: ColSpec
 }
 const DEVICE_SIZES = ["xxl", "xl", "lg", "md", "sm", "xs"] as const
-const colSize = PropTypes.oneOfType([
-  PropTypes.bool,
-  PropTypes.number,
-  PropTypes.string,
-  PropTypes.oneOf(["auto"]),
-])
-const stringOrNumber = PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-const column = PropTypes.oneOfType([
-  colSize,
+const colSize = 
+  boolean |
+  number |
+  string |
+  "auto" 
+
+const stringOrNumber = number | string
+const column = 
+  colSize |
   PropTypes.shape({
     size: colSize,
     order: stringOrNumber,
     offset: stringOrNumber,
-  }),
-])
+  })
 const propTypes = {
   bsPrefix?: string,
   as: PropTypes.elementType,

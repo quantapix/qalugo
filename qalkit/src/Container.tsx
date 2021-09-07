@@ -8,10 +8,9 @@ export interface ContainerProps
     React.HTMLAttributes<HTMLElement> {
   fluid?: boolean | "sm" | "md" | "lg" | "xl" | "xxl"
 }
-const containerSizes = PropTypes.oneOfType([
-  PropTypes.bool,
-  PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
-])
+const containerSizes =
+  boolean |
+  "sm" | "md" | "lg" | "xl" | "xxl"
 const propTypes = {
   bsPrefix?: string,
   fluid: containerSizes,

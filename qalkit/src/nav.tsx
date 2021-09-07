@@ -29,18 +29,18 @@ const propTypes = {
 
   cardHeaderBsPrefix?: string,
   variant?: string,
-  activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  fill: PropTypes.bool,
-  justify: all(PropTypes.bool, ({ justify, navbar }) =>
+  activeKey?: string | number,
+  fill?: boolean,
+  justify: all(boolean, ({ justify, navbar }) =>
     justify && navbar ? Error("justify navbar `Nav`s are not supported") : null
   ),
-  onSelect: PropTypes.func,
+  onSelect?: () => void,
   role?: string,
-  navbar: PropTypes.bool,
-  navbarScroll: PropTypes.bool,
+  navbar?: boolean,
+  navbarScroll?: boolean,
   as: PropTypes.elementType,
 
-  onKeyDown: PropTypes.func,
+  onKeyDown?: () => void,
 }
 const defaultProps = {
   justify: false,
@@ -131,17 +131,17 @@ export interface NavDropdownProps
 const propTypes = {
   id?: string,
 
-  onClick: PropTypes.func,
+  onClick?: () => void,
 
-  title: PropTypes.node.isRequired,
+  title: React.ReactNode,
 
-  disabled: PropTypes.bool,
+  disabled?: boolean,
 
-  active: PropTypes.bool,
+  active?: boolean,
 
   menuRole?: string,
 
-  renderMenuOnMount: PropTypes.bool,
+  renderMenuOnMount?: boolean,
   rootCloseEvent?: string,
   menuVariant: PropTypes.oneOf<DropdownMenuVariant>(["dark"]),
 
@@ -222,12 +222,12 @@ export interface NavLinkProps
     Omit<BaseNavItemProps, "as"> {}
 const propTypes = {
   bsPrefix?: string,
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
+  active?: boolean,
+  disabled?: boolean,
   role?: string,
 
   href?: string,
-  eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  eventKey?: string | number,
 
   as: PropTypes.elementType,
 }

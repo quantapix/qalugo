@@ -30,13 +30,12 @@ export interface RowProps
   xxl?: RowColumns
 }
 const DEVICE_SIZES = ["xxl", "xl", "lg", "md", "sm", "xs"] as const
-const rowColWidth = PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-const rowColumns = PropTypes.oneOfType([
-  rowColWidth,
+const rowColWidth = number | string
+const rowColumns = 
+  rowColWidth | 
   PropTypes.shape({
     cols: rowColWidth,
   }),
-])
 const propTypes = {
   bsPrefix?: string,
   as: PropTypes.elementType,

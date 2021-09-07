@@ -30,7 +30,7 @@ const propTypes = {
 
   bsPrefix?: string,
   size?: string,
-  hasValidation: PropTypes.bool,
+  hasValidation?: boolean,
   as: PropTypes.elementType,
 }
 const InputGroup: BsPrefixRefForwardingComponent<"div", InputGroupProps> =

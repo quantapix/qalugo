@@ -22,17 +22,17 @@ export interface FadeProps extends TransitionCallbacks {
   transitionClasses?: Record<string, string>
 }
 const propTypes = {
-  in: PropTypes.bool,
-  mountOnEnter: PropTypes.bool,
-  unmountOnExit: PropTypes.bool,
-  appear: PropTypes.bool,
-  timeout: PropTypes.number,
-  onEnter: PropTypes.func,
-  onEntering: PropTypes.func,
-  onEntered: PropTypes.func,
-  onExit: PropTypes.func,
-  onExiting: PropTypes.func,
-  onExited: PropTypes.func,
+  in?: boolean,
+  mountOnEnter?: boolean,
+  unmountOnExit?: boolean,
+  appear?: boolean,
+  timeout?: number,
+  onEnter?: () => void,
+  onEntering?: () => void,
+  onEntered?: () => void,
+  onExit?: () => void,
+  onExiting?: () => void,
+  onExited?: () => void,
   children: PropTypes.element.isRequired,
   transitionClasses: PropTypes.object,
 }

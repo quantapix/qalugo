@@ -33,8 +33,8 @@ export interface PlaceholderButtonProps extends UsePlaceholderProps {
 }
 const propTypes = {
   bsPrefix?: string,
-  animation: PropTypes.oneOf(["glow", "wave"]),
-  size: PropTypes.oneOf(["xs", "sm", "lg"]),
+  animation?: "glow", "wave",
+  size?: "xs" | "sm", "lg",
   variant?: string,
 }
 const PlaceholderButton: BsPrefixRefForwardingComponent<

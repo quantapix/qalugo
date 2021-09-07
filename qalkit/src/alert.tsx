@@ -33,12 +33,12 @@ const AlertLink = createWithBsPrefix("alert-link", {
 const propTypes = {
   bsPrefix?: string,
   variant?: string,
-  dismissible: PropTypes.bool,
-  show: PropTypes.bool,
-  onClose: PropTypes.func,
+  dismissible?: boolean,
+  show?: boolean,
+  onClose?: () => void,
   closeLabel?: string,
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
-  transition: PropTypes.oneOfType([PropTypes.bool, elementType]),
+  transition?: boolean | elementType,
 }
 const defaultProps = {
   variant: "primary",

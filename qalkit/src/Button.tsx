@@ -20,10 +20,10 @@ const propTypes = {
   bsPrefix?: string,
   variant?: string,
   size?: string,
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
+  active?: boolean,
+  disabled?: boolean,
   href?: string,
-  type: PropTypes.oneOf(["button", "reset", "submit", null]),
+  type?: "button" | "reset" | "submit" | null,
   as: PropTypes.elementType,
 }
 const defaultProps = {
@@ -75,7 +75,7 @@ export interface ButtonGroupProps
 const propTypes = {
   bsPrefix?: string,
   size?: string,
-  vertical: PropTypes.bool,
+  vertical?: boolean,
   role?: string,
   as: PropTypes.elementType,
 }

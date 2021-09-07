@@ -39,20 +39,20 @@ export interface OverlayProps
   rootCloseEvent?: RootCloseEvent
 }
 const propTypes = {
-  container: PropTypes.oneOfType([componentOrElement, PropTypes.func]),
-  target: PropTypes.oneOfType([componentOrElement, PropTypes.func]),
-  show: PropTypes.bool,
+  container?: componentOrElement | PropTypes.func,
+  target?: componentOrElement | PropTypes.func,
+  show?: boolean,
   popperConfig: PropTypes.object,
-  rootClose: PropTypes.bool,
+  rootClose?: boolean,
   rootCloseEvent: PropTypes.oneOf<RootCloseEvent>(["click", "mousedown"]),
-  onHide: PropTypes.func,
-  transition: PropTypes.oneOfType([PropTypes.bool, elementType]),
-  onEnter: PropTypes.func,
-  onEntering: PropTypes.func,
-  onEntered: PropTypes.func,
-  onExit: PropTypes.func,
-  onExiting: PropTypes.func,
-  onExited: PropTypes.func,
+  onHide?: () => void,
+  transition?: boolean | elementType,
+  onEnter?: () => void,
+  onEntering?: () => void,
+  onEntered?: () => void,
+  onExit?: () => void,
+  onExiting?: () => void,
+  onExited?: () => void,
   placement: PropTypes.oneOf<Placement>([
     "auto-start",
     "auto",
@@ -199,42 +199,41 @@ function handleMouseOverOut(
     handler(...args)
   }
 }
-const triggerType = PropTypes.oneOf(["click", "hover", "focus"])
+const triggerType = "click" | "hover" | "focus"
 const propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-  trigger: PropTypes.oneOfType([triggerType, PropTypes.arrayOf(triggerType)]),
-  delay: PropTypes.oneOfType([
-    PropTypes.number,
+  children: PropTypes.element | PropTypes.func;
+  trigger?: triggerType | triggerType[];
+  delay?:
+    number | 
     PropTypes.shape({
-      show: PropTypes.number,
-      hide: PropTypes.number,
+      show?: number,
+      hide?: number,
     }),
-  ]),
-  show: PropTypes.bool,
-  defaultShow: PropTypes.bool,
-  onToggle: PropTypes.func,
-  flip: PropTypes.bool,
-  overlay: PropTypes.oneOfType([PropTypes.func, PropTypes.element.isRequired]),
+  show?: boolean,
+  defaultShow?: boolean,
+  onToggle?: () => void,
+  flip?: boolean,
+  overlay?: PropTypes.func | PropTypes.element.isRequired,
   popperConfig: PropTypes.object,
-  target: PropTypes.oneOf([null]),
-  onHide: PropTypes.oneOf([null]),
-  placement: PropTypes.oneOf([
-    "auto-start",
-    "auto",
-    "auto-end",
-    "top-start",
-    "top",
-    "top-end",
-    "right-start",
-    "right",
-    "right-end",
-    "bottom-end",
-    "bottom",
-    "bottom-start",
-    "left-end",
-    "left",
-    "left-start",
-  ]),
+  target?: null,
+  onHide?: null,
+  placement?: 
+    "auto-start" |
+    "auto" |
+    "auto-end" |
+    "top-start" |
+    "top" |
+    "top-end" |
+    "right-start" |
+    "right" |
+    "right-end" |
+    "bottom-end" |
+    "bottom" |
+    "bottom-start" |
+    "left-end" |
+    "left" |
+    "left-start"
+  ,
 }
 const defaultProps = {
   defaultShow: false,

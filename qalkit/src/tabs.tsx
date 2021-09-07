@@ -17,25 +17,18 @@ export interface TabsProps
   transition?: TransitionType
 }
 const propTypes = {
-  activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  defaultActiveKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /**
-   * @type {('tabs'| 'pills')}
-   */
-  variant?: string,
+  activeKey?: string | number,
+  defaultActiveKey?: string | number,
+  variant?: 'tabs'| 'pills',
   /**
    * @type {Transition | false}
    * @default {Fade}
    */
-  transition: PropTypes.oneOfType([
-    PropTypes.oneOf([false]),
-    PropTypes.elementType,
-  ]),
+  transition?: false | PropTypes.elementType,
   id?: string,
-  onSelect: PropTypes.func,
-  mountOnEnter: PropTypes.bool,
-  unmountOnExit: PropTypes.bool,
+  onSelect?: () => void,
+  mountOnEnter?: boolean,
+  unmountOnExit?: boolean,
 }
 const defaultProps = {
   variant: "tabs",

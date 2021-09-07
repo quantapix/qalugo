@@ -59,23 +59,23 @@ const SWIPE_THRESHOLD = 40
 const propTypes = {
   bsPrefix?: string,
   as: PropTypes.elementType,
-  slide: PropTypes.bool,
-  fade: PropTypes.bool,
-  controls: PropTypes.bool,
-  indicators: PropTypes.bool,
+  slide?: boolean,
+  fade?: boolean,
+  controls?: boolean,
+  indicators?: boolean,
   indicatorLabels: PropTypes.array,
-  activeIndex: PropTypes.number,
-  onSelect: PropTypes.func,
-  onSlide: PropTypes.func,
-  onSlid: PropTypes.func,
-  interval: PropTypes.number,
-  keyboard: PropTypes.bool,
-  pause: PropTypes.oneOf(["hover", false]),
-  wrap: PropTypes.bool,
-  touch: PropTypes.bool,
-  prevIcon: PropTypes.node,
+  activeIndex?: number,
+  onSelect?: () => void,
+  onSlide?: () => void,
+  onSlid?: () => void,
+  interval?: number,
+  keyboard?: boolean,
+  pause?: "hover" | false,
+  wrap?: boolean,
+  touch?: boolean,
+  prevIcon?: React.ReactNode,
   prevLabel?: string,
-  nextIcon: PropTypes.node,
+  nextIcon?: React.ReactNode,
   nextLabel?: string,
   variant: PropTypes.oneOf<CarouselVariant>(["dark"]),
 }
@@ -496,7 +496,7 @@ const propTypes = {
 
   bsPrefix?: string,
 
-  interval: PropTypes.number,
+  interval?: number,
 }
 const CarouselItem: BsPrefixRefForwardingComponent<"div", CarouselItemProps> =
   React.forwardRef<HTMLElement, CarouselItemProps>(

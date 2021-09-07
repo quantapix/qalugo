@@ -13,7 +13,7 @@ export interface FeedbackProps
 const propTypes = {
   type?: string,
 
-  tooltip: PropTypes.bool,
+  tooltip?: boolean,
   as: PropTypes.elementType,
 }
 const Feedback: BsPrefixRefForwardingComponent<"div", FeedbackProps> =

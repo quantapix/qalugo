@@ -16,13 +16,13 @@ export interface TableProps
 }
 const propTypes = {
   bsPrefix?: string,
-  striped: PropTypes.bool,
-  bordered: PropTypes.bool,
-  borderless: PropTypes.bool,
-  hover: PropTypes.bool,
+  striped?: boolean,
+  bordered?: boolean,
+  borderless?: boolean,
+  hover?: boolean,
   size?: string,
   variant?: string,
-  responsive: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  responsive?: boolean | string,
 }
 const Table = React.forwardRef<HTMLTableElement, TableProps>(
   (

@@ -24,11 +24,11 @@ export interface ToastProps
 }
 const propTypes = {
   bsPrefix?: string,
-  animation: PropTypes.bool,
-  autohide: PropTypes.bool,
-  delay: PropTypes.number,
-  onClose: PropTypes.func,
-  show: PropTypes.bool,
+  animation?: boolean,
+  autohide?: boolean,
+  delay?: number,
+  onClose?: () => void,
+  show?: boolean,
   transition: PropTypes.elementType,
   /**
    * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'dark'|'light')}
@@ -232,7 +232,7 @@ const propTypes = {
   bsPrefix?: string,
   closeLabel?: string,
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
-  closeButton: PropTypes.bool,
+  closeButton?: boolean,
 }
 const defaultProps = {
   closeLabel: "Close",

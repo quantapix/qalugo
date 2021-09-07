@@ -40,16 +40,16 @@ export interface DropdownProps
 }
 const propTypes = {
   bsPrefix?: string,
-  drop: PropTypes.oneOf(["up", "start", "end", "down"]),
+  drop?: "up" | "start" | "end" | "down",
   as: PropTypes.elementType,
   align: alignPropType,
-  show: PropTypes.bool,
-  flip: PropTypes.bool,
-  onToggle: PropTypes.func,
-  onSelect: PropTypes.func,
-  focusFirstItemOnShow: PropTypes.oneOf([false, true, "keyboard"]),
-  navbar: PropTypes.bool,
-  autoClose: PropTypes.oneOf([true, "outside", "inside", false]),
+  show?: boolean,
+  flip?: boolean,
+  onToggle?: () => void,
+  onSelect?: () => void,
+  focusFirstItemOnShow?: false | true | "keyboard",
+  navbar?: boolean,
+  autoClose?: true | "outside" | "inside" | false,
 }
 const defaultProps: Partial<DropdownProps> = {
   navbar: false,
@@ -163,14 +163,14 @@ export interface DropdownButtonProps
 const propTypes = {
   id?: string,
   href?: string,
-  onClick: PropTypes.func,
-  title: PropTypes.node.isRequired,
-  disabled: PropTypes.bool,
+  onClick?: () => void,
+  title: React.ReactNode,
+  disabled?: boolean,
   align: alignPropType,
 
   menuRole?: string,
 
-  renderMenuOnMount: PropTypes.bool,
+  renderMenuOnMount?: boolean,
   rootCloseEvent?: string,
   menuVariant: PropTypes.oneOf<DropdownMenuVariant>(["dark"]),
 
@@ -254,11 +254,11 @@ export interface DropdownItemProps
 const propTypes = {
 
   bsPrefix?: string,
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
-  eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  active?: boolean,
+  disabled?: boolean,
+  eventKey?: string | number,
   href?: string,
-  onClick: PropTypes.func,
+  onClick?: () => void,
   as: PropTypes.elementType,
 }
 const DropdownItem: BsPrefixRefForwardingComponent<
@@ -339,14 +339,14 @@ export interface DropdownMenuProps
 const propTypes = {
   bsPrefix?: string,
 
-  show: PropTypes.bool,
+  show?: boolean,
 
-  renderOnMount: PropTypes.bool,
+  renderOnMount?: boolean,
 
-  flip: PropTypes.bool,
+  flip?: boolean,
   align: alignPropType,
-  onSelect: PropTypes.func,
-  rootCloseEvent: PropTypes.oneOf(["click", "mousedown"]),
+  onSelect?: () => void,
+  rootCloseEvent?: "click" | "mousedown",
   as: PropTypes.elementType,
   popperConfig: PropTypes.object,
   variant?: string,
@@ -494,7 +494,7 @@ export type PropsFromToggle = Partial<
 const propTypes = {
   bsPrefix?: string,
   id?: string,
-  split: PropTypes.bool,
+  split?: boolean,
   as: PropTypes.elementType,
   childBsPrefix?: string,
 }

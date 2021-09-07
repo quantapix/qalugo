@@ -34,7 +34,7 @@ const propTypes = {
   bg?: string,
   text?: string,
   border?: string,
-  body: PropTypes.bool,
+  body?: boolean,
   as: PropTypes.elementType,
 }
 const defaultProps = {
@@ -159,7 +159,7 @@ export interface CardImgProps
 }
 const propTypes = {
   bsPrefix?: string,
-  variant: PropTypes.oneOf(["top", "bottom"]),
+  variant?: "top" | "bottom",
   as: PropTypes.elementType,
 }
 const CardImg: BsPrefixRefForwardingComponent<"img", CardImgProps> =

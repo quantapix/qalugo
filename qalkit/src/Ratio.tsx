@@ -13,7 +13,7 @@ export interface RatioProps
 const propTypes = {
   bsPrefix?: string,
   children: PropTypes.element.isRequired,
-  aspectRatio: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  aspectRatio?: number | string,
 }
 const defaultProps = {
   aspectRatio: "1x1" as const,

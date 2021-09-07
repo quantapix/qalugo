@@ -41,11 +41,11 @@ const propTypes = {
     ref: PropTypes.any,
     style: PropTypes.object,
   }),
-  body: PropTypes.bool,
+  body?: boolean,
 
   popper: PropTypes.object,
 
-  show: PropTypes.bool,
+  show?: boolean,
 }
 const defaultProps: Partial<PopoverProps> = {
   placement: "right",

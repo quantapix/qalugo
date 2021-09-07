@@ -14,7 +14,7 @@ export interface SpinnerProps
 const propTypes = {
   bsPrefix?: string,
   variant?: string,
-  animation: PropTypes.oneOf(["border", "grow"]).isRequired,
+  animation: "border" | "grow",
   size?: string,
   children: PropTypes.element,
   role?: string,

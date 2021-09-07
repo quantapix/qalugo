@@ -76,10 +76,10 @@ export interface BreadcrumbItemProps
 }
 const propTypes = {
   bsPrefix?: string,
-  active: PropTypes.bool,
+  active?: boolean,
   href?: string,
   linkAs: PropTypes.elementType,
-  title: PropTypes.node,
+  title?: React.ReactNode,
   target?: string,
   linkProps: PropTypes.object,
   as: PropTypes.elementType,

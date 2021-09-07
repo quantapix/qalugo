@@ -13,10 +13,10 @@ export interface ImageProps
 }
 export const propTypes = {
   bsPrefix?: string,
-  fluid: PropTypes.bool,
-  rounded: PropTypes.bool,
-  roundedCircle: PropTypes.bool,
-  thumbnail: PropTypes.bool,
+  fluid?: boolean,
+  rounded?: boolean,
+  roundedCircle?: boolean,
+  thumbnail?: boolean,
 }
 const defaultProps = {
   fluid: false,

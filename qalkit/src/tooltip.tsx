@@ -16,23 +16,23 @@ export interface TooltipProps
 const propTypes = {
   bsPrefix?: string,
   id?: string,
-  placement: PropTypes.oneOf([
-    "auto-start",
-    "auto",
-    "auto-end",
-    "top-start",
-    "top",
-    "top-end",
-    "right-start",
-    "right",
-    "right-end",
-    "bottom-end",
-    "bottom",
-    "bottom-start",
-    "left-end",
-    "left",
-    "left-start",
-  ]),
+  placement?:
+    "auto-start" |
+    "auto" |
+    "auto-end" |
+    "top-start" |
+    "top" |
+    "top-end" |
+    "right-start" |
+    "right" |
+    "right-end" |
+    "bottom-end" |
+    "bottom" |
+    "bottom-start" |
+    "left-end" |
+    "left" |
+    "left-start" |
+  ,
   arrowProps: PropTypes.shape({
     ref: PropTypes.any,
     style: PropTypes.object,

@@ -19,16 +19,15 @@ const propTypes = {
   bsPrefix?: string,
   type: PropTypes.oneOf<ToggleButtonType>(["checkbox", "radio"]),
   name?: string,
-  checked: PropTypes.bool,
-  disabled: PropTypes.bool,
+  checked?: boolean,
+  disabled?: boolean,
   id: string,
-  onChange: PropTypes.func,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(string),
-    PropTypes.number,
-  ]).isRequired,
-  inputRef: PropTypes.oneOfType([PropTypes.func, PropTypes.any]),
+  onChange?: () => void,
+  value: 
+    string |
+    string[] |
+    number,
+  inputRef?: PropTypes.func | any,
 }
 const ToggleButton = React.forwardRef<HTMLLabelElement, ToggleButtonProps>(
   (
@@ -110,11 +109,11 @@ export type ToggleButtonGroupProps<T> =
 const propTypes = {
   name?: string,
   value: PropTypes.any,
-  onChange: PropTypes.func,
-  type: PropTypes.oneOf(["checkbox", "radio"]).isRequired,
+  onChange?: () => void,
+  type: "checkbox" | "radio",
   size?: string,
 
-  vertical: PropTypes.bool,
+  vertical?: boolean,
 }
 const defaultProps = {
   type: "radio",
