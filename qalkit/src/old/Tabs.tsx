@@ -17,26 +17,14 @@ export interface TabsProps
   transition?: TransitionType
 }
 const propTypes = {
-  /**
-   * Mark the Tab with a matching `eventKey` as active.
-   *
-   * @controllable onSelect
-   */
   activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** The default active key that is selected on start */
+
   defaultActiveKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
-   * Navigation style
-   *
    * @type {('tabs'| 'pills')}
    */
   variant: PropTypes.string,
   /**
-   * Sets a default animation strategy for all children `<TabPane>`s.<tbcont
-   *
-   * Defaults to `<Fade>` animation, else use `false` to disable or a
-   * react-transition-group `<Transition/>` component.
-   *
    * @type {Transition | false}
    * @default {Fade}
    */
@@ -44,33 +32,9 @@ const propTypes = {
     PropTypes.oneOf([false]),
     PropTypes.elementType,
   ]),
-  /**
-   * HTML id attribute, required if no `generateChildId` prop
-   * is specified.
-   *
-   * @type {string}
-   */
   id: PropTypes.string,
-  /**
-   * Callback fired when a Tab is selected.
-   *
-   * ```js
-   * function (
-   *   Any eventKey,
-   *   SyntheticEvent event?
-   * )
-   * ```
-   *
-   * @controllable activeKey
-   */
   onSelect: PropTypes.func,
-  /**
-   * Wait until the first "enter" transition to mount tabs (add them to the DOM)
-   */
   mountOnEnter: PropTypes.bool,
-  /**
-   * Unmount tabs (remove it from the DOM) when it is no longer visible
-   */
   unmountOnExit: PropTypes.bool,
 }
 const defaultProps = {

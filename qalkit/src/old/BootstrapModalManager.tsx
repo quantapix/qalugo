@@ -18,7 +18,6 @@ class BootstrapModalManager extends ModalManager {
     adjust: number
   ) {
     const actual = element.style[prop]
-    // TODO: DOMStringMap and CSSStyleDeclaration aren't strictly compatible
     // @ts-ignore
     element.dataset[prop] = actual
     css(element, {

@@ -57,97 +57,26 @@ export interface CarouselProps
 }
 const SWIPE_THRESHOLD = 40
 const propTypes = {
-  /**
-   * @default 'carousel'
-   */
   bsPrefix: PropTypes.string,
   as: PropTypes.elementType,
-  /**
-   * Enables animation on the Carousel as it transitions between slides.
-   */
   slide: PropTypes.bool,
-  /** Animates slides with a crossfade animation instead of the default slide animation */
   fade: PropTypes.bool,
-  /**
-   * Show the Carousel previous and next arrows for changing the current slide
-   */
   controls: PropTypes.bool,
-  /**
-   * Show a set of slide position indicators
-   */
   indicators: PropTypes.bool,
-  /**
-   * An array of labels for the indicators. Defaults to "Slide #" if not provided.
-   */
   indicatorLabels: PropTypes.array,
-  /**
-   * Controls the current visible slide
-   *
-   * @controllable onSelect
-   */
   activeIndex: PropTypes.number,
-  /**
-   * Callback fired when the active item changes.
-   *
-   * ```js
-   * (eventKey: number, event: Object | null) => void
-   * ```
-   *
-   * @controllable activeIndex
-   */
   onSelect: PropTypes.func,
-  /**
-   * Callback fired when a slide transition starts.
-   *
-   * ```js
-   * (eventKey: number, direction: 'left' | 'right') => void
-   */
   onSlide: PropTypes.func,
-  /**
-   * Callback fired when a slide transition ends.
-   *
-   * ```js
-   * (eventKey: number, direction: 'left' | 'right') => void
-   */
   onSlid: PropTypes.func,
-  /**
-   * The amount of time to delay between automatically cycling an item. If `null`, carousel will not automatically cycle.
-   */
   interval: PropTypes.number,
-  /** Whether the carousel should react to keyboard events. */
   keyboard: PropTypes.bool,
-  /**
-   * If set to `"hover"`, pauses the cycling of the carousel on `mouseenter` and resumes the cycling of the carousel on `mouseleave`. If set to `false`, hovering over the carousel won't pause it.
-   *
-   * On touch-enabled devices, when set to `"hover"`, cycling will pause on `touchend` (once the user finished interacting with the carousel) for two intervals, before automatically resuming. Note that this is in addition to the above mouse behavior.
-   */
   pause: PropTypes.oneOf(["hover", false]),
-  /** Whether the carousel should cycle continuously or have hard stops. */
   wrap: PropTypes.bool,
-  /**
-   * Whether the carousel should support left/right swipe interactions on touchscreen devices.
-   */
   touch: PropTypes.bool,
-  /** Override the default button icon for the "previous" control */
   prevIcon: PropTypes.node,
-  /**
-   * Label shown to screen readers only, can be used to show the previous element
-   * in the carousel.
-   * Set to null to deactivate.
-   */
   prevLabel: PropTypes.string,
-  /** Override the default button icon for the "next" control */
   nextIcon: PropTypes.node,
-  /**
-   * Label shown to screen readers only, can be used to show the next element
-   * in the carousel.
-   * Set to null to deactivate.
-   */
   nextLabel: PropTypes.string,
-  /**
-   * Color variant that controls the colors of the controls, indicators
-   * and captions.
-   */
   variant: PropTypes.oneOf<CarouselVariant>(["dark"]),
 }
 const defaultProps = {
@@ -186,7 +115,6 @@ function isVisible(element) {
 const Carousel: BsPrefixRefForwardingComponent<"div", CarouselProps> =
   React.forwardRef<CarouselRef, CarouselProps>((uncontrolledProps, ref) => {
     const {
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "div",
       bsPrefix,
       slide,
@@ -247,8 +175,6 @@ const Carousel: BsPrefixRefForwardingComponent<"div", CarouselProps> =
     })
     let numChildren = 0
     let activeChildInterval: number | undefined
-    // Iterate to grab all of the children's interval values
-    // (and count them, too)
     forEach(children, (child, index) => {
       ++numChildren
       if (index === activeIndex) {
@@ -273,7 +199,6 @@ const Carousel: BsPrefixRefForwardingComponent<"div", CarouselProps> =
       },
       [isSliding, renderedActiveIndex, onSelect, wrap, numChildren]
     )
-    // This is used in the setInterval, so it should not invalidate.
     const next = useEventCallback((event?) => {
       if (isSliding) {
         return
@@ -294,7 +219,6 @@ const Carousel: BsPrefixRefForwardingComponent<"div", CarouselProps> =
       prev,
       next,
     }))
-    // This is used in the setInterval, so it should not invalidate.
     const nextWhenVisible = useEventCallback(() => {
       if (!document.hidden && isVisible(elementRef.current)) {
         if (isRTL) {
@@ -307,7 +231,6 @@ const Carousel: BsPrefixRefForwardingComponent<"div", CarouselProps> =
     const slideDirection = direction === "next" ? "start" : "end"
     useUpdateEffect(() => {
       if (slide) {
-        // These callbacks will be handled by the <Transition> callbacks.
         return
       }
       onSlide?.(renderedActiveIndex, slideDirection)
@@ -473,7 +396,7 @@ const Carousel: BsPrefixRefForwardingComponent<"div", CarouselProps> =
               <button
                 key={index}
                 type="button"
-                data-bs-target="" // Bootstrap requires this in their css.
+                data-bs-target=""
                 aria-label={
                   indicatorLabels?.length
                     ? indicatorLabels[index]
@@ -568,18 +491,17 @@ export interface CarouselItemProps
   interval?: number
 }
 const propTypes = {
-  /** Set a custom element for this component */
+
   as: PropTypes.elementType,
-  /** @default 'carousel-item' */
+
   bsPrefix: PropTypes.string,
-  /** The amount of time to delay between automatically cycling this specific item. Will default to the Carousel's `interval` prop value if none is specified. */
+
   interval: PropTypes.number,
 }
 const CarouselItem: BsPrefixRefForwardingComponent<"div", CarouselItemProps> =
   React.forwardRef<HTMLElement, CarouselItemProps>(
     (
       {
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "div",
         bsPrefix,
         className,

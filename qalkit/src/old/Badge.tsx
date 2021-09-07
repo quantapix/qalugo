@@ -12,26 +12,12 @@ export interface BadgeProps
   text?: Color
 }
 const propTypes = {
-  /** @default 'badge' */
+
   bsPrefix: PropTypes.string,
-  /**
-   * The visual style of the badge
-   *
-   * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark')}
-   */
   bg: PropTypes.string,
-  /**
-   * Add the `pill` modifier to make badges more rounded with
-   * some additional horizontal padding
-   */
   pill: PropTypes.bool,
-  /**
-   * Sets badge text color
-   *
-   * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark')}
-   */
   text: PropTypes.string,
-  /** @default span */
+
   as: PropTypes.elementType,
 }
 const defaultProps = {

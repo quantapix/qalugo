@@ -10,13 +10,7 @@ export interface FloatingLabelProps extends FormGroupProps, BsPrefixProps {
 }
 const propTypes = {
   as: PropTypes.elementType,
-  /**
-   * Sets `id` on `<FormControl>` and `htmlFor` on `<label>`.
-   */
   controlId: PropTypes.string,
-  /**
-   * Form control label.
-   */
   label: PropTypes.node.isRequired,
 }
 const FloatingLabel: BsPrefixRefForwardingComponent<"div", FloatingLabelProps> =

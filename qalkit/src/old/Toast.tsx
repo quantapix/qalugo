@@ -23,37 +23,14 @@ export interface ToastProps
   bg?: Variant
 }
 const propTypes = {
-  /**
-   * @default 'toast'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Apply a CSS fade transition to the toast
-   */
   animation: PropTypes.bool,
-  /**
-   * Auto hide the toast
-   */
   autohide: PropTypes.bool,
-  /**
-   * Delay hiding the toast (ms)
-   */
   delay: PropTypes.number,
-  /**
-   * A Callback fired when the close button is clicked.
-   */
   onClose: PropTypes.func,
-  /**
-   * When `true` The modal will show itself.
-   */
   show: PropTypes.bool,
-  /**
-   * A `react-transition-group` Transition component used to animate the Toast on dismissal.
-   */
   transition: PropTypes.elementType,
   /**
-   * Sets Toast background
-   *
    * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'dark'|'light')}
    */
   bg: PropTypes.string,
@@ -76,8 +53,6 @@ const Toast: BsPrefixRefForwardingComponent<"div", ToastProps> =
       ref
     ) => {
       bsPrefix = useBootstrapPrefix(bsPrefix, "toast")
-      // We use refs for these, because we don't want to restart the autohide
-      // timer in case these values change.
       const delayRef = useRef(delay)
       const onCloseRef = useRef(onClose)
       useEffect(() => {
@@ -92,7 +67,6 @@ const Toast: BsPrefixRefForwardingComponent<"div", ToastProps> =
         }
       }, [autohideToast])
       useEffect(() => {
-        // Only reset timer if show or autohide changes.
         autohideTimeout.set(autohideFunc, delayRef.current)
       }, [autohideTimeout, autohideFunc])
       const toastContext = useMemo(
@@ -159,13 +133,7 @@ export interface ToastContainerProps
   position?: ToastPosition
 }
 const propTypes = {
-  /**
-   * @default 'toast-container'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Where the toasts will be placed within the container.
-   */
   position: PropTypes.oneOf<ToastPosition>([
     "top-start",
     "top-center",
@@ -198,7 +166,6 @@ const ToastContainer: BsPrefixRefForwardingComponent<
       bsPrefix,
       position,
       className,
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "div",
       ...props
     },
@@ -222,7 +189,6 @@ ToastContainer.displayName = "ToastContainer"
 ToastContainer.propTypes = propTypes
 export default ToastContainer
 import * as React from "react"
-// TODO: check
 export interface ToastContextType {
   onClose?: (e: Event) => void
 }
@@ -264,19 +230,8 @@ export interface ToastHeaderProps
 }
 const propTypes = {
   bsPrefix: PropTypes.string,
-  /**
-   * Provides an accessible label for the close
-   * button. It is used for Assistive Technology when the label text is not
-   * readable.
-   */
   closeLabel: PropTypes.string,
-  /**
-   * Sets the variant for close button.
-   */
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
-  /**
-   * Specify whether the Component should contain a close button
-   */
   closeButton: PropTypes.bool,
 }
 const defaultProps = {

@@ -13,18 +13,8 @@ const containerSizes = PropTypes.oneOfType([
   PropTypes.oneOf(["sm", "md", "lg", "xl", "xxl"]),
 ])
 const propTypes = {
-  /**
-   * @default 'container'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Allow the Container to fill all of its available horizontal space.
-   * @type {(true|"sm"|"md"|"lg"|"xl"|"xxl")}
-   */
   fluid: containerSizes,
-  /**
-   * You can use a custom element for this component
-   */
   as: PropTypes.elementType,
 }
 const defaultProps = {
@@ -36,7 +26,6 @@ const Container: BsPrefixRefForwardingComponent<"div", ContainerProps> =
       {
         bsPrefix,
         fluid,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "div",
         className,
         ...props

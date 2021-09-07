@@ -50,46 +50,13 @@ const column = PropTypes.oneOfType([
   }),
 ])
 const propTypes = {
-  /**
-   * @default 'col'
-   */
   bsPrefix: PropTypes.string,
   as: PropTypes.elementType,
-  /**
-   * The number of columns to span on extra small devices (<576px)
-   *
-   * @type {(boolean|"auto"|number|{ span: boolean|"auto"|number, offset: number, order: "first"|"last"|number })}
-   */
   xs: column,
-  /**
-   * The number of columns to span on small devices (≥576px)
-   *
-   * @type {(boolean|"auto"|number|{ span: boolean|"auto"|number, offset: number, order: "first"|"last"|number })}
-   */
   sm: column,
-  /**
-   * The number of columns to span on medium devices (≥768px)
-   *
-   * @type {(boolean|"auto"|number|{ span: boolean|"auto"|number, offset: number, order: "first"|"last"|number })}
-   */
   md: column,
-  /**
-   * The number of columns to span on large devices (≥992px)
-   *
-   * @type {(boolean|"auto"|number|{ span: boolean|"auto"|number, offset: number, order: "first"|"last"|number })}
-   */
   lg: column,
-  /**
-   * The number of columns to span on extra large devices (≥1200px)
-   *
-   * @type {(boolean|"auto"|number|{ span: boolean|"auto"|number, offset: number, order: "first"|"last"|number })}
-   */
   xl: column,
-  /**
-   * The number of columns to span on extra extra large devices (≥1400px)
-   *
-   * @type {(boolean|"auto"|number|{ span: boolean|"auto"|number, offset: number, order: "first"|"last"|number })}
-   */
   xxl: column,
 }
 export interface UseColMetadata {
@@ -137,22 +104,19 @@ export function useCol({
 const Col: BsPrefixRefForwardingComponent<"div", ColProps> = React.forwardRef<
   HTMLElement,
   ColProps
->(
-  // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
-  (props, ref) => {
-    const [
-      { className, ...colProps },
-      { as: Component = "div", bsPrefix, spans },
-    ] = useCol(props)
-    return (
-      <Component
-        {...colProps}
-        ref={ref}
-        className={classNames(className, !spans.length && bsPrefix)}
-      />
-    )
-  }
-)
+>((props, ref) => {
+  const [
+    { className, ...colProps },
+    { as: Component = "div", bsPrefix, spans },
+  ] = useCol(props)
+  return (
+    <Component
+      {...colProps}
+      ref={ref}
+      className={classNames(className, !spans.length && bsPrefix)}
+    />
+  )
+})
 Col.displayName = "Col"
 Col.propTypes = propTypes
 export default Col

@@ -27,28 +27,12 @@ export interface InputGroupProps
   hasValidation?: boolean
 }
 const propTypes = {
-  /** @default 'input-group' */
+
   bsPrefix: PropTypes.string,
-  /**
-   * Control the size of buttons and form elements from the top-level.
-   *
-   * @type {('sm'|'lg')}
-   */
   size: PropTypes.string,
-  /**
-   * Handles the input's rounded corners when using form validation.
-   *
-   * Use this when your input group contains both an input and feedback element.
-   */
   hasValidation: PropTypes.bool,
   as: PropTypes.elementType,
 }
-/**
- *
- * @property {InputGroupText} Text
- * @property {InputGroupRadio} Radio
- * @property {InputGroupCheckbox} Checkbox
- */
 const InputGroup: BsPrefixRefForwardingComponent<"div", InputGroupProps> =
   React.forwardRef<HTMLElement, InputGroupProps>(
     (
@@ -57,15 +41,12 @@ const InputGroup: BsPrefixRefForwardingComponent<"div", InputGroupProps> =
         size,
         hasValidation,
         className,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "div",
         ...props
       },
       ref
     ) => {
       bsPrefix = useBootstrapPrefix(bsPrefix, "input-group")
-      // Intentionally an empty object. Used in detecting if a dropdown
-      // exists under an input group.
       const contextValue = useMemo(() => ({}), [])
       return (
         <InputGroupContext.Provider value={contextValue}>

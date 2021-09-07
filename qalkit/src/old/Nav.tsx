@@ -23,67 +23,23 @@ export interface NavProps extends BsPrefixProps, BaseNavProps {
   navbarScroll?: boolean
 }
 const propTypes = {
-  /**
-   * @default 'nav'
-   */
   bsPrefix: PropTypes.string,
-  /** @private */
+
   navbarBsPrefix: PropTypes.string,
-  /** @private */
+
   cardHeaderBsPrefix: PropTypes.string,
-  /**
-   * The visual variant of the nav items.
-   *
-   * @type {('tabs'|'pills')}
-   */
   variant: PropTypes.string,
-  /**
-   * Marks the NavItem with a matching `eventKey` (or `href` if present) as active.
-   */
   activeKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /**
-   * Have all `NavItem`s proportionately fill all available width.
-   */
   fill: PropTypes.bool,
-  /**
-   * Have all `NavItem`s evenly fill all available width.
-   *
-   * @type {boolean}
-   */
   justify: all(PropTypes.bool, ({ justify, navbar }) =>
     justify && navbar ? Error("justify navbar `Nav`s are not supported") : null
   ),
-  /**
-   * A callback fired when a NavItem is selected.
-   *
-   * ```js
-   * function (
-   *  Any eventKey,
-   *  SyntheticEvent event?
-   * )
-   * ```
-   */
   onSelect: PropTypes.func,
-  /**
-   * ARIA role for the Nav, in the context of a TabContainer, the default will
-   * be set to "tablist", but can be overridden by the Nav when set explicitly.
-   *
-   * When the role is "tablist", NavLink focus is managed according to
-   * the ARIA authoring practices for tabs:
-   * https://www.w3.org/TR/2013/WD-wai-aria-practices-20130307/#tabpanel
-   */
   role: PropTypes.string,
-  /**
-   * Apply styling an alignment for use in a Navbar. This prop will be set
-   * automatically when the Nav is used inside a Navbar.
-   */
   navbar: PropTypes.bool,
-  /**
-   * Enable vertical scrolling within the toggleable contents of a collapsed Navbar.
-   */
   navbarScroll: PropTypes.bool,
   as: PropTypes.elementType,
-  /** @private */
+
   onKeyDown: PropTypes.func,
 }
 const defaultProps = {
@@ -146,7 +102,7 @@ export default Object.assign(Nav, {
 import * as React from "react"
 import { EventKey } from "@restart/ui/types"
 interface NavContextType {
-  role?: string // used by NavLink to determine it's role
+  role?: string
   activeKey: EventKey | null
   getControlledId: (key: EventKey | null) => string
   getControllerId: (key: EventKey | null) => string
@@ -173,36 +129,22 @@ export interface NavDropdownProps
   menuVariant?: DropdownMenuVariant
 }
 const propTypes = {
-  /**
-   * An html id attribute for the Toggle button, necessary for assistive technologies, such as screen readers.
-   * @type {string}
-   */
   id: PropTypes.string,
-  /** An `onClick` handler passed to the Toggle component */
+
   onClick: PropTypes.func,
-  /** The content of the non-toggle Button.  */
+
   title: PropTypes.node.isRequired,
-  /** Disables the toggle NavLink  */
+
   disabled: PropTypes.bool,
-  /** Style the toggle NavLink as active  */
+
   active: PropTypes.bool,
-  /** An ARIA accessible role applied to the Menu component. When set to 'menu', The dropdown */
+
   menuRole: PropTypes.string,
-  /** Whether to render the dropdown menu in the DOM before the first time it is shown */
+
   renderMenuOnMount: PropTypes.bool,
-  /**
-   *  Which event when fired outside the component will cause it to be closed.
-   *
-   * _see [DropdownMenu](#menu-props) for more details_
-   */
   rootCloseEvent: PropTypes.string,
-  /**
-   * Menu color variant.
-   *
-   * Omitting this will use the default light color.
-   */
   menuVariant: PropTypes.oneOf<DropdownMenuVariant>(["dark"]),
-  /** @ignore */
+
   bsPrefix: PropTypes.string,
 }
 const NavDropdown: BsPrefixRefForwardingComponent<"div", NavDropdownProps> =
@@ -279,31 +221,14 @@ export interface NavLinkProps
   extends BsPrefixProps,
     Omit<BaseNavItemProps, "as"> {}
 const propTypes = {
-  /**
-   * @default 'nav-link'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * The active state of the NavItem item.
-   */
   active: PropTypes.bool,
-  /**
-   * The disabled state of the NavItem item.
-   */
   disabled: PropTypes.bool,
-  /**
-   * The ARIA role for the `NavLink`, In the context of a 'tablist' parent Nav,
-   * the role defaults to 'tab'
-   * */
   role: PropTypes.string,
-  /** The HTML href attribute for the `NavLink` */
+
   href: PropTypes.string,
-  /**
-   * Uniquely identifies the `NavItem` amongst its siblings,
-   * used to determine and control the active state of the parent `Nav`
-   */
   eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** @default 'a' */
+
   as: PropTypes.elementType,
 }
 const defaultProps = {

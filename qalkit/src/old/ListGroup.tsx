@@ -14,27 +14,9 @@ export interface ListGroupProps extends BsPrefixProps, BaseNavProps {
   defaultActiveKey?: EventKey
 }
 const propTypes = {
-  /**
-   * @default 'list-group'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Adds a variant to the list-group
-   *
-   * @type {('flush')}
-   */
   variant: PropTypes.oneOf(["flush"]),
-  /**
-   * Changes the flow of the list group items from vertical to horizontal.
-   * A value of `null` (the default) sets it to vertical for all breakpoints;
-   * Just including the prop sets it for all breakpoints, while `{sm|md|lg|xl|xxl}`
-   * makes the list group horizontal starting at that breakpoint’s `min-width`.
-   * @type {(true|'sm'|'md'|'lg'|'xl'|'xxl')}
-   */
   horizontal: PropTypes.oneOf([true, "sm", "md", "lg", "xl", "xxl"]),
-  /**
-   * You can use a custom element type for this component.
-   */
   as: PropTypes.elementType,
 }
 const ListGroup: BsPrefixRefForwardingComponent<"div", ListGroupProps> =
@@ -44,7 +26,6 @@ const ListGroup: BsPrefixRefForwardingComponent<"div", ListGroupProps> =
       bsPrefix: initialBsPrefix,
       variant,
       horizontal,
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as = "div",
       ...controlledProps
     } = useUncontrolled(props, {
@@ -97,37 +78,14 @@ export interface ListGroupItemProps
   variant?: Variant
 }
 const propTypes = {
-  /**
-   * @default 'list-group-item'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Sets contextual classes for list item
-   * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'dark'|'light')}
-   */
   variant: PropTypes.string,
-  /**
-   * Marks a ListGroupItem as actionable, applying additional hover, active and disabled styles
-   * for links and buttons.
-   */
   action: PropTypes.bool,
-  /**
-   * Sets list item as active
-   */
   active: PropTypes.bool,
-  /**
-   * Sets list item state as disabled
-   */
   disabled: PropTypes.bool,
   eventKey: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onClick: PropTypes.func,
   href: PropTypes.string,
-  /**
-   * You can use a custom element type for this component. For none `action` items, items render as `li`.
-   * For actions the default is an achor or button element depending on whether a `href` is provided.
-   *
-   * @default {'div' | 'a' | 'button'}
-   */
   as: PropTypes.elementType,
 }
 const defaultProps = {

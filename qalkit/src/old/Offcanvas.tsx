@@ -35,105 +35,33 @@ export interface OffcanvasProps
   placement?: OffcanvasPlacement
 }
 const propTypes = {
-  /**
-   * @default 'offcanvas'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Include a backdrop component.
-   */
   backdrop: PropTypes.bool,
-  /**
-   * Add an optional extra class name to .offcanvas-backdrop.
-   */
   backdropClassName: PropTypes.string,
-  /**
-   * Closes the offcanvas when escape key is pressed.
-   */
   keyboard: PropTypes.bool,
-  /**
-   * Allow body scrolling while offcanvas is open.
-   */
   scroll: PropTypes.bool,
-  /**
-   * Which side of the viewport the offcanvas will appear from.
-   */
   placement: PropTypes.oneOf<OffcanvasPlacement>([
     "start",
     "end",
     "top",
     "bottom",
   ]),
-  /**
-   * When `true` The offcanvas will automatically shift focus to itself when it
-   * opens, and replace it to the last focused element when it closes.
-   * Generally this should never be set to false as it makes the offcanvas less
-   * accessible to assistive technologies, like screen-readers.
-   */
   autoFocus: PropTypes.bool,
-  /**
-   * When `true` The offcanvas will prevent focus from leaving the offcanvas while
-   * open. Consider leaving the default value here, as it is necessary to make
-   * the offcanvas work well with assistive technologies, such as screen readers.
-   */
   enforceFocus: PropTypes.bool,
-  /**
-   * When `true` The offcanvas will restore focus to previously focused element once
-   * offcanvas is hidden
-   */
   restoreFocus: PropTypes.bool,
-  /**
-   * Options passed to focus function when `restoreFocus` is set to `true`
-   *
-   * @link  https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus#Parameters
-   */
   restoreFocusOptions: PropTypes.shape({
     preventScroll: PropTypes.bool,
   }),
-  /**
-   * When `true` The offcanvas will show itself.
-   */
   show: PropTypes.bool,
-  /**
-   * A callback fired when the offcanvas is opening.
-   */
   onShow: PropTypes.func,
-  /**
-   * A callback fired when the header closeButton or backdrop is
-   * clicked. Required if either are specified.
-   */
   onHide: PropTypes.func,
-  /**
-   * A callback fired when the escape key, if specified in `keyboard`, is pressed.
-   */
   onEscapeKeyDown: PropTypes.func,
-  /**
-   * Callback fired before the offcanvas transitions in
-   */
   onEnter: PropTypes.func,
-  /**
-   * Callback fired as the offcanvas begins to transition in
-   */
   onEntering: PropTypes.func,
-  /**
-   * Callback fired after the offcanvas finishes transitioning in
-   */
   onEntered: PropTypes.func,
-  /**
-   * Callback fired right before the offcanvas transitions out
-   */
   onExit: PropTypes.func,
-  /**
-   * Callback fired as the offcanvas begins to transition out
-   */
   onExiting: PropTypes.func,
-  /**
-   * Callback fired after the offcanvas finishes transitioning out
-   */
   onExited: PropTypes.func,
-  /**
-   * @private
-   */
   container: PropTypes.any,
   "aria-labelledby": PropTypes.string,
 }
@@ -199,8 +127,6 @@ const Offcanvas: BsPrefixRefForwardingComponent<"div", OffcanvasProps> =
       function getModalManager() {
         if (propsManager) return propsManager
         if (scroll) {
-          // Have to use a different modal manager since the shared
-          // one handles overflow.
           if (!modalManager.current)
             modalManager.current = new BootstrapModalManager({
               handleContainerOverflow: false,
@@ -295,29 +221,10 @@ export interface OffcanvasHeaderProps
   extends AbstractModalHeaderProps,
     BsPrefixOnlyProps {}
 const propTypes = {
-  /**
-   * @default 'offcanvas-header'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Provides an accessible label for the close
-   * button. It is used for Assistive Technology when the label text is not
-   * readable.
-   */
   closeLabel: PropTypes.string,
-  /**
-   * Sets the variant for close button.
-   */
   closeVariant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
-  /**
-   * Specify whether the Component should contain a close button
-   */
   closeButton: PropTypes.bool,
-  /**
-   * A Callback fired when the close button is clicked. If used directly inside
-   * a Offcanvas component, the onHide will automatically be propagated up to the
-   * parent Offcanvas `onHide`.
-   */
   onHide: PropTypes.func,
 }
 const defaultProps = {
@@ -372,52 +279,16 @@ export interface OffcanvasTogglingProps
   children: React.ReactElement
 }
 const propTypes = {
-  /**
-   * Show the component; triggers the fade in or fade out animation
-   */
   in: PropTypes.bool,
-  /**
-   * Wait until the first "enter" transition to mount the component (add it to the DOM)
-   */
   mountOnEnter: PropTypes.bool,
-  /**
-   * Unmount the component (remove it from the DOM) when it is faded out
-   */
   unmountOnExit: PropTypes.bool,
-  /**
-   * Run the fade in animation when the component mounts, if it is initially
-   * shown
-   */
   appear: PropTypes.bool,
-  /**
-   * Duration of the fade animation in milliseconds, to ensure that finishing
-   * callbacks are fired even if the original browser transition end events are
-   * canceled
-   */
   timeout: PropTypes.number,
-  /**
-   * Callback fired before the component fades in
-   */
   onEnter: PropTypes.func,
-  /**
-   * Callback fired after the component starts to fade in
-   */
   onEntering: PropTypes.func,
-  /**
-   * Callback fired after the has component faded in
-   */
   onEntered: PropTypes.func,
-  /**
-   * Callback fired before the component fades out
-   */
   onExit: PropTypes.func,
-  /**
-   * Callback fired after the component starts to fade out
-   */
   onExiting: PropTypes.func,
-  /**
-   * Callback fired after the component has faded out
-   */
   onExited: PropTypes.func,
 }
 const defaultProps = {

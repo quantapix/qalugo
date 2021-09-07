@@ -32,7 +32,6 @@ export class BsPrefixComponent<
   As extends React.ElementType,
   P = unknown
 > extends React.Component<ReplaceProps<As, BsPrefixProps<As> & P>> {}
-// Need to use this instead of typeof Component to get proper type checking.
 export type BsPrefixComponentClass<
   As extends React.ElementType,
   P = unknown
@@ -56,15 +55,6 @@ export default function safeFindDOMNode(
   }
   return (componentOrElement ?? null) as Element | Text | null
 }
-/**
- * Safe chained function
- *
- * Will only create a new function if needed,
- * otherwise will pass back existing functions or null.
- *
- * @param {function} functions to chain
- * @returns {function|null}
- */
 function createChainedFunction(...funcs) {
   return funcs
     .filter(f => f != null)
@@ -95,7 +85,6 @@ interface BsPrefixOptions<As extends React.ElementType = "div"> {
   Component?: As
   defaultProps?: Partial<React.ComponentProps<As>>
 }
-// TODO: emstricten & fix the typing here! `createWithBsPrefix<TElementType>...`
 export default function createWithBsPrefix<
   As extends React.ElementType = "div"
 >(
@@ -173,8 +162,6 @@ export default function transitionEndListener(
     duration + delay
   )
 }
-// reading a dimension prop will cause the browser to recalculate,
-// which will let our animations work
 export default function triggerBrowserReflow(node: HTMLElement): void {
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   node.offsetHeight

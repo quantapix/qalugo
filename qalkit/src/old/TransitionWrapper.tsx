@@ -14,7 +14,6 @@ export type TransitionWrapperProps = TransitionProps & {
         props: Record<string, unknown>
       ) => React.ReactNode)
 }
-// Normalizes Transition callbacks when nodeRef is used.
 const TransitionWrapper = React.forwardRef<
   Transition<any>,
   TransitionWrapperProps

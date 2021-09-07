@@ -30,32 +30,10 @@ export interface CardProps
   body?: boolean
 }
 const propTypes = {
-  /**
-   * @default 'card'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Sets card background
-   *
-   * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'dark'|'light')}
-   */
   bg: PropTypes.string,
-  /**
-   * Sets card text color
-   *
-   * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'dark'|'light'|'white'|'muted')}
-   */
   text: PropTypes.string,
-  /**
-   * Sets card border color
-   *
-   * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'dark'|'light')}
-   */
   border: PropTypes.string,
-  /**
-   * When this prop is set, it creates a Card with a Card.Body inside
-   * passing the children directly to it
-   */
   body: PropTypes.bool,
   as: PropTypes.elementType,
 }
@@ -75,7 +53,6 @@ const Card: BsPrefixRefForwardingComponent<"div", CardProps> = React.forwardRef<
       border,
       body,
       children,
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "div",
       ...props
     },
@@ -128,9 +105,6 @@ export interface CardHeaderProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
-  /**
-   * @default 'card-header'
-   */
   bsPrefix: PropTypes.string,
   as: PropTypes.elementType,
 }
@@ -140,7 +114,6 @@ const CardHeader: BsPrefixRefForwardingComponent<"div", CardHeaderProps> =
       {
         bsPrefix,
         className,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "div",
         ...props
       },
@@ -185,22 +158,12 @@ export interface CardImgProps
   variant?: "top" | "bottom"
 }
 const propTypes = {
-  /**
-   * @default 'card-img'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Defines image position inside
-   * the card.
-   *
-   * @type {('top'|'bottom')}
-   */
   variant: PropTypes.oneOf(["top", "bottom"]),
   as: PropTypes.elementType,
 }
 const CardImg: BsPrefixRefForwardingComponent<"img", CardImgProps> =
   React.forwardRef(
-    // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
     (
       {
         bsPrefix,

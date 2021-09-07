@@ -16,49 +16,18 @@ export interface ToggleButtonProps
 }
 const noop = () => undefined
 const propTypes = {
-  /**
-   * @default 'btn-check'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * The `<input>` element `type`
-   */
   type: PropTypes.oneOf<ToggleButtonType>(["checkbox", "radio"]),
-  /**
-   * The HTML input name, used to group like checkboxes or radio buttons together
-   * semantically
-   */
   name: PropTypes.string,
-  /**
-   * The checked state of the input, managed by `<ToggleButtonGroup>` automatically
-   */
   checked: PropTypes.bool,
-  /**
-   * The disabled state of both the label and input
-   */
   disabled: PropTypes.bool,
-  /**
-   * `id` is required for button clicks to toggle input.
-   */
   id: PropTypes.string.isRequired,
-  /**
-   * A callback fired when the underlying input element changes. This is passed
-   * directly to the `<input>` so shares the same signature as a native `onChange` event.
-   */
   onChange: PropTypes.func,
-  /**
-   * The value of the input, should be unique amongst it's siblings when nested in a
-   * `ToggleButtonGroup`.
-   */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string.isRequired),
     PropTypes.number,
   ]).isRequired,
-  /**
-   * A ref attached to the `<input>` element
-   * @type {ReactRef}
-   */
   inputRef: PropTypes.oneOfType([PropTypes.func, PropTypes.any]),
 }
 const ToggleButton = React.forwardRef<HTMLLabelElement, ToggleButtonProps>(
@@ -139,38 +108,12 @@ export type ToggleButtonGroupProps<T> =
   | ToggleButtonRadioProps<T>
   | ToggleButtonCheckboxProps<T>
 const propTypes = {
-  /**
-   * An HTML `<input>` name for each child button.
-   *
-   * __Required if `type` is set to `'radio'`__
-   */
   name: PropTypes.string,
-  /**
-   * The value, or array of values, of the active (pressed) buttons
-   *
-   * @controllable onChange
-   */
   value: PropTypes.any,
-  /**
-   * Callback fired when a button is pressed, depending on whether the `type`
-   * is `'radio'` or `'checkbox'`, `onChange` will be called with the value or
-   * array of active values
-   *
-   * @controllable value
-   */
   onChange: PropTypes.func,
-  /**
-   * The input `type` of the rendered buttons, determines the toggle behavior
-   * of the buttons
-   */
   type: PropTypes.oneOf(["checkbox", "radio"]).isRequired,
-  /**
-   * Sets the size for all Buttons in the group.
-   *
-   * @type ('sm'|'lg')
-   */
   size: PropTypes.string,
-  /** Make the set of Buttons appear vertically stacked. */
+
   vertical: PropTypes.bool,
 }
 const defaultProps = {

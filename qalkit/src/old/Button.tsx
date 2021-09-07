@@ -17,42 +17,12 @@ export interface ButtonProps
 }
 export type CommonButtonProps = "href" | "size" | "variant" | "disabled"
 const propTypes = {
-  /**
-   * @default 'btn'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * One or more button variant combinations
-   *
-   * buttons may be one of a variety of visual variants such as:
-   *
-   * `'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', 'link'`
-   *
-   * as well as "outline" versions (prefixed by 'outline-*')
-   *
-   * `'outline-primary', 'outline-secondary', 'outline-success', 'outline-danger', 'outline-warning', 'outline-info', 'outline-dark', 'outline-light'`
-   */
   variant: PropTypes.string,
-  /**
-   * Specifies a large or small button.
-   *
-   * @type ('sm'|'lg')
-   */
   size: PropTypes.string,
-  /** Manually set the visual state of the button to `:active` */
   active: PropTypes.bool,
-  /**
-   * Disables the Button, preventing mouse events,
-   * even if the underlying component is an `<a>` element
-   */
   disabled: PropTypes.bool,
-  /** Providing a `href` will render an `<a>` element, _styled_ as a button. */
   href: PropTypes.string,
-  /**
-   * Defines HTML button type attribute.
-   *
-   * @default 'button'
-   */
   type: PropTypes.oneOf(["button", "reset", "submit", null]),
   as: PropTypes.elementType,
 }
@@ -103,23 +73,9 @@ export interface ButtonGroupProps
   vertical?: boolean
 }
 const propTypes = {
-  /**
-   * @default 'btn-group'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Sets the size for all Buttons in the group.
-   *
-   * @type ('sm'|'lg')
-   */
   size: PropTypes.string,
-  /** Make the set of Buttons appear vertically stacked. */
   vertical: PropTypes.bool,
-  /**
-   * An ARIA role describing the button group. Usually the default
-   * "group" role is fine. An `aria-label` or `aria-labelledby`
-   * prop is also recommended.
-   */
   role: PropTypes.string,
   as: PropTypes.elementType,
 }
@@ -135,7 +91,6 @@ const ButtonGroup: BsPrefixRefForwardingComponent<"div", ButtonGroupProps> =
         size,
         vertical,
         className,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "div",
         ...rest
       }: ButtonGroupProps,
@@ -170,15 +125,7 @@ export interface ButtonToolbarProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
-  /**
-   * @default 'btn-toolbar'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * The ARIA role describing the button toolbar. Generally the default
-   * "toolbar" role is correct. An `aria-label` or `aria-labelledby`
-   * prop is also recommended.
-   */
   role: PropTypes.string,
 }
 const defaultProps = {

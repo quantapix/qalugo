@@ -5,27 +5,9 @@ import usePlaceholder, { UsePlaceholderProps } from "./usePlaceholder"
 import PlaceholderButton from "./PlaceholderButton"
 export interface PlaceholderProps extends UsePlaceholderProps, BsPrefixProps {}
 const propTypes = {
-  /**
-   * @default 'placeholder'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Changes the animation of the placeholder.
-   *
-   * @type ('glow'|'wave')
-   */
   animation: PropTypes.string,
-  /**
-   * Change the background color of the placeholder.
-   *
-   * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'light'|'dark')}
-   */
   bg: PropTypes.string,
-  /**
-   * Component size variations.
-   *
-   * @type ('xs'|'sm'|'lg')
-   */
   size: PropTypes.string,
 }
 const Placeholder: BsPrefixRefForwardingComponent<"span", PlaceholderProps> =
@@ -50,18 +32,9 @@ export interface PlaceholderButtonProps extends UsePlaceholderProps {
   variant?: ButtonVariant
 }
 const propTypes = {
-  /**
-   * @default 'placeholder'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Changes the animation of the placeholder.
-   */
   animation: PropTypes.oneOf(["glow", "wave"]),
   size: PropTypes.oneOf(["xs", "sm", "lg"]),
-  /**
-   * Button variant.
-   */
   variant: PropTypes.string,
 }
 const PlaceholderButton: BsPrefixRefForwardingComponent<

@@ -39,69 +39,20 @@ export interface OverlayProps
   rootCloseEvent?: RootCloseEvent
 }
 const propTypes = {
-  /**
-   * A component instance, DOM node, or function that returns either.
-   * The `container` element will have the Overlay appended to it via a React portal.
-   */
   container: PropTypes.oneOfType([componentOrElement, PropTypes.func]),
-  /**
-   * A component instance, DOM node, or function that returns either.
-   * The overlay will be positioned in relation to the `target`
-   */
   target: PropTypes.oneOfType([componentOrElement, PropTypes.func]),
-  /**
-   * Set the visibility of the Overlay
-   */
   show: PropTypes.bool,
-  /**
-   * A set of popper options and props passed directly to Popper.
-   */
   popperConfig: PropTypes.object,
-  /**
-   * Specify whether the overlay should trigger onHide when the user clicks outside the overlay
-   */
   rootClose: PropTypes.bool,
-  /**
-   * Specify event for triggering a "root close" toggle.
-   */
   rootCloseEvent: PropTypes.oneOf<RootCloseEvent>(["click", "mousedown"]),
-  /**
-   * A callback invoked by the overlay when it wishes to be hidden. Required if
-   * `rootClose` is specified.
-   */
   onHide: PropTypes.func,
-  /**
-   * Animate the entering and exiting of the Overlay. `true` will use the `<Fade>` transition,
-   * or a custom react-transition-group `<Transition>` component can be provided.
-   */
   transition: PropTypes.oneOfType([PropTypes.bool, elementType]),
-  /**
-   * Callback fired before the Overlay transitions in
-   */
   onEnter: PropTypes.func,
-  /**
-   * Callback fired as the Overlay begins to transition in
-   */
   onEntering: PropTypes.func,
-  /**
-   * Callback fired after the Overlay finishes transitioning in
-   */
   onEntered: PropTypes.func,
-  /**
-   * Callback fired right before the Overlay transitions out
-   */
   onExit: PropTypes.func,
-  /**
-   * Callback fired as the Overlay begins to transition out
-   */
   onExiting: PropTypes.func,
-  /**
-   * Callback fired after the Overlay finishes transitioning out
-   */
   onExited: PropTypes.func,
-  /**
-   * The placement of the Overlay in relation to it's `target`.
-   */
   placement: PropTypes.oneOf<Placement>([
     "auto-start",
     "auto",
@@ -235,10 +186,6 @@ function normalizeDelay(delay?: OverlayDelay) {
         hide: delay,
       }
 }
-// Simple implementation of mouseEnter and mouseLeave.
-// React's built version is broken: https://github.com/facebook/react/issues/4251
-// for cases when the trigger is disabled and mouseOut/Over can cause flicker
-// moving from one child element to another.
 function handleMouseOverOut(
   // eslint-disable-next-line @typescript-eslint/no-shadow
   handler: (...args: [React.MouseEvent, ...any[]]) => any,
@@ -255,15 +202,7 @@ function handleMouseOverOut(
 const triggerType = PropTypes.oneOf(["click", "hover", "focus"])
 const propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
-  /**
-   * Specify which action or actions trigger Overlay visibility
-   *
-   * @type {'hover' | 'click' |'focus' | Array<'hover' | 'click' |'focus'>}
-   */
   trigger: PropTypes.oneOfType([triggerType, PropTypes.arrayOf(triggerType)]),
-  /**
-   * A millisecond delay amount to show and hide the Overlay once triggered
-   */
   delay: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.shape({
@@ -271,52 +210,14 @@ const propTypes = {
       hide: PropTypes.number,
     }),
   ]),
-  /**
-   * The visibility of the Overlay. `show` is a _controlled_ prop so should be paired
-   * with `onToggle` to avoid breaking user interactions.
-   *
-   * Manually toggling `show` does **not** wait for `delay` to change the visibility.
-   *
-   * @controllable onToggle
-   */
   show: PropTypes.bool,
-  /**
-   * The initial visibility state of the Overlay.
-   */
   defaultShow: PropTypes.bool,
-  /**
-   * A callback that fires when the user triggers a change in tooltip visibility.
-   *
-   * `onToggle` is called with the desired next `show`, and generally should be passed
-   * back to the `show` prop. `onToggle` fires _after_ the configured `delay`
-   *
-   * @controllable `show`
-   */
   onToggle: PropTypes.func,
-  /**
-    The initial flip state of the Overlay.
-   */
   flip: PropTypes.bool,
-  /**
-   * An element or text to overlay next to the target.
-   */
   overlay: PropTypes.oneOfType([PropTypes.func, PropTypes.element.isRequired]),
-  /**
-   * A Popper.js config object passed to the the underlying popper instance.
-   */
   popperConfig: PropTypes.object,
-  // Overridden props from `<Overlay>`.
-  /**
-   * @private
-   */
   target: PropTypes.oneOf([null]),
-  /**
-   * @private
-   */
   onHide: PropTypes.oneOf([null]),
-  /**
-   * The placement of the Overlay in relation to it's `target`.
-   */
   placement: PropTypes.oneOf([
     "auto-start",
     "auto",

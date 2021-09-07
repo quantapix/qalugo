@@ -18,21 +18,8 @@ export interface PopoverProps
   show?: boolean
 }
 const propTypes = {
-  /**
-   * @default 'popover'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * An html id attribute, necessary for accessibility
-   * @type {string}
-   * @required
-   */
   id: PropTypes.string,
-  /**
-   * Sets the direction the Popover is positioned towards.
-   *
-   * > This is generally provided by the `Overlay` component positioning the popover
-   */
   placement: PropTypes.oneOf<Placement>([
     "auto-start",
     "auto",
@@ -50,23 +37,14 @@ const propTypes = {
     "left",
     "left-start",
   ]),
-  /**
-   * An Overlay injected set of props for positioning the popover arrow.
-   *
-   * > This is generally provided by the `Overlay` component positioning the popover
-   */
   arrowProps: PropTypes.shape({
     ref: PropTypes.any,
     style: PropTypes.object,
   }),
-  /**
-   * When this prop is set, it creates a Popover with a Popover.Body inside
-   * passing the children directly to it
-   */
   body: PropTypes.bool,
-  /** @private */
+
   popper: PropTypes.object,
-  /** @private */
+
   show: PropTypes.bool,
 }
 const defaultProps: Partial<PopoverProps> = {
@@ -116,8 +94,6 @@ Popover.defaultProps = defaultProps
 export default Object.assign(Popover, {
   Header: PopoverHeader,
   Body: PopoverBody,
-  // Default popover offset.
-  // https://github.com/twbs/bootstrap/blob/5c32767e0e0dbac2d934bcdee03719a65d3f1187/js/src/popover.js#L28
   POPPER_OFFSET: [0, 8] as const,
 })
 import createWithBsPrefix from "./createWithBsPrefix"

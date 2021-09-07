@@ -21,21 +21,15 @@ export interface AccordionProps
   flush?: boolean
 }
 const propTypes = {
-  /** Set a custom element for this component */
   as: PropTypes.elementType,
-  /** @default 'accordion' */
   bsPrefix: PropTypes.string,
-  /** The current active key that corresponds to the currently expanded card */
   activeKey: PropTypes.string,
-  /** The default active key that is expanded on start */
   defaultActiveKey: PropTypes.string,
-  /** Renders accordion edge-to-edge with its parent container */
   flush: PropTypes.bool,
 }
 const Accordion: BsPrefixRefForwardingComponent<"div", AccordionProps> =
   React.forwardRef<HTMLElement, AccordionProps>((props, ref) => {
     const {
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "div",
       activeKey,
       bsPrefix,
@@ -85,16 +79,13 @@ export interface AccordionBodyProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
-  /** Set a custom element for this component */
   as: PropTypes.elementType,
-  /** @default 'accordion-body' */
   bsPrefix: PropTypes.string,
 }
 const AccordionBody: BsPrefixRefForwardingComponent<"div", AccordionBodyProps> =
   React.forwardRef<HTMLElement, AccordionBodyProps>(
     (
       {
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "div",
         bsPrefix,
         className,
@@ -131,11 +122,8 @@ export interface AccordionButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     BsPrefixProps {}
 const propTypes = {
-  /** Set a custom element for this component */
   as: PropTypes.elementType,
-  /** @default 'accordion-button' */
   bsPrefix: PropTypes.string,
-  /** A callback function for when this component is clicked */
   onClick: PropTypes.func,
 }
 export function useAccordionButton(
@@ -159,7 +147,6 @@ const AccordionButton: BsPrefixRefForwardingComponent<
 > = React.forwardRef<HTMLButtonElement, AccordionButtonProps>(
   (
     {
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "button",
       bsPrefix,
       className,
@@ -206,13 +193,8 @@ export interface AccordionCollapseProps extends BsPrefixProps, CollapseProps {
   eventKey: string
 }
 const propTypes = {
-  /** Set a custom element for this component */
   as: PropTypes.elementType,
-  /**
-   * A key that corresponds to the toggler that triggers this collapse's expand or collapse.
-   */
   eventKey: PropTypes.string.isRequired,
-  /** Children prop should only contain a single child, and is enforced as such */
   children: PropTypes.element.isRequired,
 }
 const AccordionCollapse: BsPrefixRefForwardingComponent<
@@ -266,11 +248,8 @@ export interface AccordionHeaderProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
-  /** Set a custom element for this component */
   as: PropTypes.elementType,
-  /** @default 'accordion-header' */
   bsPrefix: PropTypes.string,
-  /** Click handler for the `AccordionButton` element */
   onClick: PropTypes.func,
 }
 const AccordionHeader: BsPrefixRefForwardingComponent<
@@ -279,7 +258,6 @@ const AccordionHeader: BsPrefixRefForwardingComponent<
 > = React.forwardRef<HTMLElement, AccordionHeaderProps>(
   (
     {
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "h2",
       bsPrefix,
       className,
@@ -319,21 +297,14 @@ export interface AccordionItemProps
   eventKey: string
 }
 const propTypes = {
-  /** Set a custom element for this component */
   as: PropTypes.elementType,
-  /** @default 'accordion-item' */
   bsPrefix: PropTypes.string,
-  /**
-   * A unique key used to control this item's collapse/expand.
-   * @required
-   */
   eventKey: PropTypes.string.isRequired,
 }
 const AccordionItem: BsPrefixRefForwardingComponent<"div", AccordionItemProps> =
   React.forwardRef<HTMLElement, AccordionItemProps>(
     (
       {
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "div",
         bsPrefix,
         className,

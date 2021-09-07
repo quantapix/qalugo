@@ -11,18 +11,8 @@ export interface RatioProps
   aspectRatio?: AspectRatio | number
 }
 const propTypes = {
-  /**
-   * @default 'ratio'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * This component requires a single child element
-   */
   children: PropTypes.element.isRequired,
-  /**
-   * Set the aspect ratio of the embed. A fraction or a percentage can also
-   * be used to create custom aspect ratios.
-   */
   aspectRatio: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 const defaultProps = {

@@ -18,19 +18,7 @@ export interface FormProps
   validated?: boolean
 }
 const propTypes = {
-  /**
-   * The Form `ref` will be forwarded to the underlying element,
-   * which means, unless it's rendered `as` a composite component,
-   * it will be a DOM node, when resolved.
-   *
-   * @type {ReactRef}
-   * @alias ref
-   */
   _ref: PropTypes.any,
-  /**
-   * Mark a form as having been validated. Setting it to `true` will
-   * toggle any validation styles on the forms elements.
-   */
   validated: PropTypes.bool,
   as: PropTypes.elementType,
 }
@@ -40,7 +28,6 @@ const Form: BsPrefixRefForwardingComponent<"form", FormProps> =
       {
         className,
         validated,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "form",
         ...props
       },
@@ -93,77 +80,24 @@ export interface FormCheckProps
   bsSwitchPrefix?: string
 }
 const propTypes = {
-  /**
-   * @default 'form-check'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * bsPrefix override for the base switch class.
-   *
-   * @default 'form-switch'
-   */
   bsSwitchPrefix: PropTypes.string,
-  /**
-   * The FormCheck `ref` will be forwarded to the underlying input element,
-   * which means it will be a DOM node, when resolved.
-   *
-   * @type {ReactRef}
-   * @alias ref
-   */
   _ref: PropTypes.any,
-  /**
-   * The underlying HTML element to use when rendering the FormCheck.
-   *
-   * @type {('input'|elementType)}
-   */
   as: PropTypes.elementType,
-  /**
-   * A HTML id attribute, necessary for proper form accessibility.
-   * An id is recommended for allowing label clicks to toggle the check control.
-   *
-   * This is **required** when `type="switch"` due to how they are rendered.
-   */
   id: PropTypes.string,
-  /**
-   * Provide a function child to manually handle the layout of the FormCheck's inner components.
-   *
-   * ```jsx
-   * <FormCheck>
-   *   <FormCheck.Input isInvalid type={radio} />
-   *   <FormCheck.Label>Allow us to contact you?</FormCheck.Label>
-   *   <Feedback type="invalid">Yo this is required</Feedback>
-   * </FormCheck>
-   * ```
-   */
   children: PropTypes.node,
-  /**
-   * Groups controls horizontally with other `FormCheck`s.
-   */
   inline: PropTypes.bool,
-  /**
-   * Disables the control.
-   */
   disabled: PropTypes.bool,
-  /**
-   * `title` attribute for the underlying `FormCheckLabel`.
-   */
   title: PropTypes.string,
-  /**
-   * Label for the control.
-   */
   label: PropTypes.node,
-  /**
-   * The type of checkable.
-   * @type {('radio' | 'checkbox' | 'switch')}
-   */
   type: PropTypes.oneOf(["radio", "checkbox", "switch"]),
-  /** Manually style the input as valid */
+
   isValid: PropTypes.bool,
-  /** Manually style the input as invalid */
+
   isInvalid: PropTypes.bool,
-  /** Display feedback as a tooltip. */
+
   feedbackTooltip: PropTypes.bool,
-  /** A message to display when the input is in a validation state */
+
   feedback: PropTypes.node,
 }
 const FormCheck: BsPrefixRefForwardingComponent<"input", FormCheckProps> =
@@ -186,7 +120,6 @@ const FormCheck: BsPrefixRefForwardingComponent<"input", FormCheckProps> =
         type = "checkbox",
         label,
         children,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as = "input",
         ...props
       },
@@ -264,23 +197,15 @@ export interface FormCheckInputProps
   isInvalid?: boolean
 }
 const propTypes = {
-  /**
-   * @default 'form-check-input'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * The underlying HTML element to use when rendering the FormCheckInput.
-   *
-   * @type {('input'|elementType)}
-   */
   as: PropTypes.elementType,
-  /** A HTML id attribute, necessary for proper form accessibility. */
+
   id: PropTypes.string,
-  /** The type of checkable. */
+
   type: PropTypes.oneOf(["radio", "checkbox"]).isRequired,
-  /** Manually style the input as valid */
+
   isValid: PropTypes.bool,
-  /** Manually style the input as invalid */
+
   isInvalid: PropTypes.bool,
 }
 const FormCheckInput: BsPrefixRefForwardingComponent<
@@ -295,7 +220,6 @@ const FormCheckInput: BsPrefixRefForwardingComponent<
       type = "checkbox",
       isValid = false,
       isInvalid = false,
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "input",
       ...props
     },
@@ -333,11 +257,8 @@ export interface FormCheckLabelProps
   extends React.LabelHTMLAttributes<HTMLLabelElement>,
     BsPrefixProps {}
 const propTypes = {
-  /**
-   * @default 'form-check-label'
-   */
   bsPrefix: PropTypes.string,
-  /** The HTML for attribute for associating the label with an input */
+
   htmlFor: PropTypes.string,
 }
 const FormCheckLabel = React.forwardRef<HTMLLabelElement, FormCheckLabelProps>(
@@ -358,7 +279,6 @@ FormCheckLabel.displayName = "FormCheckLabel"
 FormCheckLabel.propTypes = propTypes
 export default FormCheckLabel
 import * as React from "react"
-// TODO
 interface FormContextType {
   controlId?: any
 }
@@ -389,67 +309,28 @@ export interface FormControlProps
   isInvalid?: boolean
 }
 const propTypes = {
-  /**
-   * @default {'form-control'}
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * The FormControl `ref` will be forwarded to the underlying input element,
-   * which means unless `as` is a composite component,
-   * it will be a DOM node, when resolved.
-   *
-   * @type {ReactRef}
-   * @alias ref
-   */
   _ref: PropTypes.any,
-  /**
-   * Input size variants
-   *
-   * @type {('sm'|'lg')}
-   */
   size: PropTypes.string,
-  /**
-   * The size attribute of the underlying HTML element.
-   * Specifies the visible width in characters if `as` is `'input'`.
-   */
   htmlSize: PropTypes.number,
-  /**
-   * The underlying HTML element to use when rendering the FormControl.
-   *
-   * @type {('input'|'textarea'|elementType)}
-   */
   as: PropTypes.elementType,
-  /**
-   * Render the input as plain text. Generally used along side `readOnly`.
-   */
   plaintext: PropTypes.bool,
-  /** Make the control readonly */
+
   readOnly: PropTypes.bool,
-  /** Make the control disabled */
+
   disabled: PropTypes.bool,
-  /**
-   * The `value` attribute of underlying input
-   *
-   * @controllable onChange
-   * */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.number,
   ]),
-  /** A callback fired when the `value` prop changes */
+
   onChange: PropTypes.func,
-  /**
-   * The HTML input `type`, which is only relevant if `as` is `'input'` (the default).
-   */
   type: PropTypes.string,
-  /**
-   * Uses `controlId` from `<FormGroup>` if not explicitly specified.
-   */
   id: PropTypes.string,
-  /** Add "valid" validation styles to the control */
+
   isValid: PropTypes.bool,
-  /** Add "invalid" validation styles to the control and accompanying label */
+
   isInvalid: PropTypes.bool,
 }
 const FormControl: BsPrefixRefForwardingComponent<"input", FormControlProps> =
@@ -466,7 +347,6 @@ const FormControl: BsPrefixRefForwardingComponent<"input", FormControlProps> =
         isInvalid = false,
         plaintext,
         readOnly,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "input",
         ...props
       },
@@ -523,18 +403,7 @@ export interface FormGroupProps
 }
 const propTypes = {
   as: PropTypes.elementType,
-  /**
-   * Sets `id` on `<FormControl>` and `htmlFor` on `<FormGroup.Label>`.
-   */
   controlId: PropTypes.string,
-  /**
-   * The FormGroup `ref` will be forwarded to the underlying element.
-   * Unless the FormGroup is rendered `as` a composite component,
-   * it will be a DOM node, when resolved.
-   *
-   * @type {ReactRef}
-   * @alias ref
-   */
   _ref: PropTypes.any,
 }
 const FormGroup: BsPrefixRefForwardingComponent<"div", FormGroupProps> =
@@ -542,7 +411,6 @@ const FormGroup: BsPrefixRefForwardingComponent<"div", FormGroupProps> =
     (
       {
         controlId,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "div",
         ...props
       },
@@ -582,34 +450,12 @@ export interface FormLabelWithColProps extends FormLabelBaseProps, ColProps {
 }
 export type FormLabelProps = FormLabelWithColProps | FormLabelOwnProps
 const propTypes = {
-  /**
-   * @default 'form-label'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Uses `controlId` from `<FormGroup>` if not explicitly specified.
-   */
   htmlFor: PropTypes.string,
-  /**
-   * Renders the FormLabel as a `<Col>` component (accepting all the same props),
-   * as well as adding additional styling for horizontal forms.
-   */
   column: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(["sm", "lg"])]),
-  /**
-   * The FormLabel `ref` will be forwarded to the underlying element.
-   * Unless the FormLabel is rendered `as` a composite component,
-   * it will be a DOM node, when resolved.
-   *
-   * @type {ReactRef}
-   * @alias ref
-   */
   _ref: PropTypes.any,
-  /**
-   * Hides the label visually while still allowing it to be
-   * read by assistive technologies.
-   */
   visuallyHidden: PropTypes.bool,
-  /** Set a custom element for this component */
+
   as: PropTypes.elementType,
 }
 const defaultProps = {
@@ -620,7 +466,6 @@ const FormLabel: BsPrefixRefForwardingComponent<"label", FormLabelProps> =
   React.forwardRef<HTMLElement, FormLabelProps>(
     (
       {
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "label",
         bsPrefix,
         column,
@@ -678,27 +523,16 @@ export interface FormRangeProps
   extends BsPrefixOnlyProps,
     Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {}
 const propTypes = {
-  /**
-   * @default {'form-range'}
-   */
   bsPrefix: PropTypes.string,
-  /** Make the control disabled */
+
   disabled: PropTypes.bool,
-  /**
-   * The `value` attribute of underlying input
-   *
-   * @controllable onChange
-   * */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string.isRequired),
     PropTypes.number,
   ]),
-  /** A callback fired when the `value` prop changes */
+
   onChange: PropTypes.func,
-  /**
-   * Uses `controlId` from `<FormGroup>` if not explicitly specified.
-   */
   id: PropTypes.string,
 }
 const FormRange = React.forwardRef<HTMLInputElement, FormRangeProps>(
@@ -735,38 +569,21 @@ export interface FormSelectProps
   isInvalid?: boolean
 }
 const propTypes = {
-  /**
-   * @default {'form-select'}
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Size variants
-   *
-   * @type {('sm'|'lg')}
-   */
   size: PropTypes.string,
-  /**
-   * The size attribute of the underlying HTML element.
-   * Specifies the number of visible options.
-   */
   htmlSize: PropTypes.number,
-  /** Make the control disabled */
+
   disabled: PropTypes.bool,
-  /**
-   * The `value` attribute of underlying input
-   *
-   * @controllable onChange
-   * */
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.number,
   ]),
-  /** A callback fired when the `value` prop changes */
+
   onChange: PropTypes.func,
-  /** Add "valid" validation styles to the control */
+
   isValid: PropTypes.bool,
-  /** Add "invalid" validation styles to the control and accompanying label */
+
   isInvalid: PropTypes.bool,
 }
 const FormSelect: BsPrefixRefForwardingComponent<"select", FormSelectProps> =
@@ -817,27 +634,14 @@ export interface FormTextProps
   muted?: boolean
 }
 const propTypes = {
-  /** @default 'form-text' */
+
   bsPrefix: PropTypes.string,
-  /**
-   * The FormText `ref` will be forwarded to the underlying element.
-   * Unless the FormText is rendered `as` a composite component,
-   * it will be a DOM node, when resolved.
-   *
-   * @type {ReactRef}
-   * @alias ref
-   */
   _ref: PropTypes.any,
-  /**
-   * A convenience prop for add the `text-muted` class,
-   * since it's so commonly used here.
-   */
   muted: PropTypes.bool,
   as: PropTypes.elementType,
 }
 const FormText: BsPrefixRefForwardingComponent<"small", FormTextProps> =
   React.forwardRef<HTMLElement, FormTextProps>(
-    // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
     (
       { bsPrefix, className, as: Component = "small", muted, ...props },
       ref

@@ -12,25 +12,10 @@ export interface ImageProps
   thumbnail?: boolean
 }
 export const propTypes = {
-  /**
-   * @default 'img'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Sets image as fluid image.
-   */
   fluid: PropTypes.bool,
-  /**
-   * Sets image shape as rounded.
-   */
   rounded: PropTypes.bool,
-  /**
-   * Sets image shape as circle.
-   */
   roundedCircle: PropTypes.bool,
-  /**
-   * Sets image shape as thumbnail.
-   */
   thumbnail: PropTypes.bool,
 }
 const defaultProps = {

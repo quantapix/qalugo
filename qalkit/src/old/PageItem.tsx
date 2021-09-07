@@ -14,13 +14,13 @@ export interface PageItemProps
   href?: string
 }
 const propTypes = {
-  /** Disables the PageItem */
+
   disabled: PropTypes.bool,
-  /** Styles PageItem as active, and renders a `<span>` instead of an `<a>`. */
+
   active: PropTypes.bool,
-  /** An accessible label indicating the active state.. */
+
   activeLabel: PropTypes.string,
-  /** A callback function for when this component is clicked */
+
   onClick: PropTypes.func,
 }
 const defaultProps = {

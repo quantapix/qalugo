@@ -38,7 +38,6 @@ export function useIsRTL() {
 function createBootstrapComponent(Component, opts) {
   if (typeof opts === "string") opts = { prefix: opts }
   const isClassy = Component.prototype && Component.prototype.isReactComponent
-  // If it's a functional component make sure we don't break it with a ref
   const { prefix, forwardRefAs = isClassy ? "ref" : "innerRef" } = opts
   const Wrapped = React.forwardRef(({ ...props }, ref) => {
     props[forwardRefAs] = ref

@@ -9,11 +9,6 @@ export interface CloseButtonProps
 const propTypes = {
   "aria-label": PropTypes.string,
   onClick: PropTypes.func,
-  /**
-   * Render different color variant for the button.
-   *
-   * Omitting this will render the default dark color.
-   */
   variant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
 }
 const defaultProps = {

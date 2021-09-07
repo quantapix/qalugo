@@ -14,21 +14,8 @@ export interface TooltipProps
   popper?: any
 }
 const propTypes = {
-  /**
-   * @default 'tooltip'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * An html id attribute, necessary for accessibility
-   * @type {string}
-   * @required
-   */
   id: PropTypes.string,
-  /**
-   * Sets the direction the Tooltip is positioned towards.
-   *
-   * > This is generally provided by the `Overlay` component positioning the tooltip
-   */
   placement: PropTypes.oneOf([
     "auto-start",
     "auto",
@@ -46,20 +33,13 @@ const propTypes = {
     "left",
     "left-start",
   ]),
-  /**
-   * An Overlay injected set of props for positioning the tooltip arrow.
-   *
-   * > This is generally provided by the `Overlay` component positioning the tooltip
-   *
-   * @type {{ ref: ReactRef, style: Object }}
-   */
   arrowProps: PropTypes.shape({
     ref: PropTypes.any,
     style: PropTypes.object,
   }),
-  /** @private */
+
   popper: PropTypes.object,
-  /** @private */
+
   show: PropTypes.any,
 }
 const defaultProps = {

@@ -11,18 +11,8 @@ export interface BreadcrumbProps
   listProps?: React.OlHTMLAttributes<HTMLOListElement>
 }
 const propTypes = {
-  /**
-   * @default 'breadcrumb'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * ARIA label for the nav element
-   * https://www.w3.org/TR/wai-aria-practices/#breadcrumb
-   */
   label: PropTypes.string,
-  /**
-   * Additional props passed as-is to the underlying `<ol>` element
-   */
   listProps: PropTypes.object,
   as: PropTypes.elementType,
 }
@@ -39,7 +29,6 @@ const Breadcrumb: BsPrefixRefForwardingComponent<"nav", BreadcrumbProps> =
         listProps,
         children,
         label,
-        // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
         as: Component = "nav",
         ...props
       },
@@ -83,37 +72,15 @@ export interface BreadcrumbItemProps
   linkAs?: React.ElementType
   target?: string
   title?: React.ReactNode
-  linkProps?: Record<string, any> // the generic is to much work here
+  linkProps?: Record<string, any>
 }
 const propTypes = {
-  /**
-   * @default 'breadcrumb-item'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Adds a visual "active" state to a Breadcrumb
-   * Item and disables the link.
-   */
   active: PropTypes.bool,
-  /**
-   * `href` attribute for the inner `a` element
-   */
   href: PropTypes.string,
-  /**
-   * You can use a custom element type for this component's inner link.
-   */
   linkAs: PropTypes.elementType,
-  /**
-   * `title` attribute for the inner `a` element
-   */
   title: PropTypes.node,
-  /**
-   * `target` attribute for the inner `a` element
-   */
   target: PropTypes.string,
-  /**
-   * Additional props passed as-is to the underlying link for non-active items.
-   */
   linkProps: PropTypes.object,
   as: PropTypes.elementType,
 }
@@ -131,7 +98,6 @@ const BreadcrumbItem: BsPrefixRefForwardingComponent<
       active,
       children,
       className,
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "li",
       linkAs: LinkComponent = Anchor,
       linkProps,

@@ -19,9 +19,6 @@ export interface ProgressBarProps
   isChild?: boolean
 }
 const ROUND_PRECISION = 1000
-/**
- * Validate that children, if any, are instances of `<ProgressBar>`.
- */
 function onlyProgressBar(props, propName, componentName): Error | null {
   const children = props[propName]
   if (!children) {
@@ -32,12 +29,6 @@ function onlyProgressBar(props, propName, componentName): Error | null {
     if (error) {
       return
     }
-    /**
-     * Compare types in a way that works with libraries that patch and proxy
-     * components like react-hot-loader.
-     *
-     * see https://github.com/gaearon/react-hot-loader#checking-element-types
-     */
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     const element = <ProgressBar />
     if (child.type === element.type) return
@@ -53,53 +44,16 @@ function onlyProgressBar(props, propName, componentName): Error | null {
   return error
 }
 const propTypes = {
-  /**
-   * Minimum value progress can begin from
-   */
   min: PropTypes.number,
-  /**
-   * Current value of progress
-   */
   now: PropTypes.number,
-  /**
-   * Maximum value progress can reach
-   */
   max: PropTypes.number,
-  /**
-   * Show label that represents visual percentage.
-   * EG. 60%
-   */
   label: PropTypes.node,
-  /**
-   * Hide's the label visually.
-   */
   visuallyHidden: PropTypes.bool,
-  /**
-   * Uses a gradient to create a striped effect.
-   */
   striped: PropTypes.bool,
-  /**
-   * Animate's the stripes from right to left
-   */
   animated: PropTypes.bool,
-  /**
-   * @private
-   * @default 'progress-bar'
-   */
   bsPrefix: PropTypes.string,
-  /**
-   * Sets the background class of the progress bar.
-   *
-   * @type ('success'|'danger'|'warning'|'info')
-   */
   variant: PropTypes.string,
-  /**
-   * Child elements (only allows elements of type <ProgressBar />)
-   */
   children: onlyProgressBar,
-  /**
-   * @private
-   */
   isChild: PropTypes.bool,
 }
 const defaultProps = {

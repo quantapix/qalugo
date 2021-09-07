@@ -38,52 +38,13 @@ const rowColumns = PropTypes.oneOfType([
   }),
 ])
 const propTypes = {
-  /**
-   * @default 'row'
-   */
   bsPrefix: PropTypes.string,
   as: PropTypes.elementType,
-  /**
-   * The number of columns that will fit next to each other on extra small devices (<576px).
-   * Use `auto` to give columns their natural widths.
-   *
-   * @type {(number|'auto'|{ cols: number|'auto' })}
-   */
   xs: rowColumns,
-  /**
-   * The number of columns that will fit next to each other on small devices (≥576px).
-   * Use `auto` to give columns their natural widths.
-   *
-   * @type {(number|'auto'|{ cols: number|'auto' })}
-   */
   sm: rowColumns,
-  /**
-   * The number of columns that will fit next to each other on medium devices (≥768px).
-   * Use `auto` to give columns their natural widths.
-   *
-   * @type {(number|'auto'|{ cols: number|'auto' })}
-   */
   md: rowColumns,
-  /**
-   * The number of columns that will fit next to each other on large devices (≥992px).
-   * Use `auto` to give columns their natural widths.
-   *
-   * @type {(number|'auto'|{ cols: number|'auto' })}
-   */
   lg: rowColumns,
-  /**
-   * The number of columns that will fit next to each other on extra large devices (≥1200px).
-   * Use `auto` to give columns their natural widths.
-   *
-   * @type {(number|'auto'|{ cols: number|'auto' })}
-   */
   xl: rowColumns,
-  /**
-   * The number of columns that will fit next to each other on extra extra large devices (≥1400px).
-   * Use `auto` to give columns their natural widths.
-   *
-   * @type {(number|'auto'|{ cols: number|'auto' })}
-   */
   xxl: rowColumns,
 }
 const Row: BsPrefixRefForwardingComponent<"div", RowProps> = React.forwardRef<
@@ -94,7 +55,6 @@ const Row: BsPrefixRefForwardingComponent<"div", RowProps> = React.forwardRef<
     {
       bsPrefix,
       className,
-      // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
       as: Component = "div",
       ...props
     }: RowProps,
