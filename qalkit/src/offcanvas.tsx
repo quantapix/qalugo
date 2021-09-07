@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import useEventCallback from "@restart/hooks/useEventCallback"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useCallback, useMemo, useRef } from "react"
 import BaseModal, {
@@ -49,9 +48,9 @@ const propTypes = {
   autoFocus?: boolean,
   enforceFocus?: boolean,
   restoreFocus?: boolean,
-  restoreFocusOptions: PropTypes.shape({
+  restoreFocusOptions?: {
     preventScroll?: boolean,
-  }),
+  },
   show?: boolean,
   onShow?: () => void,
   onHide?: () => void,
@@ -62,7 +61,7 @@ const propTypes = {
   onExit?: () => void,
   onExiting?: () => void,
   onExited?: () => void,
-  container: PropTypes.any,
+  container?: any,
   "aria-labelledby"?: string,
 }
 const defaultProps: Partial<OffcanvasProps> = {
@@ -209,7 +208,6 @@ export default Object.assign(Offcanvas, {
 import createWithBsPrefix from "./createWithBsPrefix"
 export default createWithBsPrefix("offcanvas-body")
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { CloseButtonVariant } from "./CloseButton"
@@ -254,7 +252,6 @@ export default createWithBsPrefix("offcanvas-title", {
   Component: DivStyledAsH5,
 })
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import Transition, {
   TransitionStatus,

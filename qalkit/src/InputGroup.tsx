@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useMemo } from "react"
 import createWithBsPrefix from "./createWithBsPrefix"
@@ -31,7 +30,7 @@ const propTypes = {
   bsPrefix?: string,
   size?: string,
   hasValidation?: boolean,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const InputGroup: BsPrefixRefForwardingComponent<"div", InputGroupProps> =
   React.forwardRef<HTMLElement, InputGroupProps>(

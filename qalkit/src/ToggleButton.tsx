@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import Button, { ButtonProps } from "./Button"
@@ -27,7 +26,7 @@ const propTypes = {
     string |
     string[] |
     number,
-  inputRef?: PropTypes.func | any,
+  inputRef?: () => void | any,
 }
 const ToggleButton = React.forwardRef<HTMLLabelElement, ToggleButtonProps>(
   (
@@ -76,7 +75,6 @@ const ToggleButton = React.forwardRef<HTMLLabelElement, ToggleButtonProps>(
 ToggleButton.propTypes = propTypes
 ToggleButton.displayName = "ToggleButton"
 export default ToggleButton
-import PropTypes from "prop-types"
 import * as React from "react"
 import invariant from "invariant"
 import { useUncontrolled } from "uncontrollable"
@@ -108,7 +106,7 @@ export type ToggleButtonGroupProps<T> =
   | ToggleButtonCheckboxProps<T>
 const propTypes = {
   name?: string,
-  value: PropTypes.any,
+  value?: any,
   onChange?: () => void,
   type: "checkbox" | "radio",
   size?: string,

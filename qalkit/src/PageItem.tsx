@@ -1,6 +1,5 @@
 /* eslint-disable react/no-multi-comp */
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { ReactNode } from "react"
 import Anchor from "@restart/ui/Anchor"

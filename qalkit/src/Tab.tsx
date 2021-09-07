@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import * as React from "react"
 import TabContainer from "./TabContainer"
 import TabContent from "./TabContent"
@@ -30,7 +29,6 @@ export default Object.assign(Tab, {
   Pane: TabPane,
 })
 import * as React from "react"
-import PropTypes from "prop-types"
 import Tabs, { TabsProps } from "@restart/ui/Tabs"
 import getTabTransitionComponent from "./getTabTransitionComponent"
 import { TransitionType } from "./helpers"
@@ -60,7 +58,6 @@ import createWithBsPrefix from "./createWithBsPrefix"
 export default createWithBsPrefix("tab-content")
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import NoopTransition from "@restart/ui/NoopTransition"
 import SelectableContext from "@restart/ui/SelectableContext"
 import TabContext from "@restart/ui/TabContext"
@@ -85,7 +82,7 @@ export interface TabPaneProps
 }
 const propTypes = {
   bsPrefix?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
   eventKey?: string | number,
   active?: boolean,
   transition?: boolean | PropTypes.elementType,

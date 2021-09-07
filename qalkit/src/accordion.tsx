@@ -1,7 +1,6 @@
 import classNames from "classnames"
 import * as React from "react"
 import { useMemo } from "react"
-import PropTypes from "prop-types"
 import { SelectCallback } from "@restart/ui/types"
 import { useUncontrolled } from "uncontrollable"
 import { useBootstrapPrefix } from "./ThemeProvider"
@@ -21,7 +20,7 @@ export interface AccordionProps
   flush?: boolean
 }
 const propTypes = {
-  as: PropTypes.elementType,
+  as: React.elementType,
   bsPrefix: string,
   activeKey?: string,
   defaultActiveKey?: string,
@@ -70,7 +69,6 @@ export default Object.assign(Accordion, {
 import classNames from "classnames"
 import * as React from "react"
 import { useContext } from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import AccordionCollapse from "./AccordionCollapse"
 import AccordionItemContext from "./AccordionItemContext"
@@ -79,7 +77,7 @@ export interface AccordionBodyProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
-  as: PropTypes.elementType,
+  as?: React.elementType,
   bsPrefix?: string,
 }
 const AccordionBody: BsPrefixRefForwardingComponent<"div", AccordionBodyProps> =
@@ -112,7 +110,6 @@ export default AccordionBody
 import * as React from "react"
 import { useContext } from "react"
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import AccordionContext from "./AccordionContext"
 import AccordionItemContext from "./AccordionItemContext"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
@@ -122,7 +119,7 @@ export interface AccordionButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     BsPrefixProps {}
 const propTypes = {
-  as: PropTypes.elementType,
+  as?: React.elementType,
   bsPrefix?: string,
   onClick?: () => void,
 }
@@ -183,7 +180,6 @@ export default AccordionButton
 import classNames from "classnames"
 import * as React from "react"
 import { useContext } from "react"
-import PropTypes from "prop-types"
 import { Transition } from "react-transition-group"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import Collapse, { CollapseProps } from "./Collapse"
@@ -193,9 +189,9 @@ export interface AccordionCollapseProps extends BsPrefixProps, CollapseProps {
   eventKey: string
 }
 const propTypes = {
-  as: PropTypes.elementType,
+  as?: React.elementType,
   eventKey?: string
-  children: PropTypes.element.isRequired,
+  children: React.element,
 }
 const AccordionCollapse: BsPrefixRefForwardingComponent<
   "div",
@@ -240,7 +236,6 @@ context.displayName = "AccordionContext"
 export default context
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import AccordionButton from "./AccordionButton"
 import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./helpers"
@@ -248,7 +243,7 @@ export interface AccordionHeaderProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
-  as: PropTypes.elementType,
+  as?: React.elementType,
   bsPrefix?: string,
   onClick?: () => void,
 }
@@ -285,7 +280,6 @@ export default AccordionHeader
 import classNames from "classnames"
 import * as React from "react"
 import { useMemo } from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import AccordionItemContext, {
   AccordionItemContextValue,
@@ -297,7 +291,7 @@ export interface AccordionItemProps
   eventKey: string
 }
 const propTypes = {
-  as: PropTypes.elementType,
+  as?: React.elementType,
   bsPrefix?: string,
   eventKey?: string
 }

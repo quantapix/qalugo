@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import BreadcrumbItem from "./BreadcrumbItem"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
@@ -13,8 +12,8 @@ export interface BreadcrumbProps
 const propTypes = {
   bsPrefix?: string,
   label?: string,
-  listProps: PropTypes.object,
-  as: PropTypes.elementType,
+  listProps?: object,
+  as?: React.elementType,
 }
 const defaultProps = {
   label: "breadcrumb",
@@ -60,7 +59,6 @@ export default Object.assign(Breadcrumb, {
 })
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import Anchor from "@restart/ui/Anchor"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
@@ -78,11 +76,11 @@ const propTypes = {
   bsPrefix?: string,
   active?: boolean,
   href?: string,
-  linkAs: PropTypes.elementType,
+  linkAs?: React.elementType,
   title?: React.ReactNode,
   target?: string,
-  linkProps: PropTypes.object,
-  as: PropTypes.elementType,
+  linkProps?: object,
+  as?: React.elementType,
 }
 const defaultProps = {
   active: false,

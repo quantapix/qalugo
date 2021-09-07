@@ -1,5 +1,4 @@
 import * as React from "react"
-import PropTypes from "prop-types"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
 import usePlaceholder, { UsePlaceholderProps } from "./usePlaceholder"
 import PlaceholderButton from "./PlaceholderButton"
@@ -23,7 +22,6 @@ export default Object.assign(Placeholder, {
   Button: PlaceholderButton,
 })
 import * as React from "react"
-import PropTypes from "prop-types"
 import { BsPrefixRefForwardingComponent } from "./helpers"
 import Button from "./Button"
 import usePlaceholder, { UsePlaceholderProps } from "./usePlaceholder"

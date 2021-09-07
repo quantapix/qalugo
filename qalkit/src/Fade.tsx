@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useCallback } from "react"
 import Transition, {
@@ -33,8 +32,8 @@ const propTypes = {
   onExit?: () => void,
   onExiting?: () => void,
   onExited?: () => void,
-  children: PropTypes.element.isRequired,
-  transitionClasses: PropTypes.object,
+  children: React.element,
+  transitionClasses?: object,
 }
 const defaultProps = {
   in: false,

@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { OverlayArrowProps } from "@restart/ui/Overlay"
 import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
 import { Placement } from "./types"
@@ -33,14 +32,14 @@ const propTypes = {
     "left" |
     "left-start" |
   ,
-  arrowProps: PropTypes.shape({
-    ref: PropTypes.any,
-    style: PropTypes.object,
-  }),
+  arrowProps?: {
+    ref?: any,
+    style?: object,
+  },
 
-  popper: PropTypes.object,
+  popper?: object,
 
-  show: PropTypes.any,
+  show?: any,
 }
 const defaultProps = {
   placement: "right",

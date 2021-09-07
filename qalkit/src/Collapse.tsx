@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import css from "dom-helpers/css"
-import PropTypes from "prop-types"
 import React, { useMemo } from "react"
 import Transition, {
   TransitionStatus,
@@ -66,11 +65,11 @@ const propTypes = {
   onExiting?: () => void,
   onExited?: () => void,
   dimension?: "height" | "width" |
-    PropTypes.func,
+    () => void,
   
   getDimensionValue?: () => void,
   role?: string,
-  children: PropTypes.element.isRequired,
+  children: React.element,
 }
 const defaultProps = {
   in: false,

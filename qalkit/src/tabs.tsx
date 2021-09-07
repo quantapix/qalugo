@@ -1,5 +1,4 @@
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useUncontrolled } from "uncontrollable"
 import BaseTabs, { TabsProps as BaseTabsProps } from "@restart/ui/Tabs"
 import Nav from "./Nav"

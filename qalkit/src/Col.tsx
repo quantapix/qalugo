@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
 type NumberAttr =
@@ -43,14 +42,14 @@ const colSize =
 const stringOrNumber = number | string
 const column = 
   colSize |
-  PropTypes.shape({
+  {
     size: colSize,
     order: stringOrNumber,
     offset: stringOrNumber,
-  })
+  }
 const propTypes = {
   bsPrefix?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
   xs: column,
   sm: column,
   md: column,

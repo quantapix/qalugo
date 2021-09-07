@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
@@ -16,9 +15,9 @@ const propTypes = {
   variant?: string,
   animation: "border" | "grow",
   size?: string,
-  children: PropTypes.element,
+  children?: React.element,
   role?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const Spinner: BsPrefixRefForwardingComponent<"div", SpinnerProps> =
   React.forwardRef<HTMLElement, SpinnerProps>(

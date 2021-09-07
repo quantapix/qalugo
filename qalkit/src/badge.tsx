@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
@@ -18,7 +17,7 @@ const propTypes = {
   pill?: boolean,
   text?: string,
 
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   bg: "primary",

@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import warning from "warning"
 import { useUncontrolled } from "uncontrollable"
 import BaseNav, { NavProps as BaseNavProps } from "@restart/ui/Nav"
@@ -17,7 +16,7 @@ const propTypes = {
   bsPrefix?: string,
   variant?: "flush",
   horizontal?: true | "sm" | "md" | "lg" | "xl" | "xxl",
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const ListGroup: BsPrefixRefForwardingComponent<"div", ListGroupProps> =
   React.forwardRef<HTMLElement, ListGroupProps>((props, ref) => {
@@ -63,7 +62,6 @@ export default Object.assign(ListGroup, {
 import classNames from "classnames"
 import * as React from "react"
 import { useCallback } from "react"
-import PropTypes from "prop-types"
 import BaseNavItem, {
   NavItemProps as BaseNavItemProps,
 } from "@restart/ui/NavItem"
@@ -86,7 +84,7 @@ const propTypes = {
   eventKey?: string | number,
   onClick?: () => void,
   href?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   variant: undefined,

@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import FormCheck from "./FormCheck"
 import FormControl from "./FormControl"
@@ -18,9 +17,9 @@ export interface FormProps
   validated?: boolean
 }
 const propTypes = {
-  _ref: PropTypes.any,
+  _ref?: any,
   validated?: boolean,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const Form: BsPrefixRefForwardingComponent<"form", FormProps> =
   React.forwardRef<HTMLFormElement, FormProps>(
@@ -55,7 +54,6 @@ export default Object.assign(Form, {
   FloatingLabel,
 })
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext, useMemo } from "react"
 import Feedback, { FeedbackType } from "./Feedback"
@@ -82,8 +80,8 @@ export interface FormCheckProps
 const propTypes = {
   bsPrefix?: string,
   bsSwitchPrefix?: string,
-  _ref: PropTypes.any,
-  as: PropTypes.elementType,
+  _ref?: any,
+  as?: React.elementType,
   id?: string,
   children?: React.ReactNode,
   inline?: boolean,
@@ -182,7 +180,6 @@ export default Object.assign(FormCheck, {
   Label: FormCheckLabel,
 })
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import FormContext from "./FormContext"
@@ -198,7 +195,7 @@ export interface FormCheckInputProps
 }
 const propTypes = {
   bsPrefix?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 
   id?: string,
 
@@ -247,7 +244,6 @@ FormCheckInput.displayName = "FormCheckInput"
 FormCheckInput.propTypes = propTypes
 export default FormCheckInput
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import FormContext from "./FormContext"
@@ -285,7 +281,6 @@ interface FormContextType {
 const FormContext = React.createContext<FormContextType>({})
 export default FormContext
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import warning from "warning"
@@ -310,10 +305,10 @@ export interface FormControlProps
 }
 const propTypes = {
   bsPrefix?: string,
-  _ref: PropTypes.any,
+  _ref?: any,
   size?: string,
   htmlSize?: number,
-  as: PropTypes.elementType,
+  as?: React.elementType,
   plaintext?: boolean,
 
   readOnly?: boolean,
@@ -389,7 +384,6 @@ FormControl.propTypes = propTypes
 export default Object.assign(FormControl, { Feedback })
 import createWithBsPrefix from "./createWithBsPrefix"
 export default createWithBsPrefix("form-floating")
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useMemo } from "react"
 import FormContext from "./FormContext"
@@ -400,9 +394,9 @@ export interface FormGroupProps
   controlId?: string
 }
 const propTypes = {
-  as: PropTypes.elementType,
+  as?: React.elementType,
   controlId?: string,
-  _ref: PropTypes.any,
+  _ref?: any,
 }
 const FormGroup: BsPrefixRefForwardingComponent<"div", FormGroupProps> =
   React.forwardRef(
@@ -426,7 +420,6 @@ FormGroup.displayName = "FormGroup"
 FormGroup.propTypes = propTypes
 export default FormGroup
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import warning from "warning"
@@ -454,7 +447,7 @@ const propTypes = {
   _ref?: any,
   visuallyHidden?: boolean,
 
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   column: false,
@@ -511,7 +504,6 @@ FormLabel.propTypes = propTypes
 FormLabel.defaultProps = defaultProps
 export default FormLabel
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
@@ -550,7 +542,6 @@ FormRange.displayName = "FormRange"
 FormRange.propTypes = propTypes
 export default FormRange
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
@@ -618,7 +609,6 @@ FormSelect.displayName = "FormSelect"
 FormSelect.propTypes = propTypes
 export default FormSelect
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
@@ -630,9 +620,9 @@ export interface FormTextProps
 const propTypes = {
 
   bsPrefix?: string,
-  _ref: PropTypes.any,
+  _ref?: any,
   muted?: boolean,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const FormText: BsPrefixRefForwardingComponent<"small", FormTextProps> =
   React.forwardRef<HTMLElement, FormTextProps>(

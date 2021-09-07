@@ -1,7 +1,6 @@
 import * as React from "react"
 import { useRef } from "react"
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import BaseOverlay, {
   OverlayProps as BaseOverlayProps,
   OverlayArrowProps,
@@ -39,10 +38,10 @@ export interface OverlayProps
   rootCloseEvent?: RootCloseEvent
 }
 const propTypes = {
-  container?: componentOrElement | PropTypes.func,
-  target?: componentOrElement | PropTypes.func,
+  container?: componentOrElement | () => void,
+  target?: componentOrElement | () => void,
   show?: boolean,
-  popperConfig: PropTypes.object,
+  popperConfig?: object,
   rootClose?: boolean,
   rootCloseEvent: PropTypes.oneOf<RootCloseEvent>(["click", "mousedown"]),
   onHide?: () => void,
@@ -146,7 +145,6 @@ Overlay.propTypes = propTypes
 Overlay.defaultProps = defaultProps
 export default Overlay
 import contains from "dom-helpers/contains"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { cloneElement, useCallback, useRef } from "react"
 import useTimeout from "@restart/hooks/useTimeout"
@@ -201,20 +199,20 @@ function handleMouseOverOut(
 }
 const triggerType = "click" | "hover" | "focus"
 const propTypes = {
-  children: PropTypes.element | PropTypes.func;
+  children?: React.element | () => void;
   trigger?: triggerType | triggerType[];
   delay?:
     number | 
-    PropTypes.shape({
+    {
       show?: number,
       hide?: number,
-    }),
+    },
   show?: boolean,
   defaultShow?: boolean,
   onToggle?: () => void,
   flip?: boolean,
-  overlay?: PropTypes.func | PropTypes.element.isRequired,
-  popperConfig: PropTypes.object,
+  overlay?: () => void | React.element,
+  popperConfig?: object,
   target?: null,
   onHide?: null,
   placement?: 

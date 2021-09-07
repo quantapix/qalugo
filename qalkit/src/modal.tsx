@@ -9,7 +9,6 @@ import useEventCallback from "@restart/hooks/useEventCallback"
 import useMergedRefs from "@restart/hooks/useMergedRefs"
 import useWillUnmount from "@restart/hooks/useWillUnmount"
 import transitionEnd from "dom-helpers/transitionEnd"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useCallback, useMemo, useRef, useState } from "react"
 import BaseModal, { ModalProps as BaseModalProps } from "@restart/ui/Modal"
@@ -58,13 +57,13 @@ const propTypes = {
   animation?: boolean,
   dialogClassName?: string,
   contentClassName?: string,
-  dialogAs: PropTypes.elementType,
+  dialogAs?: React.elementType,
   autoFocus?: boolean,
   enforceFocus?: boolean,
   restoreFocus?: boolean,
-  restoreFocusOptions: PropTypes.shape({
+  restoreFocusOptions?: {
     preventScroll?: boolean,
-  }),
+  },
   show?: boolean,
   onShow?: () => void,
   onHide?: () => void,
@@ -75,9 +74,9 @@ const propTypes = {
   onExit?: () => void,
   onExiting?: () => void,
   onExited?: () => void,
-  manager: PropTypes.object,
-  container: PropTypes.any,
-  "aria-labelledby": PropTypes.any,
+  manager?: object,
+  container?: any,
+  "aria-labelledby"?: any,
 }
 const defaultProps = {
   show: false,
@@ -345,7 +344,6 @@ const ModalContext = React.createContext<ModalContextType>({
 export default ModalContext
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps } from "./helpers"
 export interface ModalDialogProps
@@ -413,7 +411,6 @@ export default ModalDialog
 import createWithBsPrefix from "./createWithBsPrefix"
 export default createWithBsPrefix("modal-footer")
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { CloseButtonVariant } from "./CloseButton"

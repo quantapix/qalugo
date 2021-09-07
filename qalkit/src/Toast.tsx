@@ -1,6 +1,5 @@
 import * as React from "react"
 import { useEffect, useMemo, useRef, useCallback } from "react"
-import PropTypes from "prop-types"
 import classNames from "classnames"
 import useTimeout from "@restart/hooks/useTimeout"
 import { TransitionComponent } from "@restart/ui/types"
@@ -29,7 +28,7 @@ const propTypes = {
   delay?: number,
   onClose?: () => void,
   show?: boolean,
-  transition: PropTypes.elementType,
+  transition?: React.elementType,
   /**
    * @type {('primary'|'secondary'|'success'|'danger'|'warning'|'info'|'dark'|'light')}
    */
@@ -113,7 +112,6 @@ export default Object.assign(Toast, {
 import createWithBsPrefix from "./createWithBsPrefix"
 export default createWithBsPrefix("toast-body")
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
@@ -213,7 +211,6 @@ const ToastFade = React.forwardRef<Transition<any>, FadeProps>((props, ref) => (
 ToastFade.displayName = "ToastFade"
 export default ToastFade
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import useEventCallback from "@restart/hooks/useEventCallback"

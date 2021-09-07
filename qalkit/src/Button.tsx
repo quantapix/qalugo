@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import {
   useButtonProps,
   ButtonProps as BaseButtonProps,
@@ -24,7 +23,7 @@ const propTypes = {
   disabled?: boolean,
   href?: string,
   type?: "button" | "reset" | "submit" | null,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   variant: "primary",
@@ -63,7 +62,6 @@ Button.defaultProps = defaultProps
 export default Button
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
 export interface ButtonGroupProps
@@ -77,7 +75,7 @@ const propTypes = {
   size?: string,
   vertical?: boolean,
   role?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   vertical: false,
@@ -117,7 +115,6 @@ ButtonGroup.propTypes = propTypes
 ButtonGroup.defaultProps = defaultProps
 export default ButtonGroup
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps } from "./helpers"

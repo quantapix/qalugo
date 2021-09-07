@@ -5,7 +5,6 @@ import useTimeout from "@restart/hooks/useTimeout"
 import Anchor from "@restart/ui/Anchor"
 import classNames from "classnames"
 import { TransitionStatus } from "react-transition-group/Transition"
-import PropTypes from "prop-types"
 import * as React from "react"
 import {
   useCallback,
@@ -58,7 +57,7 @@ export interface CarouselProps
 const SWIPE_THRESHOLD = 40
 const propTypes = {
   bsPrefix?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
   slide?: boolean,
   fade?: boolean,
   controls?: boolean,
@@ -482,7 +481,6 @@ import createWithBsPrefix from "./createWithBsPrefix"
 export default createWithBsPrefix("carousel-caption")
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
 export interface CarouselItemProps
@@ -492,7 +490,7 @@ export interface CarouselItemProps
 }
 const propTypes = {
 
-  as: PropTypes.elementType,
+  as?: React.elementType,
 
   bsPrefix?: string,
 

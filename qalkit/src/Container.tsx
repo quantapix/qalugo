@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
 export interface ContainerProps
@@ -14,7 +13,7 @@ const containerSizes =
 const propTypes = {
   bsPrefix?: string,
   fluid: containerSizes,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   fluid: false,

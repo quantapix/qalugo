@@ -1,7 +1,6 @@
 import classNames from "classnames"
 import * as React from "react"
 import { useCallback, useMemo } from "react"
-import PropTypes from "prop-types"
 import SelectableContext from "@restart/ui/SelectableContext"
 import { SelectCallback } from "@restart/ui/types"
 import { useUncontrolled } from "uncontrollable"
@@ -36,7 +35,7 @@ const propTypes = {
   bg?: string,
   fixed?: "top" | "bottom",
   sticky?: "top",
-  as: PropTypes.elementType,
+  as?: React.elementType,
   onToggle?: () => void,
   onSelect?: () => void,
   collapseOnSelect?: boolean,
@@ -121,7 +120,6 @@ export default Object.assign(Navbar, {
 })
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
 export interface NavbarBrandProps
@@ -133,7 +131,7 @@ const propTypes = {
 
   bsPrefix?: string,
   href?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const NavbarBrand: BsPrefixRefForwardingComponent<"a", NavbarBrandProps> =
   React.forwardRef<HTMLElement, NavbarBrandProps>(
@@ -154,7 +152,6 @@ NavbarBrand.propTypes = propTypes
 export default NavbarBrand
 import * as React from "react"
 import { useContext } from "react"
-import PropTypes from "prop-types"
 import Collapse, { CollapseProps } from "./Collapse"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import NavbarContext from "./NavbarContext"
@@ -195,7 +192,6 @@ export default context
 import classNames from "classnames"
 import * as React from "react"
 import { useContext } from "react"
-import PropTypes from "prop-types"
 import useEventCallback from "@restart/hooks/useEventCallback"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import NavbarContext from "./NavbarContext"
@@ -213,7 +209,7 @@ const propTypes = {
 
   onClick?: () => void,
   children?: React.ReactNode,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   label: "Toggle navigation",

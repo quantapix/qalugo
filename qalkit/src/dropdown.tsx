@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext, useMemo } from "react"
 import BaseDropdown, {
@@ -41,7 +40,7 @@ export interface DropdownProps
 const propTypes = {
   bsPrefix?: string,
   drop?: "up" | "start" | "end" | "down",
-  as: PropTypes.elementType,
+  as?: React.elementType,
   align: alignPropType,
   show?: boolean,
   flip?: boolean,
@@ -144,7 +143,6 @@ export default Object.assign(Dropdown, {
   Header: DropdownHeader,
 })
 import * as React from "react"
-import PropTypes from "prop-types"
 import Dropdown, { DropdownProps } from "./Dropdown"
 import DropdownToggle, { PropsFromToggle } from "./DropdownToggle"
 import DropdownMenu, { DropdownMenuVariant } from "./DropdownMenu"
@@ -239,7 +237,6 @@ const DropdownContext = React.createContext<DropdownContextValue>({})
 DropdownContext.displayName = "DropdownContext"
 export default DropdownContext
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import BaseDropdownItem, {
   useDropdownItem,
@@ -259,7 +256,7 @@ const propTypes = {
   eventKey?: string | number,
   href?: string,
   onClick?: () => void,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const DropdownItem: BsPrefixRefForwardingComponent<
   typeof BaseDropdownItem,
@@ -305,7 +302,6 @@ DropdownItem.displayName = "DropdownItem"
 DropdownItem.propTypes = propTypes
 export default DropdownItem
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import {
@@ -347,8 +343,8 @@ const propTypes = {
   align: alignPropType,
   onSelect?: () => void,
   rootCloseEvent?: "click" | "mousedown",
-  as: PropTypes.elementType,
-  popperConfig: PropTypes.object,
+  as?: React.elementType,
+  popperConfig?: object,
   variant?: string,
 }
 const defaultProps: Partial<DropdownMenuProps> = {
@@ -468,7 +464,6 @@ DropdownMenu.propTypes = propTypes
 DropdownMenu.defaultProps = defaultProps
 export default DropdownMenu
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext } from "react"
 import { useDropdownToggle } from "@restart/ui/DropdownToggle"
@@ -495,7 +490,7 @@ const propTypes = {
   bsPrefix?: string,
   id?: string,
   split?: boolean,
-  as: PropTypes.elementType,
+  as?: React.elementType,
   childBsPrefix?: string,
 }
 const DropdownToggle: DropdownToggleComponent = React.forwardRef(

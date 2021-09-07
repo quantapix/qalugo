@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import all from "prop-types-extra/lib/all"
 import * as React from "react"
 import { useContext } from "react"
@@ -38,7 +37,7 @@ const propTypes = {
   role?: string,
   navbar?: boolean,
   navbarScroll?: boolean,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 
   onKeyDown?: () => void,
 }
@@ -112,7 +111,6 @@ NavContext.displayName = "NavContext"
 export default NavContext
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import Dropdown, { DropdownProps } from "./Dropdown"
 import { DropdownMenuVariant } from "./DropdownMenu"
@@ -207,7 +205,6 @@ export default Object.assign(NavDropdown, {
 import createWithBsPrefix from "./createWithBsPrefix"
 export default createWithBsPrefix("nav-item")
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import Anchor from "@restart/ui/Anchor"
 import {
@@ -229,7 +226,7 @@ const propTypes = {
   href?: string,
   eventKey?: string | number,
 
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   disabled: false,

@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useContext, useMemo } from "react"
 export interface ThemeContextValue {
@@ -21,7 +20,7 @@ function ThemeProvider({ prefixes = {}, dir, children }: ThemeProviderProps) {
   return <Provider value={contextValue}>{children}</Provider>
 }
 ThemeProvider.propTypes = {
-  prefixes: PropTypes.object,
+  prefixes?: object,
   dir?: string,
 } as any
 export function useBootstrapPrefix(

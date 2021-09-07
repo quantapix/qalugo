@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { AsProp, BsPrefixRefForwardingComponent } from "./helpers"
 export type FeedbackType = "valid" | "invalid"
 export interface FeedbackProps
@@ -14,7 +13,7 @@ const propTypes = {
   type?: string,
 
   tooltip?: boolean,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const Feedback: BsPrefixRefForwardingComponent<"div", FeedbackProps> =
   React.forwardRef(

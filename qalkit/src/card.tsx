@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import createWithBsPrefix from "./createWithBsPrefix"
 import divWithClassName from "./divWithClassName"
@@ -35,7 +34,7 @@ const propTypes = {
   text?: string,
   border?: string,
   body?: boolean,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const defaultProps = {
   body: false,
@@ -97,7 +96,6 @@ export default createWithBsPrefix("card-group")
 import classNames from "classnames"
 import * as React from "react"
 import { useMemo } from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import CardHeaderContext from "./CardHeaderContext"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
@@ -106,7 +104,7 @@ export interface CardHeaderProps
     React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
   bsPrefix?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const CardHeader: BsPrefixRefForwardingComponent<"div", CardHeaderProps> =
   React.forwardRef<HTMLElement, CardHeaderProps>(
@@ -149,7 +147,6 @@ context.displayName = "CardHeaderContext"
 export default context
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
 export interface CardImgProps
@@ -160,7 +157,7 @@ export interface CardImgProps
 const propTypes = {
   bsPrefix?: string,
   variant?: "top" | "bottom",
-  as: PropTypes.elementType,
+  as?: React.elementType,
 }
 const CardImg: BsPrefixRefForwardingComponent<"img", CardImgProps> =
   React.forwardRef(

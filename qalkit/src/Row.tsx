@@ -1,5 +1,4 @@
 import classNames from "classnames"
-import PropTypes from "prop-types"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
@@ -33,12 +32,12 @@ const DEVICE_SIZES = ["xxl", "xl", "lg", "md", "sm", "xs"] as const
 const rowColWidth = number | string
 const rowColumns = 
   rowColWidth | 
-  PropTypes.shape({
+  {
     cols: rowColWidth,
-  }),
+  },
 const propTypes = {
   bsPrefix?: string,
-  as: PropTypes.elementType,
+  as?: React.elementType,
   xs: rowColumns,
   sm: rowColumns,
   md: rowColumns,

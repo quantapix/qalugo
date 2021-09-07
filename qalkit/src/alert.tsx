@@ -1,6 +1,5 @@
 import classNames from "classnames"
 import * as React from "react"
-import PropTypes from "prop-types"
 import { elementType } from "prop-types-extra"
 import { useUncontrolled } from "uncontrollable"
 import useEventCallback from "@restart/hooks/useEventCallback"

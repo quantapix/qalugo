@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 export type Variant =
   | "primary"
   | "secondary"
@@ -43,9 +42,9 @@ export type AlignType = AlignDirection | ResponsiveAlignProp
 const alignDirection = PropTypes.oneOf<AlignDirection>(["start", "end"])
 export const alignPropType = 
   alignDirection |
-  PropTypes.shape({ sm: alignDirection }) |
-  PropTypes.shape({ md: alignDirection }) |
-  PropTypes.shape({ lg: alignDirection }) |
-  PropTypes.shape({ xl: alignDirection }) |
-  PropTypes.shape({ xxl: alignDirection }),
+  { sm: alignDirection } |
+  { md: alignDirection } |
+  { lg: alignDirection } |
+  { xl: alignDirection } |
+  { xxl: alignDirection },
 export type RootCloseEvent = "click" | "mousedown"
