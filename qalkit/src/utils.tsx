@@ -113,3 +113,6 @@ export function triggerBrowserReflow(x: HTMLElement): void {
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   x.offsetHeight
 }
+export function getBodyScrollbarWidth() {
+  return Math.abs(window.innerWidth - document.documentElement.clientWidth);
+}

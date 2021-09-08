@@ -11,6 +11,199 @@ import CardHeaderContext from "./CardHeaderContext"
 import NavItem from "./NavItem"
 import NavLink from "./NavLink"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+
+import qsa from "dom-helpers/querySelectorAll"
+import * as React from "react"
+import { useContext, useEffect, useRef } from "react"
+import useForceUpdate from "@restart/hooks/useForceUpdate"
+import useMergedRefs from "@restart/hooks/useMergedRefs"
+import NavContext from "./NavContext"
+import SelectableContext, { makeEventKey } from "./SelectableContext"
+import TabContext from "./TabContext"
+import { EventKey, DynamicRefForwardingComponent, SelectCallback } from "./types"
+import { dataAttr, dataProp } from "./DataKey"
+import NavItem, { UseNavItemOptions, NavItemProps } from "./NavItem"
+export type { UseNavItemOptions, NavItemProps }
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {}
+export interface NavProps extends Omit<React.HTMLAttributes<HTMLElement>, "onSelect"> {
+  activeKey?: EventKey
+  as?: React.ElementType
+  onSelect?: SelectCallback
+}
+const EVENT_KEY_ATTR = dataAttr("event-key")
+const Nav: DynamicRefForwardingComponent<"div", NavProps> = React.forwardRef<HTMLElement, NavProps>(
+  ({ as: Component = "div", onSelect, activeKey, role, onKeyDown, ...props }, ref) => {
+    const forceUpdate = useForceUpdate()
+    const needsRefocusRef = useRef(false)
+    const parentOnSelect = useContext(SelectableContext)
+    const tabContext = useContext(TabContext)
+    let getControlledId, getControllerId
+    if (tabContext) {
+      role = role || "tablist"
+      activeKey = tabContext.activeKey
+      getControlledId = tabContext.getControlledId
+      getControllerId = tabContext.getControllerId
+    }
+    const listNode = useRef<HTMLElement>(null)
+    const getNextActiveTab = (offset: number) => {
+      const currentListNode = listNode.current
+      if (!currentListNode) return null
+      const items = qsa(currentListNode, `[${EVENT_KEY_ATTR}]:not([aria-disabled=true])`)
+      const activeChild = currentListNode.querySelector<HTMLElement>("[aria-selected=true]")
+      if (!activeChild) return null
+      const index = items.indexOf(activeChild)
+      if (index === -1) return null
+      let nextIndex = index + offset
+      if (nextIndex >= items.length) nextIndex = 0
+      if (nextIndex < 0) nextIndex = items.length - 1
+      return items[nextIndex]
+    }
+    const handleSelect = (key: string | null, event: React.SyntheticEvent) => {
+      if (key == null) return
+      onSelect?.(key, event)
+      parentOnSelect?.(key, event)
+    }
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+      onKeyDown?.(event)
+      if (!tabContext) {
+        return
+      }
+      let nextActiveChild
+      switch (event.key) {
+        case "ArrowLeft":
+        case "ArrowUp":
+          nextActiveChild = getNextActiveTab(-1)
+          break
+        case "ArrowRight":
+        case "ArrowDown":
+          nextActiveChild = getNextActiveTab(1)
+          break
+        default:
+          return
+      }
+      if (!nextActiveChild) return
+      event.preventDefault()
+      handleSelect(nextActiveChild.dataset[dataProp("EventKey")] || null, event)
+      needsRefocusRef.current = true
+      forceUpdate()
+    }
+    useEffect(() => {
+      if (listNode.current && needsRefocusRef.current) {
+        const activeChild = listNode.current.querySelector<HTMLElement>(
+          `[${EVENT_KEY_ATTR}][aria-selected=true]`
+        )
+        activeChild?.focus()
+      }
+      needsRefocusRef.current = false
+    })
+    const mergedRef = useMergedRefs(ref, listNode)
+    return (
+      <SelectableContext.Provider value={handleSelect}>
+        <NavContext.Provider
+          value={{
+            role, // used by NavLink to determine it's role
+            activeKey: makeEventKey(activeKey),
+            getControlledId: getControlledId || noop,
+            getControllerId: getControllerId || noop,
+          }}
+        >
+          <Component {...props} onKeyDown={handleKeyDown} ref={mergedRef} role={role} />
+        </NavContext.Provider>
+      </SelectableContext.Provider>
+    )
+  }
+)
+Nav.displayName = "Nav"
+export default Object.assign(Nav, { Item: NavItem })
+import * as React from "react"
+import { EventKey } from "./types"
+interface NavContextType {
+  role?: string
+  activeKey: EventKey | null
+  getControlledId: (key: EventKey | null) => string
+  getControllerId: (key: EventKey | null) => string
+}
+const NavContext = React.createContext<NavContextType | null>(null)
+NavContext.displayName = "NavContext"
+export default NavContext
+import * as React from "react"
+import { useContext } from "react"
+import useEventCallback from "@restart/hooks/useEventCallback"
+import NavContext from "./NavContext"
+import SelectableContext, { makeEventKey } from "./SelectableContext"
+import { EventKey, DynamicRefForwardingComponent } from "./types"
+import Button from "./Button"
+import { dataAttr } from "./DataKey"
+export interface NavItemProps extends React.HTMLAttributes<HTMLElement> {
+  active?: boolean
+  as?: React.ElementType
+  disabled?: boolean
+  eventKey?: EventKey
+  href?: string
+}
+export interface UseNavItemOptions {
+  key?: string | null
+  onClick?: React.MouseEventHandler
+  active?: boolean
+  disabled?: boolean
+  id?: string
+  role?: string
+}
+export function useNavItem({ key, onClick, active, id, role, disabled }: UseNavItemOptions) {
+  const parentOnSelect = useContext(SelectableContext)
+  const navContext = useContext(NavContext)
+  let isActive = active
+  const props = { role } as any
+  if (navContext) {
+    if (!role && navContext.role === "tablist") props.role = "tab"
+    const contextControllerId = navContext.getControllerId(key ?? null)
+    const contextControlledId = navContext.getControlledId(key ?? null)
+    // @ts-ignore
+    props[dataAttr("event-key")] = key
+    props.id = contextControllerId || id
+    props["aria-controls"] = contextControlledId
+    isActive = active == null && key != null ? navContext.activeKey === key : active
+  }
+  if (props.role === "tab") {
+    if (disabled) {
+      props.tabIndex = -1
+      props["aria-disabled"] = true
+    }
+    if (isActive) {
+      props["aria-selected"] = isActive
+    } else {
+      props.tabIndex = -1
+    }
+  }
+  props.onClick = useEventCallback((e: React.MouseEvent) => {
+    if (disabled) return
+    onClick?.(e)
+    if (key == null) {
+      return
+    }
+    if (parentOnSelect && !e.isPropagationStopped()) {
+      parentOnSelect(key, e)
+    }
+  })
+  return [props, { isActive }] as const
+}
+const NavItem: DynamicRefForwardingComponent<typeof Button, NavItemProps> = React.forwardRef<
+  HTMLElement,
+  NavItemProps
+>(({ as: Component = Button, active, eventKey, ...options }, ref) => {
+  const [props, meta] = useNavItem({
+    key: makeEventKey(eventKey, options.href),
+    active,
+    ...options,
+  })
+  // @ts-ignore
+  props[dataAttr("active")] = meta.isActive
+  return <Component {...options} {...props} ref={ref} />
+})
+NavItem.displayName = "NavItem"
+export default NavItem
+
 export interface NavProps extends BsPrefixProps, BaseNavProps {
   navbarBsPrefix?: string
   cardHeaderBsPrefix?: string
