@@ -1,32 +1,18 @@
-import createWithBsPrefix from "./createWithBsPrefix"
-import FigureImage from "./FigureImage"
-import FigureCaption from "./FigureCaption"
-const Figure = createWithBsPrefix("figure", {
-  Component: "figure",
-})
-export default Object.assign(Figure, {
-  Image: FigureImage,
-  Caption: FigureCaption,
-})
-import createWithBsPrefix from "./createWithBsPrefix"
-const FigureCaption = createWithBsPrefix("figure-caption", {
-  Component: "figcaption",
-})
-export default FigureCaption
-import classNames from "classnames"
+import { Image, ImageProps } from "./Image"
 import * as React from "react"
-import Image, { ImageProps, propTypes as imagePropTypes } from "./Image"
+import classNames from "classnames"
+import createWithBsPrefix from "./utils"
+export const FigureCaption = createWithBsPrefix("figure-caption", { Component: "figcaption" })
 const defaultProps = { fluid: true }
-const FigureImage = React.forwardRef<HTMLImageElement, ImageProps>(
-  ({ className, ...props }, ref) => (
-    <Image
-      ref={ref}
-      {...props}
-      className={classNames(className, "figure-img")}
-    />
+export const FigureImage = React.forwardRef<HTMLImageElement, ImageProps>(
+  ({ className, ...ps }, ref) => (
+    <Image ref={ref} {...ps} className={classNames(className, "figure-img")} />
   )
 )
 FigureImage.displayName = "FigureImage"
-FigureImage.propTypes = imagePropTypes
 FigureImage.defaultProps = defaultProps
-export default FigureImage
+export const Figure = createWithBsPrefix("figure", { Component: "figure" })
+Object.assign(Figure, {
+  Image: FigureImage,
+  Caption: FigureCaption,
+})

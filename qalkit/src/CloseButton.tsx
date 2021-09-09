@@ -1,33 +1,21 @@
 import * as React from "react"
 import classNames from "classnames"
 export type CloseButtonVariant = "white"
-export interface CloseButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface CloseButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: CloseButtonVariant
-}
-const propTypes = {
-  "aria-label"?: string,
-  onClick?: () => void,
-  variant: PropTypes.oneOf<CloseButtonVariant>(["white"]),
 }
 const defaultProps = {
   "aria-label": "Close",
 }
-const CloseButton = React.forwardRef<HTMLButtonElement, CloseButtonProps>(
-  ({ className, variant, ...props }, ref) => (
+export const CloseButton = React.forwardRef<HTMLButtonElement, CloseButtonProps>(
+  ({ className, variant, ...ps }, ref) => (
     <button
       ref={ref}
       type="button"
-      className={classNames(
-        "btn-close",
-        variant && `btn-close-${variant}`,
-        className
-      )}
-      {...props}
+      className={classNames("btn-close", variant && `btn-close-${variant}`, className)}
+      {...ps}
     />
   )
 )
 CloseButton.displayName = "CloseButton"
-CloseButton.propTypes = propTypes
 CloseButton.defaultProps = defaultProps
-export default CloseButton

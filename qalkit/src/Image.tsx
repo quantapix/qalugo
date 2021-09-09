@@ -2,20 +2,11 @@ import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixOnlyProps } from "./utils"
-export interface ImageProps
-  extends BsPrefixOnlyProps,
-    React.ImgHTMLAttributes<HTMLImageElement> {
+export interface ImageProps extends BsPrefixOnlyProps, React.ImgHTMLAttributes<HTMLImageElement> {
   fluid?: boolean
   rounded?: boolean
   roundedCircle?: boolean
   thumbnail?: boolean
-}
-export const propTypes = {
-  bsPrefix?: string,
-  fluid?: boolean,
-  rounded?: boolean,
-  roundedCircle?: boolean,
-  thumbnail?: boolean,
 }
 const defaultProps = {
   fluid: false,
@@ -23,16 +14,13 @@ const defaultProps = {
   roundedCircle: false,
   thumbnail: false,
 }
-const Image = React.forwardRef<HTMLImageElement, ImageProps>(
-  (
-    { bsPrefix, className, fluid, rounded, roundedCircle, thumbnail, ...props },
-    ref
-  ) => {
+export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
+  ({ bsPrefix, className, fluid, rounded, roundedCircle, thumbnail, ...ps }, ref) => {
     bsPrefix = useBootstrapPrefix(bsPrefix, "img")
     return (
-      <img // eslint-disable-line jsx-a11y/alt-text
+      <img
         ref={ref}
-        {...props}
+        {...ps}
         className={classNames(
           className,
           fluid && `${bsPrefix}-fluid`,
@@ -45,6 +33,4 @@ const Image = React.forwardRef<HTMLImageElement, ImageProps>(
   }
 )
 Image.displayName = "Image"
-Image.propTypes = propTypes
 Image.defaultProps = defaultProps
-export default Image

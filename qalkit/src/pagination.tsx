@@ -1,41 +1,23 @@
-import classNames from "classnames"
-import * as React from "react"
-import { useBootstrapPrefix } from "./ThemeProvider"
-import PageItem, { Ellipsis, First, Last, Next, Prev } from "./PageItem"
 import { BsPrefixProps } from "./utils"
+import { useBootstrapPrefix } from "./ThemeProvider"
+import * as React from "react"
+import classNames from "classnames"
+import PageItem, { Ellipsis, First, Last, Next, Prev } from "./PageItem"
 type PaginationSize = "sm" | "lg"
-export interface PaginationProps
-  extends BsPrefixProps,
-    React.HTMLAttributes<HTMLUListElement> {
+export interface PaginationProps extends BsPrefixProps, React.HTMLAttributes<HTMLUListElement> {
   size?: "sm" | "lg"
 }
-const propTypes = {
-  bsPrefix?: string,
-  size: PropTypes.oneOf<PaginationSize>(["sm", "lg"]),
-}
-const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
+export const Pagination = React.forwardRef<HTMLUListElement, PaginationProps>(
   ({ bsPrefix, className, size, ...props }, ref) => {
     const decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "pagination")
     return (
       <ul
         ref={ref}
         {...props}
-        className={classNames(
-          className,
-          decoratedBsPrefix,
-          size && `${decoratedBsPrefix}-${size}`
-        )}
+        className={classNames(className, decoratedBsPrefix, size && `${decoratedBsPrefix}-${size}`)}
       />
     )
   }
 )
-Pagination.propTypes = propTypes
 Pagination.displayName = "Pagination"
-export default Object.assign(Pagination, {
-  First,
-  Prev,
-  Ellipsis,
-  Item: PageItem,
-  Next,
-  Last,
-})
+Object.assign(Pagination, { First, Prev, Ellipsis, Item: PageItem, Next, Last })

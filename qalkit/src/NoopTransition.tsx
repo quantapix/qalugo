@@ -11,11 +11,7 @@ export function NoopTransition({
     if (inProp) hasEnteredRef.current = true
   }, [inProp])
   if (inProp) return children
-  if (unmountOnExit) {
-    return null
-  }
-  if (!hasEnteredRef.current && mountOnEnter) {
-    return null
-  }
+  if (unmountOnExit) return null
+  if (!hasEnteredRef.current && mountOnEnter) return null
   return children
 }
