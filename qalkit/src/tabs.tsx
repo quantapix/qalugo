@@ -9,6 +9,66 @@ import TabPane from "./TabPane"
 import { forEach, map } from "./ElementChildren"
 import getTabTransitionComponent from "./getTabTransitionComponent"
 import { TransitionType } from "./helpers"
+
+import * as React from "react"
+import { useMemo } from "react"
+import { useUncontrolledProp } from "uncontrollable"
+import { useSSRSafeId } from "./ssr"
+import TabContext, { TabContextType } from "./TabContext"
+import SelectableContext from "../SelectableContext"
+import { EventKey, SelectCallback, TransitionComponent } from "./types"
+import TabPanel, { TabPanelProps } from "./TabPanel"
+export type { TabPanelProps }
+export interface TabsProps extends React.PropsWithChildren<unknown> {
+  id?: string
+  transition?: TransitionComponent
+  mountOnEnter?: boolean
+  unmountOnExit?: boolean
+  generateChildId?: (eventKey: EventKey, type: "tab" | "pane") => string
+  onSelect?: SelectCallback
+  activeKey?: EventKey
+  defaultActiveKey?: EventKey
+}
+export const Tabs = (props: TabsProps) => {
+  const {
+    id: userId,
+    generateChildId: generateCustomChildId,
+    onSelect: propsOnSelect,
+    activeKey: propsActiveKey,
+    defaultActiveKey,
+    transition,
+    mountOnEnter,
+    unmountOnExit,
+    children,
+  } = props
+  const [activeKey, onSelect] = useUncontrolledProp(propsActiveKey, defaultActiveKey, propsOnSelect)
+  const id = useSSRSafeId(userId)
+  const generateChildId = useMemo(
+    () =>
+      generateCustomChildId ||
+      ((key: EventKey, type: string) => (id ? `${id}-${type}-${key}` : null)),
+    [id, generateCustomChildId]
+  )
+  const tabContext: TabContextType = useMemo(
+    () => ({
+      onSelect,
+      activeKey,
+      transition,
+      mountOnEnter: mountOnEnter || false,
+      unmountOnExit: unmountOnExit || false,
+      getControlledId: (key: EventKey) => generateChildId(key, "tabpane"),
+      getControllerId: (key: EventKey) => generateChildId(key, "tab"),
+    }),
+    [onSelect, activeKey, transition, mountOnEnter, unmountOnExit, generateChildId]
+  )
+  return (
+    <TabContext.Provider value={tabContext}>
+      <SelectableContext.Provider value={onSelect || null}>{children}</SelectableContext.Provider>
+    </TabContext.Provider>
+  )
+}
+Tabs.Panel = TabPanel
+
 export interface TabsProps
   extends Omit<BaseTabsProps, "transition">,
     Omit<React.HTMLAttributes<HTMLElement>, "onSelect"> {
