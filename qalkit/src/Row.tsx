@@ -1,7 +1,7 @@
-import classNames from "classnames"
-import * as React from "react"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import * as React from "react"
+import classNames from "classnames"
 type RowColWidth =
   | number
   | "1"
@@ -18,9 +18,7 @@ type RowColWidth =
   | "12"
   | "auto"
 type RowColumns = RowColWidth | { cols?: RowColWidth }
-export interface RowProps
-  extends BsPrefixProps,
-    React.HTMLAttributes<HTMLElement> {
+export interface RowProps extends BsPrefixProps, React.HTMLAttributes<HTMLElement> {
   xs?: RowColumns
   sm?: RowColumns
   md?: RowColumns
@@ -29,59 +27,23 @@ export interface RowProps
   xxl?: RowColumns
 }
 const DEVICE_SIZES = ["xxl", "xl", "lg", "md", "sm", "xs"] as const
-const rowColWidth = number | string
-const rowColumns = 
-  rowColWidth | 
-  {
-    cols: rowColWidth,
-  },
-const propTypes = {
-  bsPrefix?: string,
-  as?: React.elementType,
-  xs: rowColumns,
-  sm: rowColumns,
-  md: rowColumns,
-  lg: rowColumns,
-  xl: rowColumns,
-  xxl: rowColumns,
-}
-const Row: BsPrefixRefForwardingComponent<"div", RowProps> = React.forwardRef<
+export const Row: BsPrefixRefForwardingComponent<"div", RowProps> = React.forwardRef<
   HTMLDivElement,
   RowProps
->(
-  (
-    {
-      bsPrefix,
-      className,
-      as: Component = "div",
-      ...props
-    }: RowProps,
-    ref
-  ) => {
-    const decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "row")
-    const sizePrefix = `${decoratedBsPrefix}-cols`
-    const classes: string[] = []
-    DEVICE_SIZES.forEach(brkPoint => {
-      const propValue = props[brkPoint]
-      delete props[brkPoint]
-      let cols
-      if (propValue != null && typeof propValue === "object") {
-        ;({ cols } = propValue)
-      } else {
-        cols = propValue
-      }
-      const infix = brkPoint !== "xs" ? `-${brkPoint}` : ""
-      if (cols != null) classes.push(`${sizePrefix}${infix}-${cols}`)
-    })
-    return (
-      <Component
-        ref={ref}
-        {...props}
-        className={classNames(className, decoratedBsPrefix, ...classes)}
-      />
-    )
-  }
-)
+>(({ bsPrefix, className, as: Component = "div", ...ps }: RowProps, ref) => {
+  const decoratedBsPrefix = useBootstrapPrefix(bsPrefix, "row")
+  const sizePrefix = `${decoratedBsPrefix}-cols`
+  const cs: string[] = []
+  DEVICE_SIZES.forEach(x => {
+    const v = ps[x]
+    delete ps[x]
+    let cols
+    if (v != null && typeof v === "object") {
+      ;({ cols } = v)
+    } else cols = v
+    const infix = x !== "xs" ? `-${x}` : ""
+    if (cols != null) cs.push(`${sizePrefix}${infix}-${cols}`)
+  })
+  return <Component ref={ref} {...ps} className={classNames(className, decoratedBsPrefix, ...cs)} />
+})
 Row.displayName = "Row"
-Row.propTypes = propTypes
-export default Row

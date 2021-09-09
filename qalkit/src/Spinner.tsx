@@ -1,54 +1,30 @@
-import classNames from "classnames"
-import * as React from "react"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
 import { Variant } from "./types"
-export interface SpinnerProps
-  extends React.HTMLAttributes<HTMLElement>,
-    BsPrefixProps {
+import * as React from "react"
+import classNames from "classnames"
+export interface SpinnerProps extends React.HTMLAttributes<HTMLElement>, BsPrefixProps {
   animation: "border" | "grow"
   size?: "sm"
   variant?: Variant
 }
-const propTypes = {
-  bsPrefix?: string,
-  variant?: string,
-  animation: "border" | "grow",
-  size?: string,
-  children?: React.element,
-  role?: string,
-  as?: React.elementType,
-}
-const Spinner: BsPrefixRefForwardingComponent<"div", SpinnerProps> =
-  React.forwardRef<HTMLElement, SpinnerProps>(
-    (
-      {
-        bsPrefix,
-        variant,
-        animation,
-        size,
-        as: Component = "div",
+export const Spinner: BsPrefixRefForwardingComponent<"div", SpinnerProps> = React.forwardRef<
+  HTMLElement,
+  SpinnerProps
+>(({ bsPrefix, variant, animation, size, as: Component = "div", className, ...ps }, ref) => {
+  bsPrefix = useBootstrapPrefix(bsPrefix, "spinner")
+  const bsSpinnerPrefix = `${bsPrefix}-${animation}`
+  return (
+    <Component
+      ref={ref}
+      {...ps}
+      className={classNames(
         className,
-        ...props
-      },
-      ref
-    ) => {
-      bsPrefix = useBootstrapPrefix(bsPrefix, "spinner")
-      const bsSpinnerPrefix = `${bsPrefix}-${animation}`
-      return (
-        <Component
-          ref={ref}
-          {...props}
-          className={classNames(
-            className,
-            bsSpinnerPrefix,
-            size && `${bsSpinnerPrefix}-${size}`,
-            variant && `text-${variant}`
-          )}
-        />
-      )
-    }
+        bsSpinnerPrefix,
+        size && `${bsSpinnerPrefix}-${size}`,
+        variant && `text-${variant}`
+      )}
+    />
   )
-Spinner.propTypes = propTypes as any
+})
 Spinner.displayName = "Spinner"
-export default Spinner

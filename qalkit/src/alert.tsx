@@ -10,7 +10,7 @@ import CloseButton, { CloseButtonVariant } from "./CloseButton"
 import { Variant } from "./types"
 import divWithClassName from "./divWithClassName"
 import createWithBsPrefix from "./createWithBsPrefix"
-import { TransitionType } from "./helpers"
+import { TransitionType } from "./utils"
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   bsPrefix?: string
   variant?: Variant

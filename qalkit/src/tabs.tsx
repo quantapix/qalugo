@@ -8,7 +8,7 @@ import TabContent from "./TabContent"
 import TabPane from "./TabPane"
 import { forEach, map } from "./ElementChildren"
 import getTabTransitionComponent from "./getTabTransitionComponent"
-import { TransitionType } from "./helpers"
+import { TransitionType } from "./utils"
 
 import * as React from "react"
 import { useMemo } from "react"

@@ -10,7 +10,7 @@ import NavbarContext from "./NavbarContext"
 import CardHeaderContext from "./CardHeaderContext"
 import NavItem from "./NavItem"
 import NavLink from "./NavLink"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 
 import qsa from "dom-helpers/querySelectorAll"
 import * as React from "react"
@@ -308,7 +308,7 @@ import { useBootstrapPrefix } from "./ThemeProvider"
 import Dropdown, { DropdownProps } from "./Dropdown"
 import { DropdownMenuVariant } from "./DropdownMenu"
 import NavLink from "./NavLink"
-import { BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixRefForwardingComponent } from "./utils"
 export interface NavDropdownProps
   extends Omit<DropdownProps, "onSelect" | "title"> {
   title: React.ReactNode
@@ -406,7 +406,7 @@ import {
 } from "@restart/ui/NavItem"
 import { makeEventKey } from "@restart/ui/SelectableContext"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface NavLinkProps
   extends BsPrefixProps,
     Omit<BaseNavItemProps, "as"> {}

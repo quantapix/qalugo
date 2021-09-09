@@ -5,7 +5,7 @@ import createWithBsPrefix from "./createWithBsPrefix"
 import divWithClassName from "./divWithClassName"
 import CardImg from "./CardImg"
 import CardHeader from "./CardHeader"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { Color, Variant } from "./types"
 const DivStyledAsH5 = divWithClassName("h5")
 const DivStyledAsH6 = divWithClassName("h6")
@@ -98,7 +98,7 @@ import * as React from "react"
 import { useMemo } from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import CardHeaderContext from "./CardHeaderContext"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface CardHeaderProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
@@ -148,7 +148,7 @@ export default context
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface CardImgProps
   extends BsPrefixProps,
     React.ImgHTMLAttributes<HTMLImageElement> {

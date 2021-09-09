@@ -82,7 +82,7 @@ import chainFunction from "./utils"
 import { map } from "./ElementChildren"
 import ButtonGroup, { ButtonGroupProps } from "./ButtonGroup"
 import ToggleButton from "./ToggleButton"
-import { BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixRefForwardingComponent } from "./utils"
 type BaseToggleButtonProps = Omit<
   ButtonGroupProps,
   "toggle" | "defaultValue" | "onChange"

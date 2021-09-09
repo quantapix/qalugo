@@ -1,7 +1,7 @@
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface ContainerProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {

@@ -1,7 +1,7 @@
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixOnlyProps } from "./helpers"
+import { BsPrefixOnlyProps } from "./utils"
 export interface ImageProps
   extends BsPrefixOnlyProps,
     React.ImgHTMLAttributes<HTMLImageElement> {

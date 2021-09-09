@@ -1,4 +1,4 @@
-import { BsPrefixOnlyProps } from "./helpers"
+import { BsPrefixOnlyProps } from "./utils"
 import { BsPrefixProps } from "./utils"
 import { BsPrefixRefForwardingComponent } from "./utils"
 import { CloseButtonVariant } from "./CloseButton"

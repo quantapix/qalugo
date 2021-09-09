@@ -1,6 +1,6 @@
 import classNames from "classnames"
 import * as React from "react"
-import { AsProp, BsPrefixRefForwardingComponent } from "./helpers"
+import { AsProp, BsPrefixRefForwardingComponent } from "./utils"
 export type FeedbackType = "valid" | "invalid"
 export interface FeedbackProps
   extends AsProp,

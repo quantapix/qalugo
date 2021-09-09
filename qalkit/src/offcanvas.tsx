@@ -12,7 +12,7 @@ import OffcanvasToggling from "./OffcanvasToggling"
 import ModalContext from "./ModalContext"
 import OffcanvasHeader from "./OffcanvasHeader"
 import OffcanvasTitle from "./OffcanvasTitle"
-import { BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixRefForwardingComponent } from "./utils"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import BootstrapModalManager, {
   getSharedManager,
@@ -214,7 +214,7 @@ import { CloseButtonVariant } from "./CloseButton"
 import AbstractModalHeader, {
   AbstractModalHeaderProps,
 } from "./AbstractModalHeader"
-import { BsPrefixOnlyProps } from "./helpers"
+import { BsPrefixOnlyProps } from "./utils"
 export interface OffcanvasHeaderProps
   extends AbstractModalHeaderProps,
     BsPrefixOnlyProps {}
@@ -261,7 +261,7 @@ import Transition, {
 } from "react-transition-group/Transition"
 import { TransitionCallbacks } from "@restart/ui/types"
 import transitionEndListener from "./transitionEndListener"
-import { BsPrefixOnlyProps } from "./helpers"
+import { BsPrefixOnlyProps } from "./utils"
 import TransitionWrapper from "./TransitionWrapper"
 import { useBootstrapPrefix } from "./ThemeProvider"
 export interface OffcanvasTogglingProps

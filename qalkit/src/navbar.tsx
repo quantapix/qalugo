@@ -10,7 +10,7 @@ import NavbarCollapse from "./NavbarCollapse"
 import NavbarToggle from "./NavbarToggle"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import NavbarContext, { NavbarContextType } from "./NavbarContext"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 const NavbarText = createWithBsPrefix("navbar-text", {
   Component: "span",
 })
@@ -121,7 +121,7 @@ export default Object.assign(Navbar, {
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface NavbarBrandProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {
@@ -155,7 +155,7 @@ import { useContext } from "react"
 import Collapse, { CollapseProps } from "./Collapse"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import NavbarContext from "./NavbarContext"
-import { BsPrefixProps } from "./helpers"
+import { BsPrefixProps } from "./utils"
 export interface NavbarCollapseProps
   extends Omit<CollapseProps, "children">,
     React.HTMLAttributes<HTMLDivElement>,
@@ -195,7 +195,7 @@ import { useContext } from "react"
 import useEventCallback from "@restart/hooks/useEventCallback"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import NavbarContext from "./NavbarContext"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface NavbarToggleProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {

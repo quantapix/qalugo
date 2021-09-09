@@ -4,7 +4,7 @@ import Button from "./Button"
 import ButtonGroup from "./ButtonGroup"
 import Dropdown, { DropdownProps } from "./Dropdown"
 import { PropsFromToggle } from "./DropdownToggle"
-import { BsPrefixProps } from "./helpers"
+import { BsPrefixProps } from "./utils"
 import { alignPropType } from "./types"
 export interface SplitButtonProps
   extends Omit<DropdownProps, "title">,
@@ -21,39 +21,28 @@ export interface SplitButtonProps
 const propTypes = {
   id?: string,
   toggleLabel?: string,
-
   href?: string,
-
   target?: string,
-
   onClick?: () => void,
-
   title: React.ReactNode,
-
   type?: string,
-
   disabled?: boolean,
   /**
    * @type {"start"|"end"|{ sm: "start"|"end" }|{ md: "start"|"end" }|{ lg: "start"|"end" }|{ xl: "start"|"end"}|{ xxl: "start"|"end"} }
    */
   align: alignPropType,
-
   menuRole?: string,
-
   renderMenuOnMount?: boolean,
   rootCloseEvent?: string,
-
   bsPrefix?: string,
-
   variant?: string,
-
   size?: string,
 }
 const defaultProps: Partial<SplitButtonProps> = {
   toggleLabel: "Toggle dropdown",
   type: "button",
 }
-const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
+export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
   (
     {
       id,
@@ -70,15 +59,15 @@ const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
       menuRole,
       renderMenuOnMount,
       rootCloseEvent,
-      ...props
+      ...ps
     },
     ref
   ) => (
-    <Dropdown ref={ref} {...props} as={ButtonGroup}>
+    <Dropdown ref={ref} {...ps} as={ButtonGroup}>
       <Button
         size={size}
         variant={variant}
-        disabled={props.disabled}
+        disabled={ps.disabled}
         bsPrefix={bsPrefix}
         href={href}
         target={target}
@@ -92,7 +81,7 @@ const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
         id={id}
         size={size}
         variant={variant}
-        disabled={props.disabled}
+        disabled={ps.disabled}
         childBsPrefix={bsPrefix}
       >
         <span className="visually-hidden">{toggleLabel}</span>

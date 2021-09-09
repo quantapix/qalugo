@@ -1,4 +1,4 @@
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { ButtonVariant } from "./types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import * as React from "react"
@@ -159,7 +159,7 @@ export default Button
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface ButtonGroupProps extends BsPrefixProps, React.HTMLAttributes<HTMLElement> {
   size?: "sm" | "lg"
   vertical?: boolean
@@ -199,7 +199,7 @@ export default ButtonGroup
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps } from "./helpers"
+import { BsPrefixProps } from "./utils"
 export interface ButtonToolbarProps extends BsPrefixProps, React.HTMLAttributes<HTMLElement> {}
 const propTypes = {
   bsPrefix: string,

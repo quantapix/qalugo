@@ -31,7 +31,7 @@ export default Object.assign(Tab, {
 import * as React from "react"
 import Tabs, { TabsProps } from "@restart/ui/Tabs"
 import getTabTransitionComponent from "./getTabTransitionComponent"
-import { TransitionType } from "./helpers"
+import { TransitionType } from "./utils"
 
 import * as React from "react"
 import { EventKey, SelectCallback, TransitionComponent } from "./types"
@@ -195,7 +195,7 @@ import {
   BsPrefixProps,
   BsPrefixRefForwardingComponent,
   TransitionType,
-} from "./helpers"
+} from "./utils"
 export interface TabPaneProps
   extends TransitionCallbacks,
     BsPrefixProps,

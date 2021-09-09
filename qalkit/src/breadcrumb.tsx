@@ -2,7 +2,7 @@ import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import BreadcrumbItem from "./BreadcrumbItem"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface BreadcrumbProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {
@@ -61,7 +61,7 @@ import classNames from "classnames"
 import * as React from "react"
 import Anchor from "@restart/ui/Anchor"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface BreadcrumbItemProps
   extends BsPrefixProps,
     Omit<React.HTMLAttributes<HTMLElement>, "title"> {

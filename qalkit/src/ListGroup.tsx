@@ -6,7 +6,7 @@ import BaseNav, { NavProps as BaseNavProps } from "@restart/ui/Nav"
 import { EventKey } from "@restart/ui/types"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import ListGroupItem from "./ListGroupItem"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface ListGroupProps extends BsPrefixProps, BaseNavProps {
   variant?: "flush"
   horizontal?: boolean | "sm" | "md" | "lg" | "xl" | "xxl"
@@ -66,7 +66,7 @@ import BaseNavItem, {
   NavItemProps as BaseNavItemProps,
 } from "@restart/ui/NavItem"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { Variant } from "./types"
 export interface ListGroupItemProps
   extends Omit<BaseNavItemProps, "onSelect">,

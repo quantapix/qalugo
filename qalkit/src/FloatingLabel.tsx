@@ -1,7 +1,7 @@
 import classNames from "classnames"
 import * as React from "react"
 import FormGroup, { FormGroupProps } from "./FormGroup"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { useBootstrapPrefix } from "./ThemeProvider"
 export interface FloatingLabelProps extends FormGroupProps, BsPrefixProps {
   controlId?: string

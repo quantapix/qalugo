@@ -14,7 +14,7 @@ import DropdownToggle from "./DropdownToggle"
 import InputGroupContext from "./InputGroupContext"
 import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
 import createWithBsPrefix from "./createWithBsPrefix"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { AlignType, alignPropType } from "./types"
 
 import qsa from "dom-helpers/querySelectorAll"
@@ -600,7 +600,7 @@ import * as React from "react"
 import Dropdown, { DropdownProps } from "./Dropdown"
 import DropdownToggle, { PropsFromToggle } from "./DropdownToggle"
 import DropdownMenu, { DropdownMenuVariant } from "./DropdownMenu"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { alignPropType } from "./types"
 export interface DropdownButtonProps
   extends Omit<DropdownProps, "title">,
@@ -698,7 +698,7 @@ import BaseDropdownItem, {
 } from "@restart/ui/DropdownItem"
 import Anchor from "@restart/ui/Anchor"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface DropdownItemProps
   extends BaseDropdownItemProps,
     BsPrefixProps {}
@@ -771,7 +771,7 @@ import InputGroupContext from "./InputGroupContext"
 import NavbarContext from "./NavbarContext"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import useWrappedRefWithWarning from "./useWrappedRefWithWarning"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { AlignType, AlignDirection, alignPropType, Placement } from "./types"
 export type DropdownMenuVariant = "dark" | string
 export interface DropdownMenuProps
@@ -927,7 +927,7 @@ import Button, { ButtonProps, CommonButtonProps } from "./Button"
 import InputGroupContext from "./InputGroupContext"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import useWrappedRefWithWarning from "./useWrappedRefWithWarning"
-import { BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixRefForwardingComponent } from "./utils"
 export interface DropdownToggleProps extends Omit<ButtonProps, "as"> {
   as?: React.ElementType
   split?: boolean

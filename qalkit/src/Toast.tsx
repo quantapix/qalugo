@@ -8,7 +8,7 @@ import ToastHeader from "./ToastHeader"
 import ToastBody from "./ToastBody"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import ToastContext from "./ToastContext"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { Variant } from "./types"
 export interface ToastProps
   extends BsPrefixProps,
@@ -114,7 +114,7 @@ export default createWithBsPrefix("toast-body")
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export type ToastPosition =
   | "top-start"
   | "top-center"
@@ -217,7 +217,7 @@ import useEventCallback from "@restart/hooks/useEventCallback"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import CloseButton, { CloseButtonVariant } from "./CloseButton"
 import ToastContext from "./ToastContext"
-import { BsPrefixOnlyProps } from "./helpers"
+import { BsPrefixOnlyProps } from "./utils"
 export interface ToastHeaderProps
   extends BsPrefixOnlyProps,
     React.HTMLAttributes<HTMLDivElement> {

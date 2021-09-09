@@ -1,40 +1,40 @@
 import * as React from "react"
 export type EventKey = string | number
 export type IntrinsicElementTypes = keyof JSX.IntrinsicElements
-export type AssignProps<Inner extends string | React.ComponentType<any>, P> = Omit<
-  React.ComponentPropsWithRef<Inner extends React.ElementType ? Inner : never>,
-  keyof P
+export type AssignProps<T extends string | React.ComponentType<any>, U> = Omit<
+  React.ComponentPropsWithRef<T extends React.ElementType ? T : never>,
+  keyof U
 > &
-  P
+  U
 export interface DynamicRefForwardingComponent<
-  TInitial extends string | React.ComponentType<any>,
-  P = unknown
+  T0 extends string | React.ComponentType<any>,
+  U = unknown
 > {
-  <As extends string | React.ComponentType<any> = TInitial>(
-    props: React.PropsWithChildren<AssignProps<As, { as?: As } & P>>,
+  <T extends string | React.ComponentType<any> = T0>(
+    props: React.PropsWithChildren<AssignProps<T, { as?: T } & U>>,
     context?: any
   ): React.ReactElement | null
   propTypes?: any
   contextTypes?: any
-  defaultProps?: Partial<P>
+  defaultProps?: Partial<U>
   displayName?: string
 }
 export class DynamicComponent<
-  As extends string | React.ComponentType<any>,
-  P = unknown
-> extends React.Component<AssignProps<As, { as?: As } & P>> {}
+  T extends string | React.ComponentType<any>,
+  U = unknown
+> extends React.Component<AssignProps<T, { as?: T } & U>> {}
 export type DynamicComponentClass<
-  As extends string | React.ComponentType<any>,
-  P = unknown
-> = React.ComponentClass<AssignProps<As, { as?: As } & P>>
-export type SelectCallback = (eventKey: string | null, e: React.SyntheticEvent<unknown>) => void
+  T extends string | React.ComponentType<any>,
+  U = unknown
+> = React.ComponentClass<AssignProps<T, { as?: T } & U>>
+export type SelectCallback = (k: string | null, e: React.SyntheticEvent<unknown>) => void
 export interface TransitionCallbacks {
-  onEnter?(node: HTMLElement, isAppearing: boolean): any
-  onEntering?(node: HTMLElement, isAppearing: boolean): any
-  onEntered?(node: HTMLElement, isAppearing: boolean): any
-  onExit?(node: HTMLElement): any
-  onExiting?(node: HTMLElement): any
-  onExited?(node: HTMLElement): any
+  onEnter?(x: HTMLElement, isAppearing: boolean): any
+  onEntering?(x: HTMLElement, isAppearing: boolean): any
+  onEntered?(x: HTMLElement, isAppearing: boolean): any
+  onExit?(x: HTMLElement): any
+  onExiting?(x: HTMLElement): any
+  onExited?(x: HTMLElement): any
 }
 export interface TransitionProps extends TransitionCallbacks {
   in?: boolean
@@ -76,7 +76,7 @@ export type Color =
   | "light"
   | "white"
   | "muted"
-export type Placement = import("@restart/ui/usePopper").Placement
+export type Placement = import("./use/usePopper").Placement
 export type AlignDirection = "start" | "end"
 export type ResponsiveAlignProp =
   | { sm: AlignDirection }
@@ -85,20 +85,12 @@ export type ResponsiveAlignProp =
   | { xl: AlignDirection }
   | { xxl: AlignDirection }
 export type AlignType = AlignDirection | ResponsiveAlignProp
-const alignDirection = PropTypes.oneOf<AlignDirection>(["start", "end"])
-export const alignPropType = 
-  alignDirection |
-  { sm: alignDirection } |
-  { md: alignDirection } |
-  { lg: alignDirection } |
-  { xl: alignDirection } |
-  { xxl: alignDirection },
 export type RootCloseEvent = "click" | "mousedown"
-export const ATTRIBUTE_PREFIX = `data-rr-ui-` as const;
-export const PROPERTY_PREFIX = `rrUi` as const;
-export function dataAttr<T extends string>(property: T) {
-  return `${ATTRIBUTE_PREFIX}${property}` as const;
+export const ATTRIBUTE_PREFIX = `data-rr-ui-` as const
+export const PROPERTY_PREFIX = `rrUi` as const
+export function dataAttr<T extends string>(x: T) {
+  return `${ATTRIBUTE_PREFIX}${x}` as const
 }
-export function dataProp<T extends string>(property: T) {
-  return `${PROPERTY_PREFIX}${property}` as const;
+export function dataProp<T extends string>(x: T) {
+  return `${PROPERTY_PREFIX}${x}` as const
 }

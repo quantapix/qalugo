@@ -1,12 +1,10 @@
-import classNames from "classnames"
-import * as React from "react"
+import { BsPrefixProps } from "./utils"
 import { cloneElement } from "react"
-import { useBootstrapPrefix } from "./ThemeProvider"
 import { map } from "./ElementChildren"
-import { BsPrefixProps } from "./helpers"
-export interface ProgressBarProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    BsPrefixProps {
+import { useBootstrapPrefix } from "./ThemeProvider"
+import * as React from "react"
+import classNames from "classnames"
+export interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement>, BsPrefixProps {
   min?: number
   now?: number
   max?: number
@@ -20,15 +18,10 @@ export interface ProgressBarProps
 const ROUND_PRECISION = 1000
 function onlyProgressBar(props, propName, componentName): Error | null {
   const children = props[propName]
-  if (!children) {
-    return null
-  }
+  if (!children) return null
   let error: Error | null = null
   React.Children.forEach(children, child => {
-    if (error) {
-      return
-    }
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    if (error) return
     const element = <ProgressBar />
     if (child.type === element.type) return
     const childType: any = child.type
@@ -42,19 +35,6 @@ function onlyProgressBar(props, propName, componentName): Error | null {
   })
   return error
 }
-const propTypes = {
-  min?: number,
-  now?: number,
-  max?: number,
-  label?: React.ReactNode,
-  visuallyHidden?: boolean,
-  striped?: boolean,
-  animated?: boolean,
-  bsPrefix?: string,
-  variant?: string,
-  children: onlyProgressBar,
-  isChild?: boolean,
-}
 const defaultProps = {
   min: 0,
   max: 100,
@@ -64,8 +44,8 @@ const defaultProps = {
   striped: false,
 }
 function getPercentage(now, min, max) {
-  const percentage = ((now - min) / (max - min)) * 100
-  return Math.round(percentage * ROUND_PRECISION) / ROUND_PRECISION
+  const y = ((now - min) / (max - min)) * 100
+  return Math.round(y * ROUND_PRECISION) / ROUND_PRECISION
 }
 function renderProgressBar(
   {
@@ -80,14 +60,14 @@ function renderProgressBar(
     style,
     variant,
     bsPrefix,
-    ...props
+    ...ps
   }: ProgressBarProps,
   ref
 ) {
   return (
     <div
       ref={ref}
-      {...props}
+      {...ps}
       role="progressbar"
       className={classNames(className, `${bsPrefix}-bar`, {
         [`bg-${variant}`]: variant,
@@ -99,21 +79,14 @@ function renderProgressBar(
       aria-valuemin={min}
       aria-valuemax={max}
     >
-      {visuallyHidden ? (
-        <span className="visually-hidden">{label}</span>
-      ) : (
-        label
-      )}
+      {visuallyHidden ? <span className="visually-hidden">{label}</span> : label}
     </div>
   )
 }
-renderProgressBar.propTypes = propTypes
-const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
-  ({ isChild, ...props }: ProgressBarProps, ref) => {
-    props.bsPrefix = useBootstrapPrefix(props.bsPrefix, "progress")
-    if (isChild) {
-      return renderProgressBar(props, ref)
-    }
+export const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
+  ({ isChild, ...ps }: ProgressBarProps, ref) => {
+    ps.bsPrefix = useBootstrapPrefix(ps.bsPrefix, "progress")
+    if (isChild) return renderProgressBar(ps, ref)
     const {
       min,
       now,
@@ -127,13 +100,9 @@ const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
       className,
       children,
       ...wrapperProps
-    } = props
+    } = ps
     return (
-      <div
-        ref={ref}
-        {...wrapperProps}
-        className={classNames(className, bsPrefix)}
-      >
+      <div ref={ref} {...wrapperProps} className={classNames(className, bsPrefix)}>
         {children
           ? map(children, child => cloneElement(child, { isChild: true }))
           : renderProgressBar(
@@ -155,6 +124,4 @@ const ProgressBar = React.forwardRef<HTMLDivElement, ProgressBarProps>(
   }
 )
 ProgressBar.displayName = "ProgressBar"
-ProgressBar.propTypes = propTypes
 ProgressBar.defaultProps = defaultProps
-export default ProgressBar

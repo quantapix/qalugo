@@ -5,7 +5,7 @@ import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
 import PopoverHeader from "./PopoverHeader"
 import PopoverBody from "./PopoverBody"
 import { Placement } from "./types"
-import { BsPrefixProps, getOverlayDirection } from "./helpers"
+import { BsPrefixProps, getOverlayDirection } from "./utils"
 export interface PopoverProps
   extends React.HTMLAttributes<HTMLDivElement>,
     BsPrefixProps {

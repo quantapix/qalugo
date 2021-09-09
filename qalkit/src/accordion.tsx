@@ -10,7 +10,7 @@ import AccordionCollapse from "./AccordionCollapse"
 import AccordionContext from "./AccordionContext"
 import AccordionHeader from "./AccordionHeader"
 import AccordionItem from "./AccordionItem"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface AccordionProps
   extends Omit<React.HTMLAttributes<HTMLElement>, "onSelect">,
     BsPrefixProps {
@@ -72,7 +72,7 @@ import { useContext } from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import AccordionCollapse from "./AccordionCollapse"
 import AccordionItemContext from "./AccordionItemContext"
-import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./helpers"
+import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./utils"
 export interface AccordionBodyProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
@@ -112,7 +112,7 @@ import { useContext } from "react"
 import classNames from "classnames"
 import AccordionContext from "./AccordionContext"
 import AccordionItemContext from "./AccordionItemContext"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { useBootstrapPrefix } from "./ThemeProvider"
 type EventHandler = React.EventHandler<React.SyntheticEvent>
 export interface AccordionButtonProps
@@ -184,7 +184,7 @@ import { Transition } from "react-transition-group"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import Collapse, { CollapseProps } from "./Collapse"
 import AccordionContext from "./AccordionContext"
-import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./helpers"
+import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./utils"
 export interface AccordionCollapseProps extends BsPrefixProps, CollapseProps {
   eventKey: string
 }
@@ -238,7 +238,7 @@ import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import AccordionButton from "./AccordionButton"
-import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./helpers"
+import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./utils"
 export interface AccordionHeaderProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {}
@@ -284,7 +284,7 @@ import { useBootstrapPrefix } from "./ThemeProvider"
 import AccordionItemContext, {
   AccordionItemContextValue,
 } from "./AccordionItemContext"
-import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./helpers"
+import { BsPrefixRefForwardingComponent, BsPrefixProps } from "./utils"
 export interface AccordionItemProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {

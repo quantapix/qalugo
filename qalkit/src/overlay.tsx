@@ -9,7 +9,7 @@ import { componentOrElement, elementType } from "prop-types-extra"
 import useMergedRefs from "@restart/hooks/useMergedRefs"
 import useOverlayOffset from "./use"
 import Fade from "./Fade"
-import { TransitionType } from "./helpers"
+import { TransitionType } from "./utils"
 import { Placement, RootCloseEvent } from "./types"
 import safeFindDOMNode from "./safeFindDOMNode"
 

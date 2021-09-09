@@ -21,7 +21,7 @@ import { map, forEach } from "./ElementChildren"
 import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
 import transitionEndListener from "./transitionEndListener"
 import triggerBrowserReflow from "./triggerBrowserReflow"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import TransitionWrapper from "./TransitionWrapper"
 export type CarouselVariant = "dark"
 export interface CarouselRef {
@@ -482,7 +482,7 @@ export default createWithBsPrefix("carousel-caption")
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface CarouselItemProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {

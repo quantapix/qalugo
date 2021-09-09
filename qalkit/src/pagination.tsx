@@ -2,7 +2,7 @@ import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import PageItem, { Ellipsis, First, Last, Next, Prev } from "./PageItem"
-import { BsPrefixProps } from "./helpers"
+import { BsPrefixProps } from "./utils"
 type PaginationSize = "sm" | "lg"
 export interface PaginationProps
   extends BsPrefixProps,

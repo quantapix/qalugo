@@ -3,7 +3,7 @@ import * as React from "react"
 import { OverlayArrowProps } from "@restart/ui/Overlay"
 import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
 import { Placement } from "./types"
-import { BsPrefixProps, getOverlayDirection } from "./helpers"
+import { BsPrefixProps, getOverlayDirection } from "./utils"
 export interface TooltipProps
   extends React.HTMLAttributes<HTMLDivElement>,
     BsPrefixProps {

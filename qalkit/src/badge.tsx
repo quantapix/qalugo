@@ -1,7 +1,7 @@
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 import { Color, Variant } from "./types"
 export interface BadgeProps
   extends BsPrefixProps,

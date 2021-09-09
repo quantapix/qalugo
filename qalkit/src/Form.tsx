@@ -10,7 +10,7 @@ import FormSelect from "./FormSelect"
 import FormText from "./FormText"
 import Switch from "./Switch"
 import FloatingLabel from "./FloatingLabel"
-import { BsPrefixRefForwardingComponent, AsProp } from "./helpers"
+import { BsPrefixRefForwardingComponent, AsProp } from "./utils"
 export interface FormProps
   extends React.FormHTMLAttributes<HTMLFormElement>,
     AsProp {
@@ -61,7 +61,7 @@ import FormCheckInput from "./FormCheckInput"
 import FormCheckLabel from "./FormCheckLabel"
 import FormContext from "./FormContext"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export type FormCheckType = "checkbox" | "radio" | "switch"
 export interface FormCheckProps
   extends BsPrefixProps,
@@ -184,7 +184,7 @@ import * as React from "react"
 import { useContext } from "react"
 import FormContext from "./FormContext"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 type FormCheckInputType = "checkbox" | "radio"
 export interface FormCheckInputProps
   extends BsPrefixProps,
@@ -248,7 +248,7 @@ import * as React from "react"
 import { useContext } from "react"
 import FormContext from "./FormContext"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps } from "./helpers"
+import { BsPrefixProps } from "./utils"
 export interface FormCheckLabelProps
   extends React.LabelHTMLAttributes<HTMLLabelElement>,
     BsPrefixProps {}
@@ -287,7 +287,7 @@ import warning from "warning"
 import Feedback from "./Feedback"
 import FormContext from "./FormContext"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 type FormControlElement = HTMLInputElement | HTMLTextAreaElement
 export interface FormControlProps
   extends BsPrefixProps,
@@ -387,7 +387,7 @@ export default createWithBsPrefix("form-floating")
 import * as React from "react"
 import { useMemo } from "react"
 import FormContext from "./FormContext"
-import { AsProp, BsPrefixRefForwardingComponent } from "./helpers"
+import { AsProp, BsPrefixRefForwardingComponent } from "./utils"
 export interface FormGroupProps
   extends React.HTMLAttributes<HTMLElement>,
     AsProp {
@@ -426,7 +426,7 @@ import warning from "warning"
 import Col, { ColProps } from "./Col"
 import FormContext from "./FormContext"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 interface FormLabelBaseProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {
@@ -507,7 +507,7 @@ import classNames from "classnames"
 import * as React from "react"
 import { useContext } from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixOnlyProps } from "./helpers"
+import { BsPrefixOnlyProps } from "./utils"
 import FormContext from "./FormContext"
 export interface FormRangeProps
   extends BsPrefixOnlyProps,
@@ -545,7 +545,7 @@ import classNames from "classnames"
 import * as React from "react"
 import { useContext } from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixOnlyProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixOnlyProps, BsPrefixRefForwardingComponent } from "./utils"
 import FormContext from "./FormContext"
 export interface FormSelectProps
   extends BsPrefixOnlyProps,
@@ -611,7 +611,7 @@ export default FormSelect
 import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 export interface FormTextProps
   extends BsPrefixProps,
     React.HTMLAttributes<HTMLElement> {

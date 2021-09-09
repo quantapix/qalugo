@@ -5,7 +5,7 @@ import createWithBsPrefix from "./createWithBsPrefix"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import FormCheckInput from "./FormCheckInput"
 import InputGroupContext from "./InputGroupContext"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./helpers"
+import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
 const InputGroupText = createWithBsPrefix("input-group-text", {
   Component: "span",
 })
