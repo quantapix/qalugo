@@ -8,7 +8,7 @@ import Transition, {
   EXITED,
   EXITING,
 } from "react-transition-group/Transition"
-import { TransitionCallbacks } from "@restart/ui/types"
+import { TransitionCallbacks } from "./types"
 import transitionEndListener from "./transitionEndListener"
 import createChainedFunction from "./utils"
 import triggerBrowserReflow from "./triggerBrowserReflow"
@@ -31,20 +31,11 @@ const MARGINS: { [d in Dimension]: string[] } = {
   height: ["marginTop", "marginBottom"],
   width: ["marginLeft", "marginRight"],
 }
-function getDefaultDimensionValue(
-  dimension: Dimension,
-  elem: HTMLElement
-): number {
+function getDefaultDimensionValue(dimension: Dimension, elem: HTMLElement): number {
   const offset = `offset${dimension[0].toUpperCase()}${dimension.slice(1)}`
   const value = elem[offset]
   const margins = MARGINS[dimension]
-  return (
-    value +
-    // @ts-ignore
-    parseInt(css(elem, margins[0]), 10) +
-    // @ts-ignore
-    parseInt(css(elem, margins[1]), 10)
-  )
+  return value + parseInt(css(elem, margins[0]), 10) + parseInt(css(elem, margins[1]), 10)
 }
 const collapseStyles = {
   [EXITED]: "collapse",
@@ -52,34 +43,7 @@ const collapseStyles = {
   [ENTERING]: "collapsing",
   [ENTERED]: "collapse show",
 }
-const propTypes = {
-  in?: boolean,
-  mountOnEnter?: boolean,
-  unmountOnExit?: boolean,
-  appear?: boolean,
-  timeout?: number,
-  onEnter?: () => void,
-  onEntering?: () => void,
-  onEntered?: () => void,
-  onExit?: () => void,
-  onExiting?: () => void,
-  onExited?: () => void,
-  dimension?: "height" | "width" |
-    () => void,
-  
-  getDimensionValue?: () => void,
-  role?: string,
-  children: React.element,
-}
-const defaultProps = {
-  in: false,
-  timeout: 300,
-  mountOnEnter: false,
-  unmountOnExit: false,
-  appear: false,
-  getDimensionValue: getDefaultDimensionValue,
-}
-const Collapse = React.forwardRef<Transition<any>, CollapseProps>(
+export const Collapse = React.forwardRef<Transition<any>, CollapseProps>(
   (
     {
       onEnter,
@@ -95,10 +59,7 @@ const Collapse = React.forwardRef<Transition<any>, CollapseProps>(
     },
     ref
   ) => {
-    /* Compute dimension */
-    const computedDimension =
-      typeof dimension === "function" ? dimension() : dimension
-    /* -- Expanding -- */
+    const computedDimension = typeof dimension === "function" ? dimension() : dimension
     const handleEnter = useMemo(
       () =>
         createChainedFunction(elem => {
@@ -109,9 +70,7 @@ const Collapse = React.forwardRef<Transition<any>, CollapseProps>(
     const handleEntering = useMemo(
       () =>
         createChainedFunction(elem => {
-          const scroll = `scroll${computedDimension[0].toUpperCase()}${computedDimension.slice(
-            1
-          )}`
+          const scroll = `scroll${computedDimension[0].toUpperCase()}${computedDimension.slice(1)}`
           elem.style[computedDimension] = `${elem[scroll]}px`
         }, onEntering),
       [computedDimension, onEntering]
@@ -123,14 +82,10 @@ const Collapse = React.forwardRef<Transition<any>, CollapseProps>(
         }, onEntered),
       [computedDimension, onEntered]
     )
-    /* -- Collapsing -- */
     const handleExit = useMemo(
       () =>
         createChainedFunction(elem => {
-          elem.style[computedDimension] = `${getDimensionValue(
-            computedDimension,
-            elem
-          )}px`
+          elem.style[computedDimension] = `${getDimensionValue(computedDimension, elem)}px`
           triggerBrowserReflow(elem)
         }, onExit),
       [onExit, getDimensionValue, computedDimension]
@@ -170,8 +125,11 @@ const Collapse = React.forwardRef<Transition<any>, CollapseProps>(
     )
   }
 )
-// @ts-ignore
-Collapse.propTypes = propTypes
-// @ts-ignore
-Collapse.defaultProps = defaultProps
-export default Collapse
+Collapse.defaultProps = {
+  in: false,
+  timeout: 300,
+  mountOnEnter: false,
+  unmountOnExit: false,
+  appear: false,
+  getDimensionValue: getDefaultDimensionValue,
+}
