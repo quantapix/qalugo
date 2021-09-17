@@ -1,62 +1,46 @@
-import classNames from "classnames"
-import * as React from "react"
-import { useContext, useMemo } from "react"
-import BaseDropdown, {
-  DropdownProps as BaseDropdownProps,
-  ToggleMetadata,
-} from "@restart/ui/Dropdown"
-import { useUncontrolled } from "uncontrollable"
-import useEventCallback from "@restart/hooks/useEventCallback"
-import DropdownContext, { DropDirection } from "./DropdownContext"
-import DropdownItem from "./DropdownItem"
-import DropdownMenu, { getDropdownMenuPlacement } from "./DropdownMenu"
-import DropdownToggle from "./DropdownToggle"
-import InputGroupContext from "./InputGroupContext"
-import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
-import createWithBsPrefix from "./createWithBsPrefix"
+import { AlignType, AlignDirection, alignPropType, Placement } from "./types"
 import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
-import { AlignType, alignPropType } from "./types"
-
-import qsa from "dom-helpers/querySelectorAll"
-import addEventListener from "dom-helpers/addEventListener"
+import { dataAttr } from "./DataKey"
+import { EventKey, DynamicRefForwardingComponent } from "./types"
+import { Placement } from "./usePopper"
+import { SelectableContext, makeEventKey } from "./SelectableContext"
+import { SelectCallback } from "./types"
+import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
 import { useCallback, useRef, useEffect, useMemo, useContext } from "react"
-import * as React from "react"
+import { useDropdownToggle } from "@restart/ui/DropdownToggle"
+import { useSSRSafeId } from "./ssr"
+import { useUncontrolled } from "uncontrollable"
 import { useUncontrolledProp } from "uncontrollable"
-import usePrevious from "@restart/hooks/usePrevious"
+import * as React from "react"
+import addEventListener from "dom-helpers/addEventListener"
+import { Anchor } from "./Anchor"
+import { Button, ButtonProps, CommonButtonProps } from "./Button"
+import classNames from "classnames"
+import createWithBsPrefix from "./createWithBsPrefix"
+import InputGroupContext from "./InputGroupContext"
+import mergeOptionsWithPopperConfig from "./mergeOptionsWithPopperConfig"
+import NavbarContext from "./NavbarContext"
+import NavContext from "./NavContext"
+import qsa from "dom-helpers/querySelectorAll"
+import useCallbackRef from "@restart/hooks/useCallbackRef"
+import useEventCallback from "@restart/hooks/useEventCallback"
 import useForceUpdate from "@restart/hooks/useForceUpdate"
 import useGlobalListener from "@restart/hooks/useGlobalListener"
-import useEventCallback from "@restart/hooks/useEventCallback"
-import DropdownContext from "./DropdownContext"
-import DropdownMenu, {
-  DropdownMenuProps,
-  UseDropdownMenuMetadata,
-  UseDropdownMenuOptions,
-} from "./DropdownMenu"
-import DropdownToggle, {
-  DropdownToggleProps,
-  UseDropdownToggleMetadata,
-  isRoleMenu,
-} from "./DropdownToggle"
-import DropdownItem, { DropdownItemProps } from "./DropdownItem"
-import SelectableContext from "./SelectableContext"
-import { SelectCallback } from "./types"
-import { dataAttr } from "./DataKey"
-import { Placement } from "./usePopper"
-export type {
-  DropdownMenuProps,
-  UseDropdownMenuMetadata,
-  UseDropdownMenuOptions,
-  DropdownToggleProps,
-  UseDropdownToggleMetadata,
-  DropdownItemProps,
-}
+import useIsomorphicEffect from "@restart/hooks/useIsomorphicEffect"
+import useMergedRefs from "@restart/hooks/useMergedRefs"
+import usePopper, { UsePopperOptions, Placement, Offset, UsePopperState } from "./usePopper"
+import usePrevious from "@restart/hooks/usePrevious"
+import useRootClose, { RootCloseOptions } from "./useRootClose"
+import useWrappedRefWithWarning from "./useWrappedRefWithWarning"
+import warning from "warning"
+
 export interface DropdownInjectedProps {
   onKeyDown: React.KeyboardEventHandler
 }
 export type ToggleEvent = React.SyntheticEvent | KeyboardEvent | MouseEvent
 export interface ToggleMetadata {
-  source: string | undefined
-  originalEvent: ToggleEvent | undefined
+  source?: string
+  originalEvent?: ToggleEvent
 }
 export interface DropdownProps {
   placement?: Placement
@@ -80,7 +64,7 @@ function useRefWithUpdate() {
   )
   return [ref, attachRef] as const
 }
-function Dropdown({
+export function Dropdown({
   defaultShow,
   show: rawShow,
   onSelect,
@@ -234,10 +218,7 @@ Dropdown.displayName = "Dropdown"
 Dropdown.Menu = DropdownMenu
 Dropdown.Toggle = DropdownToggle
 Dropdown.Item = DropdownItem
-export default Dropdown
-import * as React from "react"
-import type { Placement } from "./usePopper"
-export type DropdownContextValue = {
+export interface DropdownContextValue {
   toggle: (nextShow: boolean, event?: React.SyntheticEvent | Event) => void
   menuElement: HTMLElement | null
   toggleElement: HTMLElement | null
@@ -246,16 +227,7 @@ export type DropdownContextValue = {
   show: boolean
   placement?: Placement
 }
-const DropdownContext = React.createContext<DropdownContextValue | null>(null)
-export default DropdownContext
-import * as React from "react"
-import { useContext } from "react"
-import useEventCallback from "@restart/hooks/useEventCallback"
-import SelectableContext, { makeEventKey } from "./SelectableContext"
-import NavContext from "./NavContext"
-import { EventKey, DynamicRefForwardingComponent } from "./types"
-import Button from "./Button"
-import { dataAttr } from "./DataKey"
+export const DropdownContext = React.createContext<DropdownContextValue | null>(null)
 export interface DropdownItemProps extends React.HTMLAttributes<HTMLElement> {
   as?: React.ElementType
   active?: boolean
@@ -293,7 +265,7 @@ export function useDropdownItem({ key, href, active, disabled, onClick }: UseDro
     { isActive },
   ] as const
 }
-const DropdownItem: DynamicRefForwardingComponent<typeof Button, DropdownItemProps> =
+export const DropdownItem: DynamicRefForwardingComponent<typeof Button, DropdownItemProps> =
   React.forwardRef(
     (
       { eventKey, disabled, onClick, active, as: Component = Button, ...props }: DropdownItemProps,
@@ -310,14 +282,6 @@ const DropdownItem: DynamicRefForwardingComponent<typeof Button, DropdownItemPro
     }
   )
 DropdownItem.displayName = "DropdownItem"
-export default DropdownItem
-import { useContext, useRef } from "react"
-import * as React from "react"
-import useCallbackRef from "@restart/hooks/useCallbackRef"
-import DropdownContext, { DropdownContextValue } from "./DropdownContext"
-import usePopper, { UsePopperOptions, Placement, Offset, UsePopperState } from "./usePopper"
-import useRootClose, { RootCloseOptions } from "./useRootClose"
-import mergeOptionsWithPopperConfig from "./mergeOptionsWithPopperConfig"
 export interface UseDropdownMenuOptions {
   flip?: boolean
   show?: boolean
@@ -409,23 +373,15 @@ export function useDropdownMenu(options: UseDropdownMenuOptions = {}) {
   })
   return [menuProps, metadata] as const
 }
-const defaultProps = {
-  usePopper: true,
-}
 export interface DropdownMenuProps extends UseDropdownMenuOptions {
   children: (props: UserDropdownMenuProps, meta: UseDropdownMenuMetadata) => React.ReactNode
 }
-function DropdownMenu({ children, ...options }: DropdownMenuProps) {
+export function DropdownMenu({ children, ...options }: DropdownMenuProps) {
   const [props, meta] = useDropdownMenu(options)
   return <>{children(props, meta)}</>
 }
 DropdownMenu.displayName = "DropdownMenu"
-DropdownMenu.defaultProps = defaultProps
-export default DropdownMenu
-import { useContext, useCallback } from "react"
-import * as React from "react"
-import { useSSRSafeId } from "./ssr"
-import DropdownContext, { DropdownContextValue } from "./DropdownContext"
+DropdownMenu.defaultProps = { usePopper: true }
 export const isRoleMenu = (el: HTMLElement) => el.getAttribute("role")?.toLowerCase() === "menu"
 export interface UseDropdownToggleProps {
   id: string
@@ -438,7 +394,6 @@ export interface UseDropdownToggleMetadata {
   show: DropdownContextValue["show"]
   toggle: DropdownContextValue["toggle"]
 }
-const noop = () => {}
 export function useDropdownToggle(): [UseDropdownToggleProps, UseDropdownToggleMetadata] {
   const id = useSSRSafeId()
   const { show = false, toggle = noop, setToggle, menuElement } = useContext(DropdownContext) || {}
@@ -462,14 +417,11 @@ export function useDropdownToggle(): [UseDropdownToggleProps, UseDropdownToggleM
 export interface DropdownToggleProps {
   children: (props: UseDropdownToggleProps, meta: UseDropdownToggleMetadata) => React.ReactNode
 }
-function DropdownToggle({ children }: DropdownToggleProps) {
+export function DropdownToggle({ children }: DropdownToggleProps) {
   const [props, meta] = useDropdownToggle()
   return <>{children(props, meta)}</>
 }
 DropdownToggle.displayName = "DropdownToggle"
-export default DropdownToggle
-
-
 const DropdownHeader = createWithBsPrefix("dropdown-header", {
   defaultProps: { role: "heading" },
 })
@@ -491,104 +443,89 @@ export interface DropdownProps
   navbar?: boolean
   autoClose?: boolean | "outside" | "inside"
 }
-const propTypes = {
-  bsPrefix?: string,
-  drop?: "up" | "start" | "end" | "down",
-  as?: React.elementType,
-  align: alignPropType,
-  show?: boolean,
-  flip?: boolean,
-  onToggle?: () => void,
-  onSelect?: () => void,
-  focusFirstItemOnShow?: false | true | "keyboard",
-  navbar?: boolean,
-  autoClose?: true | "outside" | "inside" | false,
-}
 const defaultProps: Partial<DropdownProps> = {
   navbar: false,
   align: "start",
   autoClose: true,
 }
-const Dropdown: BsPrefixRefForwardingComponent<"div", DropdownProps> =
-  React.forwardRef<HTMLElement, DropdownProps>((pProps, ref) => {
-    const {
-      bsPrefix,
-      drop,
-      show,
-      className,
-      align,
-      onSelect,
-      onToggle,
-      focusFirstItemOnShow,
-      as: Component = "div",
-      navbar: _4,
-      autoClose,
-      ...props
-    } = useUncontrolled(pProps, { show: "onToggle" })
-    const isInputGroup = useContext(InputGroupContext)
-    const prefix = useBootstrapPrefix(bsPrefix, "dropdown")
-    const isRTL = useIsRTL()
-    const isClosingPermitted = (source: string): boolean => {
-      if (autoClose === false) return source === "click"
-      if (autoClose === "inside") return source !== "rootClose"
-      if (autoClose === "outside") return source !== "select"
-      return true
-    }
-    const handleToggle = useEventCallback(
-      (nextShow: boolean, meta: ToggleMetadata) => {
-        if (
-          meta.originalEvent!.currentTarget === document &&
-          (meta.source !== "keydown" ||
-            (meta.originalEvent as any).key === "Escape")
-        )
-          meta.source = "rootClose"
-        if (isClosingPermitted(meta.source!)) onToggle?.(nextShow, meta)
-      }
+export const Dropdown: BsPrefixRefForwardingComponent<"div", DropdownProps> = React.forwardRef<
+  HTMLElement,
+  DropdownProps
+>((pProps, ref) => {
+  const {
+    bsPrefix,
+    drop,
+    show,
+    className,
+    align,
+    onSelect,
+    onToggle,
+    focusFirstItemOnShow,
+    as: Component = "div",
+    navbar: _4,
+    autoClose,
+    ...props
+  } = useUncontrolled(pProps, { show: "onToggle" })
+  const isInputGroup = useContext(InputGroupContext)
+  const prefix = useBootstrapPrefix(bsPrefix, "dropdown")
+  const isRTL = useIsRTL()
+  const isClosingPermitted = (source: string): boolean => {
+    if (autoClose === false) return source === "click"
+    if (autoClose === "inside") return source !== "rootClose"
+    if (autoClose === "outside") return source !== "select"
+    return true
+  }
+  const handleToggle = useEventCallback((nextShow: boolean, meta: ToggleMetadata) => {
+    if (
+      meta.originalEvent!.currentTarget === document &&
+      (meta.source !== "keydown" || (meta.originalEvent as any).key === "Escape")
     )
-    const alignEnd = align === "end"
-    const placement = getDropdownMenuPlacement(alignEnd, drop, isRTL)
-    const contextValue = useMemo(
-      () => ({
-        align,
-        drop,
-        isRTL,
-      }),
-      [align, drop, isRTL]
-    )
-    return (
-      <DropdownContext.Provider value={contextValue}>
-        <BaseDropdown
-          placement={placement}
-          show={show}
-          onSelect={onSelect}
-          onToggle={handleToggle}
-          focusFirstItemOnShow={focusFirstItemOnShow}
-          itemSelector={`.${prefix}-item:not(.disabled):not(:disabled)`}
-        >
-          {isInputGroup ? (
-            props.children
-          ) : (
-            <Component
-              {...props}
-              ref={ref}
-              className={classNames(
-                className,
-                show && "show",
-                (!drop || drop === "down") && prefix,
-                drop === "up" && "dropup",
-                drop === "end" && "dropend",
-                drop === "start" && "dropstart"
-              )}
-            />
-          )}
-        </BaseDropdown>
-      </DropdownContext.Provider>
-    )
+      meta.source = "rootClose"
+    if (isClosingPermitted(meta.source!)) onToggle?.(nextShow, meta)
   })
+  const alignEnd = align === "end"
+  const placement = getDropdownMenuPlacement(alignEnd, drop, isRTL)
+  const contextValue = useMemo(
+    () => ({
+      align,
+      drop,
+      isRTL,
+    }),
+    [align, drop, isRTL]
+  )
+  return (
+    <DropdownContext.Provider value={contextValue}>
+      <BaseDropdown
+        placement={placement}
+        show={show}
+        onSelect={onSelect}
+        onToggle={handleToggle}
+        focusFirstItemOnShow={focusFirstItemOnShow}
+        itemSelector={`.${prefix}-item:not(.disabled):not(:disabled)`}
+      >
+        {isInputGroup ? (
+          props.children
+        ) : (
+          <Component
+            {...props}
+            ref={ref}
+            className={classNames(
+              className,
+              show && "show",
+              (!drop || drop === "down") && prefix,
+              drop === "up" && "dropup",
+              drop === "end" && "dropend",
+              drop === "start" && "dropstart"
+            )}
+          />
+        )}
+      </BaseDropdown>
+    </DropdownContext.Provider>
+  )
+})
 Dropdown.displayName = "Dropdown"
-Dropdown.propTypes = propTypes
 Dropdown.defaultProps = defaultProps
-export default Object.assign(Dropdown, {
+Object.assign(Dropdown, {
   Toggle: DropdownToggle,
   Menu: DropdownMenu,
   Item: DropdownItem,
@@ -596,12 +533,6 @@ export default Object.assign(Dropdown, {
   Divider: DropdownDivider,
   Header: DropdownHeader,
 })
-import * as React from "react"
-import Dropdown, { DropdownProps } from "./Dropdown"
-import DropdownToggle, { PropsFromToggle } from "./DropdownToggle"
-import DropdownMenu, { DropdownMenuVariant } from "./DropdownMenu"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
-import { alignPropType } from "./types"
 export interface DropdownButtonProps
   extends Omit<DropdownProps, "title">,
     PropsFromToggle,
@@ -612,107 +543,59 @@ export interface DropdownButtonProps
   rootCloseEvent?: "click" | "mousedown"
   menuVariant?: DropdownMenuVariant
 }
-const propTypes = {
-  id?: string,
-  href?: string,
-  onClick?: () => void,
-  title: React.ReactNode,
-  disabled?: boolean,
-  align: alignPropType,
-
-  menuRole?: string,
-
-  renderMenuOnMount?: boolean,
-  rootCloseEvent?: string,
-  menuVariant: PropTypes.oneOf<DropdownMenuVariant>(["dark"]),
-
-  bsPrefix?: string,
-
-  variant?: string,
-
-  size?: string,
-}
-const DropdownButton: BsPrefixRefForwardingComponent<
-  "div",
-  DropdownButtonProps
-> = React.forwardRef<HTMLDivElement, DropdownButtonProps>(
-  (
-    {
-      title,
-      children,
-      bsPrefix,
-      rootCloseEvent,
-      variant,
-      size,
-      menuRole,
-      renderMenuOnMount,
-      disabled,
-      href,
-      id,
-      menuVariant,
-      ...props
-    },
-    ref
-  ) => (
-    <Dropdown ref={ref} {...props}>
-      <DropdownToggle
-        id={id}
-        href={href}
-        size={size}
-        variant={variant}
-        disabled={disabled}
-        childBsPrefix={bsPrefix}
-      >
-        {title}
-      </DropdownToggle>
-      <DropdownMenu
-        role={menuRole}
-        renderOnMount={renderMenuOnMount}
-        rootCloseEvent={rootCloseEvent}
-        variant={menuVariant}
-      >
-        {children}
-      </DropdownMenu>
-    </Dropdown>
+export const DropdownButton: BsPrefixRefForwardingComponent<"div", DropdownButtonProps> =
+  React.forwardRef<HTMLDivElement, DropdownButtonProps>(
+    (
+      {
+        title,
+        children,
+        bsPrefix,
+        rootCloseEvent,
+        variant,
+        size,
+        menuRole,
+        renderMenuOnMount,
+        disabled,
+        href,
+        id,
+        menuVariant,
+        ...props
+      },
+      ref
+    ) => (
+      <Dropdown ref={ref} {...props}>
+        <DropdownToggle
+          id={id}
+          href={href}
+          size={size}
+          variant={variant}
+          disabled={disabled}
+          childBsPrefix={bsPrefix}
+        >
+          {title}
+        </DropdownToggle>
+        <DropdownMenu
+          role={menuRole}
+          renderOnMount={renderMenuOnMount}
+          rootCloseEvent={rootCloseEvent}
+          variant={menuVariant}
+        >
+          {children}
+        </DropdownMenu>
+      </Dropdown>
+    )
   )
-)
 DropdownButton.displayName = "DropdownButton"
-DropdownButton.propTypes = propTypes
-export default DropdownButton
-import * as React from "react"
-import { AlignType } from "./types"
 export type DropDirection = "up" | "start" | "end" | "down"
 export type DropdownContextValue = {
   align?: AlignType
   drop?: DropDirection
   isRTL?: boolean
 }
-const DropdownContext = React.createContext<DropdownContextValue>({})
+export const DropdownContext = React.createContext<DropdownContextValue>({})
 DropdownContext.displayName = "DropdownContext"
-export default DropdownContext
-import classNames from "classnames"
-import * as React from "react"
-import BaseDropdownItem, {
-  useDropdownItem,
-  DropdownItemProps as BaseDropdownItemProps,
-} from "@restart/ui/DropdownItem"
-import Anchor from "@restart/ui/Anchor"
-import { useBootstrapPrefix } from "./ThemeProvider"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
-export interface DropdownItemProps
-  extends BaseDropdownItemProps,
-    BsPrefixProps {}
-const propTypes = {
-
-  bsPrefix?: string,
-  active?: boolean,
-  disabled?: boolean,
-  eventKey?: string | number,
-  href?: string,
-  onClick?: () => void,
-  as?: React.elementType,
-}
-const DropdownItem: BsPrefixRefForwardingComponent<
+export interface DropdownItemProps extends BaseDropdownItemProps, BsPrefixProps {}
+export const DropdownItem: BsPrefixRefForwardingComponent<
   typeof BaseDropdownItem,
   DropdownItemProps
 > = React.forwardRef(
@@ -742,37 +625,12 @@ const DropdownItem: BsPrefixRefForwardingComponent<
         {...props}
         {...dropdownItemProps}
         ref={ref}
-        className={classNames(
-          className,
-          prefix,
-          meta.isActive && "active",
-          disabled && "disabled"
-        )}
+        className={classNames(className, prefix, meta.isActive && "active", disabled && "disabled")}
       />
     )
   }
 )
 DropdownItem.displayName = "DropdownItem"
-DropdownItem.propTypes = propTypes
-export default DropdownItem
-import classNames from "classnames"
-import * as React from "react"
-import { useContext } from "react"
-import {
-  useDropdownMenu,
-  UseDropdownMenuOptions,
-} from "@restart/ui/DropdownMenu"
-import useIsomorphicEffect from "@restart/hooks/useIsomorphicEffect"
-import useMergedRefs from "@restart/hooks/useMergedRefs"
-import { SelectCallback } from "@restart/ui/types"
-import warning from "warning"
-import DropdownContext, { DropDirection } from "./DropdownContext"
-import InputGroupContext from "./InputGroupContext"
-import NavbarContext from "./NavbarContext"
-import { useBootstrapPrefix } from "./ThemeProvider"
-import useWrappedRefWithWarning from "./useWrappedRefWithWarning"
-import { BsPrefixProps, BsPrefixRefForwardingComponent } from "./utils"
-import { AlignType, AlignDirection, alignPropType, Placement } from "./types"
 export type DropdownMenuVariant = "dark" | string
 export interface DropdownMenuProps
   extends BsPrefixProps,
@@ -785,21 +643,6 @@ export interface DropdownMenuProps
   rootCloseEvent?: "click" | "mousedown"
   popperConfig?: UseDropdownMenuOptions["popperConfig"]
   variant?: DropdownMenuVariant
-}
-const propTypes = {
-  bsPrefix?: string,
-
-  show?: boolean,
-
-  renderOnMount?: boolean,
-
-  flip?: boolean,
-  align: alignPropType,
-  onSelect?: () => void,
-  rootCloseEvent?: "click" | "mousedown",
-  as?: React.elementType,
-  popperConfig?: object,
-  variant?: string,
 }
 const defaultProps: Partial<DropdownMenuProps> = {
   flip: true,
@@ -823,7 +666,7 @@ export function getDropdownMenuPlacement(
   else if (dropDirection === "start") placement = alignEnd ? leftEnd : leftStart
   return placement
 }
-const DropdownMenu: BsPrefixRefForwardingComponent<"div", DropdownMenuProps> =
+export const DropdownMenu: BsPrefixRefForwardingComponent<"div", DropdownMenuProps> =
   React.forwardRef<HTMLElement, DropdownMenuProps>(
     (
       {
@@ -875,10 +718,7 @@ const DropdownMenu: BsPrefixRefForwardingComponent<"div", DropdownMenuProps> =
         popperConfig,
         placement,
       })
-      menuProps.ref = useMergedRefs(
-        useWrappedRefWithWarning(ref, "DropdownMenu"),
-        menuProps.ref
-      )
+      menuProps.ref = useMergedRefs(useWrappedRefWithWarning(ref, "DropdownMenu"), menuProps.ref)
       useIsomorphicEffect(() => {
         if (show) popper?.update()
       }, [show])
@@ -914,40 +754,17 @@ const DropdownMenu: BsPrefixRefForwardingComponent<"div", DropdownMenuProps> =
     }
   )
 DropdownMenu.displayName = "DropdownMenu"
-DropdownMenu.propTypes = propTypes
 DropdownMenu.defaultProps = defaultProps
-export default DropdownMenu
-import classNames from "classnames"
-import * as React from "react"
-import { useContext } from "react"
-import { useDropdownToggle } from "@restart/ui/DropdownToggle"
-import DropdownContext from "@restart/ui/DropdownContext"
-import useMergedRefs from "@restart/hooks/useMergedRefs"
-import Button, { ButtonProps, CommonButtonProps } from "./Button"
-import InputGroupContext from "./InputGroupContext"
-import { useBootstrapPrefix } from "./ThemeProvider"
-import useWrappedRefWithWarning from "./useWrappedRefWithWarning"
-import { BsPrefixRefForwardingComponent } from "./utils"
 export interface DropdownToggleProps extends Omit<ButtonProps, "as"> {
   as?: React.ElementType
   split?: boolean
   childBsPrefix?: string
 }
-type DropdownToggleComponent = BsPrefixRefForwardingComponent<
-  "button",
-  DropdownToggleProps
->
+type DropdownToggleComponent = BsPrefixRefForwardingComponent<"button", DropdownToggleProps>
 export type PropsFromToggle = Partial<
   Pick<React.ComponentPropsWithRef<DropdownToggleComponent>, CommonButtonProps>
 >
-const propTypes = {
-  bsPrefix?: string,
-  id?: string,
-  split?: boolean,
-  as?: React.elementType,
-  childBsPrefix?: string,
-}
-const DropdownToggle: DropdownToggleComponent = React.forwardRef(
+export const DropdownToggle: DropdownToggleComponent = React.forwardRef(
   (
     {
       bsPrefix,
@@ -985,5 +802,3 @@ const DropdownToggle: DropdownToggleComponent = React.forwardRef(
   }
 )
 DropdownToggle.displayName = "DropdownToggle"
-DropdownToggle.propTypes = propTypes
-export default DropdownToggle

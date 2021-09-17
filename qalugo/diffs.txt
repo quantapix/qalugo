@@ -367,3 +367,175 @@ site/.eslintrc.json                                            |   14 +-
  site/content/docs/5.1/components/placeholders.md |  2 +-
  site/content/docs/5.1/helpers/stacks.md          |  2 +-
  4 files changed, 32 insertions(+), 32 deletions(-)
+
+
+ Fast-forward
+ .github/workflows/codeql.yml                                   |   8 +--
+ README.md                                                      |   4 +-
+ build/vnu-jar.js                                               |   6 ++-
+ config.yml                                                     |  28 +++++-----
+ dist/css/bootstrap-grid.css                                    |  56 +++++++++++++++++++-
+ dist/css/bootstrap-grid.css.map                                | Bin 196535 -> 201254 bytes
+ dist/css/bootstrap-grid.min.css                                |   4 +-
+ dist/css/bootstrap-grid.min.css.map                            | Bin 117439 -> 122193 bytes
+ dist/css/bootstrap-grid.rtl.css                                |  56 +++++++++++++++++++-
+ dist/css/bootstrap-grid.rtl.css.map                            | Bin 196539 -> 201258 bytes
+ dist/css/bootstrap-grid.rtl.min.css                            |   4 +-
+ dist/css/bootstrap-grid.rtl.min.css.map                        | Bin 117516 -> 122270 bytes
+ dist/css/bootstrap-reboot.css                                  |  58 ++++++++++++++++++++-
+ dist/css/bootstrap-reboot.css.map                              | Bin 105138 -> 109455 bytes
+ dist/css/bootstrap-reboot.min.css                              |   4 +-
+ dist/css/bootstrap-reboot.min.css.map                          | Bin 35330 -> 39659 bytes
+ dist/css/bootstrap-reboot.rtl.css                              |  58 ++++++++++++++++++++-
+ dist/css/bootstrap-reboot.rtl.css.map                          | Bin 105151 -> 109468 bytes
+ dist/css/bootstrap-reboot.rtl.min.css                          |   4 +-
+ dist/css/bootstrap-reboot.rtl.min.css.map                      | Bin 41570 -> 47646 bytes
+ dist/css/bootstrap-utilities.css                               |   6 +--
+ dist/css/bootstrap-utilities.css.map                           | Bin 192271 -> 192608 bytes
+ dist/css/bootstrap-utilities.min.css                           |   4 +-
+ dist/css/bootstrap-utilities.min.css.map                       | Bin 111875 -> 111884 bytes
+ dist/css/bootstrap-utilities.rtl.css                           |   6 +--
+ dist/css/bootstrap-utilities.rtl.css.map                       | Bin 192214 -> 192551 bytes
+ dist/css/bootstrap-utilities.rtl.min.css                       |   4 +-
+ dist/css/bootstrap-utilities.rtl.min.css.map                   | Bin 111710 -> 111719 bytes
+ dist/css/bootstrap.css                                         |   9 ++--
+ dist/css/bootstrap.css.map                                     | Bin 536547 -> 537020 bytes
+ dist/css/bootstrap.min.css                                     |   4 +-
+ dist/css/bootstrap.min.css.map                                 | Bin 449111 -> 449257 bytes
+ dist/css/bootstrap.rtl.css                                     |   9 ++--
+ dist/css/bootstrap.rtl.css.map                                 | Bin 536461 -> 536934 bytes
+ dist/css/bootstrap.rtl.min.css                                 |   4 +-
+ dist/css/bootstrap.rtl.min.css.map                             | Bin 661035 -> 661232 bytes
+ dist/js/bootstrap.bundle.js                                    | 136 ++++++++++++++++++++++++++++++------------------
+ dist/js/bootstrap.bundle.js.map                                | Bin 425643 -> 427865 bytes
+ dist/js/bootstrap.bundle.min.js                                |   4 +-
+ dist/js/bootstrap.bundle.min.js.map                            | Bin 327261 -> 329091 bytes
+ dist/js/bootstrap.esm.js                                       |  98 ++++++++++++++++++++--------------
+ dist/js/bootstrap.esm.js.map                                   | Bin 288320 -> 289456 bytes
+ dist/js/bootstrap.esm.min.js                                   |   4 +-
+ dist/js/bootstrap.esm.min.js.map                               | Bin 222508 -> 223440 bytes
+ dist/js/bootstrap.js                                           | 100 +++++++++++++++++++++--------------
+ dist/js/bootstrap.js.map                                       | Bin 289522 -> 290658 bytes
+ dist/js/bootstrap.min.js                                       |   4 +-
+ dist/js/bootstrap.min.js.map                                   | Bin 217145 -> 218042 bytes
+ js/dist/alert.js                                               |   8 +--
+ js/dist/alert.js.map                                           | Bin 18266 -> 18268 bytes
+ js/dist/base-component.js                                      |   8 +--
+ js/dist/base-component.js.map                                  | Bin 15283 -> 15283 bytes
+ js/dist/button.js                                              |   6 +--
+ js/dist/button.js.map                                          | Bin 14229 -> 14229 bytes
+ js/dist/carousel.js                                            |  14 +++--
+ js/dist/carousel.js.map                                        | Bin 48505 -> 48564 bytes
+ js/dist/collapse.js                                            |   8 +--
+ js/dist/collapse.js.map                                        | Bin 32030 -> 32048 bytes
+ js/dist/dom/data.js                                            |   4 +-
+ js/dist/dom/data.js.map                                        | Bin 3052 -> 3052 bytes
+ js/dist/dom/event-handler.js                                   |   7 ++-
+ js/dist/dom/event-handler.js.map                               | Bin 29397 -> 29317 bytes
+ js/dist/dom/manipulator.js                                     |   4 +-
+ js/dist/dom/manipulator.js.map                                 | Bin 4410 -> 4410 bytes
+ js/dist/dom/selector-engine.js                                 |   6 +--
+ js/dist/dom/selector-engine.js.map                             | Bin 14748 -> 14748 bytes
+ js/dist/dropdown.js                                            |   6 +--
+ js/dist/dropdown.js.map                                        | Bin 43367 -> 43367 bytes
+ js/dist/modal.js                                               |  24 ++++++---
+ js/dist/modal.js.map                                           | Bin 58534 -> 59013 bytes
+ js/dist/offcanvas.js                                           |  14 ++---
+ js/dist/offcanvas.js.map                                       | Bin 49154 -> 49154 bytes
+ js/dist/popover.js                                             |   6 +--
+ js/dist/popover.js.map                                         | Bin 16093 -> 16093 bytes
+ js/dist/scrollspy.js                                           |   6 +--
+ js/dist/scrollspy.js.map                                       | Bin 29623 -> 29623 bytes
+ js/dist/tab.js                                                 |   6 +--
+ js/dist/tab.js.map                                             | Bin 24472 -> 24472 bytes
+ js/dist/toast.js                                               |   8 +--
+ js/dist/toast.js.map                                           | Bin 27108 -> 27108 bytes
+ js/dist/tooltip.js                                             |  35 ++++++++-----
+ js/dist/tooltip.js.map                                         | Bin 61202 -> 61895 bytes
+ js/index.esm.js                                                |   2 +-
+ js/index.umd.js                                                |   2 +-
+ js/src/alert.js                                                |   2 +-
+ js/src/base-component.js                                       |   4 +-
+ js/src/button.js                                               |   2 +-
+ js/src/carousel.js                                             |   4 +-
+ js/src/collapse.js                                             |   7 +--
+ js/src/dom/data.js                                             |   2 +-
+ js/src/dom/event-handler.js                                    |   2 +-
+ js/src/dom/manipulator.js                                      |   2 +-
+ js/src/dom/selector-engine.js                                  |   2 +-
+ js/src/dropdown.js                                             |   2 +-
+ js/src/modal.js                                                |   2 +-
+ js/src/offcanvas.js                                            |   4 +-
+ js/src/popover.js                                              |   2 +-
+ js/src/scrollspy.js                                            |   2 +-
+ js/src/tab.js                                                  |   2 +-
+ js/src/toast.js                                                |   2 +-
+ js/src/tooltip.js                                              |   2 +-
+ js/src/util/backdrop.js                                        |   4 +-
+ js/src/util/component-functions.js                             |   2 +-
+ js/src/util/focustrap.js                                       |  10 ++--
+ js/src/util/index.js                                           |   2 +-
+ js/src/util/sanitizer.js                                       |  37 +++++++------
+ js/src/util/scrollbar.js                                       |   2 +-
+ js/tests/browsers.js                                           |  16 +++++-
+ js/tests/helpers/fixture.js                                    |   6 +--
+ js/tests/unit/carousel.spec.js                                 |  36 ++++++-------
+ js/tests/unit/collapse.spec.js                                 |  70 ++++++++++++++++++++++---
+ js/tests/unit/dropdown.spec.js                                 |  28 +++++-----
+ js/tests/unit/modal.spec.js                                    |  28 +++++-----
+ js/tests/unit/offcanvas.spec.js                                |   8 +--
+ js/tests/unit/util/focustrap.spec.js                           |   2 +-
+ package-lock.json                                              |  60 ++++++++++++---------
+ package.js                                                     |   2 +-
+ package.json                                                   |  10 ++--
+ scss/_buttons.scss                                             |   1 +
+ scss/_tables.scss                                              |  12 +++--
+ scss/_variables.scss                                           |   4 +-
+ scss/bootstrap-grid.scss                                       |   2 +-
+ scss/bootstrap-reboot.scss                                     |   2 +-
+ scss/bootstrap-utilities.scss                                  |   2 +-
+ scss/bootstrap.scss                                            |   2 +-
+ scss/forms/_form-select.scss                                   |   2 +
+ scss/mixins/_visually-hidden.scss                              |   2 +-
+ site/assets/js/application.js                                  |  22 ++++----
+ site/content/docs/5.1/components/alerts.md                     |   2 +-
+ site/content/docs/5.1/components/buttons.md                    |  22 ++++----
+ site/content/docs/5.1/components/card.md                       |   4 +-
+ site/content/docs/5.1/components/carousel.md                   |   2 +-
+ site/content/docs/5.1/components/collapse.md                   |   2 +-
+ site/content/docs/5.1/components/dropdowns.md                  |   4 +-
+ site/content/docs/5.1/components/list-group.md                 |  16 +++---
+ site/content/docs/5.1/components/modal.md                      |   6 +--
+ site/content/docs/5.1/components/navbar.md                     |  14 ++---
+ site/content/docs/5.1/components/navs-tabs.md                  |  32 ++++++------
+ site/content/docs/5.1/components/offcanvas.md                  |   4 +-
+ site/content/docs/5.1/components/pagination.md                 |   6 +--
+ site/content/docs/5.1/components/placeholders.md               |   2 +-
+ site/content/docs/5.1/components/popovers.md                   |   2 +-
+ site/content/docs/5.1/components/scrollspy.md                  |   2 +-
+ site/content/docs/5.1/components/toasts.md                     |   2 +-
+ site/content/docs/5.1/components/tooltips.md                   |   2 +-
+ site/content/docs/5.1/content/images.md                        |   4 +-
+ site/content/docs/5.1/content/reboot.md                        |   2 +-
+ site/content/docs/5.1/customize/optimize.md                    |   4 +-
+ site/content/docs/5.1/customize/sass.md                        |   2 +-
+ site/content/docs/5.1/examples/blog-rtl/index.html             |   2 +-
+ site/content/docs/5.1/examples/blog/index.html                 |   4 +-
+ site/content/docs/5.1/examples/carousel-rtl/index.html         |   2 +-
+ site/content/docs/5.1/examples/carousel/index.html             |   2 +-
+ site/content/docs/5.1/examples/cheatsheet-rtl/index.html       |  10 ++--
+ site/content/docs/5.1/examples/cheatsheet/index.html           |  12 ++---
+ site/content/docs/5.1/examples/navbar-bottom/index.html        |   2 +-
+ site/content/docs/5.1/examples/navbar-fixed/index.html         |   2 +-
+ site/content/docs/5.1/examples/navbar-static/index.html        |   2 +-
+ site/content/docs/5.1/examples/navbars/index.html              |  22 ++++----
+ site/content/docs/5.1/examples/sticky-footer-navbar/index.html |   2 +-
+ site/content/docs/5.1/forms/checks-radios.md                   |  10 ++--
+ site/content/docs/5.1/getting-started/rfs.md                   |   6 +--
+ site/content/docs/5.1/helpers/stacks.md                        |   4 ++
+ site/content/docs/5.1/helpers/text-truncation.md               |   4 +-
+ site/content/docs/5.1/layout/css-grid.md                       |   2 +-
+ site/content/docs/5.1/utilities/interactions.md                |   9 ++--
+ site/data/docs-versions.yml                                    |   2 +-
+ site/layouts/partials/docs-versions.html                       |   2 +-
+ 168 files changed, 964 insertions(+), 548 deletions(-)
