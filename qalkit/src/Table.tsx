@@ -2,9 +2,7 @@ import classNames from "classnames"
 import * as React from "react"
 import { useBootstrapPrefix } from "./ThemeProvider"
 import { BsPrefixOnlyProps } from "./utils"
-export interface TableProps
-  extends BsPrefixOnlyProps,
-    React.TableHTMLAttributes<HTMLTableElement> {
+export interface TableProps extends BsPrefixOnlyProps, React.TableHTMLAttributes<HTMLTableElement> {
   striped?: boolean
   bordered?: boolean
   borderless?: boolean
@@ -13,17 +11,7 @@ export interface TableProps
   variant?: string
   responsive?: boolean | string
 }
-const propTypes = {
-  bsPrefix?: string,
-  striped?: boolean,
-  bordered?: boolean,
-  borderless?: boolean,
-  hover?: boolean,
-  size?: string,
-  variant?: string,
-  responsive?: boolean | string,
-}
-const Table = React.forwardRef<HTMLTableElement, TableProps>(
+export const Table = React.forwardRef<HTMLTableElement, TableProps>(
   (
     {
       bsPrefix,
@@ -35,7 +23,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
       size,
       variant,
       responsive,
-      ...props
+      ...ps
     },
     ref
   ) => {
@@ -50,7 +38,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
       borderless && `${decoratedBsPrefix}-borderless`,
       hover && `${decoratedBsPrefix}-hover`
     )
-    const table = <table {...props} className={classes} ref={ref} />
+    const table = <table {...ps} className={classes} ref={ref} />
     if (responsive) {
       let responsiveClass = `${decoratedBsPrefix}-responsive`
       if (typeof responsive === "string") {
@@ -61,5 +49,3 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
     return table
   }
 )
-Table.propTypes = propTypes
-export default Table

@@ -1,28 +1,32 @@
-import * as React from "react"
-import { useRef } from "react"
-import classNames from "classnames"
-import BaseOverlay, {
+import {
+  BaseOverlay,
   OverlayProps as BaseOverlayProps,
   OverlayArrowProps,
 } from "@restart/ui/Overlay"
+import { cloneElement, useCallback, useRef } from "react"
 import { componentOrElement, elementType } from "prop-types-extra"
-import useMergedRefs from "@restart/hooks/useMergedRefs"
-import useOverlayOffset from "./use"
-import Fade from "./Fade"
-import { TransitionType } from "./utils"
 import { Placement, RootCloseEvent } from "./types"
-import safeFindDOMNode from "./safeFindDOMNode"
-
+import { TransitionCallbacks } from "./types"
+import { TransitionType } from "./utils"
+import { useRef } from "react"
+import { useState } from "react"
+import { useUncontrolledProp } from "uncontrollable"
 import * as React from "react"
+import classNames from "classnames"
+import contains from "dom-helpers/contains"
+import { Fade } from "./Fade"
+import mergeOptionsWithPopperConfig from "./mergeOptionsWithPopperConfig"
 import ReactDOM from "react-dom"
+import safeFindDOMNode from "./safeFindDOMNode"
 import useCallbackRef from "@restart/hooks/useCallbackRef"
 import useMergedRefs from "@restart/hooks/useMergedRefs"
-import { useState } from "react"
+import useOverlayOffset from "./use"
 import usePopper, { Offset, Placement, UsePopperOptions, UsePopperState } from "./usePopper"
 import useRootClose, { RootCloseOptions } from "./useRootClose"
+import useTimeout from "@restart/hooks/useTimeout"
 import useWaitForDOMRef, { DOMContainer } from "./useWaitForDOMRef"
-import { TransitionCallbacks } from "./types"
-import mergeOptionsWithPopperConfig from "./mergeOptionsWithPopperConfig"
+import warning from "warning"
+
 export interface OverlayArrowProps extends Record<string, any> {
   ref: React.RefCallback<HTMLElement>
   style: React.CSSProperties
@@ -138,7 +142,6 @@ export const Overlay = React.forwardRef<HTMLElement, OverlayProps>((props, outer
   return container ? ReactDOM.createPortal(child, container) : null
 })
 Overlay.displayName = "Overlay"
-
 export interface OverlayInjectedProps {
   ref: React.RefCallback<HTMLElement>
   style: React.CSSProperties
@@ -164,62 +167,18 @@ export interface OverlayProps
   placement?: Placement
   rootCloseEvent?: RootCloseEvent
 }
-const propTypes = {
-  container?: componentOrElement | () => void,
-  target?: componentOrElement | () => void,
-  show?: boolean,
-  popperConfig?: object,
-  rootClose?: boolean,
-  rootCloseEvent: PropTypes.oneOf<RootCloseEvent>(["click", "mousedown"]),
-  onHide?: () => void,
-  transition?: boolean | elementType,
-  onEnter?: () => void,
-  onEntering?: () => void,
-  onEntered?: () => void,
-  onExit?: () => void,
-  onExiting?: () => void,
-  onExited?: () => void,
-  placement: PropTypes.oneOf<Placement>([
-    "auto-start",
-    "auto",
-    "auto-end",
-    "top-start",
-    "top",
-    "top-end",
-    "right-start",
-    "right",
-    "right-end",
-    "bottom-end",
-    "bottom",
-    "bottom-start",
-    "left-end",
-    "left",
-    "left-start",
-  ]),
-}
-const defaultProps: Partial<OverlayProps> = {
-  transition: Fade,
-  rootClose: false,
-  show: false,
-  placement: "top",
-}
-function wrapRefs(props, arrowProps) {
+const defaultProps: Partial<OverlayProps> = function wrapRefs(props, arrowProps) {
   const { ref } = props
   const { ref: aRef } = arrowProps
   props.ref = ref.__wrapped || (ref.__wrapped = r => ref(safeFindDOMNode(r)))
-  arrowProps.ref =
-    aRef.__wrapped || (aRef.__wrapped = r => aRef(safeFindDOMNode(r)))
+  arrowProps.ref = aRef.__wrapped || (aRef.__wrapped = r => aRef(safeFindDOMNode(r)))
 }
-const Overlay = React.forwardRef<HTMLElement, OverlayProps>(
-  (
-    { children: overlay, transition, popperConfig = {}, ...outerProps },
-    outerRef
-  ) => {
+export const Overlay = React.forwardRef<HTMLElement, OverlayProps>(
+  ({ children: overlay, transition, popperConfig = {}, ...outerProps }, outerRef) => {
     const popperRef = useRef({})
     const [ref, modifiers] = useOverlayOffset()
     const mergedRef = useMergedRefs(outerRef, ref)
-    const actualTransition =
-      transition === true ? Fade : transition || undefined
+    const actualTransition = transition === true ? Fade : transition || undefined
     return (
       <BaseOverlay
         {...outerProps}
@@ -236,8 +195,7 @@ const Overlay = React.forwardRef<HTMLElement, OverlayProps>(
             state: popperObj?.state,
             scheduleUpdate: popperObj?.update,
             placement,
-            outOfBoundaries:
-              popperObj?.state?.modifiersData.hide?.isReferenceHidden || false,
+            outOfBoundaries: popperObj?.state?.modifiersData.hide?.isReferenceHidden || false,
           })
           if (typeof overlay === "function")
             return overlay({
@@ -268,18 +226,12 @@ const Overlay = React.forwardRef<HTMLElement, OverlayProps>(
   }
 )
 Overlay.displayName = "Overlay"
-Overlay.propTypes = propTypes
-Overlay.defaultProps = defaultProps
-export default Overlay
-import contains from "dom-helpers/contains"
-import * as React from "react"
-import { cloneElement, useCallback, useRef } from "react"
-import useTimeout from "@restart/hooks/useTimeout"
-import warning from "warning"
-import { useUncontrolledProp } from "uncontrollable"
-import useMergedRefs from "@restart/hooks/useMergedRefs"
-import Overlay, { OverlayChildren, OverlayProps } from "./Overlay"
-import safeFindDOMNode from "./safeFindDOMNode"
+Overlay.defaultProps = {
+  transition: Fade,
+  rootClose: false,
+  show: false,
+  placement: "top",
+}
 export type OverlayTriggerType = "hover" | "click" | "focus"
 export type OverlayDelay = number | { show: number; hide: number }
 export type OverlayInjectedProps = {
@@ -288,11 +240,8 @@ export type OverlayInjectedProps = {
 export type OverlayTriggerRenderProps = OverlayInjectedProps & {
   ref: React.Ref<any>
 }
-export interface OverlayTriggerProps
-  extends Omit<OverlayProps, "children" | "target"> {
-  children:
-    | React.ReactElement
-    | ((props: OverlayTriggerRenderProps) => React.ReactNode)
+export interface OverlayTriggerProps extends Omit<OverlayProps, "children" | "target"> {
+  children: React.ReactElement | ((props: OverlayTriggerRenderProps) => React.ReactNode)
   trigger?: OverlayTriggerType | OverlayTriggerType[]
   delay?: OverlayDelay
   show?: boolean
@@ -312,7 +261,6 @@ function normalizeDelay(delay?: OverlayDelay) {
       }
 }
 function handleMouseOverOut(
-  // eslint-disable-next-line @typescript-eslint/no-shadow
   handler: (...args: [React.MouseEvent, ...any[]]) => any,
   args: [React.MouseEvent, ...any[]],
   relatedNative: "fromElement" | "toElement"
@@ -324,47 +272,7 @@ function handleMouseOverOut(
     handler(...args)
   }
 }
-const triggerType = "click" | "hover" | "focus"
-const propTypes = {
-  children?: React.element | () => void;
-  trigger?: triggerType | triggerType[];
-  delay?:
-    number | 
-    {
-      show?: number,
-      hide?: number,
-    },
-  show?: boolean,
-  defaultShow?: boolean,
-  onToggle?: () => void,
-  flip?: boolean,
-  overlay?: () => void | React.element,
-  popperConfig?: object,
-  target?: null,
-  onHide?: null,
-  placement?: 
-    "auto-start" |
-    "auto" |
-    "auto-end" |
-    "top-start" |
-    "top" |
-    "top-end" |
-    "right-start" |
-    "right" |
-    "right-end" |
-    "bottom-end" |
-    "bottom" |
-    "bottom-start" |
-    "left-end" |
-    "left" |
-    "left-start"
-  ,
-}
-const defaultProps = {
-  defaultShow: false,
-  trigger: ["hover", "focus"],
-}
-function OverlayTrigger({
+export function OverlayTrigger({
   trigger,
   overlay,
   children,
@@ -378,18 +286,13 @@ function OverlayTrigger({
   ...props
 }: OverlayTriggerProps) {
   const triggerNodeRef = useRef(null)
-  const mergedRef = useMergedRefs<unknown>(
-    triggerNodeRef,
-    (children as any).ref
-  )
+  const mergedRef = useMergedRefs<unknown>(triggerNodeRef, (children as any).ref)
   const timeout = useTimeout()
   const hoverStateRef = useRef<string>("")
   const [show, setShow] = useUncontrolledProp(propsShow, defaultShow, onToggle)
   const delay = normalizeDelay(propsDelay)
   const { onFocus, onBlur, onClick } =
-    typeof children !== "function"
-      ? React.Children.only(children).props
-      : ({} as any)
+    typeof children !== "function" ? React.Children.only(children).props : ({} as any)
   const attachRef = (r: React.ComponentClass | Element | null | undefined) => {
     mergedRef(safeFindDOMNode(r))
   }
@@ -486,6 +389,7 @@ function OverlayTrigger({
     </>
   )
 }
-OverlayTrigger.propTypes = propTypes
-OverlayTrigger.defaultProps = defaultProps
-export default OverlayTrigger
+OverlayTrigger.defaultProps = {
+  defaultShow: false,
+  trigger: ["hover", "focus"],
+}

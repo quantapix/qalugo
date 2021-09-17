@@ -1,11 +1,10 @@
 import * as React from "react"
 import { ButtonType } from "@restart/ui/Button"
-import Button from "./Button"
-import ButtonGroup from "./ButtonGroup"
-import Dropdown, { DropdownProps } from "./Dropdown"
+import { Button } from "./Button"
+import { ButtonGroup } from "./ButtonGroup"
+import { Dropdown, DropdownProps } from "./Dropdown"
 import { PropsFromToggle } from "./DropdownToggle"
 import { BsPrefixProps } from "./utils"
-import { alignPropType } from "./types"
 export interface SplitButtonProps
   extends Omit<DropdownProps, "title">,
     PropsFromToggle,
@@ -17,30 +16,6 @@ export interface SplitButtonProps
   title: React.ReactNode
   toggleLabel?: string
   type?: ButtonType
-}
-const propTypes = {
-  id?: string,
-  toggleLabel?: string,
-  href?: string,
-  target?: string,
-  onClick?: () => void,
-  title: React.ReactNode,
-  type?: string,
-  disabled?: boolean,
-  /**
-   * @type {"start"|"end"|{ sm: "start"|"end" }|{ md: "start"|"end" }|{ lg: "start"|"end" }|{ xl: "start"|"end"}|{ xxl: "start"|"end"} }
-   */
-  align: alignPropType,
-  menuRole?: string,
-  renderMenuOnMount?: boolean,
-  rootCloseEvent?: string,
-  bsPrefix?: string,
-  variant?: string,
-  size?: string,
-}
-const defaultProps: Partial<SplitButtonProps> = {
-  toggleLabel: "Toggle dropdown",
-  type: "button",
 }
 export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
   (
@@ -96,7 +71,5 @@ export const SplitButton = React.forwardRef<HTMLElement, SplitButtonProps>(
     </Dropdown>
   )
 )
-SplitButton.propTypes = propTypes as any
-SplitButton.defaultProps = defaultProps
+SplitButton.defaultProps = { toggleLabel: "Toggle dropdown", type: "button" }
 SplitButton.displayName = "SplitButton"
-export default SplitButton

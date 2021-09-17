@@ -399,6 +399,68 @@ export class ModalManager {
     return !!this.modals.length && this.modals[this.modals.length - 1] === modal
   }
 }
+interface ModalContextType {
+  onHide: () => void
+}
+export const ModalContext = React.createContext<ModalContextType>({
+  onHide() {},
+})
+export interface ModalDialogProps extends React.HTMLAttributes<HTMLDivElement>, BsPrefixProps {
+  size?: "sm" | "lg" | "xl"
+  fullscreen?: true | "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down"
+  centered?: boolean
+  scrollable?: boolean
+  contentClassName?: string
+}
+export const ModalDialog = React.forwardRef<HTMLDivElement, ModalDialogProps>(
+  (
+    {
+      bsPrefix,
+      className,
+      contentClassName,
+      centered,
+      size,
+      fullscreen,
+      children,
+      scrollable,
+      ...ps
+    }: ModalDialogProps,
+    ref
+  ) => {
+    bsPrefix = useBootstrapPrefix(bsPrefix, "modal")
+    const dialogClass = `${bsPrefix}-dialog`
+    const fullScreenClass =
+      typeof fullscreen === "string"
+        ? `${bsPrefix}-fullscreen-${fullscreen}`
+        : `${bsPrefix}-fullscreen`
+    return (
+      <div
+        {...ps}
+        ref={ref}
+        className={classNames(
+          dialogClass,
+          className,
+          size && `${bsPrefix}-${size}`,
+          centered && `${dialogClass}-centered`,
+          scrollable && `${dialogClass}-scrollable`,
+          fullscreen && fullScreenClass
+        )}
+      >
+        <div className={classNames(`${bsPrefix}-content`, contentClassName)}>{children}</div>
+      </div>
+    )
+  }
+)
+ModalDialog.displayName = "ModalDialog"
+export interface ModalHeaderProps extends AbstractModalHeaderProps, BsPrefixOnlyProps {}
+export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
+  ({ bsPrefix, className, ...ps }, ref) => {
+    bsPrefix = useBootstrapPrefix(bsPrefix, "modal-header")
+    return <AbstractModalHeader ref={ref} {...ps} className={classNames(className, bsPrefix)} />
+  }
+)
+ModalHeader.displayName = "ModalHeader"
+ModalHeader.defaultProps = { closeLabel: "Close", closeButton: false }
 export interface ModalProps
   extends Omit<
     BaseModalProps,
@@ -644,65 +706,3 @@ Object.assign(Modal, {
   TRANSITION_DURATION: 300,
   BACKDROP_TRANSITION_DURATION: 150,
 })
-interface ModalContextType {
-  onHide: () => void
-}
-export const ModalContext = React.createContext<ModalContextType>({
-  onHide() {},
-})
-export interface ModalDialogProps extends React.HTMLAttributes<HTMLDivElement>, BsPrefixProps {
-  size?: "sm" | "lg" | "xl"
-  fullscreen?: true | "sm-down" | "md-down" | "lg-down" | "xl-down" | "xxl-down"
-  centered?: boolean
-  scrollable?: boolean
-  contentClassName?: string
-}
-export const ModalDialog = React.forwardRef<HTMLDivElement, ModalDialogProps>(
-  (
-    {
-      bsPrefix,
-      className,
-      contentClassName,
-      centered,
-      size,
-      fullscreen,
-      children,
-      scrollable,
-      ...ps
-    }: ModalDialogProps,
-    ref
-  ) => {
-    bsPrefix = useBootstrapPrefix(bsPrefix, "modal")
-    const dialogClass = `${bsPrefix}-dialog`
-    const fullScreenClass =
-      typeof fullscreen === "string"
-        ? `${bsPrefix}-fullscreen-${fullscreen}`
-        : `${bsPrefix}-fullscreen`
-    return (
-      <div
-        {...ps}
-        ref={ref}
-        className={classNames(
-          dialogClass,
-          className,
-          size && `${bsPrefix}-${size}`,
-          centered && `${dialogClass}-centered`,
-          scrollable && `${dialogClass}-scrollable`,
-          fullscreen && fullScreenClass
-        )}
-      >
-        <div className={classNames(`${bsPrefix}-content`, contentClassName)}>{children}</div>
-      </div>
-    )
-  }
-)
-ModalDialog.displayName = "ModalDialog"
-export interface ModalHeaderProps extends AbstractModalHeaderProps, BsPrefixOnlyProps {}
-export const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
-  ({ bsPrefix, className, ...ps }, ref) => {
-    bsPrefix = useBootstrapPrefix(bsPrefix, "modal-header")
-    return <AbstractModalHeader ref={ref} {...ps} className={classNames(className, bsPrefix)} />
-  }
-)
-ModalHeader.displayName = "ModalHeader"
-ModalHeader.defaultProps = { closeLabel: "Close", closeButton: false }

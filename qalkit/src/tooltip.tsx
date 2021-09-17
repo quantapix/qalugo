@@ -4,47 +4,13 @@ import { OverlayArrowProps } from "@restart/ui/Overlay"
 import { useBootstrapPrefix, useIsRTL } from "./ThemeProvider"
 import { Placement } from "./types"
 import { BsPrefixProps, getOverlayDirection } from "./utils"
-export interface TooltipProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    BsPrefixProps {
+export interface TooltipProps extends React.HTMLAttributes<HTMLDivElement>, BsPrefixProps {
   placement?: Placement
   arrowProps?: Partial<OverlayArrowProps>
   show?: boolean
   popper?: any
 }
-const propTypes = {
-  bsPrefix?: string,
-  id?: string,
-  placement?:
-    "auto-start" |
-    "auto" |
-    "auto-end" |
-    "top-start" |
-    "top" |
-    "top-end" |
-    "right-start" |
-    "right" |
-    "right-end" |
-    "bottom-end" |
-    "bottom" |
-    "bottom-start" |
-    "left-end" |
-    "left" |
-    "left-start" |
-  ,
-  arrowProps?: {
-    ref?: any,
-    style?: object,
-  },
-
-  popper?: object,
-
-  show?: any,
-}
-const defaultProps = {
-  placement: "right",
-}
-const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
+export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
   (
     {
       bsPrefix,
@@ -78,7 +44,5 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
     )
   }
 )
-Tooltip.propTypes = propTypes as any
-Tooltip.defaultProps = defaultProps as any
+Tooltip.defaultProps = { placement: "right" }
 Tooltip.displayName = "Tooltip"
-export default Tooltip

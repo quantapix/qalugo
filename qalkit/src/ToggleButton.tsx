@@ -1,10 +1,15 @@
-import classNames from "classnames"
-import * as React from "react"
+import { BsPrefixRefForwardingComponent } from "./utils"
+import { map } from "./ElementChildren"
 import { useBootstrapPrefix } from "./ThemeProvider"
-import Button, { ButtonProps } from "./Button"
+import { useUncontrolled } from "uncontrollable"
+import * as React from "react"
+import { Button, ButtonProps } from "./Button"
+import { ButtonGroup, ButtonGroupProps } from "./ButtonGroup"
+import chainFunction from "./utils"
+import classNames from "classnames"
+import invariant from "invariant"
 export type ToggleButtonType = "checkbox" | "radio"
-export interface ToggleButtonProps
-  extends Omit<ButtonProps, "onChange" | "type"> {
+export interface ToggleButtonProps extends Omit<ButtonProps, "onChange" | "type"> {
   type?: ToggleButtonType
   name?: string
   checked?: boolean
@@ -14,35 +19,9 @@ export interface ToggleButtonProps
   inputRef?: React.Ref<HTMLInputElement>
 }
 const noop = () => undefined
-const propTypes = {
-  bsPrefix?: string,
-  type: PropTypes.oneOf<ToggleButtonType>(["checkbox", "radio"]),
-  name?: string,
-  checked?: boolean,
-  disabled?: boolean,
-  id: string,
-  onChange?: () => void,
-  value: 
-    string |
-    string[] |
-    number,
-  inputRef?: () => void | any,
-}
-const ToggleButton = React.forwardRef<HTMLLabelElement, ToggleButtonProps>(
+export const ToggleButton = React.forwardRef<HTMLLabelElement, ToggleButtonProps>(
   (
-    {
-      bsPrefix,
-      name,
-      className,
-      checked,
-      type,
-      onChange,
-      value,
-      disabled,
-      id,
-      inputRef,
-      ...props
-    },
+    { bsPrefix, name, className, checked, type, onChange, value, disabled, id, inputRef, ...props },
     ref
   ) => {
     bsPrefix = useBootstrapPrefix(bsPrefix, "btn-check")
@@ -72,21 +51,8 @@ const ToggleButton = React.forwardRef<HTMLLabelElement, ToggleButtonProps>(
     )
   }
 )
-ToggleButton.propTypes = propTypes
 ToggleButton.displayName = "ToggleButton"
-export default ToggleButton
-import * as React from "react"
-import invariant from "invariant"
-import { useUncontrolled } from "uncontrollable"
-import chainFunction from "./utils"
-import { map } from "./ElementChildren"
-import ButtonGroup, { ButtonGroupProps } from "./ButtonGroup"
-import ToggleButton from "./ToggleButton"
-import { BsPrefixRefForwardingComponent } from "./utils"
-type BaseToggleButtonProps = Omit<
-  ButtonGroupProps,
-  "toggle" | "defaultValue" | "onChange"
->
+type BaseToggleButtonProps = Omit<ButtonGroupProps, "toggle" | "defaultValue" | "onChange">
 export interface ToggleButtonRadioProps<T> extends BaseToggleButtonProps {
   type?: "radio"
   name: string
@@ -101,30 +67,14 @@ export interface ToggleButtonCheckboxProps<T> extends BaseToggleButtonProps {
   defaultValue?: T[]
   onChange?: (value: T[]) => void
 }
-export type ToggleButtonGroupProps<T> =
-  | ToggleButtonRadioProps<T>
-  | ToggleButtonCheckboxProps<T>
-const propTypes = {
-  name?: string,
-  value?: any,
-  onChange?: () => void,
-  type: "checkbox" | "radio",
-  size?: string,
-
-  vertical?: boolean,
-}
-const defaultProps = {
-  type: "radio",
-  vertical: false,
-}
-const ToggleButtonGroup: BsPrefixRefForwardingComponent<
+export type ToggleButtonGroupProps<T> = ToggleButtonRadioProps<T> | ToggleButtonCheckboxProps<T>
+export const ToggleButtonGroup: BsPrefixRefForwardingComponent<
   "a",
   ToggleButtonGroupProps<any>
 > = React.forwardRef<HTMLElement, ToggleButtonGroupProps<any>>((props, ref) => {
-  const { children, type, name, value, onChange, ...controlledProps } =
-    useUncontrolled(props, {
-      value: "onChange",
-    })
+  const { children, type, name, value, onChange, ...controlledProps } = useUncontrolled(props, {
+    value: "onChange",
+  })
   const getValues: () => any[] = () => (value == null ? [] : [].concat(value))
   const handleToggle = (inputVal: any, event: any) => {
     if (!onChange) {
@@ -147,8 +97,7 @@ const ToggleButtonGroup: BsPrefixRefForwardingComponent<
   }
   invariant(
     type !== "radio" || !!name,
-    "A `name` is required to group the toggle buttons when the `type` " +
-      'is set to "radio"'
+    "A `name` is required to group the toggle buttons when the `type` " + 'is set to "radio"'
   )
   return (
     <ButtonGroup {...controlledProps} ref={ref as any}>
@@ -166,8 +115,5 @@ const ToggleButtonGroup: BsPrefixRefForwardingComponent<
     </ButtonGroup>
   )
 })
-ToggleButtonGroup.propTypes = propTypes
-ToggleButtonGroup.defaultProps = defaultProps as any
-export default Object.assign(ToggleButtonGroup, {
-  Button: ToggleButton,
-})
+ToggleButtonGroup.defaultProps = { type: "radio", vertical: false }
+Object.assign(ToggleButtonGroup, { Button: ToggleButton })

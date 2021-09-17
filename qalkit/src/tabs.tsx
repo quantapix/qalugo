@@ -1,24 +1,15 @@
-import * as React from "react"
-import { useUncontrolled } from "uncontrollable"
-import BaseTabs, { TabsProps as BaseTabsProps } from "@restart/ui/Tabs"
-import Nav from "./Nav"
-import NavLink from "./NavLink"
-import NavItem from "./NavItem"
-import TabContent from "./TabContent"
-import TabPane from "./TabPane"
-import { forEach, map } from "./ElementChildren"
-import getTabTransitionComponent from "./getTabTransitionComponent"
-import { TransitionType } from "./utils"
-
-import * as React from "react"
-import { useMemo } from "react"
-import { useUncontrolledProp } from "uncontrollable"
-import { useSSRSafeId } from "./ssr"
-import TabContext, { TabContextType } from "./TabContext"
-import SelectableContext from "../SelectableContext"
 import { EventKey, SelectCallback, TransitionComponent } from "./types"
-import TabPanel, { TabPanelProps } from "./TabPanel"
-export type { TabPanelProps }
+import { forEach, map } from "./ElementChildren"
+import { TransitionType } from "./utils"
+import { useMemo } from "react"
+import { useSSRSafeId } from "./ssr"
+import { useUncontrolled } from "uncontrollable"
+import { useUncontrolledProp } from "uncontrollable"
+import * as React from "react"
+import getTabTransitionComponent from "./getTabTransitionComponent"
+import { Nav, NavItem, NavLink } from "./Nav"
+import SelectableContext from "../SelectableContext"
+import { TabContent, TabContext, TabContextType, TabPane, TabPanel } from "./Tab"
 export interface TabsProps extends React.PropsWithChildren<unknown> {
   id?: string
   transition?: TransitionComponent
@@ -29,7 +20,7 @@ export interface TabsProps extends React.PropsWithChildren<unknown> {
   activeKey?: EventKey
   defaultActiveKey?: EventKey
 }
-export const Tabs = (props: TabsProps) => {
+export const Tabs = (ps: TabsProps) => {
   const {
     id: userId,
     generateChildId: generateCustomChildId,
@@ -40,7 +31,7 @@ export const Tabs = (props: TabsProps) => {
     mountOnEnter,
     unmountOnExit,
     children,
-  } = props
+  } = ps
   const [activeKey, onSelect] = useUncontrolledProp(propsActiveKey, defaultActiveKey, propsOnSelect)
   const id = useSSRSafeId(userId)
   const generateChildId = useMemo(
@@ -68,33 +59,13 @@ export const Tabs = (props: TabsProps) => {
   )
 }
 Tabs.Panel = TabPanel
-
 export interface TabsProps
   extends Omit<BaseTabsProps, "transition">,
     Omit<React.HTMLAttributes<HTMLElement>, "onSelect"> {
   variant?: "tabs" | "pills"
   transition?: TransitionType
 }
-const propTypes = {
-  activeKey?: string | number,
-  defaultActiveKey?: string | number,
-  variant?: 'tabs'| 'pills',
-  /**
-   * @type {Transition | false}
-   * @default {Fade}
-   */
-  transition?: false | PropTypes.elementType,
-  id?: string,
-  onSelect?: () => void,
-  mountOnEnter?: boolean,
-  unmountOnExit?: boolean,
-}
-const defaultProps = {
-  variant: "tabs",
-  mountOnEnter: false,
-  unmountOnExit: false,
-}
-function getDefaultActiveKey(children) {
+const defaultProps = function getDefaultActiveKey(children) {
   let defaultActiveKey
   forEach(children, child => {
     if (defaultActiveKey == null) {
@@ -123,7 +94,7 @@ function renderTab(child) {
     </NavItem>
   )
 }
-const Tabs = (props: TabsProps) => {
+export const Tabs = (props: TabsProps) => {
   const {
     id,
     onSelect,
@@ -160,7 +131,9 @@ const Tabs = (props: TabsProps) => {
     </BaseTabs>
   )
 }
-Tabs.propTypes = propTypes
-Tabs.defaultProps = defaultProps
+Tabs.defaultProps = {
+  variant: "tabs",
+  mountOnEnter: false,
+  unmountOnExit: false,
+}
 Tabs.displayName = "Tabs"
-export default Tabs

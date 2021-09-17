@@ -1,3 +1,5 @@
+import forwardRef from "./forwardRef"
+import mapContextToProps from "./mapContextToProps"
 import React from "react"
 declare module "@restart/context/forwardRef" {
   import * as React from "react"
@@ -24,7 +26,7 @@ declare module "@restart/context" {
 export default function forwardRef(
   renderFn,
   {
-    propTypes, // eslint-disable-line react/forbid-foreign-prop-types
+    propTypes,
     defaultProps,
     allowFallback = false,
     displayName = renderFn.name || renderFn.displayName,
@@ -40,9 +42,6 @@ export default function forwardRef(
     }
   )
 }
-import mapContextToProps from "./mapContextToProps"
-import React from "react"
-import forwardRef from "./forwardRef"
 export default function transformContext(Context) {
   return forwardRef(
     props => (
@@ -141,8 +140,6 @@ declare module "@restart/context/mapContextToProps" {
 }
 export default (Context, prop, Component) =>
   mapContextToProps(Context, context => ({ [prop]: context }), Component)
-import React from "react"
-import forwardRef from "./forwardRef"
 const getDisplayName = Component => {
   const name = typeof Component === "string" ? Component : Component.name || Component.displayName
   return name ? `ContextTransform(${name})` : "ContextTransform"
