@@ -88,17 +88,6 @@
       modalBodyInput.value = recipient
     })
   }
-  // Activate animated progress bar
-  var btnToggleAnimatedProgress = document.getElementById(
-    "btnToggleAnimatedProgress"
-  )
-  if (btnToggleAnimatedProgress) {
-    btnToggleAnimatedProgress.addEventListener("click", function () {
-      btnToggleAnimatedProgress.parentNode
-        .querySelector(".progress-bar-striped")
-        .classList.toggle("progress-bar-animated")
-    })
-  }
   // Insert copy to clipboard button before .highlight
   var btnHtml =
     '<div class="qal-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
@@ -121,18 +110,30 @@
   })
   clipboard.on("success", function (e) {
     var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
-    e.trigger.setAttribute("data-bs-original-title", "Copied!")
-    tooltipBtn.show()
-    e.trigger.setAttribute("data-bs-original-title", "Copy to clipboard")
+    var originalTitle = e.trigger.getAttribute("title")
+    tooltipBtn.setContent({ ".tooltip-inner": "Copied!" })
+    e.trigger.addEventListener(
+      "hidden.bs.tooltip",
+      function () {
+        tooltipBtn.setContent({ ".tooltip-inner": originalTitle })
+      },
+      { once: true }
+    )
     e.clearSelection()
   })
   clipboard.on("error", function (e) {
     var modifierKey = /mac/i.test(navigator.userAgent) ? "\u2318" : "Ctrl-"
     var fallbackMsg = "Press " + modifierKey + "C to copy"
     var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
-    e.trigger.setAttribute("data-bs-original-title", fallbackMsg)
-    tooltipBtn.show()
-    e.trigger.setAttribute("data-bs-original-title", "Copy to clipboard")
+    var originalTitle = e.trigger.getAttribute("title")
+    tooltipBtn.setContent({ ".tooltip-inner": fallbackMsg })
+    e.trigger.addEventListener(
+      "hidden.bs.tooltip",
+      function () {
+        tooltipBtn.setContent({ ".tooltip-inner": originalTitle })
+      },
+      { once: true }
+    )
   })
   anchors.options = {
     icon: "#",
