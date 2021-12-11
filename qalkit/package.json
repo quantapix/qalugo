@@ -41,7 +41,7 @@
     "typescript": "next"
   },
   "dependencies": {
-    "react-dom": "file:../lib/react/build/node_modules/react-dom",
-    "react": "file:../lib/react/build/node_modules/react"
+    "react-dom": "file:../lib/out/react-dom",
+    "react": "file:../lib/out/react"
   }
 }
