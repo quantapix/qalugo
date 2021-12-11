@@ -33,7 +33,7 @@
     "eslint-webpack-plugin": "",
     "eslint": "",
     "jest-circus": "",
-    "jest-react": "file:../lib/react/build/node_modules/jest-react",
+    "jest-react": "file:../lib/out/jest-react",
     "jest-resolve": "",
     "jest-watch-typeahead": "",
     "jest": "",
