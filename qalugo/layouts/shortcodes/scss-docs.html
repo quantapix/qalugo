@@ -1,17 +1,33 @@
-{{- $n := .Get "name" -}}
-{{- $f := .Get "file" -}}
-{{- $strip := .Get "strip-default" | default "true" -}}
-{{- $start := printf "// scss-docs-start %s\n" $n -}}
-{{- $end := printf "// scss-docs-end %s" $n -}}
-{{- $re := printf "%s(.|\n)*%s" $start $end -}}
-{{- $css := readFile (printf "bootstrap/%s" $f) -}}
-{{- $match := findRE $re $css 1 -}}
-{{- if (eq (len $match) 0) -}}
-  {{- errorf "Got no matches for %q in %q! (called in %q)" $n $f $.Page.Path -}}
+{{- $name := .Get "name" -}}
+{{- $file := .Get "file" -}}
+{{- $strip_default := .Get "strip-default" | default "true" -}}
+
+{{- /* If any parameters are missing, print an error and exit */ -}}
+{{- if or (not $name) (not $file) -}}
+  {{- errorf "%s: %q: Missing required parameters! Got: name=%q file=%q!" .Position .Name $name $file -}}
+{{- else -}}
+  {{- $capture_start := printf "// scss-docs-start %s\n" $name -}}
+  {{- $capture_end := printf "// scss-docs-end %s" $name -}}
+  {{- $regex := printf `%s((?:.|\n)*)%s` $capture_start $capture_end -}}
+
+  {{- /*
+    TODO: figure out why we can't do the following and get the first group (the only capturing one)...
+    $regex := printf `(?:// scss-docs-start %s\n)((?:.|\n)*)(?:\n// scss-docs-end %s)` $name $name
+  */ -}}
+
+  {{- $match := findRE $regex (readFile $file) -}}
+  {{- $match = index $match 0 -}}
+
+  {{- if not $match -}}
+    {{- errorf "%s: %q: Got no matches for name=%q in file=%q!" .Position .Name $name $file -}}
+  {{- end -}}
+
+  {{- $match = replace $match $capture_start "" -}}
+  {{- $match = replace $match $capture_end "" -}}
+
+  {{- if (ne $strip_default "false") -}}
+    {{- $match = replace $match " !default" "" -}}
+  {{- end -}}
+
+  {{- highlight $match "scss" "" -}}
 {{- end -}}
-{{- $x := replace (index $match 0) $start "" -}}
-{{- $y := replace $x $end "" -}}
-{{- if (ne $strip "false") -}}
-  {{- $y = replace $y " !default" "" -}}
-{{- end -}}
-{{- highlight $y "scss" "" -}}

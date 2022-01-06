@@ -1,16 +1,23 @@
-{{- $s := .Get "simplified" | default true -}}
-{{- $a := "" -}}
-{{- $c := "  ...\n" -}}
-{{- with .Get "class" -}}
-  {{- $a = printf ` class="%s"` . -}}
+{{- $class := .Get "class" -}}
+{{- $simplified := .Get "simplified" | default true -}}
+
+{{- $table_attributes := "" -}}
+{{- $table_content := "  ...\n" -}}
+
+{{- with $class -}}
+  {{- $table_attributes = printf ` class="%s"` . -}}
 {{- end -}}
-{{- if eq $s "false" -}}
-  {{- $c = partialCached "table-content" . -}}
+
+{{- if eq $simplified "false" -}}
+  {{- $table_content = partialCached "table-content" . -}}
 {{- end -}}
-{{- $y := printf "<table%s>\n%s</table>" $a $c -}}
-<div class="qal-app">
-  <table{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+
+{{- $table := printf "<table%s>\n%s</table>" $table_attributes $table_content -}}
+
+<div class="bd-example">
+  <table{{ with $class }} class="{{ . }}"{{ end }}>
     {{ partialCached "table-content" . }}
   </table>
 </div>
-{{- highlight $y "html" "" -}}
+
+{{- highlight $table "html" "" -}}

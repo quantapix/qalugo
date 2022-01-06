@@ -1,4 +1,4 @@
-{{- $c := .Get 0 | default "info" -}}
-<div class="qal-callout qal-callout-{{ $c }}">
-  {{ .Inner | markdownify }}
+{{- $css_class := .Get 0 | default "info" -}}
+<div class="bd-callout bd-callout-{{ $css_class }}">
+{{ .Inner | markdownify }}
 </div>
