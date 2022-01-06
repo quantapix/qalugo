@@ -121,7 +121,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
       </nav>
     </div>
     <div class="col-8">
-      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-app-2" tabindex="0">
+      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" class="scrollspy-example-2" tabindex="0">
         <h4 id="item-1">Item 1</h4>
         <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
         <h5 id="item-1-1">Item 1-1</h5>
@@ -278,7 +278,7 @@ Target elements that are not visible will be ignored and their corresponding nav
 When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
 
 ```js
-var dataSpyList = [].slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
+var dataSpyList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
 dataSpyList.forEach(function (dataSpyEl) {
   bootstrap.ScrollSpy.getInstance(dataSpyEl)
     .refresh()
@@ -300,7 +300,7 @@ var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var scrollSpyContentEl = document.getElementById('content')

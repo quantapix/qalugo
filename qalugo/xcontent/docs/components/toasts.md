@@ -41,12 +41,16 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 </div>
 {{< /example >}}
 
+{{< callout warning >}}
+Previously, our scripts dynamically added the `.hide` class to completely hide a toast (with `display:none`, rather than just with `opacity:0`). This is now not necessary anymore. However, for backwards compatibility, our script will continue to toggle the class (even though there is no practical need for it) until the next major version.
+{{< /callout >}}
+
 ### Live example
 
-Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default with `.hide`.
+Click the button below to show a toast (positioned with our utilities in the lower right corner) that has been hidden by default.
 
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       {{< placeholder width="20" height="20" background="#007aff" class="rounded me-2" text="false" title="false" >}}
       <strong class="me-auto">Bootstrap</strong>
@@ -67,7 +71,7 @@ Click the button below to show a toast (positioned with our utilities in the low
 <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
 
 <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <img src="..." class="rounded me-2" alt="...">
       <strong class="me-auto">Bootstrap</strong>
@@ -331,11 +335,15 @@ While technically it's possible to add focusable/actionable controls (such as ad
 Initialize toasts via JavaScript:
 
 ```js
-var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastElList = Array.prototype.slice.call(document.querySelectorAll('.toast'))
 var toastList = toastElList.map(function (toastEl) {
   return new bootstrap.Toast(toastEl, option)
 })
 ```
+
+### Triggers
+
+{{% js-dismiss "toast" %}}
 
 ### Options
 
@@ -407,7 +415,7 @@ toast.dispose()
 
 #### getInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a DOM element
+*Static* method which allows you to get the toast instance associated with a DOM element
 
 ```js
 var myToastEl = document.getElementById('myToastEl')
@@ -416,7 +424,7 @@ var myToast = bootstrap.Toast.getInstance(myToastEl) // Returns a Bootstrap toas
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the toast instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var myToastEl = document.getElementById('myToastEl')

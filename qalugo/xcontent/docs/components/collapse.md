@@ -126,14 +126,14 @@ These classes can be found in `_transitions.scss`.
 
 Just add `data-bs-toggle="collapse"` and a `data-bs-target` to the element to automatically assign control of one or more collapsible elements. The `data-bs-target` attribute accepts a CSS selector to apply the collapse to. Be sure to add the class `collapse` to the collapsible element. If you'd like it to default open, add the additional class `show`.
 
-To add accordion-like group management to a collapsible area, add the data attribute `data-bs-parent="#selector"`. Refer to the demo to see this in action.
+To add accordion-like group management to a collapsible area, add the data attribute `data-bs-parent="#selector"`. Refer to the [accordion page]({{< docsref "/components/accordion" >}}) for more information.
 
 ### Via JavaScript
 
 Enable manually with:
 
 ```js
-var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
+var collapseElementList = Array.prototype.slice.call(document.querySelectorAll('.collapse'))
 var collapseList = collapseElementList.map(function (collapseEl) {
   return new bootstrap.Collapse(collapseEl)
 })
@@ -222,7 +222,7 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
         <code>getOrCreateInstance</code>
       </td>
       <td>
-        Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialised.
+        Static method which returns a collapse instance associated to a DOM element or create a new one in case it wasn't initialized.
         You can use it like this: <code>bootstrap.Collapse.getOrCreateInstance(element)</code>
       </td>
     </tr>

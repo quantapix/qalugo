@@ -224,7 +224,7 @@ You can also create a scrollable modal that allows scroll the modal body by addi
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the prefedined max-height of modal, content will be cropped and scrollable within the modal.</p>
+        <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <p>This content should appear at the bottom after you scroll.</p>
       </div>
@@ -279,7 +279,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>This is some placeholder content to show a vertically centered modal. We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. When content becomes longer than the prefedined max-height of modal, content will be cropped and scrollable within the modal.</p>
+        <p>This is some placeholder content to show a vertically centered modal. We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
         <br><br><br><br><br><br><br><br><br><br>
         <p>Just like that.</p>
       </div>
@@ -512,7 +512,7 @@ Toggle between multiple modals with some clever placement of the `data-bs-target
         Show a second modal and hide this one with the button below.
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Open second modal</button>
       </div>
     </div>
   </div>
@@ -528,7 +528,7 @@ Toggle between multiple modals with some clever placement of the `data-bs-target
         Hide this modal and show the first with the button below.
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
       </div>
     </div>
   </div>
@@ -831,11 +831,21 @@ The modal plugin toggles your hidden content on demand, via data attributes or J
 
 ### Via data attributes
 
+#### Toggle
+
 Activate a modal without writing JavaScript. Set `data-bs-toggle="modal"` on a controller element, like a button, along with a `data-bs-target="#foo"` or `href="#foo"` to target a specific modal to toggle.
 
 ```html
 <button type="button" data-bs-toggle="modal" data-bs-target="#myModal">Launch modal</button>
 ```
+
+#### Dismiss
+
+{{% js-dismiss "modal" %}}
+
+{{< callout warning >}}
+While both ways to dismiss a modal are supported, keep in mind that dismissing from outside a modal does not match [the WAI-ARIA modal dialog design pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal). Do this at your own risk.
+{{< /callout >}}
 
 ### Via JavaScript
 
@@ -954,7 +964,7 @@ var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal 
 
 #### getOrCreateInstance
 
-*Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn't initialised
+*Static* method which allows you to get the modal instance associated with a DOM element, or create a new one in case it wasn't initialized
 
 ```js
 var myModalEl = document.querySelector('#myModal')

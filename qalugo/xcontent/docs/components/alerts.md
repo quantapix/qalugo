@@ -27,20 +27,10 @@ Alerts are available for any length of text, as well as an optional close button
 
 Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
 
+{{< example >}}
 <div id="liveAlertPlaceholder"></div>
-
-<div class="qal-app">
-  <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
-</div>
-
-```html
 <button type="button" class="btn btn-primary" id="liveAlertBtn">Show live alert</button>
-
-<div class="alert alert-primary alert-dismissible" role="alert" id="liveAlert">
-  <strong>Nice!</strong> You've triggered this alert.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-```
+{{< /example >}}
 
 We use the following JavaScript to trigger our live alert demo:
 
@@ -166,19 +156,27 @@ You can see this in action with a live demo:
 When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document. For this reason, we recommend including additional JavaScript that listens for the `closed.bs.alert` event and programmatically sets `focus()` to the most appropriate location in the page. If you're planning to move focus to a non-interactive element that normally does not receive focus, make sure to add `tabindex="-1"` to the element.
 {{< /callout >}}
 
-## Sass
+## CSS
 
 ### Variables
 
+<small class="d-inline-flex px-2 py-1 font-monospace text-muted border rounded-3">Added in v5.2.0</small>
+
+As part of Bootstrap's evolving CSS variables approach, alerts now use local CSS variables on `.alert` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+{{< scss-docs name="alert-css-vars" file="scss/_alert.scss" >}}
+
+### Sass variables
+
 {{< scss-docs name="alert-variables" file="scss/_variables.scss" >}}
 
-### Variant mixin
+### Sass mixin
 
 Used in combination with `$theme-colors` to create contextual modifier classes for our alerts.
 
 {{< scss-docs name="alert-variant-mixin" file="scss/mixins/_alert.scss" >}}
 
-### Loop
+### Sass loop
 
 Loop that generates the modifier classes with the `alert-variant()` mixin.
 
@@ -192,10 +190,11 @@ Initialize elements as alerts
 
 ```js
 var alertList = document.querySelectorAll('.alert')
-var alerts =  [].slice.call(alertList).map(function (element) {
+var alerts = Array.prototype.slice.call(alertList).map(function (element) {
   return new bootstrap.Alert(element)
 })
 ```
+
 {{< callout info >}}
 For the sole purpose of dismissing an alert, it isn't necessary to initialize the component manually via the JS API. By making use of `data-bs-dismiss="alert"`, the component will be initialized automatically and properly dismissed.
 
@@ -204,17 +203,7 @@ See the [triggers](#triggers) section for more details.
 
 ### Triggers
 
-Dismissal can be achieved with `data` attributes on a button **within the alert** as demonstrated above:
-
-```html
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-```
-
-or on a button **outside the alert** using the `data-bs-target` as demonstrated above:
-
-```html
-<button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="#my-alert" aria-label="Close"></button>
-```
+{{% js-dismiss "alert" %}}
 
 **Note that closing an alert will remove it from the DOM.**
 
@@ -257,7 +246,7 @@ or on a button **outside the alert** using the `data-bs-target` as demonstrated 
         <code>getOrCreateInstance</code>
       </td>
       <td>
-        Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialised.
+        Static method which returns an alert instance associated to a DOM element or create a new one in case it wasn't initialized.
         You can use it like this: <code>bootstrap.Alert.getOrCreateInstance(element)</code>
       </td>
     </tr>

@@ -44,16 +44,16 @@
 }
 
 // Grid mixins
-.app-container {
+.example-container {
   width: 800px;
   @include make-container();
 }
 
-.app-row {
+.example-row {
   @include make-row();
 }
 
-.app-content-main {
+.example-content-main {
   @include make-col-ready();
 
   @include media-breakpoint-up(sm) {
@@ -65,7 +65,7 @@
   }
 }
 
-.app-content-secondary {
+.example-content-secondary {
   @include make-col-ready();
 
   @include media-breakpoint-up(sm) {
@@ -159,7 +159,8 @@
     margin: -1rem -1rem 1rem;
   }
 
-  .fixed-bottom {
+  .fixed-bottom,
+  .sticky-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
   }
@@ -169,7 +170,8 @@
     .sticky-top {
       margin: -1.5rem -1.5rem 1rem;
     }
-    .fixed-bottom {
+    .fixed-bottom,
+    .sticky-bottom {
       margin: 1rem -1.5rem -1.5rem;
     }
   }
@@ -241,7 +243,7 @@
   overflow: auto;
 }
 
-.scrollspy-app-2 {
+.scrollspy-example-2 {
   position: relative;
   height: 350px;
   overflow: auto;
