@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Learn how to enable, use, and customize our alternate layout system built on CSS Grid with examples and code snippets.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.91.2">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
 <title>CSS Grid · Bootstrap</title>
@@ -349,7 +349,7 @@ About
 </div>
 <div class="qal-content ps-lg-4">
 <p>Bootstrap&rsquo;s default grid system represents the culmination of over a decade of CSS layout techniques, tried and tested by millions of people. But, it was also created without many of the modern CSS features and techniques we&rsquo;re seeing in browsers like the new CSS Grid.</p>
-<div class="qal-callout qal-callout-warning">
+<div class="bd-callout bd-callout-warning">
 <strong>Heads up—our CSS Grid system is experimental and opt-in for v5.1.0!</strong> We included it in our documentation&rsquo;s CSS to demonstrate it for you, but it&rsquo;s disabled by default. Keep reading to learn how to enable it in your projects.
 </div>
 <h2 id=how-it-works>How it works</h2>
@@ -391,7 +391,7 @@ About
 <h2 id=apps>Apps</h2>
 <h3 id=three-columns>Three columns</h3>
 <p>Three equal-width columns across all viewports and devices can be created by using the <code>.g-col-4</code> classes. Add <a href=#responsive>responsive classes</a> to change the layout by viewport size.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid>
 <div class=g-col-4>.g-col-4</div>
 <div class=g-col-4>.g-col-4</div>
@@ -404,7 +404,7 @@ About
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=responsive>Responsive</h3>
 <p>Use responsive classes to adjust your layout across viewports. Here we start with two columns on the narrowest viewports, and then grow to three columns on medium viewports and above.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid>
 <div class="g-col-6 g-col-md-4">.g-col-6 .g-col-md-4</div>
 <div class="g-col-6 g-col-md-4">.g-col-6 .g-col-md-4</div>
@@ -416,7 +416,7 @@ About
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;g-col-6 g-col-md-4&#34;</span><span class=p>&gt;</span>.g-col-6 .g-col-md-4<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>Compare that to this two column layout at all viewports.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid>
 <div class=g-col-6>.g-col-6</div>
 <div class=g-col-6>.g-col-6</div>
@@ -427,7 +427,7 @@ About
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=wrapping>Wrapping</h2>
 <p>Grid items automatically wrap to the next line when there&rsquo;s no more room horizontally. Note that the <code>gap</code> applies to horizontal and vertical gaps between grid items.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid>
 <div class=g-col-6>.g-col-6</div>
 <div class=g-col-6>.g-col-6</div>
@@ -443,7 +443,7 @@ About
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=starts>Starts</h2>
 <p>Start classes aim to replace our default grid&rsquo;s offset classes, but they&rsquo;re not entirely the same. CSS Grid creates a grid template through styles that tell browsers to &ldquo;start at this column&rdquo; and &ldquo;end at this column.&rdquo; Those properties are <code>grid-column-start</code> and <code>grid-column-end</code>. Start classes are shorthand for the former. Pair them with the column classes to size and align your columns however you need.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid>
 <div class="g-col-3 g-start-2">.g-col-3 .g-start-2</div>
 <div class="g-col-4 g-start-6">.g-col-4 .g-start-6</div>
@@ -454,7 +454,7 @@ About
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=auto-columns>Auto columns</h2>
 <p>When there are no classes on the grid items (the immediate children of a <code>.grid</code>), each grid item will automatically be sized to one column.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid>
 <div>1</div>
 <div>1</div>
@@ -484,7 +484,7 @@ About
   <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>1<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>This behavior can be mixed with grid column classes.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid>
 <div class=g-col-6>.g-col-6</div>
 <div>1</div>
@@ -512,7 +512,7 @@ About
 <li>The third auto-column has no nested content.</li>
 </ul>
 <p>In practice this allows for more complex and custom layouts when compared to our default grid system.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid style=--bs-columns:3>
 <div>
 First auto-column
@@ -580,7 +580,7 @@ Second auto-column
 <p>These CSS variables have no default value; instead, they apply fallback values that are used <em>until</em> a local instance is provided. For example, we use <code>var(--bs-rows, 1)</code> for our CSS Grid rows, which ignores <code>--bs-rows</code> because that hasn&rsquo;t been set anywhere yet. Once it is, the <code>.grid</code> instance will use that value instead of the fallback value of <code>1</code>.</p>
 <h3 id=no-grid-classes>No grid classes</h3>
 <p>Immediate children elements of <code>.grid</code> are grid items, so they&rsquo;ll be sized without explicitly adding a <code>.g-col</code> class.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid style=--bs-columns:3>
 <div>Auto-column</div>
 <div>Auto-column</div>
@@ -593,7 +593,7 @@ Second auto-column
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=columns-and-gaps>Columns and gaps</h3>
 <p>Adjust the number of columns and the gap.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid style=--bs-columns:4;--bs-gap:5rem>
 <div class=g-col-2>.g-col-2</div>
 <div class=g-col-2>.g-col-2</div>
@@ -602,7 +602,7 @@ Second auto-column
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;g-col-2&#34;</span><span class=p>&gt;</span>.g-col-2<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;g-col-2&#34;</span><span class=p>&gt;</span>.g-col-2<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid style=--bs-columns:10;--bs-gap:1rem>
 <div class=g-col-6>.g-col-6</div>
 <div class=g-col-4>.g-col-4</div>
@@ -613,7 +613,7 @@ Second auto-column
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=adding-rows>Adding rows</h3>
 <p>Adding more rows and changing the placement of columns:</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid style=--bs-rows:3;--bs-columns:3>
 <div>Auto-column</div>
 <div class=g-start-2 style=grid-row:2>Auto-column</div>
@@ -626,7 +626,7 @@ Second auto-column
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=gaps>Gaps</h3>
 <p>Change the vertical gaps only by modifying the <code>row-gap</code>. Note that we use <code>gap</code> on <code>.grid</code>s, but <code>row-gap</code> and <code>column-gap</code> can be modified as needed.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid style=row-gap:0>
 <div class=g-col-6>.g-col-6</div>
 <div class=g-col-6>.g-col-6</div>
@@ -641,7 +641,7 @@ Second auto-column
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;g-col-6&#34;</span><span class=p>&gt;</span>.g-col-6<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>Because of that, you can have different vertical and horizontal <code>gap</code>s, which can take a single value (all sides) or a pair of values (vertical and horizontal). This can be applied with an inline style for <code>gap</code>, or with our <code>--bs-gap</code> CSS variable.</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid style="--bs-gap:.25rem 1rem">
 <div class=g-col-6>.g-col-6</div>
 <div class=g-col-6>.g-col-6</div>
@@ -662,7 +662,7 @@ Second auto-column
 <li>Use inline or custom styles to augment the provided classes.</li>
 </ul>
 <p>For example, you can increase the column count and change the gap size, and then size your &ldquo;columns&rdquo; with a mix of inline styles and predefined CSS Grid column classes (e.g., <code>.g-col-4</code>).</p>
-<div class="qal-app qal-app-cssgrid">
+<div class="bd-example qal-app-cssgrid">
 <div class=grid style=--bs-columns:18;--bs-gap:.5rem>
 <div style="grid-column:span 14">14 columns</div>
 <div class=g-col-4>.g-col-4</div>

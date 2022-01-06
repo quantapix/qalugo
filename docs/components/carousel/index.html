@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="A slideshow component for cycling through elements—images or slides of text—like a carousel.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.91.2">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
 <title>Carousel · Bootstrap</title>
@@ -358,7 +358,7 @@ About
 <h2 id=how-it-works>How it works</h2>
 <p>The carousel is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It works with a series of images, text, or custom markup. It also includes support for previous/next controls and indicators.</p>
 <p>In browsers where the <a href=https://www.w3.org/TR/page-visibility/>Page Visibility API</a> is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).</p>
-<div class="qal-callout qal-callout-info">
+<div class="bd-callout bd-callout-info">
 The animation effect of this component is dependent on the <code>prefers-reduced-motion</code> media query. See the <a href=../../../docs/getting-started/accessibility/#reduced-motion>reduced motion section of our accessibility documentation</a>.
 </div>
 <p>Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.</p>
@@ -367,40 +367,40 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <p><strong>The <code>.active</code> class needs to be added to one of the slides</strong> otherwise the carousel will not be visible. Also be sure to set a unique <code>id</code> on the <code>.carousel</code> for optional controls, especially if you&rsquo;re using multiple carousels on a single page. Control and indicator elements must have a <code>data-bs-target</code> attribute (or <code>href</code> for links) that matches the <code>id</code> of the <code>.carousel</code> element.</p>
 <h3 id=slides-only>Slides only</h3>
 <p>Here&rsquo;s a carousel with slides only. Note the presence of the <code>.d-block</code> and <code>.w-100</code> on carousel images to prevent browser default image alignment.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div id=carouselExampleSlidesOnly class="carousel slide" data-bs-ride=carousel>
 <div class=carousel-inner>
-<div class="carousel-item active"><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+<div class="carousel-item active"><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
 </div>
 </div>
 </div>
 </div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;carouselExampleSlidesOnly&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel slide&#34;</span> <span class=na>data-bs-ride</span><span class=o>=</span><span class=s>&#34;carousel&#34;</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-inner&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item active&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=with-controls>With controls</h3>
 <p>Adding in the previous and next controls. We recommend using <code>&lt;button></code> elements, but you can also use <code>&lt;a></code> elements with <code>role="button"</code>.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div id=carouselExampleControls class="carousel slide" data-bs-ride=carousel>
 <div class=carousel-inner>
-<div class="carousel-item active"><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+<div class="carousel-item active"><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
 </div>
 </div>
 <button class=carousel-control-prev type=button data-bs-target=#carouselExampleControls data-bs-slide=prev>
@@ -415,13 +415,13 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 </div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;carouselExampleControls&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel slide&#34;</span> <span class=na>data-bs-ride</span><span class=o>=</span><span class=s>&#34;carousel&#34;</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-inner&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item active&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>button</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-control-prev&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;button&#34;</span> <span class=na>data-bs-target</span><span class=o>=</span><span class=s>&#34;#carouselExampleControls&#34;</span> <span class=na>data-bs-slide</span><span class=o>=</span><span class=s>&#34;prev&#34;</span><span class=p>&gt;</span>
@@ -435,7 +435,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=with-indicators>With indicators</h3>
 <p>You can also add the indicators to the carousel, alongside the controls, too.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div id=carouselExampleIndicators class="carousel slide" data-bs-ride=carousel>
 <div class=carousel-indicators>
 <button type=button data-bs-target=#carouselExampleIndicators data-bs-slide-to=0 class=active aria-current=true aria-label="Slide 1"></button>
@@ -443,11 +443,11 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <button type=button data-bs-target=#carouselExampleIndicators data-bs-slide-to=2 aria-label="Slide 3"></button>
 </div>
 <div class=carousel-inner>
-<div class="carousel-item active"><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+<div class="carousel-item active"><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
 </div>
 </div>
 <button class=carousel-control-prev type=button data-bs-target=#carouselExampleIndicators data-bs-slide=prev>
@@ -467,13 +467,13 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-inner&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item active&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>button</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-control-prev&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;button&#34;</span> <span class=na>data-bs-target</span><span class=o>=</span><span class=s>&#34;#carouselExampleIndicators&#34;</span> <span class=na>data-bs-slide</span><span class=o>=</span><span class=s>&#34;prev&#34;</span><span class=p>&gt;</span>
@@ -487,7 +487,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=with-captions>With captions</h3>
 <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.carousel-item</code>. They can be easily hidden on smaller viewports, as shown below, with optional <a href=../../../docs/utilities/display/>display utilities</a>. We hide them initially with <code>.d-none</code> and bring them back on medium-sized devices with <code>.d-md-block</code>.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div id=carouselExampleCaptions class="carousel slide" data-bs-ride=carousel>
 <div class=carousel-indicators>
 <button type=button data-bs-target=#carouselExampleCaptions data-bs-slide-to=0 class=active aria-current=true aria-label="Slide 1"></button>
@@ -495,19 +495,19 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <button type=button data-bs-target=#carouselExampleCaptions data-bs-slide-to=2 aria-label="Slide 3"></button>
 </div>
 <div class=carousel-inner>
-<div class="carousel-item active"><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+<div class="carousel-item active"><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
 <div class="carousel-caption d-none d-md-block">
 <h5>First slide label</h5>
 <p>Some representative placeholder content for the first slide.</p>
 </div>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
 <div class="carousel-caption d-none d-md-block">
 <h5>Second slide label</h5>
 <p>Some representative placeholder content for the second slide.</p>
 </div>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
 <div class="carousel-caption d-none d-md-block">
 <h5>Third slide label</h5>
 <p>Some representative placeholder content for the third slide.</p>
@@ -531,21 +531,21 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-inner&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item active&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
       <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-caption d-none d-md-block&#34;</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>h5</span><span class=p>&gt;</span>First slide label<span class=p>&lt;/</span><span class=nt>h5</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>Some representative placeholder content for the first slide.<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
       <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
       <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-caption d-none d-md-block&#34;</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>h5</span><span class=p>&gt;</span>Second slide label<span class=p>&lt;/</span><span class=nt>h5</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>Some representative placeholder content for the second slide.<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
       <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
       <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-caption d-none d-md-block&#34;</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>h5</span><span class=p>&gt;</span>Third slide label<span class=p>&lt;/</span><span class=nt>h5</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>Some representative placeholder content for the third slide.<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
@@ -562,15 +562,15 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=crossfade>Crossfade</h3>
-<p>Add <code>.carousel-fade</code> to your carousel to animate slides with a fade transition instead of a slide.</p>
-<div class=qal-app>
+<p>Add <code>.carousel-fade</code> to your carousel to animate slides with a fade transition instead of a slide. Depending on your carousel content (e.g., text only slides), you may want to add <code>.bg-body</code> or some custom CSS to the <code>.carousel-item</code>s for proper crossfading.</p>
+<div class=bd-example>
 <div id=carouselExampleFade class="carousel slide carousel-fade" data-bs-ride=carousel>
 <div class=carousel-inner>
-<div class="carousel-item active"><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+<div class="carousel-item active"><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
 </div>
 </div>
 <button class=carousel-control-prev type=button data-bs-target=#carouselExampleFade data-bs-slide=prev>
@@ -585,13 +585,13 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 </div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;carouselExampleFade&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel slide carousel-fade&#34;</span> <span class=na>data-bs-ride</span><span class=o>=</span><span class=s>&#34;carousel&#34;</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-inner&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item active&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>button</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-control-prev&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;button&#34;</span> <span class=na>data-bs-target</span><span class=o>=</span><span class=s>&#34;#carouselExampleFade&#34;</span> <span class=na>data-bs-slide</span><span class=o>=</span><span class=s>&#34;prev&#34;</span><span class=p>&gt;</span>
@@ -605,14 +605,14 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=individual-carousel-item-interval>Individual <code>.carousel-item</code> interval</h3>
 <p>Add <code>data-bs-interval=""</code> to a <code>.carousel-item</code> to change the amount of time to delay between automatically cycling to the next item.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div id=carouselExampleInterval class="carousel slide" data-bs-ride=carousel>
 <div class=carousel-inner>
-<div class="carousel-item active" data-bs-interval=10000><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+<div class="carousel-item active" data-bs-interval=10000><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
 </div>
-<div class=carousel-item data-bs-interval=2000><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class=carousel-item data-bs-interval=2000><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
 </div>
 </div>
 <button class=carousel-control-prev type=button data-bs-target=#carouselExampleInterval data-bs-slide=prev>
@@ -627,13 +627,13 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 </div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;carouselExampleInterval&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel slide&#34;</span> <span class=na>data-bs-ride</span><span class=o>=</span><span class=s>&#34;carousel&#34;</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-inner&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item active&#34;</span> <span class=na>data-bs-interval</span><span class=o>=</span><span class=s>&#34;10000&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span> <span class=na>data-bs-interval</span><span class=o>=</span><span class=s>&#34;2000&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>button</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-control-prev&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;button&#34;</span> <span class=na>data-bs-target</span><span class=o>=</span><span class=s>&#34;#carouselExampleInterval&#34;</span> <span class=na>data-bs-slide</span><span class=o>=</span><span class=s>&#34;prev&#34;</span><span class=p>&gt;</span>
@@ -647,14 +647,14 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=disable-touch-swiping>Disable touch swiping</h3>
 <p>Carousels support swiping left/right on touchscreen devices to move between slides. This can be disabled using the <code>data-bs-touch</code> attribute. The example below also does not include the <code>data-bs-ride</code> attribute and has <code>data-bs-interval="false"</code> so it doesn&rsquo;t autoplay.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div id=carouselExampleControlsNoTouching class="carousel slide" data-bs-touch=false data-bs-interval=false>
 <div class=carousel-inner>
-<div class="carousel-item active"><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+<div class="carousel-item active"><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#666"/><text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text></svg>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#555"/><text x="50%" y="50%" fill="#333" dy=".3em">Third slide</text></svg>
 </div>
 </div>
 <button class=carousel-control-prev type=button data-bs-target=#carouselExampleControlsNoTouching data-bs-slide=prev>
@@ -669,13 +669,13 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 </div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;carouselExampleControlsNoTouching&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel slide&#34;</span> <span class=na>data-bs-touch</span><span class=o>=</span><span class=s>&#34;false&#34;</span> <span class=na>data-bs-interval</span><span class=o>=</span><span class=s>&#34;false&#34;</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-inner&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item active&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>button</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-control-prev&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;button&#34;</span> <span class=na>data-bs-target</span><span class=o>=</span><span class=s>&#34;#carouselExampleControlsNoTouching&#34;</span> <span class=na>data-bs-slide</span><span class=o>=</span><span class=s>&#34;prev&#34;</span><span class=p>&gt;</span>
@@ -689,7 +689,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=dark-variant>Dark variant</h2>
 <p>Add <code>.carousel-dark</code> to the <code>.carousel</code> for darker controls, indicators, and captions. Controls have been inverted from their default white fill with the <code>filter</code> CSS property. Captions and controls have additional Sass variables that customize the <code>color</code> and <code>background-color</code>.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div id=carouselExampleDark class="carousel carousel-dark slide" data-bs-ride=carousel>
 <div class=carousel-indicators>
 <button type=button data-bs-target=#carouselExampleDark data-bs-slide-to=0 class=active aria-current=true aria-label="Slide 1"></button>
@@ -697,19 +697,19 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 <button type=button data-bs-target=#carouselExampleDark data-bs-slide-to=2 aria-label="Slide 3"></button>
 </div>
 <div class=carousel-inner>
-<div class="carousel-item active" data-bs-interval=10000><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#f5f5f5"/><text x="50%" y="50%" fill="#aaa" dy=".3em">First slide</text></svg>
+<div class="carousel-item active" data-bs-interval=10000><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: First slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#f5f5f5"/><text x="50%" y="50%" fill="#aaa" dy=".3em">First slide</text></svg>
 <div class="carousel-caption d-none d-md-block">
 <h5>First slide label</h5>
 <p>Some representative placeholder content for the first slide.</p>
 </div>
 </div>
-<div class=carousel-item data-bs-interval=2000><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#bbb" dy=".3em">Second slide</text></svg>
+<div class=carousel-item data-bs-interval=2000><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Second slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#bbb" dy=".3em">Second slide</text></svg>
 <div class="carousel-caption d-none d-md-block">
 <h5>Second slide label</h5>
 <p>Some representative placeholder content for the second slide.</p>
 </div>
 </div>
-<div class=carousel-item><svg class="qal-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e5e5e5"/><text x="50%" y="50%" fill="#999" dy=".3em">Third slide</text></svg>
+<div class=carousel-item><svg class="bd-placeholder-img qal-placeholder-img-lg d-block w-100" width="800" height="400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Third slide" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#e5e5e5"/><text x="50%" y="50%" fill="#999" dy=".3em">Third slide</text></svg>
 <div class="carousel-caption d-none d-md-block">
 <h5>Third slide label</h5>
 <p>Some representative placeholder content for the third slide.</p>
@@ -733,21 +733,21 @@ The animation effect of this component is dependent on the <code>prefers-reduced
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-inner&#34;</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item active&#34;</span> <span class=na>data-bs-interval</span><span class=o>=</span><span class=s>&#34;10000&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
       <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-caption d-none d-md-block&#34;</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>h5</span><span class=p>&gt;</span>First slide label<span class=p>&lt;/</span><span class=nt>h5</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>Some representative placeholder content for the first slide.<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
       <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span> <span class=na>data-bs-interval</span><span class=o>=</span><span class=s>&#34;2000&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
       <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-caption d-none d-md-block&#34;</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>h5</span><span class=p>&gt;</span>Second slide label<span class=p>&lt;/</span><span class=nt>h5</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>Some representative placeholder content for the second slide.<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
       <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-item&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
+      <span class=p>&lt;</span><span class=nt>img</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;...&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;qal-placeholder-img-lg d-block w-100&#34;</span> <span class=na>alt</span><span class=o>=</span><span class=s>&#34;...&#34;</span><span class=p>&gt;</span>
       <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;carousel-caption d-none d-md-block&#34;</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>h5</span><span class=p>&gt;</span>Third slide label<span class=p>&lt;/</span><span class=nt>h5</span><span class=p>&gt;</span>
         <span class=p>&lt;</span><span class=nt>p</span><span class=p>&gt;</span>Some representative placeholder content for the third slide.<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
@@ -859,7 +859,7 @@ The animation effect of this component is dependent on the <code>prefers-reduced
 </tbody>
 </table>
 <h3 id=methods>Methods</h3>
-<div class="qal-callout qal-callout-danger">
+<div class="bd-callout bd-callout-danger">
 <h4 id=asynchronous-methods-and-transitions>Asynchronous methods and transitions</h4>
 <p>All API methods are <strong>asynchronous</strong> and start a <strong>transition</strong>. They return to the caller as soon as the transition is started but <strong>before it ends</strong>. In addition, a method call on a <strong>transitioning component will be ignored</strong>.</p>
 <p><a href=../../../docs/getting-started/javascript/#asynchronous-functions-and-transitions>See our JavaScript documentation for more information</a>.</p>
@@ -919,7 +919,7 @@ Static method which allows you to get the carousel instance associated to a DOM 
 <code>getOrCreateInstance</code>
 </td>
 <td>
-Static method which returns a carousel instance associated to a DOM element or create a new one in case it wasn't initialised.
+Static method which returns a carousel instance associated to a DOM element or create a new one in case it wasn't initialized.
 You can use it like this: <code>bootstrap.Carousel.getOrCreateInstance(element)</code>
 </td>
 </tr>

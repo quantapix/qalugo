@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Learn how to enable support for right-to-left text in Bootstrap across our layout, components, and utilities.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.91.2">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
 <title>RTL · Bootstrap</title>
@@ -347,11 +347,9 @@ About
 <h2 id=get-familiar>Get familiar</h2>
 <p>We recommend getting familiar with Bootstrap first by reading through our <a href=../../../docs/getting-started/introduction/>Getting Started Introduction page</a>. Once you&rsquo;ve run through it, continue reading here for how to enable RTL.</p>
 <p>You may also want to read up on <a href=https://rtlcss.com/>the RTLCSS project</a>, as it powers our approach to RTL.</p>
-<div class="qal-callout qal-callout-warning">
+<div class="bd-callout bd-callout-warning">
 <h3 id=experimental-feature>Experimental feature</h3>
-<p>The RTL feature is still <strong>experimental</strong> and will probably evolve according to user feedback. Spotted something or have an improvement to suggest? [Open an issue](
-<a href=https://github.com/twbs/bootstrap>https://github.com/twbs/bootstrap</a>
-/issues/new), we&rsquo;d love to get your insights.
+<p>The RTL feature is still <strong>experimental</strong> and will probably evolve according to user feedback. Spotted something or have an improvement to suggest? <a href=https://github.com/twbs/bootstrap/issues/new>Open an issue</a>, we&rsquo;d love to get your insights.
 </div>
 <h2 id=required-html>Required HTML</h2>
 <p>There are two strict requirements for enabling RTL in Bootstrap-powered pages.</p>
@@ -360,11 +358,7 @@ About
 <li>Add an appropriate <code>lang</code> attribute, like <code>lang="ar"</code>, on the <code>&lt;html></code> element.</li>
 </ol>
 <p>From there, you&rsquo;ll need to include an RTL version of our CSS. For example, here&rsquo;s the stylesheet for our compiled and minified CSS with RTL enabled:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;stylesheet&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;
-    https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css
-  &#34;</span> <span class=na>integrity</span><span class=o>=</span><span class=s>&#34;
-    sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo
-  &#34;</span> <span class=na>crossorigin</span><span class=o>=</span><span class=s>&#34;anonymous&#34;</span><span class=p>&gt;</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;stylesheet&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css&#34;</span> <span class=na>integrity</span><span class=o>=</span><span class=s>&#34;sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo&#34;</span> <span class=na>crossorigin</span><span class=o>=</span><span class=s>&#34;anonymous&#34;</span><span class=p>&gt;</span>
 </code></pre></div><h3 id=starter-template>Starter template</h3>
 <p>You can see the above requirements reflected in this modified RTL starter template.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=cp>&lt;!doctype html&gt;</span>
@@ -375,11 +369,7 @@ About
     <span class=p>&lt;</span><span class=nt>meta</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;viewport&#34;</span> <span class=na>content</span><span class=o>=</span><span class=s>&#34;width=device-width, initial-scale=1&#34;</span><span class=p>&gt;</span>
 
     <span class=c>&lt;!-- Bootstrap CSS --&gt;</span>
-    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;stylesheet&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;
-    https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css
-  &#34;</span> <span class=na>integrity</span><span class=o>=</span><span class=s>&#34;
-    sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo
-  &#34;</span> <span class=na>crossorigin</span><span class=o>=</span><span class=s>&#34;anonymous&#34;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>link</span> <span class=na>rel</span><span class=o>=</span><span class=s>&#34;stylesheet&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.rtl.min.css&#34;</span> <span class=na>integrity</span><span class=o>=</span><span class=s>&#34;sha384-LPvXVVAlyPoBSGkX8UddpctDks+1P4HG8MhT7/YwqHtJ40bstjzCqjj+VVVDhsCo&#34;</span> <span class=na>crossorigin</span><span class=o>=</span><span class=s>&#34;anonymous&#34;</span><span class=p>&gt;</span>
 
     <span class=p>&lt;</span><span class=nt>title</span><span class=p>&gt;</span>مرحبا بالعالم!<span class=p>&lt;/</span><span class=nt>title</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>head</span><span class=p>&gt;</span>
@@ -389,24 +379,12 @@ About
     <span class=c>&lt;!-- Optional JavaScript; choose one of the two! --&gt;</span>
 
     <span class=c>&lt;!-- Option 1: Bootstrap Bundle with Popper --&gt;</span>
-    <span class=p>&lt;</span><span class=nt>script</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;
-    https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js
-  &#34;</span> <span class=na>integrity</span><span class=o>=</span><span class=s>&#34;
-    sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4
-  &#34;</span> <span class=na>crossorigin</span><span class=o>=</span><span class=s>&#34;anonymous&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>script</span> <span class=na>src</span><span class=o>=</span><span class=s>&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js&#34;</span> <span class=na>integrity</span><span class=o>=</span><span class=s>&#34;sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4&#34;</span> <span class=na>crossorigin</span><span class=o>=</span><span class=s>&#34;anonymous&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
 
     <span class=c>&lt;!-- Option 2: Separate Popper and Bootstrap JS --&gt;</span>
     <span class=c>&lt;!--
-</span><span class=c>    &lt;script src=&#34;
-    https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js
-  &#34; integrity=&#34;
-    sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p
-  &#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
-</span><span class=c>    &lt;script src=&#34;
-    https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js
-  &#34; integrity=&#34;
-    sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT
-  &#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+</span><span class=c>    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js&#34; integrity=&#34;sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+</span><span class=c>    &lt;script src=&#34;https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js&#34; integrity=&#34;sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT&#34; crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
 </span><span class=c>    --&gt;</span>
   <span class=p>&lt;/</span><span class=nt>body</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>html</span><span class=p>&gt;</span>
@@ -482,7 +460,7 @@ About
 <span class=p>}</span>
 <span class=cm>/*rtl:end:options*/</span>
 </code></pre></div><p>After running Sass then RTLCSS, each selector in your CSS files will be prepended by <code>.ltr</code>, and <code>.rtl</code> for RTL files. Now you&rsquo;re able to use both files on the same page, and simply use <code>.ltr</code> or <code>.rtl</code> on your components wrappers to use one or the other direction.</p>
-<div class="qal-callout qal-callout-warning">
+<div class="bd-callout bd-callout-warning">
 <h4 id=edge-cases-and-known-limitations>Edge cases and known limitations</h4>
 <p>While this approach is understandable, please pay attention to the following:</p>
 <ol>

@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Gutters are the padding between your columns, used to responsively space and align content in the Bootstrap grid system.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.91.2">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
 <title>Gutters · Bootstrap</title>
@@ -348,7 +348,7 @@ About
 </ul>
 <h2 id=horizontal-gutters>Horizontal gutters</h2>
 <p><code>.gx-*</code> classes can be used to control the horizontal gutter widths. The <code>.container</code> or <code>.container-fluid</code> parent may need to be adjusted if larger gutters are used too to avoid unwanted overflow, using a matching padding utility. For example, in the following example we&rsquo;ve increased the padding with <code>.px-4</code>:</p>
-<div class=qal-app>
+<div class=bd-example>
 <div class="container px-4">
 <div class="row gx-5">
 <div class=col>
@@ -370,7 +370,7 @@ About
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>An alternative solution is to add a wrapper around the <code>.row</code> with the <code>.overflow-hidden</code> class:</p>
-<div class=qal-app>
+<div class=bd-example>
 <div class="container overflow-hidden">
 <div class="row gx-5">
 <div class=col>
@@ -393,7 +393,7 @@ About
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=vertical-gutters>Vertical gutters</h2>
 <p><code>.gy-*</code> classes can be used to control the vertical gutter widths. Like the horizontal gutters, the vertical gutters can cause some overflow below the <code>.row</code> at the end of a page. If this occurs, you add a wrapper around <code>.row</code> with the <code>.overflow-hidden</code> class:</p>
-<div class=qal-app>
+<div class=bd-example>
 <div class="container overflow-hidden">
 <div class="row gy-5">
 <div class=col-6>
@@ -428,7 +428,7 @@ About
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=horizontal--vertical-gutters>Horizontal & vertical gutters</h2>
 <p><code>.g-*</code> classes can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won&rsquo;t be a need to add the <code>.overflow-hidden</code> wrapper class.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div class=container>
 <div class="row g-2">
 <div class=col-6>
@@ -463,7 +463,7 @@ About
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=row-columns-gutters>Row columns gutters</h2>
 <p>Gutter classes can also be added to <a href=../../../docs/layout/grid/#row-columns>row columns</a>. In the following example, we use responsive row columns and responsive gutter classes.</p>
-<div class=qal-app>
+<div class=bd-example>
 <div class=container>
 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
 <div class=col>
@@ -536,7 +536,7 @@ About
 <p>The gutters between columns in our predefined grid classes can be removed with <code>.g-0</code>. This removes the negative <code>margin</code>s from <code>.row</code> and the horizontal <code>padding</code> from all immediate children columns.</p>
 <p><strong>Need an edge-to-edge design?</strong> Drop the parent <code>.container</code> or <code>.container-fluid</code>.</p>
 <p>In practice, here&rsquo;s how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).</p>
-<div class="qal-app qal-app-row">
+<div class="bd-example qal-app-row">
 <div class="row g-0">
 <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
 <div class="col-6 col-md-4">.col-6 .col-md-4</div>

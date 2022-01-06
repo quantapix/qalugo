@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Learn how and why we build nearly all our components responsively and with base and modifier classes.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.91.2">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
 <title>Components · Bootstrap</title>
@@ -344,6 +344,7 @@ About
   <span class=nv>$alert-background</span><span class=o>:</span> <span class=nf>shift-color</span><span class=p>(</span><span class=nv>$value</span><span class=o>,</span> <span class=nv>$alert-bg-scale</span><span class=p>);</span>
   <span class=nv>$alert-border</span><span class=o>:</span> <span class=nf>shift-color</span><span class=p>(</span><span class=nv>$value</span><span class=o>,</span> <span class=nv>$alert-border-scale</span><span class=p>);</span>
   <span class=nv>$alert-color</span><span class=o>:</span> <span class=nf>shift-color</span><span class=p>(</span><span class=nv>$value</span><span class=o>,</span> <span class=nv>$alert-color-scale</span><span class=p>);</span>
+
   <span class=k>@if</span> <span class=p>(</span><span class=nf>contrast-ratio</span><span class=p>(</span><span class=nv>$alert-background</span><span class=o>,</span> <span class=nv>$alert-color</span><span class=p>)</span> <span class=o>&lt;</span> <span class=nv>$min-contrast-ratio</span><span class=p>)</span> <span class=p>{</span>
     <span class=nv>$alert-color</span><span class=o>:</span> <span class=nf>mix</span><span class=p>(</span><span class=nv>$value</span><span class=o>,</span> <span class=nf>color-contrast</span><span class=p>(</span><span class=nv>$alert-background</span><span class=p>)</span><span class=o>,</span> <span class=nf>abs</span><span class=p>(</span><span class=nv>$alert-color-scale</span><span class=p>));</span>
   <span class=p>}</span>
@@ -424,13 +425,13 @@ About
 <span class=nc>.callout-warning</span> <span class=p>{}</span>
 <span class=nc>.callout-danger</span> <span class=p>{}</span>
 </code></pre></div><p>For the callouts, that unique styling is just a <code>border-left-color</code>. When you combine that base class with one of those modifier classes, you get your complete component family:</p>
-<div class="qal-callout qal-callout-info">
+<div class="bd-callout bd-callout-info">
 <strong>This is an info callout.</strong> Example text to show it in action.
 </div>
-<div class="qal-callout qal-callout-warning">
+<div class="bd-callout bd-callout-warning">
 <strong>This is a warning callout.</strong> Example text to show it in action.
 </div>
-<div class="qal-callout qal-callout-danger">
+<div class="bd-callout bd-callout-danger">
 <strong>This is a danger callout.</strong> Example text to show it in action.
 </div>
 </div>

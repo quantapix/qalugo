@@ -3,7 +3,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.91.2">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
 <title>Scrollspy · Bootstrap</title>
@@ -355,7 +355,7 @@ About
 <li>Anchors (<code>&lt;a></code>) are required and must point to an element with that <code>id</code>.</li>
 </ul>
 <p>When successfully implemented, your nav or list group will update accordingly, moving the <code>.active</code> class from one item to the next based on their associated targets.</p>
-<div class="qal-callout qal-callout-info">
+<div class="bd-callout bd-callout-info">
 <h3 id=scrollable-containers-and-keyboard-access>Scrollable containers and keyboard access</h3>
 <p>If you&rsquo;re making a scrollable container (other than the <code>&lt;body></code>), be sure to have a <code>height</code> set and <code>overflow-y: scroll;</code> applied to it—alongside a <code>tabindex="0"</code> to ensure keyboard access.
 </div>
@@ -450,7 +450,7 @@ About
 </nav>
 </div>
 <div class=col-8>
-<div data-bs-spy=scroll data-bs-target=#navbar-example3 data-bs-offset=0 class=scrollspy-app-2 tabindex=0>
+<div data-bs-spy=scroll data-bs-target=#navbar-example3 data-bs-offset=0 class=scrollspy-example-2 tabindex=0>
 <h4 id=item-1>Item 1</h4>
 <p>This is some placeholder content for the scrollspy page. Note that as you scroll down the page, the appropriate navigation link is highlighted. It's repeated throughout the component example. We keep adding some more example copy here to emphasize the scrolling and highlighting.</p>
 <h5 id=item-1-1>Item 1-1</h5>
@@ -564,18 +564,18 @@ About
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>scrollSpy</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>bootstrap</span><span class=p>.</span><span class=nx>ScrollSpy</span><span class=p>(</span><span class=nb>document</span><span class=p>.</span><span class=nx>body</span><span class=p>,</span> <span class=p>{</span>
   <span class=nx>target</span><span class=o>:</span> <span class=s1>&#39;#navbar-example&#39;</span>
 <span class=p>})</span>
-</code></pre></div><div class="qal-callout qal-callout-danger">
+</code></pre></div><div class="bd-callout bd-callout-danger">
 <h4 id=resolvable-id-targets-required>Resolvable ID targets required</h4>
 <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home">home&lt;/a></code> must correspond to something in the DOM like <code>&lt;div id="home">&lt;/div></code>.
 </div>
-<div class="qal-callout qal-callout-info">
+<div class="bd-callout bd-callout-info">
 <h4 id=non-visible-target-elements-ignored>Non-visible target elements ignored</h4>
 <p>Target elements that are not visible will be ignored and their corresponding nav items will never be highlighted.
 </div>
 <h3 id=methods>Methods</h3>
 <h4 id=refresh>refresh</h4>
 <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you&rsquo;ll need to call the refresh method like so:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>dataSpyList</span> <span class=o>=</span> <span class=p>[].</span><span class=nx>slice</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s1>&#39;[data-bs-spy=&#34;scroll&#34;]&#39;</span><span class=p>))</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>dataSpyList</span> <span class=o>=</span> <span class=nb>Array</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>slice</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s1>&#39;[data-bs-spy=&#34;scroll&#34;]&#39;</span><span class=p>))</span>
 <span class=nx>dataSpyList</span><span class=p>.</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>dataSpyEl</span><span class=p>)</span> <span class=p>{</span>
   <span class=nx>bootstrap</span><span class=p>.</span><span class=nx>ScrollSpy</span><span class=p>.</span><span class=nx>getInstance</span><span class=p>(</span><span class=nx>dataSpyEl</span><span class=p>)</span>
     <span class=p>.</span><span class=nx>refresh</span><span class=p>()</span>
@@ -587,7 +587,7 @@ About
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>scrollSpyContentEl</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;content&#39;</span><span class=p>)</span>
 <span class=kd>var</span> <span class=nx>scrollSpy</span> <span class=o>=</span> <span class=nx>bootstrap</span><span class=p>.</span><span class=nx>ScrollSpy</span><span class=p>.</span><span class=nx>getInstance</span><span class=p>(</span><span class=nx>scrollSpyContentEl</span><span class=p>)</span> <span class=c1>// Returns a Bootstrap scrollspy instance
 </span></code></pre></div><h4 id=getorcreateinstance>getOrCreateInstance</h4>
-<p><em>Static</em> method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn&rsquo;t initialised</p>
+<p><em>Static</em> method which allows you to get the scrollspy instance associated with a DOM element, or create a new one in case it wasn&rsquo;t initialized</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>scrollSpyContentEl</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s1>&#39;content&#39;</span><span class=p>)</span>
 <span class=kd>var</span> <span class=nx>scrollSpy</span> <span class=o>=</span> <span class=nx>bootstrap</span><span class=p>.</span><span class=nx>ScrollSpy</span><span class=p>.</span><span class=nx>getOrCreateInstance</span><span class=p>(</span><span class=nx>scrollSpyContentEl</span><span class=p>)</span> <span class=c1>// Returns a Bootstrap scrollspy instance
 </span></code></pre></div><h3 id=options>Options</h3>
