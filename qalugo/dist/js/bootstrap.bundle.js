@@ -1,6 +1,6 @@
 /*!
   * Bootstrap v5.1.3 (https://getbootstrap.com/)
-  * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
@@ -1273,7 +1273,6 @@
   const SELECTOR_ITEM_IMG = '.carousel-item img';
   const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev';
   const SELECTOR_INDICATORS = '.carousel-indicators';
-  const SELECTOR_INDICATOR = '[data-bs-target]';
   const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]';
   const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]';
   const KEY_TO_DIRECTION = {
@@ -1334,6 +1333,7 @@
     }
 
     nextWhenVisible() {
+      // FIXME TODO use `document.visibilityState`
       // Don't call next when the page isn't visible
       // or the carousel or its parent isn't visible
       if (!document.hidden && isVisible(this._element)) {
@@ -1355,8 +1355,7 @@
         this.cycle(true);
       }
 
-      clearInterval(this._interval);
-      this._interval = null;
+      this._clearInterval();
     }
 
     cycle(event) {
@@ -1364,20 +1363,17 @@
         this._isPaused = false;
       }
 
-      if (this._interval) {
-        clearInterval(this._interval);
-        this._interval = null;
-      }
+      this._clearInterval();
 
-      if (this._config && this._config.interval && !this._isPaused) {
+      if (this._config.interval && !this._isPaused) {
         this._updateInterval();
 
-        this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
+        this._interval = setInterval(() => this.nextWhenVisible(), this._config.interval);
       }
     }
 
     to(index) {
-      this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+      this._activeElement = this._getActive();
 
       const activeIndex = this._getItemIndex(this._activeElement);
 
@@ -1409,6 +1405,11 @@
       super.dispose();
     } // Private
 
+
+    _configAfterMerge(config) {
+      config.defaultInterval = config.interval;
+      return config;
+    }
 
     _addEventListeners() {
       if (this._config.keyboard) {
@@ -1484,7 +1485,7 @@
     _triggerSlideEvent(relatedTarget, eventDirectionName) {
       const targetIndex = this._getItemIndex(relatedTarget);
 
-      const fromIndex = this._getItemIndex(SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element));
+      const fromIndex = this._getItemIndex(this._getActive());
 
       return EventHandler.trigger(this._element, EVENT_SLIDE, {
         relatedTarget,
@@ -1495,43 +1496,36 @@
     }
 
     _setActiveIndicatorElement(element) {
-      if (this._indicatorsElement) {
-        const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE$1, this._indicatorsElement);
-        activeIndicator.classList.remove(CLASS_NAME_ACTIVE$2);
-        activeIndicator.removeAttribute('aria-current');
-        const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement);
+      if (!this._indicatorsElement) {
+        return;
+      }
 
-        for (const indicator of indicators) {
-          if (Number.parseInt(indicator.getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
-            indicator.classList.add(CLASS_NAME_ACTIVE$2);
-            indicator.setAttribute('aria-current', 'true');
-            break;
-          }
-        }
+      const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE$1, this._indicatorsElement);
+      activeIndicator.classList.remove(CLASS_NAME_ACTIVE$2);
+      activeIndicator.removeAttribute('aria-current');
+      const newActiveIndicator = SelectorEngine.findOne(`[data-bs-slide-to="${this._getItemIndex(element)}"]`, this._indicatorsElement);
+
+      if (newActiveIndicator) {
+        newActiveIndicator.classList.add(CLASS_NAME_ACTIVE$2);
+        newActiveIndicator.setAttribute('aria-current', 'true');
       }
     }
 
     _updateInterval() {
-      const element = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+      const element = this._activeElement || this._getActive();
 
       if (!element) {
         return;
       }
 
       const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10);
-
-      if (elementInterval) {
-        this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
-        this._config.interval = elementInterval;
-      } else {
-        this._config.interval = this._config.defaultInterval || this._config.interval;
-      }
+      this._config.interval = elementInterval || this._config.defaultInterval;
     }
 
     _slide(directionOrOrder, element) {
       const order = this._directionToOrder(directionOrOrder);
 
-      const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+      const activeElement = this._getActive();
 
       const activeElementIndex = this._getItemIndex(activeElement);
 
@@ -1609,6 +1603,17 @@
 
       if (isCycling) {
         this.cycle();
+      }
+    }
+
+    _getActive() {
+      return SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+    }
+
+    _clearInterval() {
+      if (this._interval) {
+        clearInterval(this._interval);
+        this._interval = null;
       }
     }
 
@@ -2494,13 +2499,21 @@
         adaptive = _ref2.adaptive,
         roundOffsets = _ref2.roundOffsets,
         isFixed = _ref2.isFixed;
+    var _offsets$x = offsets.x,
+        x = _offsets$x === void 0 ? 0 : _offsets$x,
+        _offsets$y = offsets.y,
+        y = _offsets$y === void 0 ? 0 : _offsets$y;
 
-    var _ref3 = roundOffsets === true ? roundOffsetsByDPR(offsets) : typeof roundOffsets === 'function' ? roundOffsets(offsets) : offsets,
-        _ref3$x = _ref3.x,
-        x = _ref3$x === void 0 ? 0 : _ref3$x,
-        _ref3$y = _ref3.y,
-        y = _ref3$y === void 0 ? 0 : _ref3$y;
+    var _ref3 = typeof roundOffsets === 'function' ? roundOffsets({
+      x: x,
+      y: y
+    }) : {
+      x: x,
+      y: y
+    };
 
+    x = _ref3.x;
+    y = _ref3.y;
     var hasX = offsets.hasOwnProperty('x');
     var hasY = offsets.hasOwnProperty('y');
     var sideX = left;
@@ -2545,6 +2558,17 @@
       position: position
     }, adaptive && unsetSides);
 
+    var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
+      x: x,
+      y: y
+    }) : {
+      x: x,
+      y: y
+    };
+
+    x = _ref4.x;
+    y = _ref4.y;
+
     if (gpuAcceleration) {
       var _Object$assign;
 
@@ -2554,9 +2578,9 @@
     return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
   }
 
-  function computeStyles(_ref4) {
-    var state = _ref4.state,
-        options = _ref4.options;
+  function computeStyles(_ref5) {
+    var state = _ref5.state,
+        options = _ref5.options;
     var _options$gpuAccelerat = options.gpuAcceleration,
         gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat,
         _options$adaptive = options.adaptive,
@@ -2845,7 +2869,7 @@
 
 
     return clippingParents.filter(function (clippingParent) {
-      return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== 'body' && (canEscapeClipping ? getComputedStyle$1(clippingParent).position !== 'static' : true);
+      return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== 'body';
     });
   } // Gets the maximum area that the element is visible in due to any number of
   // clipping parents
@@ -5017,7 +5041,7 @@
           this.focus();
         }
       });
-    }); // avoid conflict when clicking moddal toggler while another one is open
+    }); // avoid conflict when clicking modal toggler while another one is open
 
     const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR$1);
 
@@ -5052,6 +5076,8 @@
   const EVENT_LOAD_DATA_API$1 = `load${EVENT_KEY$5}${DATA_API_KEY$2}`;
   const ESCAPE_KEY = 'Escape';
   const CLASS_NAME_SHOW$3 = 'show';
+  const CLASS_NAME_SHOWING$1 = 'showing';
+  const CLASS_NAME_HIDING = 'hiding';
   const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
   const OPEN_SELECTOR = '.offcanvas.show';
   const EVENT_SHOW$2 = `show${EVENT_KEY$5}`;
@@ -5117,7 +5143,6 @@
       }
 
       this._isShown = true;
-      this._element.style.visibility = 'visible';
 
       this._backdrop.show();
 
@@ -5125,18 +5150,20 @@
         new ScrollBarHelper().hide();
       }
 
-      this._element.removeAttribute('aria-hidden');
-
       this._element.setAttribute('aria-modal', true);
 
       this._element.setAttribute('role', 'dialog');
 
-      this._element.classList.add(CLASS_NAME_SHOW$3);
+      this._element.classList.add(CLASS_NAME_SHOWING$1);
 
       const completeCallBack = () => {
         if (!this._config.scroll) {
           this._focustrap.activate();
         }
+
+        this._element.classList.add(CLASS_NAME_SHOW$3);
+
+        this._element.classList.remove(CLASS_NAME_SHOWING$1);
 
         EventHandler.trigger(this._element, EVENT_SHOWN$2, {
           relatedTarget
@@ -5163,18 +5190,16 @@
 
       this._isShown = false;
 
-      this._element.classList.remove(CLASS_NAME_SHOW$3);
+      this._element.classList.add(CLASS_NAME_HIDING);
 
       this._backdrop.hide();
 
       const completeCallback = () => {
-        this._element.setAttribute('aria-hidden', true);
+        this._element.classList.remove(CLASS_NAME_SHOW$3, CLASS_NAME_HIDING);
 
         this._element.removeAttribute('aria-modal');
 
         this._element.removeAttribute('role');
-
-        this._element.style.visibility = 'hidden';
 
         if (!this._config.scroll) {
           new ScrollBarHelper().reset();
@@ -5635,7 +5660,7 @@
         throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
       }
 
-      super(element); // Private
+      super(element, config); // Private
 
       this._isEnabled = true;
       this._timeout = 0;
@@ -5644,7 +5669,6 @@
       this._popper = null;
       this._templateFactory = null; // Protected
 
-      this._config = this._getConfig(config);
       this.tip = null;
 
       this._setListeners();
@@ -5963,6 +5987,15 @@
           options: {
             element: `.${this.constructor.NAME}-arrow`
           }
+        }, {
+          name: 'preSetPlacement',
+          enabled: true,
+          phase: 'beforeMain',
+          fn: data => {
+            // Pre-set Popper's placement attribute in order to read the arrow sizes properly.
+            // Otherwise, Popper mixes up the width and height dimensions since the initial arrow style is for top placement
+            this._getTipElement().setAttribute('data-popper-placement', data.state.placement);
+          }
         }]
       };
       return { ...defaultBsPopperConfig,
@@ -6181,7 +6214,7 @@
     template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>'
   };
   const DefaultType$2 = { ...Tooltip.DefaultType,
-    content: '(string|element|function)'
+    content: '(null|string|element|function)'
   };
   const Event$1 = {
     HIDE: `hide${EVENT_KEY$3}`,
@@ -6331,31 +6364,28 @@
 
 
     refresh() {
-      const autoMethod = this._scrollElement === this._scrollElement.window ? METHOD_OFFSET : METHOD_POSITION;
-      const offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
-      const offsetBase = offsetMethod === METHOD_POSITION ? this._getScrollTop() : 0;
       this._offsets = [];
       this._targets = [];
       this._scrollHeight = this._getScrollHeight();
+      const autoMethod = this._scrollElement === this._scrollElement.window ? METHOD_OFFSET : METHOD_POSITION;
+      const offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
+      const offsetBase = offsetMethod === METHOD_POSITION ? this._getScrollTop() : 0;
       const targets = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target).map(element => {
         const targetSelector = getSelectorFromElement(element);
         const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null;
 
-        if (target) {
-          const targetBCR = target.getBoundingClientRect();
-
-          if (targetBCR.width || targetBCR.height) {
-            return [Manipulator[offsetMethod](target).top + offsetBase, targetSelector];
-          }
+        if (!target) {
+          return null;
         }
 
-        return null;
-      }).filter(item => item).sort((a, b) => a[0] - b[0]);
+        const targetBCR = target.getBoundingClientRect();
+        return targetBCR.width || targetBCR.height ? [Manipulator[offsetMethod](target).top + offsetBase, targetSelector] : null;
+      }).filter(Boolean).sort((a, b) => a[0] - b[0]);
 
-      for (const item of targets) {
-        this._offsets.push(item[0]);
+      for (const target of targets) {
+        this._offsets.push(target[0]);
 
-        this._targets.push(item[1]);
+        this._targets.push(target[1]);
       }
     }
 
@@ -6411,7 +6441,7 @@
         return;
       }
 
-      for (let i = this._offsets.length; i--;) {
+      for (const i of this._offsets.keys()) {
         const isActiveTarget = this._activeTarget !== this._targets[i] && scrollTop >= this._offsets[i] && (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1]);
 
         if (isActiveTarget) {
