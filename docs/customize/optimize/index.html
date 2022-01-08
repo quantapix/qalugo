@@ -328,7 +328,7 @@ About
 <li><a href=#autoprefixer-browserslistrc>Autoprefixer .browserslistrc</a></li>
 <li><a href=#unused-css>Unused CSS</a></li>
 <li><a href=#minify-and-gzip>Minify and gzip</a></li>
-<li><a href=#nonblocking-files>Nonblocking files</a></li>
+<li><a href=#non-blocking-files>Non-blocking files</a></li>
 <li><a href=#always-use-https>Always use HTTPS</a></li>
 </ul>
 </nav>
@@ -421,8 +421,8 @@ About
 <p>Lastly, this <a href=https://css-tricks.com/how-do-you-remove-unused-css-from-a-site/>CSS Tricks article on unused CSS</a> shows how to use PurgeCSS and other similar tools.</p>
 <h2 id=minify-and-gzip>Minify and gzip</h2>
 <p>Whenever possible, be sure to compress all the code you serve to your visitors. If you&rsquo;re using Bootstrap dist files, try to stick to the minified versions (indicated by the <code>.min.css</code> and <code>.min.js</code> extensions). If you&rsquo;re building Bootstrap from the source with your own build system, be sure to implement your own minifiers for HTML, CSS, and JS.</p>
-<h2 id=nonblocking-files>Nonblocking files</h2>
-<p>While minifying and using compression might seem like enough, making your files nonblocking ones is also a big step in making your site well-optimized and fast enough.</p>
+<h2 id=non-blocking-files>Non-blocking files</h2>
+<p>While minifying and using compression might seem like enough, making your files non-blocking ones is also a big step in making your site well-optimized and fast enough.</p>
 <p>If you are using a <a href=https://developers.google.com/web/tools/lighthouse/>Lighthouse</a> plugin in Google Chrome, you may have stumbled over FCP. <a href=https://web.dev/fcp/>The First Contentful Paint</a> metric measures the time from when the page starts loading to when any part of the page&rsquo;s content is rendered on the screen.</p>
 <p>You can improve FCP by deferring non-critical JavaScript or CSS. What does that mean? Simply, JavaScript or stylesheets that don&rsquo;t need to be present on the first paint of your page should be marked with <code>async</code> or <code>defer</code> attributes.</p>
 <p>This ensures that the less important resources are loaded later and not blocking the first paint. On the other hand, critical resources can be included as inline scripts or styles.</p>

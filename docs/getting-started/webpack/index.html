@@ -339,11 +339,15 @@ About
 <p><a href=../../../docs/getting-started/download/#npm>Install bootstrap</a> as a Node.js module using npm.</p>
 <h2 id=importing-javascript>Importing JavaScript</h2>
 <p>Import <a href=../../../docs/getting-started/javascript/>Bootstrap&rsquo;s JavaScript</a> by adding this line to your app&rsquo;s entry point (usually <code>index.js</code> or <code>app.js</code>):</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=c1>// You can specify which plugins you need
-</span><span class=c1></span><span class=kr>import</span> <span class=p>{</span> <span class=nx>Tooltip</span><span class=p>,</span> <span class=nx>Toast</span><span class=p>,</span> <span class=nx>Popover</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;bootstrap&#39;</span><span class=p>;</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kr>import</span> <span class=s1>&#39;bootstrap&#39;</span><span class=p>;</span>
+
+<span class=c1>// or get all of the named exports for further usage
+</span><span class=c1></span><span class=kr>import</span> <span class=o>*</span> <span class=nx>as</span> <span class=nx>bootstrap</span> <span class=nx>from</span> <span class=s1>&#39;bootstrap&#39;</span><span class=p>;</span>
 </code></pre></div><p>Alternatively, if you only need just a few of our plugins, you may <strong>import plugins individually</strong> as needed:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kr>import</span> <span class=nx>Alert</span> <span class=nx>from</span> <span class=s1>&#39;bootstrap/js/dist/alert&#39;</span><span class=p>;</span>
-<span class=p>...</span>
+
+<span class=c1>// or, specify which plugins you need:
+</span><span class=c1></span><span class=kr>import</span> <span class=p>{</span> <span class=nx>Tooltip</span><span class=p>,</span> <span class=nx>Toast</span><span class=p>,</span> <span class=nx>Popover</span> <span class=p>}</span> <span class=nx>from</span> <span class=s1>&#39;bootstrap&#39;</span><span class=p>;</span>
 </code></pre></div><p>Bootstrap depends on <a href=https://popper.js.org/>Popper</a>, which is specified in the <code>peerDependencies</code> property.
 This means that you will have to make sure to add it to your <code>package.json</code> using <code>npm install @popperjs/core</code>.</p>
 <h2 id=importing-styles>Importing Styles</h2>

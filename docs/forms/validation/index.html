@@ -487,10 +487,15 @@ You must agree before submitting.
     <span class=p>&lt;</span><span class=nt>button</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;btn btn-primary&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;submit&#34;</span><span class=p>&gt;</span>Submit form<span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>form</span><span class=p>&gt;</span></code></pre></div>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=p>;(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=c1>// Example starter JavaScript for disabling form submissions if there are invalid fields
+</span><span class=c1></span><span class=p>;(</span><span class=kd>function</span> <span class=p>()</span> <span class=p>{</span>
   <span class=s2>&#34;use strict&#34;</span>
-  <span class=kd>var</span> <span class=nx>forms</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s2>&#34;.needs-validation&#34;</span><span class=p>)</span>
-  <span class=nb>Array</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>slice</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nx>forms</span><span class=p>).</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>form</span><span class=p>)</span> <span class=p>{</span>
+
+  <span class=c1>// Fetch all the forms we want to apply custom Bootstrap validation styles to
+</span><span class=c1></span>  <span class=kd>var</span> <span class=nx>forms</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>querySelectorAll</span><span class=p>(</span><span class=s2>&#34;.needs-validation&#34;</span><span class=p>)</span>
+
+  <span class=c1>// Loop over them and prevent submission
+</span><span class=c1></span>  <span class=nb>Array</span><span class=p>.</span><span class=nx>prototype</span><span class=p>.</span><span class=nx>slice</span><span class=p>.</span><span class=nx>call</span><span class=p>(</span><span class=nx>forms</span><span class=p>).</span><span class=nx>forEach</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>form</span><span class=p>)</span> <span class=p>{</span>
     <span class=nx>form</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span>
       <span class=s2>&#34;submit&#34;</span><span class=p>,</span>
       <span class=kd>function</span> <span class=p>(</span><span class=nx>event</span><span class=p>)</span> <span class=p>{</span>
@@ -498,6 +503,7 @@ You must agree before submitting.
           <span class=nx>event</span><span class=p>.</span><span class=nx>preventDefault</span><span class=p>()</span>
           <span class=nx>event</span><span class=p>.</span><span class=nx>stopPropagation</span><span class=p>()</span>
         <span class=p>}</span>
+
         <span class=nx>form</span><span class=p>.</span><span class=nx>classList</span><span class=p>.</span><span class=nx>add</span><span class=p>(</span><span class=s2>&#34;was-validated&#34;</span><span class=p>)</span>
       <span class=p>},</span>
       <span class=kc>false</span>
@@ -1153,6 +1159,6 @@ Please provide a valid zip.
 <script src=../../../js/bootstrap.bundle.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js></script>
 <script src=../../../js/script.min.js></script>
-<script async src=../../../docs/assets/js/validate-forms.js></script>
+<script async src=../../../js/validate-forms.js></script>
 </body>
 </html>

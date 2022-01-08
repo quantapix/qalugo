@@ -350,7 +350,7 @@ About
 <div class="qal-content ps-lg-4">
 <p>Bootstrap&rsquo;s default grid system represents the culmination of over a decade of CSS layout techniques, tried and tested by millions of people. But, it was also created without many of the modern CSS features and techniques we&rsquo;re seeing in browsers like the new CSS Grid.</p>
 <div class="bd-callout bd-callout-warning">
-<strong>Heads up—our CSS Grid system is experimental and opt-in for v5.1.0!</strong> We included it in our documentation&rsquo;s CSS to demonstrate it for you, but it&rsquo;s disabled by default. Keep reading to learn how to enable it in your projects.
+<strong>Heads up—our CSS Grid system is experimental and opt-in as of v5.1.0!</strong> We included it in our documentation&rsquo;s CSS to demonstrate it for you, but it&rsquo;s disabled by default. Keep reading to learn how to enable it in your projects.
 </div>
 <h2 id=how-it-works>How it works</h2>
 <p>With Bootstrap 5, we&rsquo;ve added the option to enable a separate grid system that&rsquo;s built on CSS Grid, but with a Bootstrap twist. You still get classes you can apply on a whim to build responsive layouts, but with a different approach under the hood.</p>
@@ -442,7 +442,7 @@ About
   <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;g-col-6&#34;</span><span class=p>&gt;</span>.g-col-6<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=starts>Starts</h2>
-<p>Start classes aim to replace our default grid&rsquo;s offset classes, but they&rsquo;re not entirely the same. CSS Grid creates a grid template through styles that tell browsers to &ldquo;start at this column&rdquo; and &ldquo;end at this column.&rdquo; Those properties are <code>grid-column-start</code> and <code>grid-column-end</code>. Start classes are shorthand for the former. Pair them with the column classes to size and align your columns however you need.</p>
+<p>Start classes aim to replace our default grid&rsquo;s offset classes, but they&rsquo;re not entirely the same. CSS Grid creates a grid template through styles that tell browsers to &ldquo;start at this column&rdquo; and &ldquo;end at this column.&rdquo; Those properties are <code>grid-column-start</code> and <code>grid-column-end</code>. Start classes are shorthand for the former. Pair them with the column classes to size and align your columns however you need. Start classes begin at <code>1</code> as <code>0</code> is an invalid value for these properties.</p>
 <div class="bd-example qal-app-cssgrid">
 <div class=grid>
 <div class="g-col-3 g-start-2">.g-col-3 .g-start-2</div>

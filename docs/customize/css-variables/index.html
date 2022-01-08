@@ -326,11 +326,12 @@ About
 <li><a href=#root-variables>Root variables</a></li>
 <li><a href=#component-variables>Component variables</a></li>
 <li><a href=#apps>Apps</a></li>
+<li><a href=#grid-breakpoints>Grid breakpoints</a></li>
 </ul>
 </nav>
 </div>
 <div class="qal-content ps-lg-4">
-<p>Bootstrap includes around two dozen <a href=https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties>CSS custom properties (variables)</a> in its compiled CSS, with dozens more on the way for improved customization on a per-component basis. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser&rsquo;s inspector, a code sandbox, or general prototyping.</p>
+<p>Bootstrap includes many <a href=https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties>CSS custom properties (variables)</a> in its compiled CSS for real-time customization without the need to recompile Sass. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser&rsquo;s inspector, a code sandbox, or general prototyping.</p>
 <p><strong>All our custom properties are prefixed with <code>bs-</code></strong> to avoid conflicts with third party CSS.</p>
 <h2 id=root-variables>Root variables</h2>
 <p>Here are the variables we include (note that the <code>:root</code> is required) that can be accessed anywhere Bootstrap&rsquo;s CSS is loaded. They&rsquo;re located in our <code>_root.scss</code> file and included in our compiled dist files.</p>
@@ -399,7 +400,8 @@ About
 <span class=nt>a</span> <span class=p>{</span>
   <span class=k>color</span><span class=p>:</span> <span class=nf>var</span><span class=p>(</span><span class=o>--</span><span class=n>bs</span><span class=o>-</span><span class=kc>blue</span><span class=p>);</span>
 <span class=p>}</span>
-</code></pre></div>
+</code></pre></div><h2 id=grid-breakpoints>Grid breakpoints</h2>
+<p>While we include our grid breakpoints as CSS variables (except for <code>xs</code>), be aware that <strong>CSS variables do not work in media queries</strong>. This is by design in the CSS spec for variables, but may change in coming years with support for <code>env()</code> variables. Check out <a href=https://stackoverflow.com/a/47212942>this Stack Overflow answer</a> for some helpful links. In the mean time, you can use these variables in other CSS situations, as well as in your JavaScript.</p>
 </div>
 </main>
 </div>

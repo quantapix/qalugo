@@ -462,24 +462,24 @@ About
   <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></div><p>These mixins take those declared breakpoints, subtract <code>.02px</code> from them, and use them as our <code>max-width</code> values. For example:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-scss data-lang=scss><span class=c1>// X-Small devices (portrait phones, less than 576px)
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-scss data-lang=scss><span class=c1>// `xs` returns only a ruleset and no media query
+</span><span class=c1>// ... { ... }
+</span><span class=c1></span>
+<span class=c1>// `sm` applies to x-small devices (portrait phones, less than 576px)
 </span><span class=c1></span><span class=k>@media</span> <span class=p>(</span><span class=na>max-width</span><span class=o>:</span> <span class=mi>575</span><span class=mf>.98</span><span class=kt>px</span><span class=p>)</span> <span class=p>{</span> <span class=nc>...</span> <span class=p>}</span>
 
-<span class=c1>// Small devices (landscape phones, less than 768px)
+<span class=c1>// `md` applies to small devices (landscape phones, less than 768px)
 </span><span class=c1></span><span class=k>@media</span> <span class=p>(</span><span class=na>max-width</span><span class=o>:</span> <span class=mi>767</span><span class=mf>.98</span><span class=kt>px</span><span class=p>)</span> <span class=p>{</span> <span class=nc>...</span> <span class=p>}</span>
 
-<span class=c1>// Medium devices (tablets, less than 992px)
+<span class=c1>// `lg` applies to medium devices (tablets, less than 992px)
 </span><span class=c1></span><span class=k>@media</span> <span class=p>(</span><span class=na>max-width</span><span class=o>:</span> <span class=mi>991</span><span class=mf>.98</span><span class=kt>px</span><span class=p>)</span> <span class=p>{</span> <span class=nc>...</span> <span class=p>}</span>
 
-<span class=c1>// Large devices (desktops, less than 1200px)
+<span class=c1>// `xl` applies to large devices (desktops, less than 1200px)
 </span><span class=c1></span><span class=k>@media</span> <span class=p>(</span><span class=na>max-width</span><span class=o>:</span> <span class=mi>1199</span><span class=mf>.98</span><span class=kt>px</span><span class=p>)</span> <span class=p>{</span> <span class=nc>...</span> <span class=p>}</span>
 
-<span class=c1>// X-Large devices (large desktops, less than 1400px)
+<span class=c1>// `xxl` applies to x-large devices (large desktops, less than 1400px)
 </span><span class=c1></span><span class=k>@media</span> <span class=p>(</span><span class=na>max-width</span><span class=o>:</span> <span class=mi>1399</span><span class=mf>.98</span><span class=kt>px</span><span class=p>)</span> <span class=p>{</span> <span class=nc>...</span> <span class=p>}</span>
-
-<span class=c1>// XX-Large devices (larger desktops)
-</span><span class=c1>// No media query since the xxl breakpoint has no upper bound on its width
-</span></code></pre></div><div class="bd-callout bd-callout-warning">
+</code></pre></div><div class="bd-callout bd-callout-warning">
 <strong>Why subtract .02px?</strong> Browsers don&rsquo;t currently support <a href=https://www.w3.org/TR/mediaqueries-4/#range-context>range context queries</a>, so we work around the limitations of <a href=https://www.w3.org/TR/mediaqueries-4/#mq-min-max><code>min-</code> and <code>max-</code> prefixes</a> and viewports with fractional widths (which can occur under certain conditions on high-dpi devices, for instance) by using values with higher precision.
 </div>
 <h3 id=single-breakpoint>Single breakpoint</h3>

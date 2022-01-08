@@ -739,8 +739,8 @@ Variable width content
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=row-columns>Row columns</h3>
-<p>Use the responsive <code>.row-cols-*</code> classes to quickly set the number of columns that best render your content and layout. Whereas normal <code>.col-*</code> classes apply to the individual columns (e.g., <code>.col-md-4</code>), the row columns classes are set on the parent <code>.row</code> as a default for contained columns. With <code>.row-cols-auto</code> you can give the columns their natural width.</p>
-<p>Use these row columns classes to quickly create basic grid layouts or to control your card layouts and override when needed at the column level.</p>
+<p>Use the responsive <code>.row-cols-*</code> classes to quickly set the number of columns that best render your content and layout. Whereas normal <code>.col-*</code> classes apply to the individual columns (e.g., <code>.col-md-4</code>), the row columns classes are set on the parent <code>.row</code> as a shortcut. With <code>.row-cols-auto</code> you can give the columns their natural width.</p>
+<p>Use these row columns classes to quickly create basic grid layouts or to control your card layouts.</p>
 <div class="bd-example qal-app-row">
 <div class=container>
 <div class="row row-cols-2">
@@ -843,39 +843,6 @@ Variable width content
     <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
-<div class="bd-example qal-app-row">
-<div class=container>
-<div class="row row-cols-2 row-cols-lg-3">
-<div class=col>Column</div>
-<div class=col>Column</div>
-<div class=col>Column</div>
-<div class=col>Column</div>
-<div class=col>Column</div>
-<div class=col>Column</div>
-<div class="col-4 col-lg-2">Column</div>
-<div class="col-4 col-lg-2">Column</div>
-<div class="col-4 col-lg-2">Column</div>
-<div class="col-4 col-lg-2">Column</div>
-<div class="col-4 col-lg-2">Column</div>
-<div class="col-4 col-lg-2">Column</div>
-</div>
-</div>
-</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;container&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;row row-cols-2 row-cols-lg-3&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-4 col-lg-2&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-4 col-lg-2&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-4 col-lg-2&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-4 col-lg-2&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-4 col-lg-2&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-4 col-lg-2&#34;</span><span class=p>&gt;</span>Column<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>You can also use the accompanying Sass mixin, <code>row-cols()</code>:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-scss data-lang=scss><span class=nc>.element</span> <span class=p>{</span>
   <span class=c1>// Three columns to start
@@ -962,18 +929,18 @@ Level 2: .col-4 .col-sm-6
 </span><span class=c1></span><span class=k>@include</span><span class=nd> make-col-offset</span><span class=p>(</span><span class=nv>$size</span><span class=o>,</span> <span class=nv>$columns</span><span class=o>:</span> <span class=nv>$grid-columns</span><span class=p>);</span>
 </code></pre></div><h3 id=example-usage>Example usage</h3>
 <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here&rsquo;s an example of using the default settings to create a two-column layout with a gap between.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-scss data-lang=scss><span class=nc>.app-container</span> <span class=p>{</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-scss data-lang=scss><span class=nc>.example-container</span> <span class=p>{</span>
   <span class=k>@include</span><span class=nd> make-container</span><span class=p>();</span>
   <span class=c1>// Make sure to define this width after the mixin to override
 </span><span class=c1></span>  <span class=c1>// `width: 100%` generated by `make-container()`
 </span><span class=c1></span>  <span class=na>width</span><span class=o>:</span> <span class=mi>800</span><span class=kt>px</span><span class=p>;</span>
 <span class=p>}</span>
 
-<span class=nc>.app-row</span> <span class=p>{</span>
+<span class=nc>.example-row</span> <span class=p>{</span>
   <span class=k>@include</span><span class=nd> make-row</span><span class=p>();</span>
 <span class=p>}</span>
 
-<span class=nc>.app-content-main</span> <span class=p>{</span>
+<span class=nc>.example-content-main</span> <span class=p>{</span>
   <span class=k>@include</span><span class=nd> make-col-ready</span><span class=p>();</span>
 
   <span class=k>@include</span><span class=nd> media-breakpoint-up</span><span class=p>(</span><span class=n>sm</span><span class=p>)</span> <span class=p>{</span>
@@ -984,7 +951,7 @@ Level 2: .col-4 .col-sm-6
   <span class=p>}</span>
 <span class=p>}</span>
 
-<span class=nc>.app-content-secondary</span> <span class=p>{</span>
+<span class=nc>.example-content-secondary</span> <span class=p>{</span>
   <span class=k>@include</span><span class=nd> make-col-ready</span><span class=p>();</span>
 
   <span class=k>@include</span><span class=nd> media-breakpoint-up</span><span class=p>(</span><span class=n>sm</span><span class=p>)</span> <span class=p>{</span>
@@ -995,16 +962,16 @@ Level 2: .col-4 .col-sm-6
   <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></div><div class=bd-example>
-<div class=app-container>
-<div class=app-row>
-<div class=app-content-main>Main content</div>
-<div class=app-content-secondary>Secondary content</div>
+<div class=example-container>
+<div class=example-row>
+<div class=example-content-main>Main content</div>
+<div class=example-content-secondary>Secondary content</div>
 </div>
 </div>
-</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;app-container&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;app-row&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;app-content-main&#34;</span><span class=p>&gt;</span>Main content<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;app-content-secondary&#34;</span><span class=p>&gt;</span>Secondary content<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;example-container&#34;</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;example-row&#34;</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;example-content-main&#34;</span><span class=p>&gt;</span>Main content<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;example-content-secondary&#34;</span><span class=p>&gt;</span>Secondary content<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=customizing-the-grid>Customizing the grid</h2>

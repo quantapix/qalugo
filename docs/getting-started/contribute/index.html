@@ -1,13 +1,13 @@
 <!doctype html><html lang=en>
 <head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.">
+<meta name=description content="Help develop Bootstrap with our documentation build scripts and tests.">
 <meta name=author content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name=generator content="Hugo 0.91.2">
 <meta name=docsearch:language content="en">
 <meta name=docsearch:version content="5.0">
-<title>Forms · Bootstrap</title>
-<link rel=canonical href=https://quantapix.github.io/docs/forms/overview/>
+<title>Contribute · Bootstrap</title>
+<link rel=canonical href=https://quantapix.github.io/docs/getting-started/contribute/>
 <link href=../../../css/bootstrap.min.css rel=stylesheet>
 <link href=../../../css/style.css rel=stylesheet>
 <link rel=apple-touch-icon href=../../../img/favs/apple-touch-icon.png sizes=180x180>
@@ -20,12 +20,12 @@
 <meta name=twitter:card content="summary">
 <meta name=twitter:site content="@getbootstrap">
 <meta name=twitter:creator content="@getbootstrap">
-<meta name=twitter:title content="Forms">
-<meta name=twitter:description content="Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.">
+<meta name=twitter:title content="Contribute">
+<meta name=twitter:description content="Help develop Bootstrap with our documentation build scripts and tests.">
 <meta name=twitter:image content="https://quantapix.github.io/docs/5.0/assets/brand/bootstrap-social.png">
-<meta property="og:url" content="https://quantapix.github.io/docs/forms/overview/">
-<meta property="og:title" content="Forms">
-<meta property="og:description" content="Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.">
+<meta property="og:url" content="https://quantapix.github.io/docs/getting-started/contribute/">
+<meta property="og:title" content="Contribute">
+<meta property="og:description" content="Help develop Bootstrap with our documentation build scripts and tests.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://quantapix.github.io/docs/5.0/assets/brand/bootstrap-social.png">
 <meta property="og:image:type" content="image/png">
@@ -122,10 +122,10 @@
 <aside class=qal-sidebar>
 <nav class="collapse qal-links" id=qal-docs-nav aria-label="Docs navigation"><ul class="list-unstyled mb-0 py-3 pt-md-1">
 <li class=mb-1>
-<button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#getting-started-collapse aria-expanded=false>
+<button class="btn d-inline-flex align-items-center rounded" data-bs-toggle=collapse data-bs-target=#getting-started-collapse aria-expanded=true aria-current=true>
 Getting started
 </button>
-<div class=collapse id=getting-started-collapse>
+<div class="collapse show" id=getting-started-collapse>
 <ul class="list-unstyled fw-normal pb-1 small">
 <li><a href=../../../docs/getting-started/introduction/ class="d-inline-flex align-items-center rounded">Introduction</a></li>
 <li><a href=../../../docs/getting-started/download/ class="d-inline-flex align-items-center rounded">Download</a></li>
@@ -189,12 +189,12 @@ Content
 </div>
 </li>
 <li class=mb-1>
-<button class="btn d-inline-flex align-items-center rounded" data-bs-toggle=collapse data-bs-target=#forms-collapse aria-expanded=true aria-current=true>
+<button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle=collapse data-bs-target=#forms-collapse aria-expanded=false>
 Forms
 </button>
-<div class="collapse show" id=forms-collapse>
+<div class=collapse id=forms-collapse>
 <ul class="list-unstyled fw-normal pb-1 small">
-<li><a href=../../../docs/forms/overview/ class="d-inline-flex align-items-center rounded active" aria-current=page>Overview</a></li>
+<li><a href=../../../docs/forms/overview/ class="d-inline-flex align-items-center rounded">Overview</a></li>
 <li><a href=../../../docs/forms/form-control/ class="d-inline-flex align-items-center rounded">Form control</a></li>
 <li><a href=../../../docs/forms/select/ class="d-inline-flex align-items-center rounded">Select</a></li>
 <li><a href=../../../docs/forms/checks-radios/ class="d-inline-flex align-items-center rounded">Checks & radios</a></li>
@@ -314,250 +314,100 @@ About
 <main class="qal-main order-1">
 <div class="qal-intro ps-lg-4">
 <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
-<a class="btn btn-sm btn-qal-light mb-2 mb-md-0" href=https://github.com/twbs/bootstrap/blob/main/site/content/docs/forms/overview.md title="View and edit this file on GitHub" target=_blank rel=noopener>View on GitHub</a>
-<h1 class=qal-title id=content>Forms</h1>
+<a class="btn btn-sm btn-qal-light mb-2 mb-md-0" href=https://github.com/twbs/bootstrap/blob/main/site/content/docs/getting-started/contribute.md title="View and edit this file on GitHub" target=_blank rel=noopener>View on GitHub</a>
+<h1 class=qal-title id=content>Contribute</h1>
 </div>
-<p class=qal-lead>Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.</p>
+<p class=qal-lead>Help develop Bootstrap with our documentation build scripts and tests.</p>
 </div>
 <div class="qal-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
 <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#overview>Overview</a></li>
-<li><a href=#form-text>Form text</a></li>
-<li><a href=#disabled-forms>Disabled forms</a></li>
-<li><a href=#accessibility>Accessibility</a></li>
-<li><a href=#sass>Sass</a>
-<ul>
-<li><a href=#variables>Variables</a></li>
-</ul>
-</li>
+<li><a href=#tooling-setup>Tooling setup</a></li>
+<li><a href=#using-npm-scripts>Using npm scripts</a></li>
+<li><a href=#sass>Sass</a></li>
+<li><a href=#autoprefixer>Autoprefixer</a></li>
+<li><a href=#rtlcss>RTLCSS</a></li>
+<li><a href=#local-documentation>Local documentation</a></li>
+<li><a href=#troubleshooting>Troubleshooting</a></li>
 </ul>
 </nav>
 </div>
 <div class="qal-content ps-lg-4">
-<div class="row g-3">
-<div class=col-md-6>
-<a class="d-block text-decoration-none" href=../form-control/>
-<strong class="d-block h5 mb-0">Form control</strong>
-<span class=text-secondary>Style textual inputs and textareas with support for multiple states.</span>
-</a>
+<h2 id=tooling-setup>Tooling setup</h2>
+<p>Bootstrap uses <a href=https://docs.npmjs.com/misc/scripts/>npm scripts</a> to build the documentation and compile source files. Our <a href=https://github.com/twbs/bootstrap/blob/v5.0.1/package.json>package.json</a> houses these scripts for compiling code, running tests, and more. These aren&rsquo;t intended for use outside our repository and documentation.</p>
+<p>To use our build system and run our documentation locally, you&rsquo;ll need a copy of Bootstrap&rsquo;s source files and Node. Follow these steps and you should be ready to rock:</p>
+<ol>
+<li><a href=https://nodejs.org/en/download/>Download and install Node.js</a>, which we use to manage our dependencies.</li>
+<li>Either <a href=https://github.com/twbs/bootstrap/archive/v5.0.1.zip>download Bootstrap&rsquo;s sources</a> or fork <a href=https://github.com/twbs/bootstrap>Bootstrap&rsquo;s repository</a>.</li>
+<li>Navigate to the root <code>/bootstrap</code> directory and run <code>npm install</code> to install our local dependencies listed in <a href=https://github.com/twbs/bootstrap/blob/v5.0.1/package.json>package.json</a>.</li>
+</ol>
+<p>When completed, you&rsquo;ll be able to run the various commands provided from the command line.</p>
+<h2 id=using-npm-scripts>Using npm scripts</h2>
+<p>Our <a href=https://github.com/twbs/bootstrap/blob/v5.0.1/package.json>package.json</a> includes numerous tasks for developing the project. Run <code>npm run</code> to see all the npm scripts in your terminal. <strong>Primary tasks include:</strong></p>
+<table class=table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>npm start</code>
+</td>
+<td>
+Compiles CSS and JavaScript, builds the documentation, and starts a local server.
+</td>
+</tr>
+<tr>
+<td>
+<code>npm run dist</code>
+</td>
+<td>
+Creates the <code>dist/</code> directory with compiled files. Requires <a href=https://sass-lang.com/>Sass</a>, <a href=https://github.com/postcss/autoprefixer>Autoprefixer</a>, and <a href=https://github.com/terser/terser>terser</a>.
+</td>
+</tr>
+<tr>
+<td>
+<code>npm test</code>
+</td>
+<td>
+Runs tests locally after running <code>npm run dist</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>npm run docs-serve</code>
+</td>
+<td>
+Builds and runs the documentation locally.
+</td>
+</tr>
+</tbody>
+</table>
+<div class="bd-callout bd-callout-info">
+<strong>Get started with Bootstrap via npm with our starter project!</strong> Head to the <a href=https://github.com/twbs/bootstrap-npm-starter>twbs/bootstrap-npm-starter</a> template repository to see how to build and customize Bootstrap in your own npm project. Includes Sass compiler, Autoprefixer, Stylelint, PurgeCSS, and Bootstrap Icons.
 </div>
-<div class=col-md-6>
-<a class="d-block text-decoration-none" href=../select/>
-<strong class="d-block h5 mb-0">Select</strong>
-<span class=text-secondary>Improve browser default select elements with a custom initial appearance.</span>
-</a>
-</div>
-<div class=col-md-6>
-<a class="d-block text-decoration-none" href=../checks-radios/>
-<strong class="d-block h5 mb-0">Checks & radios</strong>
-<span class=text-secondary>Use our custom radio buttons and checkboxes in forms for selecting input options.</span>
-</a>
-</div>
-<div class=col-md-6>
-<a class="d-block text-decoration-none" href=../range/>
-<strong class="d-block h5 mb-0">Range</strong>
-<span class=text-secondary>Replace browser default range inputs with our custom version.</span>
-</a>
-</div>
-<div class=col-md-6>
-<a class="d-block text-decoration-none" href=../input-group/>
-<strong class="d-block h5 mb-0">Input group</strong>
-<span class=text-secondary>Attach labels and buttons to your inputs for increased semantic value.</span>
-</a>
-</div>
-<div class=col-md-6>
-<a class="d-block text-decoration-none" href=../floating-labels/>
-<strong class="d-block h5 mb-0">Floating labels</strong>
-<span class=text-secondary>Create beautifully simple form labels that float over your input fields.</span>
-</a>
-</div>
-<div class=col-md-6>
-<a class="d-block text-decoration-none" href=../layout/>
-<strong class="d-block h5 mb-0">Layout</strong>
-<span class=text-secondary>Create inline, horizontal, or complex grid-based layouts with your forms.</span>
-</a>
-</div>
-<div class=col-md-6>
-<a class="d-block text-decoration-none" href=../validation/>
-<strong class="d-block h5 mb-0">Validation</strong>
-<span class=text-secondary>Validate your forms with custom or native validation behaviors and styles.</span>
-</a>
-</div>
-</div>
-<h2 id=overview>Overview</h2>
-<p>Bootstrap&rsquo;s form controls expand on <a href=../../../docs/content/reboot/#forms>our Rebooted form styles</a> with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices.</p>
-<p>Be sure to use an appropriate <code>type</code> attribute on all inputs (e.g., <code>email</code> for email address or <code>number</code> for numerical information) to take advantage of newer input controls like email verification, number selection, and more.</p>
-<p>Here&rsquo;s a quick example to demonstrate Bootstrap&rsquo;s form styles. Keep reading for documentation on required classes, form layout, and more.</p>
-<div class=bd-example>
-<form>
-<div class=mb-3>
-<label for=exampleInputEmail1 class=form-label>Email address</label>
-<input type=email class=form-control id=exampleInputEmail1 aria-describedby=emailHelp>
-<div id=emailHelp class=form-text>We'll never share your email with anyone else.</div>
-</div>
-<div class=mb-3>
-<label for=exampleInputPassword1 class=form-label>Password</label>
-<input type=password class=form-control id=exampleInputPassword1>
-</div>
-<div class="mb-3 form-check">
-<input type=checkbox class=form-check-input id=exampleCheck1>
-<label class=form-check-label for=exampleCheck1>Check me out</label>
-</div>
-<button type=submit class="btn btn-primary">Submit</button>
-</form>
-</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>form</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;mb-3&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;exampleInputEmail1&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-label&#34;</span><span class=p>&gt;</span>Email address<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;email&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-control&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;exampleInputEmail1&#34;</span> <span class=na>aria-describedby</span><span class=o>=</span><span class=s>&#34;emailHelp&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;emailHelp&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-text&#34;</span><span class=p>&gt;</span>We&#39;ll never share your email with anyone else.<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;mb-3&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;exampleInputPassword1&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-label&#34;</span><span class=p>&gt;</span>Password<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;password&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-control&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;exampleInputPassword1&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;mb-3 form-check&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;exampleCheck1&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-label&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;exampleCheck1&#34;</span><span class=p>&gt;</span>Check me out<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>button</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;submit&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;btn btn-primary&#34;</span><span class=p>&gt;</span>Submit<span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;</span>
-<span class=p>&lt;/</span><span class=nt>form</span><span class=p>&gt;</span></code></pre></div>
-<h2 id=form-text>Form text</h2>
-<p>Block-level or inline-level form text can be created using <code>.form-text</code>.</p>
-<div class="bd-callout bd-callout-warning">
-<h5 id=associating-form-text-with-form-controls>Associating form text with form controls</h5>
-<p>Form text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies—such as screen readers—will announce this form text when the user focuses or enters the control.
-</div>
-<p>Form text below inputs can be styled with <code>.form-text</code>. If a block-level element will be used, a top margin is added for easy spacing from the inputs above.</p>
-<div class=bd-example>
-<label for=inputPassword5 class=form-label>Password</label>
-<input type=password id=inputPassword5 class=form-control aria-describedby=passwordHelpBlock>
-<div id=passwordHelpBlock class=form-text>
-Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-</div>
-</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>label</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;inputPassword5&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-label&#34;</span><span class=p>&gt;</span>Password<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-<span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;password&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;inputPassword5&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-control&#34;</span> <span class=na>aria-describedby</span><span class=o>=</span><span class=s>&#34;passwordHelpBlock&#34;</span><span class=p>&gt;</span>
-<span class=p>&lt;</span><span class=nt>div</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;passwordHelpBlock&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-text&#34;</span><span class=p>&gt;</span>
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
-<p>Inline text can use any typical inline HTML element (be it a <code>&lt;span></code>, <code>&lt;small></code>, or something else) with nothing more than the <code>.form-text</code> class.</p>
-<div class=bd-example>
-<div class="row g-3 align-items-center">
-<div class=col-auto>
-<label for=inputPassword6 class=col-form-label>Password</label>
-</div>
-<div class=col-auto>
-<input type=password id=inputPassword6 class=form-control aria-describedby=passwordHelpInline>
-</div>
-<div class=col-auto>
-<span id=passwordHelpInline class=form-text>
-Must be 8-20 characters long.
-</span>
-</div>
-</div>
-</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;row g-3 align-items-center&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-auto&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;inputPassword6&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-form-label&#34;</span><span class=p>&gt;</span>Password<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-auto&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;password&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;inputPassword6&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-control&#34;</span> <span class=na>aria-describedby</span><span class=o>=</span><span class=s>&#34;passwordHelpInline&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;col-auto&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>span</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;passwordHelpInline&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-text&#34;</span><span class=p>&gt;</span>
-      Must be 8-20 characters long.
-    <span class=p>&lt;/</span><span class=nt>span</span><span class=p>&gt;</span>
-  <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
-<h2 id=disabled-forms>Disabled forms</h2>
-<p>Add the <code>disabled</code> boolean attribute on an input to prevent user interactions and make it appear lighter.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-control&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;disabledInput&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span> <span class=na>placeholder</span><span class=o>=</span><span class=s>&#34;Disabled input here...&#34;</span> <span class=na>disabled</span><span class=p>&gt;</span>
-</code></pre></div><p>Add the <code>disabled</code> attribute to a <code>&lt;fieldset></code> to disable all the controls within. Browsers treat all native form controls (<code>&lt;input></code>, <code>&lt;select></code>, and <code>&lt;button></code> elements) inside a <code>&lt;fieldset disabled></code> as disabled, preventing both keyboard and mouse interactions on them.</p>
-<p>However, if your form also includes custom button-like elements such as <code>&lt;a class="btn btn-*">...&lt;/a></code>, these will only be given a style of <code>pointer-events: none</code>, meaning they are still focusable and operable using the keyboard. In this case, you must manually modify these controls by adding <code>tabindex="-1"</code> to prevent them from receiving focus and <code>aria-disabled="disabled"</code> to signal their state to assistive technologies.</p>
-<div class=bd-example>
-<form>
-<fieldset disabled>
-<legend>Disabled fieldset example</legend>
-<div class=mb-3>
-<label for=disabledTextInput class=form-label>Disabled input</label>
-<input type=text id=disabledTextInput class=form-control placeholder="Disabled input">
-</div>
-<div class=mb-3>
-<label for=disabledSelect class=form-label>Disabled select menu</label>
-<select id=disabledSelect class=form-select><option>Disabled select</option></select>
-</div>
-<div class=mb-3>
-<div class=form-check>
-<input class=form-check-input type=checkbox id=disabledFieldsetCheck disabled>
-<label class=form-check-label for=disabledFieldsetCheck>
-Can't check this
-</label>
-</div>
-</div>
-<button type=submit class="btn btn-primary">Submit</button>
-</fieldset>
-</form>
-</div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>form</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>fieldset</span> <span class=na>disabled</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>legend</span><span class=p>&gt;</span>Disabled fieldset example<span class=p>&lt;/</span><span class=nt>legend</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;mb-3&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>label</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;disabledTextInput&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-label&#34;</span><span class=p>&gt;</span>Disabled input<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>input</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;disabledTextInput&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-control&#34;</span> <span class=na>placeholder</span><span class=o>=</span><span class=s>&#34;Disabled input&#34;</span><span class=p>&gt;</span>
-    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;mb-3&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>label</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;disabledSelect&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-label&#34;</span><span class=p>&gt;</span>Disabled select menu<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>select</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;disabledSelect&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-select&#34;</span><span class=p>&gt;</span>
-        <span class=p>&lt;</span><span class=nt>option</span><span class=p>&gt;</span>Disabled select<span class=p>&lt;/</span><span class=nt>option</span><span class=p>&gt;</span>
-      <span class=p>&lt;/</span><span class=nt>select</span><span class=p>&gt;</span>
-    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;mb-3&#34;</span><span class=p>&gt;</span>
-      <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check&#34;</span><span class=p>&gt;</span>
-        <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;disabledFieldsetCheck&#34;</span> <span class=na>disabled</span><span class=p>&gt;</span>
-        <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-label&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;disabledFieldsetCheck&#34;</span><span class=p>&gt;</span>
-          Can&#39;t check this
-        <span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-      <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>button</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;submit&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;btn btn-primary&#34;</span><span class=p>&gt;</span>Submit<span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;</span>
-  <span class=p>&lt;/</span><span class=nt>fieldset</span><span class=p>&gt;</span>
-<span class=p>&lt;/</span><span class=nt>form</span><span class=p>&gt;</span></code></pre></div>
-<h2 id=accessibility>Accessibility</h2>
-<p>Ensure that all form controls have an appropriate accessible name so that their purpose can be conveyed to users of assistive technologies. The simplest way to achieve this is to use a <code>&lt;label></code> element, or—in the case of buttons—to include sufficiently descriptive text as part of the <code>&lt;button>...&lt;/button></code> content.</p>
-<p>For situations where it&rsquo;s not possible to include a visible <code>&lt;label></code> or appropriate text content, there are alternative ways of still providing an accessible name, such as:</p>
-<ul>
-<li><code>&lt;label></code> elements hidden using the <code>.visually-hidden</code> class</li>
-<li>Pointing to an existing element that can act as a label using <code>aria-labelledby</code></li>
-<li>Providing a <code>title</code> attribute</li>
-<li>Explicitly setting the accessible name on an element using <code>aria-label</code></li>
-</ul>
-<p>If none of these are present, assistive technologies may resort to using the <code>placeholder</code> attribute as a fallback for the accessible name on <code>&lt;input></code> and <code>&lt;textarea></code> elements. The examples in this section provide a few suggested, case-specific approaches.</p>
-<p>While using visually hidden content (<code>.visually-hidden</code>, <code>aria-label</code>, and even <code>placeholder</code> content, which disappears once a form field has content) will benefit assistive technology users, a lack of visible label text may still be problematic for certain users. Some form of visible label is generally the best approach, both for accessibility and usability.</p>
 <h2 id=sass>Sass</h2>
-<p>Many form variables are set at a general level to be re-used and extended by individual form components. You&rsquo;ll see these most often as <code>$input-btn-*</code> and <code>$input-*</code> variables.</p>
-<h3 id=variables>Variables</h3>
-<p><code>$input-btn-*</code> variables are shared global variables between our <a href=../../../docs/components/buttons/>buttons</a> and our form components. You&rsquo;ll find these frequently reassigned as values to other component-specific variables.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-scss data-lang=scss><span class=nv>$input-btn-padding-y</span><span class=o>:</span>         <span class=mf>.375</span><span class=kt>rem</span><span class=p>;</span>
-<span class=nv>$input-btn-padding-x</span><span class=o>:</span>         <span class=mf>.75</span><span class=kt>rem</span><span class=p>;</span>
-<span class=nv>$input-btn-font-family</span><span class=o>:</span>       <span class=n>null</span><span class=p>;</span>
-<span class=nv>$input-btn-font-size</span><span class=o>:</span>         <span class=nv>$font-size-base</span><span class=p>;</span>
-<span class=nv>$input-btn-line-height</span><span class=o>:</span>       <span class=nv>$line-height-base</span><span class=p>;</span>
-
-<span class=nv>$input-btn-focus-width</span><span class=o>:</span>         <span class=mf>.25</span><span class=kt>rem</span><span class=p>;</span>
-<span class=nv>$input-btn-focus-color-opacity</span><span class=o>:</span> <span class=mf>.25</span><span class=p>;</span>
-<span class=nv>$input-btn-focus-color</span><span class=o>:</span>         <span class=nf>rgba</span><span class=p>(</span><span class=nv>$component-active-bg</span><span class=o>,</span> <span class=nv>$input-btn-focus-color-opacity</span><span class=p>);</span>
-<span class=nv>$input-btn-focus-blur</span><span class=o>:</span>          <span class=mi>0</span><span class=p>;</span>
-<span class=nv>$input-btn-focus-box-shadow</span><span class=o>:</span>    <span class=mi>0</span> <span class=mi>0</span> <span class=nv>$input-btn-focus-blur</span> <span class=nv>$input-btn-focus-width</span> <span class=nv>$input-btn-focus-color</span><span class=p>;</span>
-
-<span class=nv>$input-btn-padding-y-sm</span><span class=o>:</span>      <span class=mf>.25</span><span class=kt>rem</span><span class=p>;</span>
-<span class=nv>$input-btn-padding-x-sm</span><span class=o>:</span>      <span class=mf>.5</span><span class=kt>rem</span><span class=p>;</span>
-<span class=nv>$input-btn-font-size-sm</span><span class=o>:</span>      <span class=nv>$font-size-sm</span><span class=p>;</span>
-
-<span class=nv>$input-btn-padding-y-lg</span><span class=o>:</span>      <span class=mf>.5</span><span class=kt>rem</span><span class=p>;</span>
-<span class=nv>$input-btn-padding-x-lg</span><span class=o>:</span>      <span class=mi>1</span><span class=kt>rem</span><span class=p>;</span>
-<span class=nv>$input-btn-font-size-lg</span><span class=o>:</span>      <span class=nv>$font-size-lg</span><span class=p>;</span>
-
-<span class=nv>$input-btn-border-width</span><span class=o>:</span>      <span class=nv>$border-width</span><span class=p>;</span>
-</code></pre></div>
+<p>Bootstrap uses <a href=https://sass-lang.com/dart-sass>Dart Sass</a> for compiling our Sass source files into CSS files (included in our build process), and we recommend you do the same if you&rsquo;re compiling Sass using your own asset pipeline. We previously used Node Sass for Bootstrap v4, but LibSass and packages built on top of it, including Node Sass, are now <a href=https://sass-lang.com/blog/libsass-is-deprecated>deprecated</a>.</p>
+<p>Dart Sass uses a rounding precision of 10 and for efficiency reasons does not allow adjustment of this value. We don&rsquo;t lower this precision during further processing of our generated CSS, such as during minification, but if you chose to do so we recommend maintaining a precision of at least 6 to prevent issues with browser rounding.</p>
+<h2 id=autoprefixer>Autoprefixer</h2>
+<p>Bootstrap uses <a href=https://github.com/postcss/autoprefixer>Autoprefixer</a> (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.</p>
+<p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See <a href=https://github.com/twbs/bootstrap/blob/v5.0.1/.browserslistrc>.browserslistrc</a> for details.</p>
+<h2 id=rtlcss>RTLCSS</h2>
+<p>Bootstrap uses <a href=https://rtlcss.com/>RTLCSS</a> to process compiled CSS and convert them to RTL – basically replacing horizontal direction aware properties (eg. <code>padding-left</code>) with their opposite. It allows us only write our CSS a single time and make minor tweaks using RTLCSS <a href=https://rtlcss.com/learn/usage-guide/control-directives/>control</a> and <a href=https://rtlcss.com/learn/usage-guide/value-directives/>value</a> directives.</p>
+<h2 id=local-documentation>Local documentation</h2>
+<p>Running our documentation locally requires the use of Hugo, which gets installed via the <a href=https://www.npmjs.com/package/hugo-bin>hugo-bin</a> npm package. Hugo is a blazingly fast and quite extensible static site generator that provides us: basic includes, Markdown-based files, templates, and more. Here&rsquo;s how to get it started:</p>
+<ol>
+<li>Run through the <a href=#tooling-setup>tooling setup</a> above to install all dependencies.</li>
+<li>From the root <code>/bootstrap</code> directory, run <code>npm run docs-serve</code> in the command line.</li>
+<li>Open <code>http://localhost:9001/</code> in your browser, and voilà.</li>
+</ol>
+<p>Learn more about using Hugo by reading its <a href=https://gohugo.io/documentation/>documentation</a>.</p>
+<h2 id=troubleshooting>Troubleshooting</h2>
+<p>Should you encounter problems with installing dependencies, uninstall all previous dependency versions (global and local). Then, rerun <code>npm install</code>.</p>
 </div>
 </main>
 </div>

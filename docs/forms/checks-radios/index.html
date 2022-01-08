@@ -481,38 +481,38 @@ Disabled checked radio
   <span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=switches>Switches</h2>
-<p>A switch has the markup of a custom checkbox but uses the <code>.form-switch</code> class to render a toggle switch. Switches also support the <code>disabled</code> attribute.</p>
+<p>A switch has the markup of a custom checkbox but uses the <code>.form-switch</code> class to render a toggle switch. Consider using <code>role="switch"</code> to more accurately convey the nature of the control to assistive technologies that support this role. In older assistive technologies, it will simply be announced as a regular checkbox as a fallback. Switches also support the <code>disabled</code> attribute.</p>
 <div class=bd-example>
 <div class="form-check form-switch">
-<input class=form-check-input type=checkbox id=flexSwitchCheckDefault>
+<input class=form-check-input type=checkbox role=switch id=flexSwitchCheckDefault>
 <label class=form-check-label for=flexSwitchCheckDefault>Default switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-<input class=form-check-input type=checkbox id=flexSwitchCheckChecked checked>
+<input class=form-check-input type=checkbox role=switch id=flexSwitchCheckChecked checked>
 <label class=form-check-label for=flexSwitchCheckChecked>Checked switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-<input class=form-check-input type=checkbox id=flexSwitchCheckDisabled disabled>
+<input class=form-check-input type=checkbox role=switch id=flexSwitchCheckDisabled disabled>
 <label class=form-check-label for=flexSwitchCheckDisabled>Disabled switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-<input class=form-check-input type=checkbox id=flexSwitchCheckCheckedDisabled checked disabled>
+<input class=form-check-input type=checkbox role=switch id=flexSwitchCheckCheckedDisabled checked disabled>
 <label class=form-check-label for=flexSwitchCheckCheckedDisabled>Disabled checked switch checkbox input</label>
 </div>
 </div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check form-switch&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckDefault&#34;</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>role</span><span class=o>=</span><span class=s>&#34;switch&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckDefault&#34;</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-label&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckDefault&#34;</span><span class=p>&gt;</span>Default switch checkbox input<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check form-switch&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckChecked&#34;</span> <span class=na>checked</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>role</span><span class=o>=</span><span class=s>&#34;switch&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckChecked&#34;</span> <span class=na>checked</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-label&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckChecked&#34;</span><span class=p>&gt;</span>Checked switch checkbox input<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check form-switch&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckDisabled&#34;</span> <span class=na>disabled</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>role</span><span class=o>=</span><span class=s>&#34;switch&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckDisabled&#34;</span> <span class=na>disabled</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-label&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckDisabled&#34;</span><span class=p>&gt;</span>Disabled switch checkbox input<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check form-switch&#34;</span><span class=p>&gt;</span>
-  <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckCheckedDisabled&#34;</span> <span class=na>checked</span> <span class=na>disabled</span><span class=p>&gt;</span>
+  <span class=p>&lt;</span><span class=nt>input</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-input&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;checkbox&#34;</span> <span class=na>role</span><span class=o>=</span><span class=s>&#34;switch&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckCheckedDisabled&#34;</span> <span class=na>checked</span> <span class=na>disabled</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;form-check-label&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;flexSwitchCheckCheckedDisabled&#34;</span><span class=p>&gt;</span>Disabled checked switch checkbox input<span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=default-stacked>Default (stacked)</h2>
