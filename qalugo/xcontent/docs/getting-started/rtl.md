@@ -67,7 +67,7 @@ You can see the above requirements reflected in this modified RTL starter templa
 
 ### RTL examples
 
-Get started with one of our several [RTL examples]({{< docsref "/examples/#rtl" >}}).
+Get started with one of our several [RTL examples]({{< appsref "/#rtl" >}}).
 
 ## Approach
 

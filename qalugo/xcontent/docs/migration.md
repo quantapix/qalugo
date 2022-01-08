@@ -308,7 +308,7 @@ Your custom Bootstrap CSS builds should now look something like this with a sepa
 
 ### Jumbotron
 
-- <span class="badge bg-danger">Breaking</span> Dropped the jumbotron component as it can be replicated with utilities. [See our new Jumbotron example for a demo.]({{< docsref "/examples/jumbotron" >}})
+- <span class="badge bg-danger">Breaking</span> Dropped the jumbotron component as it can be replicated with utilities. [See our new Jumbotron example for a demo.]({{< appsref "/jumbotron" >}})
 
 ### List group
 
