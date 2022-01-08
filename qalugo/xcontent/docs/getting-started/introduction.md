@@ -61,6 +61,7 @@ Curious which components explicitly require our JavaScript and Popper? Click the
 - Dropdowns for displaying and positioning (also requires [Popper](https://popper.js.org/))
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse plugin to implement responsive behavior
+- Offcanvases for displaying, positioning, and scroll behavior
 - Toasts for displaying and dismissing
 - Tooltips and popovers for displaying and positioning (also requires [Popper](https://popper.js.org/))
 - Scrollspy for scroll behavior and navigation updates
@@ -101,7 +102,7 @@ Be sure to have your pages set up with the latest design and development standar
 </html>
 ```
 
-For next steps, visit the [Layout docs]({{< docsref "/layout/grid" >}}) or [our official examples]({{< appsref "/" >}}) to start laying out your site's content and components.
+For next steps, visit the [Layout docs]({{< docsref "/layout/grid" >}}) or [our official examples]({{< docsref "/examples" >}}) to start laying out your site's content and components.
 
 ## Important globals
 

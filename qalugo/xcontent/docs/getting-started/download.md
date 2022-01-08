@@ -21,18 +21,18 @@ This doesn't include documentation, source files, or any optional JavaScript dep
 
 Compile Bootstrap with your own asset pipeline by downloading our source Sass, JavaScript, and documentation files. This option requires some additional tooling:
 
-- [Sass compiler]({{< docsref "/getting-started/build-tools#sass" >}}) for compiling Sass source files into CSS files
+- [Sass compiler]({{< docsref "/getting-started/contribute#sass" >}}) for compiling Sass source files into CSS files
 - [Autoprefixer](https://github.com/postcss/autoprefixer) for CSS vendor prefixing
 
-Should you require our full set of [build tools]({{< docsref "/getting-started/build-tools#tooling-setup" >}}), they are included for developing Bootstrap and its docs, but they're likely unsuitable for your own purposes.
+Should you require our full set of [build tools]({{< docsref "/getting-started/contribute#tooling-setup" >}}), they are included for developing Bootstrap and its docs, but they're likely unsuitable for your own purposes.
 
 <a href="{{< param "download.source" >}}" class="btn btn-qal-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 
 ## Apps
 
-If you want to download and examine our [examples]({{< appsref "/" >}}), you can grab the already built examples:
+If you want to download and examine our [examples]({{< docsref "/examples" >}}), you can grab the already built examples:
 
-<a href="{{< param "download.dist_examples" >}}" class="btn btn-qal-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Apps');">Download Apps</a>
+<a href="{{< param "download.dist_examples" >}}" class="btn btn-qal-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Examples');">Download Examples</a>
 
 ## CDN via jsDelivr
 
@@ -52,7 +52,7 @@ If you're using our compiled JavaScript and prefer to include Popper separately,
 
 ## Package managers
 
-Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a [Sass compiler]({{< docsref "/getting-started/build-tools#sass" >}}) and [Autoprefixer](https://github.com/postcss/autoprefixer)** for a setup that matches our official compiled versions.
+Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a [Sass compiler]({{< docsref "/getting-started/contribute#sass" >}}) and [Autoprefixer](https://github.com/postcss/autoprefixer)** for a setup that matches our official compiled versions.
 
 ### npm
 
@@ -108,7 +108,7 @@ composer require twbs/bootstrap:{{< param current_version >}}
 
 ### NuGet
 
-If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
+If you develop in .NET Framework, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/). Newer projects should use [libman](https://docs.microsoft.com/en-us/aspnet/core/client-side/libman/) or another method as NuGet is designed for compiled code, not frontend assets.
 
 ```powershell
 Install-Package bootstrap

@@ -247,7 +247,7 @@ Move columns to the right using `.offset-md-*` classes. These classes increase t
 </div>
 {{< /example >}}
 
-In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{< appsref "/grid" >}}).
+In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{< docsref "/examples/grid" >}}).
 
 {{< example class="qal-app-row" >}}
 <div class="container">
