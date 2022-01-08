@@ -6,13 +6,13 @@
 {{- $input := .Inner -}}
 
 {{- if eq $show_preview true -}}
-<div{{ with $id }} id="{{ . }}"{{ end }} class="bd-example{{ with $class }} {{ . }}{{ end }}">
+<div{{ with $id }} id="{{ . }}"{{ end }} class="qal-app{{ with $class }} {{ . }}{{ end }}">
   {{- $input -}}
 </div>
 {{- end -}}
 
 {{- if eq $show_markup true -}}
-  {{- $content := replaceRE `<svg class="bd-placeholder-img(?:-lg)?(?: *?bd-placeholder-img-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
+  {{- $content := replaceRE `<svg class="qal-placeholder-img(?:-lg)?(?: *?qal-placeholder-img-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
   {{- $content = replaceRE ` (class=" *?")` "" $content -}}
   {{- highlight (trim $content "\n") $lang "" -}}
 {{- end -}}

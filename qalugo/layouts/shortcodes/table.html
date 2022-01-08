@@ -14,7 +14,7 @@
 
 {{- $table := printf "<table%s>\n%s</table>" $table_attributes $table_content -}}
 
-<div class="bd-example">
+<div class="qal-app">
   <table{{ with $class }} class="{{ . }}"{{ end }}>
     {{ partialCached "table-content" . }}
   </table>
