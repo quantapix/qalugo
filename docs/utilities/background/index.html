@@ -345,7 +345,7 @@ About
 <div class="qal-content ps-lg-4">
 <h2 id=background-color>Background color</h2>
 <p>Similar to the contextual text color classes, set the background of an element to any contextual class. Background utilities <strong>do not set <code>color</code></strong>, so in some cases you&rsquo;ll want to use <code>.text-*</code> <a href=../../../docs/utilities/colors/>color utilities</a>.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class="p-3 mb-2 bg-primary text-white">.bg-primary</div>
 <div class="p-3 mb-2 bg-secondary text-white">.bg-secondary</div>
 <div class="p-3 mb-2 bg-success text-white">.bg-success</div>
@@ -391,13 +391,13 @@ About
 </code></pre></div><p>We use an RGB version of our <code>--bs-success</code> (with the value of <code>25, 135, 84</code>) CSS variable and attached a second CSS variable, <code>--bs-bg-opacity</code>, for the alpha transparency (with a default value <code>1</code> thanks to a local CSS variable). That means anytime you use <code>.bg-success</code> now, your computed <code>color</code> value is <code>rgba(25, 135, 84, 1)</code>. The local CSS variable inside each <code>.bg-*</code> class avoids inheritance issues so nested instances of the utilities don&rsquo;t automatically have a modified alpha transparency.</p>
 <h3 id=example>Example</h3>
 <p>To change that opacity, override <code>--bs-bg-opacity</code> via custom styles or inline styles.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class="bg-success p-2 text-white">This is default success background</div>
 <div class="bg-success p-2" style=--bs-bg-opacity:.5>This is 50% opacity success background</div>
 </div><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;bg-success p-2 text-white&#34;</span><span class=p>&gt;</span>This is default success background<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;bg-success p-2&#34;</span> <span class=na>style</span><span class=o>=</span><span class=s>&#34;--bs-bg-opacity: .5;&#34;</span><span class=p>&gt;</span>This is 50% opacity success background<span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>Or, choose from any of the <code>.bg-opacity</code> utilities:</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class="bg-success p-2 text-white">This is default success background</div>
 <div class="bg-success p-2 text-white bg-opacity-75">This is 75% opacity success background</div>
 <div class="bg-success p-2 text-dark bg-opacity-50">This is 50% opacity success background</div>

@@ -355,7 +355,7 @@ About
 <li>Anchors (<code>&lt;a></code>) are required and must point to an element with that <code>id</code>.</li>
 </ul>
 <p>When successfully implemented, your nav or list group will update accordingly, moving the <code>.active</code> class from one item to the next based on their associated targets.</p>
-<div class="bd-callout bd-callout-info">
+<div class="qal-callout qal-callout-info">
 <h3 id=scrollable-containers-and-keyboard-access>Scrollable containers and keyboard access</h3>
 <p>If you&rsquo;re making a scrollable container (other than the <code>&lt;body></code>), be sure to have a <code>height</code> set and <code>overflow-y: scroll;</code> applied to it—alongside a <code>tabindex="0"</code> to ensure keyboard access.
 </div>
@@ -564,11 +564,11 @@ About
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=kd>var</span> <span class=nx>scrollSpy</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>bootstrap</span><span class=p>.</span><span class=nx>ScrollSpy</span><span class=p>(</span><span class=nb>document</span><span class=p>.</span><span class=nx>body</span><span class=p>,</span> <span class=p>{</span>
   <span class=nx>target</span><span class=o>:</span> <span class=s1>&#39;#navbar-example&#39;</span>
 <span class=p>})</span>
-</code></pre></div><div class="bd-callout bd-callout-danger">
+</code></pre></div><div class="qal-callout qal-callout-danger">
 <h4 id=resolvable-id-targets-required>Resolvable ID targets required</h4>
 <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home">home&lt;/a></code> must correspond to something in the DOM like <code>&lt;div id="home">&lt;/div></code>.
 </div>
-<div class="bd-callout bd-callout-info">
+<div class="qal-callout qal-callout-info">
 <h4 id=non-visible-target-elements-ignored>Non-visible target elements ignored</h4>
 <p>Target elements that are not visible will be ignored and their corresponding nav items will never be highlighted.
 </div>

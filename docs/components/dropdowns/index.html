@@ -399,7 +399,7 @@ About
 <p>Wrap the dropdown&rsquo;s toggle (your button or link) and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Dropdowns can be triggered from <code>&lt;a></code> or <code>&lt;button></code> elements to better fit your potential needs. The examples shown here use semantic <code>&lt;ul></code> elements where appropriate, but custom markup is supported.</p>
 <h3 id=single-button>Single button</h3>
 <p>Any single <code>.btn</code> can be turned into a dropdown toggle with some markup changes. Here&rsquo;s how you can put them to work with either <code>&lt;button></code> elements:</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=dropdown>
 <button class="btn btn-secondary dropdown-toggle" type=button id=dropdownMenuButton1 data-bs-toggle=dropdown aria-expanded=false>
 Dropdown button
@@ -421,7 +421,7 @@ Dropdown button
   <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>And with <code>&lt;a></code> elements:</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=dropdown>
 <a class="btn btn-secondary dropdown-toggle" href=# role=button id=dropdownMenuLink data-bs-toggle=dropdown aria-expanded=false>
 Dropdown link
@@ -713,7 +713,7 @@ Small button
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 </code></pre></div><h2 id=dark-dropdowns>Dark dropdowns</h2>
 <p>Opt into darker dropdowns to match a dark navbar or custom style by adding <code>.dropdown-menu-dark</code> onto an existing <code>.dropdown-menu</code>. No changes are required to the dropdown items.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=dropdown>
 <button class="btn btn-secondary dropdown-toggle" type=button id=dropdownMenuButton2 data-bs-toggle=dropdown aria-expanded=false>
 Dropdown button
@@ -739,7 +739,7 @@ Dropdown button
   <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>And putting it to use in a navbar:</p>
-<div class=bd-example>
+<div class=qal-app>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class=container-fluid>
 <a class=navbar-brand href=#>Navbar</a>
@@ -785,7 +785,7 @@ Dropdown
   <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>nav</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=directions>Directions</h2>
-<div class="bd-callout bd-callout-info">
+<div class="qal-callout qal-callout-info">
 <h4 id=rtl>RTL</h4>
 <p>Directions are mirrored when using Bootstrap in RTL, meaning <code>.dropstart</code> will appear on the right side.
 </div>
@@ -954,7 +954,7 @@ Split dropstart
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
 </code></pre></div><h2 id=menu-items>Menu items</h2>
 <p>You can use <code>&lt;a></code> or <code>&lt;button></code> elements as dropdown items.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=dropdown>
 <button class="btn btn-secondary dropdown-toggle" type=button id=dropdownMenu2 data-bs-toggle=dropdown aria-expanded=false>
 Dropdown
@@ -976,7 +976,7 @@ Dropdown
   <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>You can also create non-interactive dropdown items with <code>.dropdown-item-text</code>. Feel free to style further with custom CSS or text utilities.</p>
-<div class=bd-example>
+<div class=qal-app>
 <ul class=dropdown-menu>
 <li><span class=dropdown-item-text>Dropdown item text</span></li>
 <li><a class=dropdown-item href=#>Action</a></li>
@@ -991,7 +991,7 @@ Dropdown
 <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=active>Active</h3>
 <p>Add <code>.active</code> to items in the dropdown to <strong>style them as active</strong>. To convey the active state to assistive technologies, use the <code>aria-current</code> attribute — using the <code>page</code> value for the current page, or <code>true</code> for the current item in a set.</p>
-<div class=bd-example>
+<div class=qal-app>
 <ul class=dropdown-menu>
 <li><a class=dropdown-item href=#>Regular link</a></li>
 <li><a class="dropdown-item active" href=# aria-current=true>Active link</a></li>
@@ -1004,7 +1004,7 @@ Dropdown
 <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=disabled>Disabled</h3>
 <p>Add <code>.disabled</code> to items in the dropdown to <strong>style them as disabled</strong>.</p>
-<div class=bd-example>
+<div class=qal-app>
 <ul class=dropdown-menu>
 <li><a class=dropdown-item href=#>Regular link</a></li>
 <li><a class="dropdown-item disabled">Disabled link</a></li>
@@ -1018,10 +1018,10 @@ Dropdown
 <h2 id=menu-alignment>Menu alignment</h2>
 <p>By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. You can change this with the directional <code>.drop*</code> classes, but you can also control them with additional modifier classes.</p>
 <p>Add <code>.dropdown-menu-end</code> to a <code>.dropdown-menu</code> to right align the dropdown menu. Directions are mirrored when using Bootstrap in RTL, meaning <code>.dropdown-menu-end</code> will appear on the left side.</p>
-<div class="bd-callout bd-callout-info">
+<div class="qal-callout qal-callout-info">
 <strong>Heads up!</strong> Dropdowns are positioned thanks to Popper except when they are contained in a navbar.
 </div>
-<div class=bd-example>
+<div class=qal-app>
 <div class=btn-group>
 <button type=button class="btn btn-secondary dropdown-toggle" data-bs-toggle=dropdown aria-expanded=false>
 Right-aligned menu example
@@ -1045,7 +1045,7 @@ Right-aligned menu example
 <h3 id=responsive-alignment>Responsive alignment</h3>
 <p>If you want to use responsive alignment, disable dynamic positioning by adding the <code>data-bs-display="static"</code> attribute and use the responsive variation classes.</p>
 <p>To align <strong>right</strong> the dropdown menu with the given breakpoint or larger, add <code>.dropdown-menu{-sm|-md|-lg|-xl|-xxl}-end</code>.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=btn-group>
 <button type=button class="btn btn-secondary dropdown-toggle" data-bs-toggle=dropdown data-bs-display=static aria-expanded=false>
 Left-aligned but right aligned when large screen
@@ -1067,7 +1067,7 @@ Left-aligned but right aligned when large screen
   <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <p>To align <strong>left</strong> the dropdown menu with the given breakpoint or larger, add <code>.dropdown-menu-end</code> and <code>.dropdown-menu{-sm|-md|-lg|-xl|-xxl}-start</code>.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=btn-group>
 <button type=button class="btn btn-secondary dropdown-toggle" data-bs-toggle=dropdown data-bs-display=static aria-expanded=false>
 Right-aligned but left aligned when large screen
@@ -1091,7 +1091,7 @@ Right-aligned but left aligned when large screen
 <p>Note that you don&rsquo;t need to add a <code>data-bs-display="static"</code> attribute to dropdown buttons in navbars, since Popper isn&rsquo;t used in navbars.</p>
 <h3 id=alignment-options>Alignment options</h3>
 <p>Taking most of the options shown above, here&rsquo;s a small kitchen sink demo of various dropdown alignment options in one place.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=btn-group>
 <button class="btn btn-secondary dropdown-toggle" type=button id=dropdownMenuButton data-bs-toggle=dropdown aria-expanded=false>
 Dropdown
@@ -1241,7 +1241,7 @@ Dropup
 <h2 id=menu-content>Menu content</h2>
 <h3 id=headers>Headers</h3>
 <p>Add a header to label sections of actions in any dropdown menu.</p>
-<div class=bd-example>
+<div class=qal-app>
 <ul class=dropdown-menu>
 <li><h6 class=dropdown-header>Dropdown header</h6></li>
 <li><a class=dropdown-item href=#>Action</a></li>
@@ -1254,7 +1254,7 @@ Dropup
 <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=dividers>Dividers</h3>
 <p>Separate groups of related menu items with a divider.</p>
-<div class=bd-example>
+<div class=qal-app>
 <ul class=dropdown-menu>
 <li><a class=dropdown-item href=#>Action</a></li>
 <li><a class=dropdown-item href=#>Another action</a></li>
@@ -1271,7 +1271,7 @@ Dropup
 <span class=p>&lt;/</span><span class=nt>ul</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=text>Text</h3>
 <p>Place any freeform text within a dropdown menu with text and use <a href=../../../docs/utilities/spacing/>spacing utilities</a>. Note that you&rsquo;ll likely need additional sizing styles to constrain the menu width.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class="dropdown-menu p-4 text-muted" style=max-width:200px>
 <p>
 Some example text that's free-flowing within the dropdown menu.
@@ -1290,7 +1290,7 @@ And this is more example text.
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=forms>Forms</h3>
 <p>Put a form within a dropdown menu, or make it into a dropdown menu, and use <a href=../../../docs/utilities/spacing/>margin or padding utilities</a> to give it the negative space you require.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=dropdown-menu>
 <form class="px-4 py-3">
 <div class=mb-3>
@@ -1339,7 +1339,7 @@ Remember me
   <span class=p>&lt;</span><span class=nt>a</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;dropdown-item&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;#&#34;</span><span class=p>&gt;</span>New around here? Sign up<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;</span>
   <span class=p>&lt;</span><span class=nt>a</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;dropdown-item&#34;</span> <span class=na>href</span><span class=o>=</span><span class=s>&#34;#&#34;</span><span class=p>&gt;</span>Forgot password?<span class=p>&lt;/</span><span class=nt>a</span><span class=p>&gt;</span>
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
-<div class=bd-example>
+<div class=qal-app>
 <form class="dropdown-menu p-4">
 <div class=mb-3>
 <label for=exampleDropdownFormEmail2 class=form-label>Email address</label>
@@ -1380,7 +1380,7 @@ Remember me
 <span class=p>&lt;/</span><span class=nt>form</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=dropdown-options>Dropdown options</h2>
 <p>Use <code>data-bs-offset</code> or <code>data-bs-reference</code> to change the location of the dropdown.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=d-flex>
 <div class="dropdown me-1">
 <button type=button class="btn btn-secondary dropdown-toggle" id=dropdownMenuOffset data-bs-toggle=dropdown aria-expanded=false data-bs-offset=10,20>
@@ -1433,7 +1433,7 @@ Offset
 <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span></code></pre></div>
 <h3 id=auto-close-behavior>Auto close behavior</h3>
 <p>By default, the dropdown menu is closed when clicking inside or outside the dropdown menu. You can use the <code>autoClose</code> option to change this behavior of the dropdown.</p>
-<div class=bd-example>
+<div class=qal-app>
 <div class=btn-group>
 <button class="btn btn-secondary dropdown-toggle" type=button id=defaultDropdown data-bs-toggle=dropdown data-bs-auto-close=true aria-expanded=false>
 Default dropdown
@@ -1636,7 +1636,7 @@ Manual close
 </code></pre></div>
 <h2 id=usage>Usage</h2>
 <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.show</code> class on the parent <code>.dropdown-menu</code>. The <code>data-bs-toggle="dropdown"</code> attribute is relied on for closing dropdown menus at an application level, so it&rsquo;s a good idea to always use it.</p>
-<div class="bd-callout bd-callout-info">
+<div class="qal-callout qal-callout-info">
 On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> handlers to the immediate children of the <code>&lt;body></code> element. This admittedly ugly hack is necessary to work around a <a href=https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html>quirk in iOS' event delegation</a>, which would otherwise prevent a tap anywhere outside of the dropdown from triggering the code that closes the dropdown. Once the dropdown is closed, these additional empty <code>mouseover</code> handlers are removed.
 </div>
 <h3 id=via-data-attributes>Via data attributes</h3>
@@ -1655,7 +1655,7 @@ On touch-enabled devices, opening a dropdown adds empty <code>mouseover</code> h
 <span class=kd>var</span> <span class=nx>dropdownList</span> <span class=o>=</span> <span class=nx>dropdownElementList</span><span class=p>.</span><span class=nx>map</span><span class=p>(</span><span class=kd>function</span> <span class=p>(</span><span class=nx>dropdownToggleEl</span><span class=p>)</span> <span class=p>{</span>
   <span class=k>return</span> <span class=k>new</span> <span class=nx>bootstrap</span><span class=p>.</span><span class=nx>Dropdown</span><span class=p>(</span><span class=nx>dropdownToggleEl</span><span class=p>)</span>
 <span class=p>})</span>
-</code></pre></div><div class="bd-callout bd-callout-info">
+</code></pre></div><div class="qal-callout qal-callout-info">
 <h5 id=data-bs-toggledropdown-still-required><code>data-bs-toggle="dropdown"</code> still required</h5>
 <p>Regardless of whether you call your dropdown via JavaScript or instead use the data-api, <code>data-bs-toggle="dropdown"</code> is always required to be present on the dropdown&rsquo;s trigger element.
 </div>

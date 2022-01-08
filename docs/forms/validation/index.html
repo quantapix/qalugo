@@ -342,7 +342,7 @@ About
 </nav>
 </div>
 <div class="qal-content ps-lg-4">
-<div class="bd-callout bd-callout-warning">
+<div class="qal-callout qal-callout-warning">
 We are aware that currently the client-side custom validation styles and tooltips are not accessible, since they are not exposed to assistive technologies. While we work on a solution, we&rsquo;d recommend either using the server-side option or the default browser validation method.
 </div>
 <h2 id=how-it-works>How it works</h2>
@@ -361,7 +361,7 @@ We are aware that currently the client-side custom validation styles and tooltip
 <h2 id=custom-styles>Custom styles</h2>
 <p>For custom Bootstrap form validation messages, you&rsquo;ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form></code>. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you&rsquo;ll see the <code>:invalid</code> and <code>:valid</code> styles applied to your form controls.</p>
 <p>Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for <code>&lt;select></code>s are only available with <code>.form-select</code>, and not <code>.form-control</code>.</p>
-<div class=bd-example>
+<div class=qal-app>
 <form class="row g-3 needs-validation" novalidate>
 <div class=col-md-4>
 <label for=validationCustom01 class=form-label>First name</label>
@@ -513,7 +513,7 @@ You must agree before submitting.
 <h2 id=browser-defaults>Browser defaults</h2>
 <p>Not interested in custom validation feedback messages or writing JavaScript to change form behaviors? All good, you can use the browser defaults. Try submitting the form below. Depending on your browser and OS, you&rsquo;ll see a slightly different style of feedback.</p>
 <p>While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.</p>
-<div class=bd-example>
+<div class=qal-app>
 <form class="row g-3">
 <div class=col-md-4>
 <label for=validationDefault01 class=form-label>First name</label>
@@ -601,7 +601,7 @@ Agree to terms and conditions
 <p>We recommend using client-side validation, but in case you require server-side validation, you can indicate invalid and valid form fields with <code>.is-invalid</code> and <code>.is-valid</code>. Note that <code>.invalid-feedback</code> is also supported with these classes.</p>
 <p>For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using <code>aria-describedby</code> (noting that this attribute allows more than one <code>id</code> to be referenced, in case the field already points to additional form text).</p>
 <p>To fix <a href=https://github.com/twbs/bootstrap/issues/25110>issues with border radii</a>, input groups require an additional <code>.has-validation</code> class.</p>
-<div class=bd-example>
+<div class=qal-app>
 <form class="row g-3">
 <div class=col-md-4>
 <label for=validationServer01 class=form-label>First name</label>
@@ -734,7 +734,7 @@ You must agree before submitting.
 <li><code>&lt;select></code>s with <code>.form-select</code></li>
 <li><code>.form-check</code>s</li>
 </ul>
-<div class=bd-example>
+<div class=qal-app>
 <form class=was-validated>
 <div class=mb-3>
 <label for=validationTextarea class=form-label>Textarea</label>
@@ -815,7 +815,7 @@ Please enter a message in the textarea.
 <span class=p>&lt;/</span><span class=nt>form</span><span class=p>&gt;</span></code></pre></div>
 <h2 id=tooltips>Tooltips</h2>
 <p>If your form layout allows it, you can swap the <code>.{valid|invalid}-feedback</code> classes for <code>.{valid|invalid}-tooltip</code> classes to display validation feedback in a styled tooltip. Be sure to have a parent with <code>position: relative</code> on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.</p>
-<div class=bd-example>
+<div class=qal-app>
 <form class="row g-3 needs-validation" novalidate>
 <div class="col-md-4 position-relative">
 <label for=validationTooltip01 class=form-label>First name</label>

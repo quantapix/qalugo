@@ -479,7 +479,7 @@ About
 
 <span class=c1>// `xxl` applies to x-large devices (large desktops, less than 1400px)
 </span><span class=c1></span><span class=k>@media</span> <span class=p>(</span><span class=na>max-width</span><span class=o>:</span> <span class=mi>1399</span><span class=mf>.98</span><span class=kt>px</span><span class=p>)</span> <span class=p>{</span> <span class=nc>...</span> <span class=p>}</span>
-</code></pre></div><div class="bd-callout bd-callout-warning">
+</code></pre></div><div class="qal-callout qal-callout-warning">
 <strong>Why subtract .02px?</strong> Browsers don&rsquo;t currently support <a href=https://www.w3.org/TR/mediaqueries-4/#range-context>range context queries</a>, so we work around the limitations of <a href=https://www.w3.org/TR/mediaqueries-4/#mq-min-max><code>min-</code> and <code>max-</code> prefixes</a> and viewports with fractional widths (which can occur under certain conditions on high-dpi devices, for instance) by using values with higher precision.
 </div>
 <h3 id=single-breakpoint>Single breakpoint</h3>
