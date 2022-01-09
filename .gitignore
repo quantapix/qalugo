@@ -2,7 +2,7 @@ _gen
 .cache
 .env
 .hugo_build.lock
+dev
 node_modules
 public
 yarn.lock
-dev
