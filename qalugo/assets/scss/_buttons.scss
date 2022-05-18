@@ -2,54 +2,44 @@
 //
 // Custom buttons for the docs.
 
+// scss-docs-start btn-css-vars-example
 .btn-qal-primary {
-  font-weight: 600;
-  color: $white;
-  background-color: $qal-purple-bright;
-  border-color: $qal-purple-bright;
-
-  &:hover,
-  &:active {
-    color: $white;
-    background-color: shade-color($qal-purple-bright, 20%);
-    border-color: shade-color($qal-purple-bright, 20%);
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px rgba($qal-purple-bright, .25);
-  }
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--qal-violet);
+  --bs-btn-border-color: var(--qal-violet);
+  --bs-btn-border-radius: .5rem;
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #{shade-color($qal-violet, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($qal-violet, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--qal-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color($qal-violet, 20%)};
+  --bs-btn-active-border-color: #{shade-color($qal-violet, 20%)};
 }
+// scss-docs-end btn-css-vars-example
 
-.btn-qal-download {
-  font-weight: 600;
-  color: $qal-download;
-  border-color: $qal-download;
-
-  &:hover,
-  &:active {
-    color: $qal-dark;
-    background-color: $qal-download;
-    border-color: $qal-download;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px rgba($qal-download, .25);
-  }
+.btn-qal-accent {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--qal-accent);
+  --bs-btn-border-color: var(--qal-accent);
+  --bs-btn-hover-color: var(--qal-dark);
+  --bs-btn-hover-bg: var(--qal-accent);
+  --bs-btn-hover-border-color: var(--qal-accent);
+  --bs-btn-focus-shadow-rgb: var(--qal-accent-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: var(--bs-btn-hover-bg);
+  --bs-btn-active-border-color: var(--bs-btn-hover-border-color);
 }
 
 .btn-qal-light {
-  color: $gray-600;
-  border-color: $gray-300;
-
-  .show > &,
-  &:hover,
-  &:active {
-    color: $qal-purple-bright;
-    background-color: $white;
-    border-color: $qal-purple-bright;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px rgba($qal-purple-bright, .25);
-  }
+  --bs-btn-color: var(--bs-gray-600);
+  --bs-btn-border-color: var(--bs-gray-400);
+  --bs-btn-hover-color: var(--qal-violet);
+  --bs-btn-hover-border-color: var(--qal-violet);
+  --bs-btn-active-color: var(--qal-violet);
+  --bs-btn-active-bg: var(--bs-white);
+  --bs-btn-active-border-color: var(--qal-violet);
+  --bs-btn-focus-border-color: var(--qal-violet);
+  --bs-btn-focus-shadow-rgb: var(--qal-violet-rgb);
 }

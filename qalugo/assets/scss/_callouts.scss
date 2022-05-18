@@ -6,36 +6,30 @@
   padding: 1.25rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-  border: 1px solid $gray-200;
-  border-left-width: .25rem;
-  @include border-radius();
+  background-color: var(--qal-callout-bg, var(--bs-gray-100));
+  border-left: .25rem solid var(--qal-callout-border, var(--bs-gray-300));
 
   h4 {
     margin-bottom: .25rem;
   }
 
-  p:last-child {
+  > :last-child {
     margin-bottom: 0;
-  }
-
-  code {
-    @include border-radius();
   }
 
   + .qal-callout {
     margin-top: -.25rem;
   }
+
+  .highlight {
+    background-color: rgba($black, .05);
+  }
 }
 
 // Variations
-.qal-callout-info {
-  border-left-color: $qal-info;
-}
-
-.qal-callout-warning {
-  border-left-color: $qal-warning;
-}
-
-.qal-callout-danger {
-  border-left-color: $qal-danger;
+@each $variant in $qal-callout-variants {
+  .qal-callout-#{$variant} {
+    --qal-callout-bg: rgba(var(--bs-#{$variant}-rgb), .075);
+    --qal-callout-border: rgba(var(--bs-#{$variant}-rgb), .5);
+  }
 }
