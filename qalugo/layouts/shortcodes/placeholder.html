@@ -1,3 +1,16 @@
+{{- /*
+  Usage: `placeholder args`
+
+  `args` are all optional and can be one of the following:
+    * title: Used in the SVG `title` tag - default: "Placeholder"
+    * text: The text to show in the image - default: "width x height"
+    * class: Class to add to the `svg` - default: "qal-placeholder-img"
+    * color: The text color (foreground) - default: "#dee2e6"
+    * background: The background color - default: "#868e96"
+    * width: default: "100%"
+    * height: default: "180px"
+*/ -}}
+
 {{- $grays := $.Site.Data.grays -}}
 {{- $default_color := (index $grays 2).hex -}}
 {{- $default_background := (index $grays 5).hex -}}
