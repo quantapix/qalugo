@@ -3,6 +3,7 @@
   {{ block "head" . }}<head>{{ partial "head" . }}</head>{{ end }}
   {{ block "body" . }}<body>{{ end }}
     {{ partial "skippy" . }}
+    {{ partial "icons" . }}
     {{ block "nav" . }}{{ end }}
     {{ block "main" . }}{{ .Content }}{{ end }}
     {{ block "footer" . }}<footer class="qal-footer py-5 mt-5 bg-light">{{ end }}
