@@ -5,7 +5,7 @@ description: Provide valuable, actionable feedback to your users with HTML5 form
 group: forms
 toc: true
 extra_js:
-  - src: "/docs/assets/js/validate-forms.js"
+  - src: "/js/validate-forms.js"
     async: true
 ---
 
@@ -103,7 +103,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 
 {{< example lang="js" show_preview="false" >}}
 {{< js.inline >}}
-{{- readFile (path.Join "site/static/docs" .Site.Params.docs_version "assets/js/validate-forms.js") -}}
+{{- readFile "assets/js/validate-forms.js" -}}
 {{< /js.inline >}}
 {{< /example >}}
 

@@ -3,8 +3,11 @@
   {{ partial "subnav" . }}
 {{ end }}
 {{ define "main" }}
-  <div class="container-xxl my-md-4 qal-layout">
+  <div class="container-xxl qal-gutter mt-3 my-md-4 qal-layout">
     {{ partial "sidebar" . }}
     {{ partial "main" . }}
   </div>
+{{ end }}
+{{ define "footer" }}
+  <div class="position-fixed"><input type="text"></div>
 {{ end }}
