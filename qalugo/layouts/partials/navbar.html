@@ -19,7 +19,9 @@
         <h5 class="offcanvas-title text-white" id="qalNavbarLabel">Bootstrap</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#qalNavbar"></button>
       </div>
-      {{ partial "links" . }}
-    </div>
+      <div class="offcanvas-body p-4 pt-0 p-lg-0">
+        {{ partial "links" . }}
+      </div>
+    </div>        
   </nav>
 </header>
