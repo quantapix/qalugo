@@ -26,12 +26,12 @@ Add borders to custom elements:
 
 Or remove borders:
 
-{{< example class="qal-app-border-utils qal-app-border-utils-0" >}}
-<span class="border-0"></span>
-<span class="border-top-0"></span>
-<span class="border-end-0"></span>
-<span class="border-bottom-0"></span>
-<span class="border-start-0"></span>
+{{< example class="qal-app-border-utils" >}}
+<span class="border border-0"></span>
+<span class="border border-top-0"></span>
+<span class="border border-end-0"></span>
+<span class="border border-bottom-0"></span>
+<span class="border border-start-0"></span>
 {{< /example >}}
 
 ## Color
