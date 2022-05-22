@@ -1,8 +1,3 @@
-{{- /*
-  Work around wrong escapes in integrity attributes.
-  Original: https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/shortcodes/param.html
-*/ -}}
-
 {{- $name := .Get 0 -}}
 {{- with $name -}}
 {{- $value := $.Page.Param . -}}
