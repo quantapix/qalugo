@@ -1,14 +1,14 @@
 {{ define "main" }}
   <header class="py-5 border-bottom">
-  <div class="container-xxl qal-gutter pt-md-1 pb-md-4">
+    <div class="container pt-md-1 pb-md-4">
       <div class="row">
         <div class="col-xl-8">
           <h1 class="qal-title mt-0">{{ .Title | markdownify }}</h1>
           <p class="qal-lead">{{ .Page.Params.Description | markdownify }}</p>
           {{ if eq .Title "Apps" }}
-            <div class="d-flex flex-column flex-md-row gap-3">
-              <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg qal-btn-lg btn-qal-primary d-flex align-items-center justify-content-center fw-semibold"><svg class="bi me-2" aria-hidden="true"><use xlink:href="#box-seam"></use></svg>Download examples</a>
-              <a href="{{ .Site.Params.download.source }}" class="btn btn-lg qal-btn-lg btn-outline-secondary">Download source code</a>
+            <div class="d-flex flex-column flex-sm-row">
+              <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-qal-primary">Download examples</a>
+              <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ms-sm-3">Download source code</a>
             </div>
           {{ end }}
         </div>
@@ -16,13 +16,13 @@
     </div>
   </header>
   <main class="qal-content order-1 py-5" id="content">
-    <div class="container-xxl qal-gutter">
+    <div class="container">
       {{ .Content }}
       {{ if eq .Title "Apps" }}
         <hr class="my-5">
         <div class="container">
           <div class="text-center">
-            <div class="points-icon d-inline-block mb-2 text-bg-danger">
+            <div class="slogan-points-icon d-inline-block mb-2 text-white bg-danger">
               {{ partial "icons/droplet-fill" (dict "width" "32" "height" "32") }}
             </div>
             <h2 class="display-6 fw-normal">Go further with Bootstrap Themes</h2>

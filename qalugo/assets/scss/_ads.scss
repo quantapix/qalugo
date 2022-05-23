@@ -14,7 +14,7 @@
   @include font-size(.8125rem);
   line-height: 1.4;
   text-align: left;
-  background-color: $gray-100;
+  background-color: rgba(0, 0, 0, .05);
 
   a {
     color: $gray-800;
@@ -22,7 +22,8 @@
   }
 
   @include media-breakpoint-up(sm) {
-    @include border-radius(.5rem);
+    max-width: 330px;
+    @include border-radius(4px);
   }
 }
 

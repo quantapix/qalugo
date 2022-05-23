@@ -1,21 +1,11 @@
-.anchor-link {
-  padding: 0 .175rem;
+.anchorjs-link {
   font-weight: 400;
   color: rgba($link-color, .5);
-  text-decoration: none;
-  opacity: 0;
-  @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
-
-  &::after {
-    content: "#";
-  }
+  @include transition(color .15s ease-in-out);
 
   &:focus,
-  &:hover,
-  :hover > &,
-  :target > & {
+  &:hover {
     color: $link-color;
     text-decoration: none;
-    opacity: 1;
   }
 }

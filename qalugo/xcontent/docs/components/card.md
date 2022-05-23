@@ -376,7 +376,7 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need additional styles or utilities.
 
 {{< example >}}
-<div class="card text-bg-dark">
+<div class="card bg-dark text-white">
   {{< placeholder width="100%" height="270" class="qal-placeholder-img-lg card-img" text="Card image" >}}
   <div class="card-img-overlay">
     <h5 class="card-title">Card title</h5>
@@ -417,14 +417,12 @@ Cards include various options for customizing their backgrounds, borders, and co
 
 ### Background and color
 
-{{< added-in "5.2.0" >}}
-
-Set a `background-color` with contrasting foreground `color` with [our `.text-bg-{color}` helpers]({{< docsref "/helpers/color-background" >}}). Previously it was required to manually pair your choice of [`.text-{color}`]({{< docsref "/utilities/colors" >}}) and [`.bg-{color}`]({{< docsref "/utilities/background" >}}) utilities for styling, which you still may use if you prefer.
+Use [text color]({{< docsref "/utilities/colors" >}}) and [background utilities]({{< docsref "/utilities/background" >}}) to change the appearance of a card.
 
 {{< example >}}
 {{< card.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<div class="card text-bg-{{ .name }} mb-3" style="max-width: 18rem;">
+<div class="card{{ if .contrast_color }} text-{{ .contrast_color }}{{ else }} text-white{{ end }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
   <div class="card-header">Header</div>
   <div class="card-body">
     <h5 class="card-title">{{ .name | title }} card title</h5>
@@ -724,16 +722,8 @@ Just like with card groups, card footers will automatically line up.
 
 In `v4` we used a CSS-only technique to mimic the behavior of [Masonry](https://masonry.desandro.com/)-like columns, but this technique came with lots of unpleasant [side effects](https://github.com/twbs/bootstrap/pull/28922). If you want to have this type of layout in `v5`, you can just make use of Masonry plugin. **Masonry is not included in Bootstrap**, but we've made a [demo example]({{< appsref "/masonry" >}}) to help you get started.
 
-## CSS
+## Sass
 
 ### Variables
-
-{{< added-in "5.2.0" >}}
-
-As part of Bootstrap's evolving CSS variables approach, cards now use local CSS variables on `.card` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
-
-{{< scss-docs name="card-css-vars" file="scss/_card.scss" >}}
-
-### Sass variables
 
 {{< scss-docs name="card-variables" file="scss/_variables.scss" >}}

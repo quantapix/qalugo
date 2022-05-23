@@ -1,27 +1,17 @@
-<header class="navbar navbar-expand-lg navbar-dark qal-navbar sticky-top">
-  <nav class="container-xxl qal-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
-    {{- if eq .Layout "docs" }}
-      <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#qalSidebar" aria-controls="qalSidebar" aria-expanded="false" aria-label="Toggle docs navigation">
-        {{ partial "icons/hamburger" (dict "class" "bi" "width" "24" "height" "24") }}
-        <span class="d-none fs-6 pe-1">Browse</span>
-      </button>
-    {{- else }}
-      <div class="d-lg-none" style="width: 2.25rem;"></div>
-    {{- end }}
-    <a class="navbar-brand p-0 me-0 me-lg-2" href="/" aria-label="Bootstrap">
+<header class="navbar navbar-expand-md navbar-dark qal-navbar">
+  <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigation">
+    <a class="navbar-brand p-0 me-2" href="/" aria-label="Brand">
       {{ partial "icons/bootstrap-white-fill" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
     </a>
-    <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#qalNavbar" aria-controls="qalNavbar" aria-expanded="false" aria-label="Toggle navigation">
-      <svg class="bi" width="24" height="24" aria-hidden="true"><use xlink:href="#three-dots"></use></svg>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#qalNavbar" aria-controls="qalNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      {{ partial "icons/hamburger" (dict "class" "bi" "width" "32" "height" "32") }}
     </button>
-    <div class="offcanvas-lg offcanvas-end flex-grow-1" id="qalNavbar" aria-labelledby="qalNavbarLabel" data-bs-scroll="true">
-      <div class="offcanvas-header px-4 pb-0">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="qalNavbar" aria-labelledby="qalNavbarLabel">
+      <div class="offcanvas-header pb-0">
         <h5 class="offcanvas-title text-white" id="qalNavbarLabel">Bootstrap</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#qalNavbar"></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body p-4 pt-0 p-lg-0">
-        {{ partial "links" . }}
-      </div>
-    </div>        
+      {{ partial "links" . }}
+    </div>
   </nav>
 </header>

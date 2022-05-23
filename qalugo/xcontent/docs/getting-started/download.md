@@ -15,7 +15,7 @@ Download ready-to-use compiled code for **Bootstrap v{{< param current_version >
 
 This doesn't include documentation, source files, or any optional JavaScript dependencies like Popper.
 
-<a href="{{< param "download.dist" >}}" class="btn btn-qal-primary">Download</a>
+<a href="{{< param "download.dist" >}}" class="btn btn-qal-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download</a>
 
 ## Source files
 
@@ -26,13 +26,13 @@ Compile Bootstrap with your own asset pipeline by downloading our source Sass, J
 
 Should you require our full set of [build tools]({{< docsref "/getting-started/contribute#tooling-setup" >}}), they are included for developing Bootstrap and its docs, but they're likely unsuitable for your own purposes.
 
-<a href="{{< param "download.source" >}}" class="btn btn-qal-primary">Download source</a>
+<a href="{{< param "download.source" >}}" class="btn btn-qal-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 
 ## Apps
 
 If you want to download and examine our [examples]({{< appsref "/" >}}), you can grab the already built examples:
 
-<a href="{{< param "download.dist_examples" >}}" class="btn btn-qal-primary">Download Examples</a>
+<a href="{{< param "download.dist_examples" >}}" class="btn btn-qal-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Examples');">Download Examples</a>
 
 ## CDN via jsDelivr
 
@@ -59,7 +59,7 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 Install Bootstrap in your Node.js powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
 
 ```sh
-npm install bootstrap@{{< param "current_version" >}}
+npm install bootstrap
 ```
 
 `const bootstrap = require('bootstrap')` or `import bootstrap from 'bootstrap'` will load all of Bootstrap's plugins onto a `bootstrap` object.
@@ -79,7 +79,7 @@ Bootstrap's `package.json` contains some additional metadata under the following
 Install Bootstrap in your Node.js powered apps with [the yarn package](https://yarnpkg.com/en/package/bootstrap):
 
 ```sh
-yarn add bootstrap@{{< param "current_version" >}}
+yarn add bootstrap
 ```
 
 ### RubyGems

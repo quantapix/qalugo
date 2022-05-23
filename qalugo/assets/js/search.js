@@ -2,43 +2,49 @@
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 
-;(() => {
+;(function () {
   "use strict"
 
-  const searchElement = document.getElementById("docsearch")
+  var inputElement = document.getElementById("search-input")
 
-  if (!window.docsearch || !searchElement) {
+  if (!window.docsearch || !inputElement) {
     return
   }
 
-  const siteDocsVersion = searchElement.getAttribute("data-qal-docs-version")
+  var siteDocsVersion = inputElement.getAttribute("data-qal-docs-version")
+
+  document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.key === "/") {
+      event.preventDefault()
+      inputElement.focus()
+    }
+  })
 
   window.docsearch({
-    apiKey: "3151f502c7b9e9dafd5e6372b691a24e",
+    apiKey: "5990ad008512000bba2cf951ccf0332f",
     indexName: "bootstrap",
-    appId: "AK7KMZKZHQ",
-    container: searchElement,
-    searchParameters: {
-      facetFilters: [`version:${siteDocsVersion}`],
+    inputSelector: "#search-input",
+    algoliaOptions: {
+      facetFilters: ["version:" + siteDocsVersion],
     },
-    transformItems(items) {
-      return items.map(item => {
-        const liveUrl = "https://getbootstrap.com/"
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        var liveUrl = "https://getbootstrap.com/"
 
-        item.url = window.location.origin.startsWith(liveUrl)
+        hit.url = window.location.origin.startsWith(liveUrl)
           ? // On production, return the result as is
-            item.url
-          : // On development or Netlify, replace `item.url` with a trailing slash,
+            hit.url
+          : // On development or Netlify, replace `hit.url` with a trailing slash,
             // so that the result link is relative to the server root
-            item.url.replace(liveUrl, "/")
+            hit.url.replace(liveUrl, "/")
 
         // Prevent jumping to first header
-        if (item.anchor === "content") {
-          item.url = item.url.replace(/#content$/, "")
-          item.anchor = null
+        if (hit.anchor === "content") {
+          hit.url = hit.url.replace(/#content$/, "")
+          hit.anchor = null
         }
 
-        return item
+        return hit
       })
     },
     // Set debug to `true` if you want to inspect the dropdown

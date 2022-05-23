@@ -1,6 +1,7 @@
 {{- $grays := $.Site.Data.grays -}}
 {{- $default_color := (index $grays 2).hex -}}
 {{- $default_background := (index $grays 5).hex -}}
+
 {{- $title := .Get "title" | default "Placeholder" -}}
 {{- $class := .Get "class" -}}
 {{- $color := .Get "color" | default $default_color -}}
@@ -8,8 +9,10 @@
 {{- $width := .Get "width" | default "100%" -}}
 {{- $height := .Get "height" | default "180" -}}
 {{- $text := .Get "text" | default (printf "%sx%s" $width $height) -}}
+
 {{- $show_title := not (eq $title "false") -}}
 {{- $show_text := not (eq $text "false") -}}
+
 <svg class="qal-placeholder-img{{ with $class }} {{ . }}{{ end }}" width="{{ $width }}" height="{{ $height }}" xmlns="http://www.w3.org/2000/svg"{{ if (or $show_title $show_text) }} role="img" aria-label="{{ if $show_title }}{{ $title }}{{ if $show_text }}: {{ end }}{{ end }}{{ if ($show_text) }}{{ $text }}{{ end }}"{{ else }} aria-hidden="true"{{ end }} preserveAspectRatio="xMidYMid slice" focusable="false">
   {{- if $show_title }}<title>{{ $title }}</title>{{ end -}}
   <rect width="100%" height="100%" fill="{{ $background }}"/>

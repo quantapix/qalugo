@@ -8,7 +8,7 @@ toc: true
 
 ## Install Parcel
 
-Install [Parcel Bundler](https://parceljs.org/getting-started/webapp/).
+Install [Parcel Bundler](https://en.parceljs.org/getting_started.html).
 
 ## Install Bootstrap
 
@@ -22,13 +22,12 @@ When all will be completed, your project will be structured like this:
 project-name/
 ├── build/
 ├── node_modules/
-│   ├── @popperjs/
-|   |   └── core/
 │   └── bootstrap/
+│   └── popper.js/
 ├── scss/
 │   └── custom.scss
 ├── src/
-│   ├── index.html
+│   └── index.html
 │   └── index.js
 └── package.json
 ```
@@ -37,7 +36,6 @@ project-name/
 
 Import [Bootstrap's JavaScript]({{< docsref "/getting-started/javascript" >}}) in your app's entry point (usually `src/index.js`). You can import all our plugins in one file or separately if you require only a subset of them.
 
-<!-- eslint-skip -->
 ```js
 // Import all plugins
 import * as bootstrap from 'bootstrap';
@@ -67,7 +65,7 @@ Include `src/index.js` before the closing `</body>` tag.
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <script type="module" src="./index.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>
 ```
@@ -80,7 +78,7 @@ Add `dev` and `build` scripts in your `package.json` file.
 "scripts": {
   "dev": "parcel ./src/index.html",
   "prebuild": "npx rimraf build",
-  "build": "parcel build --public-url ./ ./src/index.html --dist-dir build"
+  "build": "parcel build --public-url ./ ./src/index.html --experimental-scope-hoisting --out-dir build"
 }
 ```
 
