@@ -85,7 +85,7 @@
 .qal-app {
   position: relative;
   padding: 1rem;
-  margin: 1rem ($qal-gutter-x * -1) 0;
+  margin: 1rem (-$grid-gutter-width * .5) 0;
   border: solid $gray-300;
   border-width: 1px 0 0;
   @include clearfix();
@@ -159,8 +159,7 @@
     margin: -1rem -1rem 1rem;
   }
 
-  .fixed-bottom,
-  .sticky-bottom {
+  .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
   }
@@ -170,8 +169,7 @@
     .sticky-top {
       margin: -1.5rem -1.5rem 1rem;
     }
-    .fixed-bottom,
-    .sticky-bottom {
+    .fixed-bottom {
       margin: 1rem -1.5rem -1.5rem;
     }
   }
@@ -315,7 +313,7 @@
 //
 
 .highlight {
-  padding: var(--bs-gutter-x) $qal-gutter-x;
+  padding: 1rem;
   margin-bottom: 1rem;
   background-color: $gray-100;
 
@@ -340,8 +338,8 @@
 }
 
 .qal-content .highlight {
-  margin-right: $qal-gutter-x * -1;
-  margin-left: $qal-gutter-x * -1;
+  margin-right: (-$grid-gutter-width * .5);
+  margin-left: (-$grid-gutter-width * .5);
 
   @include media-breakpoint-up(sm) {
     margin-right: 0;

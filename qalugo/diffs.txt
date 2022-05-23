@@ -1,106 +1,61 @@
- site/assets/scss/_component-examples.scss                      |   11 +
- site/content/docs/5.0/_index.html                              |    5 -
- site/content/docs/5.1/_index.html                              |    5 +
- site/content/docs/_index.html                                  |    2 +-
- site/data/docs-versions.yml                                    |    3 +-
- site/data/icons.yml                                            |    6 +-
- site/data/sidebar.yml                                          |    5 +-
- site/layouts/shortcodes/js-dismiss.html                        |   15 +
- site/static/docs/5.0/assets/img/examples/cover@2x.png          |  Bin 17953 -> 0 bytes
- site/static/docs/5.0/assets/img/examples/dropdowns.png         |  Bin 6151 -> 0 bytes
- site/static/docs/5.0/assets/img/examples/footers.png           |  Bin 4361 -> 0 bytes
- site/static/docs/5.0/assets/img/examples/footers@2x.png        |  Bin 10259 -> 0 bytes
- site/static/docs/5.0/assets/img/examples/list-groups.png       |  Bin 7143 -> 0 bytes
- site/static/docs/5.0/assets/img/examples/list-groups@2x.png    |  Bin 17810 -> 0 bytes
- site/static/docs/5.0/assets/img/examples/modals.png            |  Bin 4821 -> 0 bytes
- site/static/docs/5.0/assets/img/examples/modals@2x.png         |  Bin 11706 -> 0 bytes
- site/static/docs/5.0/assets/img/examples/pricing@2x.png        |  Bin 29128 -> 0 bytes
-
- site/assets/js/application.js                           |  11 --
- site/content/docs/5.1/components/modal.md               |   2 +-
- site/content/docs/5.1/components/placeholders.md        |   4 +-
- site/content/docs/5.1/components/progress.md            |  13 +-
- site/content/docs/5.1/examples/dashboard-rtl/index.html |   8 +-
- site/content/docs/5.1/extend/approach.md                |   2 +-
-
- site/content/docs/5.1/components/alerts.md       |  14 +-
- site/content/docs/5.1/content/tables.md          |   2 +-
- site/content/docs/5.1/forms/validation.md        |   2 +-
- site/content/docs/5.1/getting-started/webpack.md |  10 +-
- site/layouts/partials/home/masthead.html         |   2 +-
- site/layouts/partials/scripts.html               |   2 +-
- site/layouts/partials/stylesheet.html            |   2 +-
- site/layouts/shortcodes/bs-table.html            |   3 +-
- site/layouts/shortcodes/callout.html             |   3 +-
- site/layouts/shortcodes/docsref.html             |   2 +-
- site/layouts/shortcodes/example.html             |  18 +--
- site/layouts/shortcodes/param.html               |   4 +-
- site/layouts/shortcodes/placeholder.html         |  27 ++--
- site/layouts/shortcodes/scss-docs.html           |  46 ++++---
- site/layouts/shortcodes/table.html               |  13 +-
- site/layouts/shortcodes/year.html                |   4 +-
-
- site/content/docs/5.1/content/images.md                        |   4 +-
- site/content/docs/5.1/content/reboot.md                        |   2 +-
- site/content/docs/5.1/customize/optimize.md                    |   4 +-
- site/content/docs/5.1/customize/sass.md                        |   2 +-
- site/content/docs/5.1/examples/blog-rtl/index.html             |   2 +-
- site/content/docs/5.1/examples/blog/index.html                 |   4 +-
- site/content/docs/5.1/examples/carousel-rtl/index.html         |   2 +-
- site/content/docs/5.1/examples/carousel/index.html             |   2 +-
- site/content/docs/5.1/examples/cheatsheet-rtl/index.html       |  10 ++--
- site/content/docs/5.1/examples/cheatsheet/index.html           |  12 ++---
- site/content/docs/5.1/examples/navbar-bottom/index.html        |   2 +-
- site/content/docs/5.1/examples/navbar-fixed/index.html         |   2 +-
- site/content/docs/5.1/examples/navbar-static/index.html        |   2 +-
- site/content/docs/5.1/examples/navbars/index.html              |  22 ++++----
- site/content/docs/5.1/examples/sticky-footer-navbar/index.html |   2 +-
- site/content/docs/5.1/forms/checks-radios.md                   |  10 ++--
- site/content/docs/5.1/getting-started/rfs.md                   |   6 +--
- site/content/docs/5.1/helpers/stacks.md                        |   4 ++
- site/content/docs/5.1/helpers/text-truncation.md               |   4 +-
- site/content/docs/5.1/layout/css-grid.md                       |   2 +-
- site/content/docs/5.1/utilities/interactions.md                |   9 ++--
- site/data/docs-versions.yml                                    |   2 +-
- site/layouts/partials/docs-versions.html                       |   2 +-
-
- site/.eslintrc.json                                            |     2 +-
- site/assets/js/application.js                                  |    18 +-
- site/assets/scss/_component-examples.scss                      |     8 +-
- site/assets/scss/_layout.scss                                  |     3 +
- site/assets/scss/_navbar.scss                                  |    12 +
- site/assets/scss/_sidebar.scss                                 |     2 +-
- site/assets/scss/_subnav.scss                                  |    11 +-
- site/assets/scss/_variables.scss                               |     2 +
- site/content/docs/5.1/content/images.md                        |     2 +-
- site/content/docs/5.1/content/tables.md                        |     4 +-
- site/content/docs/5.1/content/typography.md                    |     2 +-
- site/content/docs/5.1/customize/color.md                       |     1 +
- site/content/docs/5.1/customize/options.md                     |     1 +
- site/content/docs/5.1/customize/sass.md                        |    13 +-
- site/content/docs/5.1/examples/carousel-rtl/index.html         |     2 +-
- site/content/docs/5.1/examples/carousel/index.html             |     2 +-
- site/content/docs/5.1/examples/cheatsheet-rtl/index.html       |    10 +-
- site/content/docs/5.1/examples/cheatsheet/index.html           |     8 +-
- site/content/docs/5.1/examples/dropdowns/index.html            |    18 +-
- site/content/docs/5.1/examples/footers/index.html              |    26 +-
- site/content/docs/5.1/examples/grid/index.html                 |     4 +-
- site/content/docs/5.1/examples/headers/index.html              |    10 +-
- site/content/docs/5.1/examples/navbar-fixed/index.html         |     2 +-
- site/content/docs/5.1/examples/navbar-static/index.html        |     2 +-
- site/content/docs/5.1/examples/navbars/index.html              |    40 +-
- site/content/docs/5.1/examples/offcanvas-navbar/index.html     |     2 +-
- site/content/docs/5.1/examples/sidebars/sidebars.js            |     2 +-
- site/content/docs/5.1/examples/sticky-footer-navbar/index.html |     2 +-
- site/content/docs/5.1/forms/floating-labels.md                 |     2 +-
- site/content/docs/5.1/forms/overview.md                        |     4 +-
- site/content/docs/5.1/getting-started/contents.md              |     2 +-
- site/content/docs/5.1/getting-started/download.md              |     2 +-
- site/content/docs/5.1/getting-started/introduction.md          |     1 +
- site/content/docs/5.1/getting-started/rtl.md                   |     4 +-
- site/content/docs/5.1/layout/gutters.md                        |     2 +-
- site/content/docs/5.1/migration.md                             |    52 +-
- site/content/docs/5.1/utilities/api.md                         |    15 +
- site/content/docs/5.1/utilities/background.md                  |     4 +-
- site/content/docs/5.1/utilities/colors.md                      |     4 +-
- site/data/docs-versions.yml                                    |     2 +-
+site/assets/js/application.js
+site/assets/scss/_algolia.scss
+site/assets/scss/_component-examples.scss
+site/assets/scss/_layout.scss
+site/assets/scss/_navbar.scss
+site/assets/scss/_placeholder-img.scss
+site/assets/scss/_sidebar.scss
+site/assets/scss/_subnav.scss
+site/assets/scss/_syntax.scss
+site/assets/scss/_variables.scss
+site/assets/scss/docs.scss
+site/content/docs/components/alerts.md
+site/content/docs/components/carousel.md
+site/content/docs/components/collapse.md
+site/content/docs/components/dropdowns.md
+site/content/docs/components/list-group.md
+site/content/docs/components/navbar.md
+site/content/docs/components/navs-tabs.md
+site/content/docs/components/offcanvas.md
+site/content/docs/components/popovers.md
+site/content/docs/components/scrollspy.md
+site/content/docs/components/toasts.md
+site/content/docs/components/tooltips.md
+site/content/docs/content/images.md
+site/content/docs/content/reboot.md
+site/content/docs/content/tables.md
+site/content/docs/content/typography.md
+site/content/docs/customize/color.md
+site/content/docs/customize/options.md
+site/content/docs/customize/sass.md
+site/content/apps/.stylelintrc
+site/content/apps/carousel-rtl/index.html
+site/content/apps/carousel/index.html
+site/content/apps/cheatsheet-rtl/index.html
+site/content/apps/cheatsheet/cheatsheet.css
+site/content/apps/cheatsheet/cheatsheet.rtl.css
+site/content/apps/cheatsheet/index.html
+site/content/apps/dropdowns/index.html
+site/content/apps/features/features.css
+site/content/apps/footers/index.html
+site/content/apps/grid/index.html
+site/content/apps/headers/index.html
+site/content/apps/navbar-fixed/index.html
+site/content/apps/navbar-static/index.html
+site/content/apps/navbars/index.html
+site/content/apps/offcanvas-navbar/index.html
+site/content/apps/sidebars/sidebars.js
+site/content/apps/sticky-footer-navbar/index.html
+site/content/docs/forms/floating-labels.md
+site/content/docs/forms/overview.md
+site/content/docs/getting-started/contents.md
+site/content/docs/getting-started/download.md
+site/content/docs/getting-started/rtl.md
+site/content/docs/helpers/position.md
+site/content/docs/layout/gutters.md
+site/content/docs/migration.md
+site/content/docs/utilities/api.md
+site/content/docs/utilities/background.md
+site/content/docs/utilities/colors.md
+site/content/docs/utilities/flex.md
+site/layouts/partials/docs-navbar.html

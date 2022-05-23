@@ -1,7 +1,5 @@
 // Docsearch theming
 
-// stylelint-disable selector-class-pattern
-
 .algolia-autocomplete {
   width: 100%;
 }
@@ -26,6 +24,7 @@
   font-weight: 600;
   color: $qal-purple-bright;
 
+  // stylelint-disable-next-line selector-class-pattern
   :not(.algolia-docsearch-suggestion__main) > & {
     display: none;
   }

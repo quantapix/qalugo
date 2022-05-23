@@ -1,12 +1,8 @@
 .qal-subnavbar {
-  --bs-gutter-x: $qal-gutter-x;
-  --bs-gutter-y: $qal-gutter-x;
-
   // The position and z-index are needed for the dropdown to stay on top of the content
   position: relative;
   z-index: $zindex-sticky;
   background-color: rgba($white, .95);
-  //background-color: rgba($body-bg, .7);
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .15);
 
   .dropdown-menu {
@@ -35,16 +31,16 @@
     position: absolute;
     top: .4rem;
     right: .4rem;
-    bottom: .4rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: .3125rem;
-    padding-left: .3125rem;
+    height: 1.5rem;
+    padding-right: .25rem;
+    padding-left: .25rem;
     @include font-size(.75rem);
     color: $gray-600;
     content: "Ctrl + /";
-    background-color: $gray-100;
+    border: $border-width solid $border-color;
     @include border-radius(.125rem);
   }
 

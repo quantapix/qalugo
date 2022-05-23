@@ -75,7 +75,7 @@ body {
 }
 
 
-/* Apps */
+/*  Apps */
 .scrollspy-example {
   position: relative;
   height: 200px;
@@ -99,9 +99,9 @@ body {
 @media (min-width: 1200px) {
   body {
     display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr 4fr 1fr;
     gap: 1rem;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto;
   }
 
   .qal-header {
@@ -127,10 +127,10 @@ body {
   .qal-cheatsheet section,
   .qal-cheatsheet article {
     display: inherit; /* 1 */
-    grid-template-rows: auto;
+    gap: inherit; /* 1 */
     grid-template-columns: 1fr 4fr;
     grid-column: 1 / span 2;
-    gap: inherit; /* 1 */
+    grid-template-rows: auto;
   }
 
   .qal-aside {

@@ -6,8 +6,8 @@
 
 .qal-placeholder-img {
   @include font-size(1.125rem);
-  user-select: none;
   text-anchor: middle;
+  user-select: none;
 }
 
 .qal-placeholder-img-lg {

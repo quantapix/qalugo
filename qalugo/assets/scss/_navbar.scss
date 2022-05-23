@@ -1,7 +1,4 @@
 .qal-navbar {
-  --bs-gutter-x: $qal-gutter-x;
-  --bs-gutter-y: $qal-gutter-x;
-
   padding: .75rem 0;
   background-color: $qal-purple-bright;
 
@@ -31,14 +28,5 @@
   .navbar-nav-svg {
     width: 1rem;
     height: 1rem;
-  }
-
-  .offcanvas {
-    background-color: $qal-purple-bright;
-    border-left: 0;
-
-    @include media-breakpoint-down(md) {
-      box-shadow: $box-shadow-lg;
-    }
   }
 }

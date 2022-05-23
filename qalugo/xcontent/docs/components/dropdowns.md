@@ -459,14 +459,14 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 </div>
 ```
 
-### Dropend
+### Dropright
 
 Trigger dropdown menus at the right of the elements by adding `.dropend` to the parent element.
 
 <div class="qal-app">
   <div class="btn-group dropend">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropend
+      Dropright
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -481,7 +481,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
       Split dropend
     </button>
     <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="visually-hidden">Toggle Dropend</span>
+      <span class="visually-hidden">Toggle Dropright</span>
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -497,7 +497,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
 <!-- Default dropend button -->
 <div class="btn-group dropend">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropend
+    Dropright
   </button>
   <ul class="dropdown-menu">
     <!-- Dropdown menu links -->
@@ -510,7 +510,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
     Split dropend
   </button>
   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropend</span>
+    <span class="visually-hidden">Toggle Dropright</span>
   </button>
   <ul class="dropdown-menu">
     <!-- Dropdown menu links -->
@@ -518,14 +518,14 @@ Trigger dropdown menus at the right of the elements by adding `.dropend` to the 
 </div>
 ```
 
-### Dropstart
+### Dropleft
 
 Trigger dropdown menus at the left of the elements by adding `.dropstart` to the parent element.
 
 <div class="qal-app">
   <div class="btn-group dropstart">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropstart
+      Dropleft
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -538,7 +538,7 @@ Trigger dropdown menus at the left of the elements by adding `.dropstart` to the
   <div class="btn-group">
     <div class="btn-group dropstart" role="group">
       <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-        <span class="visually-hidden">Toggle Dropstart</span>
+        <span class="visually-hidden">Toggle Dropleft</span>
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -1003,7 +1003,7 @@ Add `data-bs-toggle="dropdown"` to a link or button to toggle a dropdown.
 Call the dropdowns via JavaScript:
 
 ```js
-var dropdownElementList = Array.prototype.slice.call(document.querySelectorAll('.dropdown-toggle'))
+var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
 var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
   return new bootstrap.Dropdown(dropdownToggleEl)
 })
