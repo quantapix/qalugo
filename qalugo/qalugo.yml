@@ -49,17 +49,11 @@ module:
 params:
   description: "qalugo"
   authors: ""
-  social_image_path: /brand/bootstrap-social.png
-  social_logo_path: /brand/bootstrap-social-logo.png
-
-  current_version: "0.1.0"
-  docs_version: "0.1.0"
+  version: "0.1.0"
   github_org: "https://github.com/quantapix"
   repo: "https://github.com/quantapix/qalugo"
 
 
-  current_ruby_version: "0.1.0"
-  rfs_version: "9.0.3"
   twitter: "getbootstrap"
   slack: "https://bootstrap-slack.herokuapp.com/"
   opencollective: "https://opencollective.com/bootstrap"

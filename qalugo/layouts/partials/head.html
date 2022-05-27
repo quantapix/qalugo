@@ -4,7 +4,7 @@
 <meta name="author" content="{{ .Site.Params.authors }}">
 {{ hugo.Generator }}
 <meta name="docsearch:language" content="en">
-<meta name="docsearch:version" content="{{ .Site.Params.docs_version }}">
+<meta name="docsearch:version" content="{{ .Site.Params.version }}">
 <title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.description | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }}{{ end }}</title>
 <link rel="canonical" href="{{ .Permalink }}">
 {{ with .Params.robots -}}

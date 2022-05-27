@@ -11,10 +11,10 @@
         </p>
         <div class="d-flex flex-column flex-md-row">
           <a href="/docs/getting-started/introduction/" class="btn btn-lg btn-qal-primary mb-3 me-md-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">Get started</a>
-          <a href="/docs/getting-started/download/" class="btn btn-lg btn-outline-secondary mb-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ .Site.Params.current_version }}');">Download</a>
+          <a href="/docs/getting-started/download/" class="btn btn-lg btn-outline-secondary mb-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ .Site.Params.version }}');">Download</a>
         </div>
         <p class="text-muted mb-0">
-          Currently <strong>v{{ .Site.Params.current_version }}</strong>
+          Currently <strong>v{{ .Site.Params.version }}</strong>
           <span class="px-1">&middot;</span>
           <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction/" class="link-secondary">v4.6.x docs</a>
           <span class="px-1">&middot;</span>

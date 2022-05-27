@@ -8,7 +8,7 @@ toc: true
 
 ## Compiled CSS and JS
 
-Download ready-to-use compiled code for **Bootstrap v{{< param current_version >}}** to easily drop into your project, which includes:
+Download ready-to-use compiled code for **Bootstrap v{{< param version >}}** to easily drop into your project, which includes:
 
 - Compiled and minified CSS bundles (see [CSS files comparison]({{< docsref "/getting-started/contents#css-files" >}}))
 - Compiled and minified JavaScript plugins (see [JS files comparison]({{< docsref "/getting-started/contents#js-files" >}}))
@@ -82,28 +82,12 @@ Install Bootstrap in your Node.js powered apps with [the yarn package](https://y
 yarn add bootstrap
 ```
 
-### RubyGems
-
-Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):
-
-```ruby
-gem 'bootstrap', '~> {{< param current_ruby_version >}}'
-```
-
-Alternatively, if you're not using Bundler, you can install the gem by running this command:
-
-```sh
-gem install bootstrap -v {{< param current_ruby_version >}}
-```
-
-[See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.
-
 ### Composer
 
 You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org/):
 
 ```sh
-composer require twbs/bootstrap:{{< param current_version >}}
+composer require twbs/bootstrap:{{< param version >}}
 ```
 
 ### NuGet
