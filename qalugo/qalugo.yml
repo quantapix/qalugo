@@ -50,7 +50,6 @@ params:
   description: "qalugo"
   authors: ""
   version: "0.1.0"
-  github_org: "https://github.com/quantapix"
   repo: "https://github.com/quantapix/qalugo"
 
 
