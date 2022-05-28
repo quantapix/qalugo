@@ -5,7 +5,7 @@
     {{ partial "skippy" . }}
     {{ block "nav" . }}{{ end }}
     {{ block "main" . }}{{ .Content }}{{ end }}
-    {{ block "footer" . }}<footer class="qal-footer py-5 mt-5 bg-light">{{ end }}
+    {{ block "footer" . }}<footer class="qal-footer py-5 bg-light">{{ end }}
       {{ partial "foot" . }}
     </footer>
     {{ if ne .Page.Params.include_js false -}}
