@@ -19,3 +19,11 @@
 [submodule "lib/context"]
 	path = lib/context
 	url = https://github.com/react-restart/context.git
+[submodule "lib/drawio"]
+	path = lib/drawio
+	url = https://github.com/jgraph/drawio.git
+	branch = dev
+[submodule "lib/cytoscape.js"]
+	path = lib/cytoscape.js
+	url = https://github.com/cytoscape/cytoscape.js.git
+	branch = unstable
